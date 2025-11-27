@@ -1,0 +1,2820 @@
+diff --git a/tamc-backend/__pycache__/mcp_server.cpython-313.pyc b/tamc-backend/__pycache__/mcp_server.cpython-313.pyc
+index 0dfe7c6..3b4b065 100644
+Binary files a/tamc-backend/__pycache__/mcp_server.cpython-313.pyc and b/tamc-backend/__pycache__/mcp_server.cpython-313.pyc differ
+diff --git a/tamc-backend/mcp_tools/__pycache__/weather_tool.cpython-313.pyc b/tamc-backend/mcp_tools/__pycache__/weather_tool.cpython-313.pyc
+index b0705aa..a91eff1 100644
+Binary files a/tamc-backend/mcp_tools/__pycache__/weather_tool.cpython-313.pyc and b/tamc-backend/mcp_tools/__pycache__/weather_tool.cpython-313.pyc differ
+diff --git a/tamc-frontend/src/App.css b/tamc-frontend/src/App.css
+index 2124a5b..58e8856 100644
+--- a/tamc-frontend/src/App.css
++++ b/tamc-frontend/src/App.css
+@@ -1,412 +1,594 @@
+-:root {
+-  --bg-primary: #f9f9f9;
+-  --bg-secondary: #ffffff;
+-  --text-primary: #2c2c2c;
+-  --text-secondary: #676767;
+-  --border-light: #e5e5e5;
+-  --accent: #10a37f;
+-  --user-bg: #f4f4f4;
+-  --bot-bg: transparent;
+-}
++/* 🌾 Agricultural Assistant – Nature Inspired Enhanced Design */
+ 
+ * {
+-  box-sizing: border-box;
+   margin: 0;
+   padding: 0;
++  box-sizing: border-box;
++  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+ }
+ 
+ body {
+-  margin: 0;
+-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+-  background: var(--bg-primary);
+-  color: var(--text-primary);
+-  height: 100vh;
++  font-family: "Poppins", "Segoe UI", sans-serif;
++  background: #ffffff;
++  color: #374151;
+   overflow: hidden;
+-  -webkit-font-smoothing: antialiased;
+-  -moz-osx-font-smoothing: grayscale;
++  line-height: 1.6;
+ }
+ 
+-#root {
++/* App Container */
++.app {
+   height: 100vh;
+-  overflow: hidden;
++  display: flex;
++  flex-direction: column;
++  background: linear-gradient(to bottom right, #f8fafc, #ffffff);
++}
++/* App container */
++.app {
++  display: flex;
++  flex-direction: column;
++  align-items: center;
++  min-height: 100vh;
++  background: #f9fafb; /* light neutral background */
+ }
+ 
+-/* Main ChatGPT-style container */
+-.zen-shell {
+-  height: 100vh;
++/* Header */
++.header {
++  background: linear-gradient(90deg, #16a34a, #65a30d);
++  color: white;
++  border-bottom: 2px solid #bbf7d0;
++  flex-shrink: 0;
++  height: 64px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+-  position: relative;
++  box-shadow: 0 3px 10px rgba(22, 163, 74, 0.25);
+   width: 100%;
+-  overflow: hidden;
++  position: sticky;
++  top: 0;
++  z-index: 10;
+ }
+ 
+-.zen-stage {
+-  width: 100%;
+-  max-width: 800px;
+-  height: 100vh;
++/* Header inner content fixed width */
++.header-content {
++  width: 850px;
+   display: flex;
+-  flex-direction: column;
+-  position: relative;
+-  padding: 0 20px;
+-}
+-
+-/* Hide header completely */
+-.zen-header {
+-  display: none;
++  justify-content: space-between;
++  align-items: center;
+ }
+ 
+-/* Message stream - ChatGPT style */
+-.message-stream {
++/* Chat container */
++.chat-container {
++  width: 100%;
++  max-width: 850px;
+   flex: 1;
++  padding: 20px;
+   display: flex;
+   flex-direction: column;
+-  gap: 24px;
+-  padding: 40px 0 140px 0;
+-  overflow-y: auto;
+-  overflow-x: hidden;
++  justify-content: flex-start;
++  margin-top: 10px;
++}
++
++/* Input section */
++.input-section {
+   width: 100%;
++  max-width: 850px;
++  display: flex;
++  align-items: center;
++  justify-content: space-between;
++  padding: 12px 16px;
++  border-radius: 20px;
++  border: 1px solid #dcfce7;
++  background: #fff;
++  margin: 20px auto;
++  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+ }
+ 
+-/* Message row */
+-.message-row {
++
++/* Header */
++.header {
++  background: linear-gradient(90deg, #16a34a, #65a30d);
++  color: white;
++  border-bottom: 2px solid #bbf7d0;
++  flex-shrink: 0;
++  height: 64px;
+   display: flex;
+-  gap: 16px;
+-  width: 100%;
+-  padding: 16px 0;
++  justify-content: center;   /* Centers the inner header content */
++  align-items: center;
++  box-shadow: 0 3px 10px rgba(22, 163, 74, 0.25);
++  z-index: 10;
++  position: sticky;
++  top: 0;
++  width:850px
+ }
+ 
+-.message-row.bot {
+-  background: var(--bot-bg);
++/* Inner header wrapper for fixed width */
++.header-content {
++  width: 700px;              /* ✅ Exact bot/chat width */
++  display: flex;
++  justify-content: space-between;
++  align-items: center;
+ }
+ 
+-.message-row.user {
+-  background: var(--user-bg);
+-  border-radius: 8px;
+-  padding: 16px;
+-  margin-left: auto;
+-  max-width: 85%;
++
++.header-content h1 {
++  font-size: 1.4rem;
++  font-weight: 700;
++  color: #ffffff;
++  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+ }
+ 
+-/* Avatar */
+-.message-avatar {
+-  width: 32px;
+-  height: 32px;
+-  border-radius: 4px;
+-  background: var(--accent);
++/* Status Indicator - Separated Pills */
++.status-indicator {
+   display: flex;
+   align-items: center;
+-  justify-content: center;
+-  font-size: 18px;
+-  flex-shrink: 0;
++  gap: 0.75rem;
+ }
+ 
+-.message-row.user .message-avatar {
+-  background: #5e5e5e;
++.status-indicator select {
++  background: white;
++  color: #14532d;
++  border: 1px solid #bbf7d0;
++  border-radius: 16px;
++  padding: 0.35rem 0.75rem;
++  font-size: 0.9rem;
++  font-weight: 500;
++  box-shadow: 0 2px 4px rgba(22, 163, 74, 0.15);
++}
++
++.status-indicator span {
++  background: #dcfce7;
++  color: #166534;
++  border-radius: 16px;
++  padding: 0.35rem 0.75rem;
++  font-size: 0.85rem;
++  border: 1px solid #86efac;
+ }
+ 
+-/* Message card */
+-.message-card {
++/* Chat Container */
++.chat-container {
+   flex: 1;
+-  padding: 0;
+-  background: transparent;
+-  border: none;
+-  border-radius: 0;
+-  line-height: 1.75;
+-  font-size: 16px;
+-  color: var(--text-primary);
++  display: flex;
++  flex-direction: column;
++  height: calc(100vh - 64px);
++  overflow: hidden;
++  width: 850px;
++  max-width: 95%;
++  margin: 0 auto;
++}
++/* Remove top margin/padding under header */
++.chat-container {
++  margin-top: 0 !important;
++  padding-top: 0 !important;
+ }
+ 
+-.message-card.user {
+-  background: transparent;
+-  border: none;
++/* Optional: adjust global container spacing */
++.main-content {
++  margin-top: 0 !important;
++  padding-top: 0 !important;
+ }
+ 
+-.message-text {
+-  word-wrap: break-word;
+-  white-space: pre-wrap;
++
++/* Messages Area */
++.messages-container {
++  flex: 1;
++  overflow-y: auto;
++  padding: 1.5rem 2rem;
++  display: flex;
++  flex-direction: column;
++  gap: 1.5rem;
++  background: #ffffff;
+ }
+ 
+-/* Input container - ChatGPT style, fixed at bottom */
+-.zen-input-card {
++/* Chat Messages */
++.chat-message {
++  display: flex;
++  align-items: flex-start;
++  gap: 0.75rem;
+   width: 100%;
+-  max-width: 760px;
+-  background: #ffffff;
+-  border: 1px solid #d9d9e3;
+-  border-radius: 28px;
+-  padding: 14px 16px;
+-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
++  animation: messageSlideIn 0.35s ease-out;
++}
++
++@keyframes messageSlideIn {
++  from { opacity: 0; transform: translateY(10px); }
++  to { opacity: 1; transform: translateY(0); }
++}
++
++.chat-message.user {
++  justify-content: flex-end;
++}
++
++/* Avatars */
++.avatar {
++  width: 36px;
++  height: 36px;
++  border-radius: 50%;
+   display: flex;
+   align-items: center;
+-  gap: 10px;
+-  position: fixed;
+-  bottom: 40px;
+-  left: 50%;
+-  transform: translateX(-50%);
+-  z-index: 1000;
+-  transition: box-shadow 0.2s;
+-  min-height: 56px;
++  justify-content: center;
++  font-size: 1rem;
++  flex-shrink: 0;
++  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+ }
+ 
+-.zen-input-card:focus-within {
+-  box-shadow: 0 0 20px rgba(0,0,0,0.15);
++.bot-avatar {
++  background: linear-gradient(135deg, #22c55e, #65a30d);
++  color: white;
+ }
+ 
+-.zen-input {
+-  flex: 1;
+-  border: none;
+-  resize: none;
+-  font-size: 17px;
+-  outline: none;
+-  color: #353740;
+-  background: transparent;
+-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+-  line-height: 26px;
+-  max-height: 150px;
+-  overflow: hidden;
+-  overflow-y: hidden;
+-  padding: 0;
+-  min-height: 26px;
+-  height: auto;
++.user-avatar {
++  background: linear-gradient(135deg, #0284c7, #0ea5e9);
++  color: white;
+ }
+ 
+-.zen-input::placeholder {
+-  color: #8e8ea0;
++/* Message Bubbles */
++.message-bubble {
++  max-width: 75%;
++  padding: 1rem 1.25rem;
++  border-radius: 16px;
++  font-size: 0.95rem;
++  line-height: 1.6;
++  word-wrap: break-word;
++  position: relative;
++  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+ }
+ 
+-.zen-input:disabled {
+-  opacity: 0.6;
+-  cursor: not-allowed;
++/* 🟩 BOT Bubble with Natural Gradient */
++.bot-bubble {
++  background: linear-gradient(145deg, #f0fdf4 0%, #fef9c3 50%, #dbeafe 100%);
++  color: #14532d;
++  border-left: 4px solid #22c55e;
++}
++
++/* 🟦 USER Bubble */
++.user-bubble {
++  background: linear-gradient(145deg, #e0f2fe, #bae6fd);
++  color: #075985;
++  border-right: 4px solid #0284c7;
++}
++
++/* Prediction Results */
++.prediction-result, .result-section {
++  background: #ffffff;
++  border: 1px solid #e5e7eb;
++  border-radius: 12px;
++  padding: 1.5rem;
++  margin-top: 1rem;
++  box-shadow: 0 2px 6px rgba(22, 163, 74, 0.05);
+ }
+ 
+-/* Hide scrollbar but keep functionality */
+-.zen-input::-webkit-scrollbar {
+-  display: none;
++.section-title {
++  font-size: 1rem;
++  font-weight: 600;
++  color: #14532d;
++  margin-bottom: 0.75rem;
+ }
+ 
+-.zen-input {
+-  -ms-overflow-style: none;
+-  scrollbar-width: none;
++/* Input Area */
++.input-area {
++  padding: 1.8rem;
++  background: #ffffff;
++  border-top: 1px solid #e5e7eb;
++  box-shadow: 0 -3px 10px rgba(22, 163, 74, 0.05);
+ }
+ 
+-/* Hide chip buttons and footer */
+-.zen-input-footer {
+-  display: none;
++.input-container {
++  max-width: 850px;
++  margin: 0 auto;
+ }
+ 
+-/* Input actions - voice and send button */
+-.zen-input-actions {
++.input-wrapper {
+   display: flex;
+-  gap: 6px;
+-  align-items: center;
++  gap: 0.75rem;
++  background: #ffffff;
++  border: 2px solid #d1fae5;
++  border-radius: 28px;
++  padding: 0.875rem 1.25rem;
++  transition: all 0.3s ease;
++  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+ }
+ 
+-.icon-btn {
++.input-wrapper:focus-within {
++  border-color: #22c55e;
++  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.2);
++}
++
++/* Input */
++.chat-input {
++  flex: 1;
+   border: none;
++  outline: none;
+   background: transparent;
+-  border-radius: 8px;
+-  width: 36px;
+-  height: 36px;
++  font-size: 1rem;
++  color: #374151;
++}
++
++/* Buttons */
++.mic-button {
++  width: 44px;
++  height: 44px;
++  border: none;
++  background: #f0fdf4;
++  color: #14532d;
++  border-radius: 22px;
+   cursor: pointer;
+-  display: flex;
+-  align-items: center;
+-  justify-content: center;
+-  font-size: 20px;
+-  transition: background 0.15s;
+-  color: #676767;
+-  flex-shrink: 0;
++  font-size: 1.2rem;
++  transition: all 0.3s ease;
+ }
+ 
+-.icon-btn:hover {
+-  background: #ececf1;
++.mic-button:hover {
++  background: #16a34a;
++  color: #ffffff;
++  box-shadow: 0 2px 8px rgba(22, 163, 74, 0.3);
+ }
+ 
+-.zen-send {
+-  width: 36px;
+-  height: 36px;
+-  border-radius: 8px;
++.send-button {
++  width: 44px;
++  height: 44px;
+   border: none;
+-  background: #19c37d;
++  background: linear-gradient(135deg, #16a34a, #65a30d);
+   color: white;
+-  font-size: 20px;
+-  font-weight: bold;
++  border-radius: 22px;
+   cursor: pointer;
+-  display: flex;
+-  align-items: center;
+-  justify-content: center;
+-  transition: background 0.15s;
+-  flex-shrink: 0;
+-  padding: 0;
++  font-size: 1.1rem;
++  box-shadow: 0 2px 8px rgba(22, 163, 74, 0.25);
+ }
+ 
+-.zen-send:disabled {
+-  background: #d9d9e3;
+-  cursor: not-allowed;
++.send-button:hover:not(:disabled) {
++  background: linear-gradient(135deg, #15803d, #4d7c0f);
++  transform: translateY(-1px);
+ }
+ 
+-.zen-send:hover:not(:disabled) {
+-  background: #19a869;
++.send-button:disabled {
++  background: #9ca3af;
++  cursor: not-allowed;
+ }
+ 
+-/* Result sections */
+-.result-section,
+-.chart-section {
+-  background: var(--bg-secondary);
+-  border: 1px solid var(--border-light);
+-  border-radius: 12px;
+-  padding: 20px;
+-  margin-top: 16px;
++/* Scrollbar */
++.messages-container::-webkit-scrollbar {
++  width: 6px;
++}
++.messages-container::-webkit-scrollbar-thumb {
++  background: #a7f3d0;
++  border-radius: 3px;
++}
++.messages-container::-webkit-scrollbar-thumb:hover {
++  background: #34d399;
+ }
+ 
+-.section-title {
+-  margin-bottom: 16px;
+-  font-size: 18px;
+-  font-weight: 600;
++/* Responsive */
++@media (max-width: 768px) {
++  .chat-container { width: 100%; padding: 0 0.5rem; }
++  .header-content h1 { font-size: 1.1rem; }
++  .input-area { padding: 1.2rem; }
+ }
+ 
++/* Chart controls */
+ .chart-controls {
+   display: flex;
+-  gap: 8px;
+-  margin-bottom: 16px;
++  gap: 0.5rem;
++  margin-bottom: 1rem;
+ }
+ 
+ .toggle-btn {
++  padding: 0.5rem 1rem;
++  border: 1px solid #d1fae5;
++  background: white;
+   border-radius: 8px;
+-  border: 1px solid var(--border-light);
+-  padding: 8px 16px;
+-  background: var(--bg-secondary);
+   cursor: pointer;
+-  font-size: 14px;
++  font-size: 0.9rem;
+   transition: all 0.2s;
+ }
+ 
+-.toggle-btn:hover {
+-  background: var(--bg-primary);
+-}
+-
+ .toggle-btn.active {
+-  background: var(--accent);
++  background: #16a34a;
+   color: white;
+-  border-color: var(--accent);
++  border-color: #16a34a;
++}
++
++.toggle-btn:hover {
++  background: #f0fdf4;
+ }
+ 
+-/* Data tables */
++/* Data table */
+ .data-table-container {
+   overflow-x: auto;
++  margin-top: 0.75rem;
+ }
+ 
+ .data-table {
+   width: 100%;
+   border-collapse: collapse;
+-  font-size: 14px;
++  font-size: 0.9rem;
+ }
+ 
+ .data-table th {
++  background: #f0fdf4;
++  padding: 0.75rem;
+   text-align: left;
+-  padding: 12px;
+-  border-bottom: 2px solid var(--border-light);
+   font-weight: 600;
+-  background: var(--bg-primary);
++  color: #14532d;
++  border-bottom: 2px solid #bbf7d0;
+ }
+ 
+ .data-table td {
+-  padding: 12px;
+-  border-bottom: 1px solid var(--border-light);
++  padding: 0.75rem;
++  border-bottom: 1px solid #e5e7eb;
+ }
+ 
+-.value-cell {
+-  font-weight: 500;
++.data-table .value-cell {
++  font-weight: 600;
++  color: #16a34a;
++  text-align: right;
+ }
+ 
+-.commodity-group {
+-  margin-bottom: 24px;
++.chart-section {
++  margin-top: 1rem;
+ }
+ 
+ .no-chart {
++  padding: 2rem;
+   text-align: center;
+-  padding: 40px;
+-  color: var(--text-secondary);
++  color: #6b7280;
++  font-style: italic;
+ }
+ 
+-/* Responsive design */
+-@media (max-width: 768px) {
+-  .zen-stage {
+-    padding: 0 12px;
+-  }
++.variant-button {
++  padding: 8px 14px;
++  background: #f0fdf4;
++  border: 1px solid #16a34a;
++  border-radius: 8px;
++  cursor: pointer;
++  font-size: 0.9rem;
++  color: #166534;
++  transition: 0.2s;
++}
+ 
+-  .message-stream {
+-    padding: 20px 0 140px 0;
+-    gap: 16px;
+-  }
++.variant-button:hover {
++  background: #16a34a;
++  color: white;
++}
+ 
+-  .zen-input-card {
+-    bottom: 20px;
+-    width: calc(100% - 32px);
+-    max-width: calc(100% - 32px);
+-    padding: 12px 14px;
+-    border-radius: 24px;
+-    min-height: 52px;
+-  }
++/* Variety Selector */
++.variety-selector {
++  margin-top: 1rem;
++  padding: 1.5rem;
++  background: linear-gradient(135deg, #f0fdf4, #fef9c3);
++  border: 2px solid #bbf7d0;
++  border-radius: 12px;
++  animation: varietySlideIn 0.4s ease-out;
++}
+ 
+-  .zen-input {
+-    font-size: 16px;
+-    line-height: 24px;
++@keyframes varietySlideIn {
++  from { 
++    opacity: 0; 
++    transform: translateY(10px);
+   }
+-
+-  .icon-btn {
+-    width: 34px;
+-    height: 34px;
+-    font-size: 18px;
++  to { 
++    opacity: 1; 
++    transform: translateY(0);
+   }
++}
+ 
+-  .zen-send {
+-    width: 34px;
+-    height: 34px;
+-    font-size: 18px;
+-  }
++.variety-title {
++  font-size: 1rem;
++  font-weight: 600;
++  color: #166534;
++  margin-bottom: 0.5rem;
++  display: flex;
++  align-items: center;
++  gap: 0.5rem;
++}
+ 
+-  .message-row.user {
+-    max-width: 90%;
+-  }
++.variety-subtitle {
++  font-size: 0.9rem;
++  color: #65a30d;
++  margin-bottom: 1rem;
++  font-style: italic;
++}
++
++.variety-buttons {
++  display: flex;
++  flex-wrap: wrap;
++  gap: 0.75rem;
+ }
+ 
+-/* Smooth scrolling */
+-.message-stream {
+-  scroll-behavior: smooth;
++.variety-icon {
++  font-size: 1.2rem;
+ }
+ 
+-/* Typing indicator */
+-.typing-indicator {
++.variant-button {
++  padding: 12px 20px;
++  background: linear-gradient(135deg, #ffffff, #f0fdf4);
++  border: 2px solid #16a34a;
++  border-radius: 12px;
++  cursor: pointer;
++  font-size: 0.95rem;
++  color: #166534;
++  font-weight: 600;
++  transition: all 0.3s ease;
++  box-shadow: 0 2px 6px rgba(22, 163, 74, 0.15);
+   display: flex;
+   align-items: center;
+-  gap: 4px;
+-  padding: 8px 0;
++  gap: 8px;
++  position: relative;
++  overflow: hidden;
++  z-index: 1;
++  pointer-events: auto;
++  user-select: none;
++}
++
++.variant-button * {
++  pointer-events: none;
+ }
+ 
+-.typing-dot {
+-  width: 8px;
+-  height: 8px;
++.variant-button::before {
++  content: '';
++  position: absolute;
++  top: 50%;
++  left: 50%;
++  width: 0;
++  height: 0;
+   border-radius: 50%;
+-  background-color: var(--text-secondary);
+-  animation: typing-bounce 1.4s infinite ease-in-out;
++  background: rgba(22, 163, 74, 0.1);
++  transform: translate(-50%, -50%);
++  transition: width 0.6s, height 0.6s;
++  z-index: 0;
++}
++
++.variant-button:hover::before {
++  width: 300px;
++  height: 300px;
+ }
+ 
+-.typing-dot:nth-child(1) {
+-  animation-delay: -0.32s;
++.variant-button:hover {
++  background: linear-gradient(135deg, #16a34a, #22c55e);
++  color: white;
++  transform: translateY(-2px);
++  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
++  border-color: #22c55e;
+ }
+ 
+-.typing-dot:nth-child(2) {
+-  animation-delay: -0.16s;
++.variant-button:active {
++  transform: translateY(0);
++  box-shadow: 0 2px 4px rgba(22, 163, 74, 0.2);
+ }
+ 
+-@keyframes typing-bounce {
+-  0%, 80%, 100% {
+-    transform: translateY(0);
+-    opacity: 0.4;
++.variant-button .variety-icon,
++.variant-button span {
++  position: relative;
++  z-index: 2;
++}
++
++.ai-insights-panel {
++  animation: insightsSlideIn 0.5s ease-out;
++}
++
++@keyframes insightsSlideIn {
++  from {
++    opacity: 0;
++    transform: translateY(20px);
+   }
+-  40% {
+-    transform: translateY(-8px);
++  to {
+     opacity: 1;
++    transform: translateY(0);
+   }
+ }
++
++.ai-insights-panel h3 {
++  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
++}
++
++.ai-insights-panel > div {
++  backdrop-filter: blur(10px);
++}
++
++@keyframes sentimentSlideIn {
++  from {
++    opacity: 0;
++    transform: translateY(15px);
++  }
++  to {
++    opacity: 1;
++    transform: translateY(0);
++  }
++}
+\ No newline at end of file
+diff --git a/tamc-frontend/src/App.js b/tamc-frontend/src/App.js
+index 6fae7de..d6005ce 100644
+--- a/tamc-frontend/src/App.js
++++ b/tamc-frontend/src/App.js
+@@ -1,3 +1,4 @@
++/*  App.js - FARMER-FRIENDLY VERSION WITH SIMPLIFIED SENTIMENT ANALYSIS  */
+ import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
+ import axios from "axios";
+ import {
+@@ -6,247 +7,597 @@ import {
+ import { v4 as uuidv4 } from "uuid";
+ import "./App.css";
+ 
+-/* ---------- Debounce ---------- */
+-function useDebounce(value, delay) {
+-  const [debouncedValue, setDebouncedValue] = useState(value);
+-  useEffect(() => {
+-    const handler = setTimeout(() => setDebouncedValue(value), delay);
+-    return () => clearTimeout(handler);
+-  }, [value, delay]);
+-  return debouncedValue;
+-}
++/* ---------- Helpers ---------- */
++const formatDate = (d) => (d ? d.split("-").reverse().join("/") : "");
++const isInt = (f) => /bag|arrivals|count|lots|farmers/i.test(f);
++const formatValue = (f, v) => {
++  if (typeof v !== "number") return v;
++  if (isInt(f) || /chilli|paddy|cotton|onion|tomato|bags|arrivals/i.test(f)) return Math.round(v);
++  return Math.round(v);
++};
++const colors = ["#16a34a", "#ef4444", "#f59e0b", "#3b82f6", "#8b5cf6", "#ec4899", "#06b6d4"];
+ 
+-/* ---------- Dynamic Commodity & District Extractor ---------- */
+-function extractCommodityAndDistrict(query, amcList = [], commodityList = []) {
+-  const lowerQuery = query.toLowerCase().replace(/[^\w\s]/g, ' ');
+-  
+-  console.log("🔍 Extracting from:", query);
+-  console.log("📋 Available AMCs:", amcList.length, "items");
+-  console.log("📋 Available Commodities:", commodityList.length, "items");
+-  
+-  let commodity = null;
+-  for (const c of commodityList) {
+-    const commodityLower = c.toLowerCase();
+-    const commodityWords = commodityLower.split(/\s+/);
+-    
+-    if (commodityWords.some(word => word.length > 2 && lowerQuery.includes(word))) {
+-      commodity = c;
+-      console.log("✅ Found commodity:", commodity);
+-      break;
+-    }
+-  }
+-  
+-  let district = null;
+-  for (const d of amcList) {
+-    const districtLower = d.toLowerCase();
+-    const districtWords = districtLower.split(/\s+/);
+-    
+-    if (districtWords.some(word => word.length > 2 && lowerQuery.includes(word))) {
+-      district = d;
+-      console.log("✅ Found district:", district);
+-      break;
+-    }
+-  }
+-  
+-  console.log("🎯 Extraction result:", { commodity, district });
+-  
+-  return [commodity, district];
+-}
++// Helper to detect if query is asking for single day
++const isSingleDayQuery = (query) => {
++  const lowerQuery = query.toLowerCase();
++  return /\b(tomorrow|today)\b/.test(lowerQuery) || 
++         /\b(1|one)\s*(day)\b/.test(lowerQuery) ||
++         /price.*tomorrow/i.test(lowerQuery) ||
++         /tomorrow.*price/i.test(lowerQuery);
++};
+ 
+-/* ---------- Query Parser ---------- */
+-function parseQuery(query, amcList, commodityList) {
+-  const lower = query.toLowerCase();
+-  let metric = "total_bags";
+-  let district = null, amc_name = null, commodity = null, start_date = null, end_date = null, days = 7;
+-
+-  const metricMap = {
+-    bags: "total_bags", 
+-    arrivals: "number_of_arrivals", 
+-    lots: "number_of_lots",
+-    farmers: "number_of_farmers", 
+-    weight: "total_weight", 
+-    revenue: "total_revenue",
+-  };
++/* ---------- Language Options ---------- */
++const languages = {
++  en: { label: "English", code: "en-US" },
++  te: { label: "తెలుగు", code: "te-IN" },
++  hi: { label: "हिन्दी", code: "hi-IN" },
++};
+ 
+-  Object.entries(metricMap).forEach(([k, v]) => {
+-    if (lower.includes(k)) metric = v;
+-  });
++/* ---------- 📰 FARMER-FRIENDLY SENTIMENT PANEL ---------- */
++const SentimentPanel = React.memo(function SentimentPanel({ sentimentData }) {
++  if (!sentimentData || sentimentData.news_count === 0) return null;
+ 
+-  amcList.forEach((amc) => {
+-    if (lower.includes(amc.toLowerCase())) {
+-      amc_name = amc;
+-      if (lower.includes(`${amc.toLowerCase()} district`) || lower.includes(`district ${amc.toLowerCase()}`))
+-        district = amc;
++  const { avg_sentiment, sentiment_label, news_count, top_keywords, sample_headlines } = sentimentData;
++  
++  // Simplified farmer-friendly messages
++  const getFarmerMessage = () => {
++    if (sentiment_label === "Positive") {
++      return {
++        icon: "📈",
++        title: "Good News for Farmers!",
++        message: "Market conditions are favorable. Prices may increase.",
++        color: "#22c55e",
++        bgGradient: "linear-gradient(135deg, #d1fae5, #a7f3d0)",
++        action: "Good time to plan your sales"
++      };
++    } else if (sentiment_label === "Negative") {
++      return {
++        icon: "📉",
++        title: "Market Alert",
++        message: "Prices may decrease. Consider selling soon.",
++        color: "#ef4444",
++        bgGradient: "linear-gradient(135deg, #fee2e2, #fecaca)",
++        action: "Act quickly to avoid losses"
++      };
++    } else {
++      return {
++        icon: "➡️",
++        title: "Stable Market",
++        message: "No major changes expected in prices.",
++        color: "#f59e0b",
++        bgGradient: "linear-gradient(135deg, #fef3c7, #fde68a)",
++        action: "Normal market conditions"
++      };
+     }
+-  });
++  };
+ 
+-  if (!district) {
+-    const match = lower.match(/(?:in|at|for)\s+(\w+)\s*(?:district|dist)?/);
+-    if (match) district = match[1];
+-  }
++  const farmerMsg = getFarmerMessage();
+ 
+-  for (let c of commodityList) {
+-    if (lower.includes(c.toLowerCase())) {
+-      commodity = c;
+-      break;
+-    }
+-  }
+-
+-  if (lower.includes("tomorrow")) {
+-    const t = new Date();
+-    t.setDate(t.getDate() + 1);
+-    start_date = t.toISOString().slice(0, 10);
+-    end_date = start_date;
+-    days = 1;
+-  } else if (lower.match(/next (\d+) days?/)) days = parseInt(lower.match(/next (\d+) days?/)[1]);
+-  else if (lower.includes("next week")) days = 7;
+-  else if (lower.includes("next month")) days = 30;
+-
+-  console.log(`🔍 Parsed: ${district}, ${amc_name}, ${commodity}, ${metric}, ${days}`);
+-  return { metric, district, amc_name, commodity, start_date, end_date, days };
+-}
++  return (
++    <div style={{
++      marginTop: "1rem",
++      background: farmerMsg.bgGradient,
++      borderRadius: "12px",
++      padding: "1.25rem",
++      border: `3px solid ${farmerMsg.color}`,
++      boxShadow: `0 4px 12px ${farmerMsg.color}40`,
++      animation: "sentimentSlideIn 0.4s ease-out"
++    }}>
++      {/* Main Message - Big and Clear */}
++      <div style={{
++        display: "flex",
++        alignItems: "center",
++        gap: "1rem",
++        marginBottom: "1rem"
++      }}>
++        <span style={{ fontSize: "3rem" }}>{farmerMsg.icon}</span>
++        <div style={{ flex: 1 }}>
++          <h3 style={{ 
++            margin: 0, 
++            fontSize: "1.3rem", 
++            fontWeight: "700",
++            color: farmerMsg.color,
++            marginBottom: "0.25rem"
++          }}>
++            {farmerMsg.title}
++          </h3>
++          <p style={{
++            margin: 0,
++            fontSize: "1.05rem",
++            color: "#374151",
++            fontWeight: "600"
++          }}>
++            {farmerMsg.message}
++          </p>
++        </div>
++      </div>
+ 
+-/* ---------- Helpers ---------- */
+-const formatDate = (d) => d ? d.split("-").reverse().join("/") : "";
+-const isInt = (f) => /bag|arrivals|count|lots|farmers/i.test(f);
+-const isRevenue = (f) => /revenue|amt|net_amount/i.test(f);
+-const formatValue = (f, v) => {
+-  if (typeof v !== "number") return v;
+-  if (isInt(f) || /chilli|paddy|cotton|onion|tomato|bags|arrivals/i.test(f)) {
+-    return Math.round(v);
+-  }
+-  if (isRevenue(f)) {
+-    return Math.round(v / 1_00_000);
+-  }
+-  return Math.round(v);
+-};
+-const colors = ["#16a34a", "#ef4444", "#f59e0b", "#3b82f6", "#8b5cf6", "#ec4899", "#06b6d4"];
++      {/* Action Box */}
++      <div style={{
++        background: "white",
++        borderRadius: "8px",
++        padding: "1rem",
++        marginBottom: "1rem",
++        boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
++        borderLeft: `4px solid ${farmerMsg.color}`
++      }}>
++        <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
++          <span style={{ fontSize: "1.5rem" }}>💡</span>
++          <span style={{ 
++            fontSize: "1rem", 
++            fontWeight: "600",
++            color: "#374151"
++          }}>
++            {farmerMsg.action}
++          </span>
++        </div>
++      </div>
+ 
+-/* ---------- 🆕 Commodity-Wise Price Table ---------- */
+-const CommodityWisePriceTable = React.memo(function CommodityWisePriceTable({ data }) {
+-  const safeData = data || {};
+-  const items = Array.isArray(safeData.prices) ? safeData.prices : safeData.predicted_prices || [];
+-  const groupedByCommodity = useMemo(() => {
+-    const groups = {};
+-    items.forEach(item => {
+-      const commodity = item.commodity || "Unknown";
+-      if (!groups[commodity]) {
+-        groups[commodity] = [];
+-      }
+-      groups[commodity].push(item);
+-    });
+-    return groups;
+-  }, [items]);
++      {/* Simple Visual Indicator */}
++      <div style={{
++        background: "white",
++        borderRadius: "8px",
++        padding: "1rem",
++        marginBottom: "1rem",
++        boxShadow: "0 2px 4px rgba(0,0,0,0.05)"
++      }}>
++        <div style={{ 
++          display: "flex", 
++          justifyContent: "space-between",
++          alignItems: "center",
++          marginBottom: "0.75rem"
++        }}>
++          <span style={{ fontSize: "0.95rem", color: "#6b7280", fontWeight: "600" }}>
++            📰 Based on {news_count} recent market reports
++          </span>
++          <div style={{
++            background: farmerMsg.color,
++            color: "white",
++            padding: "0.35rem 0.9rem",
++            borderRadius: "20px",
++            fontSize: "0.85rem",
++            fontWeight: "700"
++          }}>
++            {sentiment_label}
++          </div>
++        </div>
+ 
+-  if (!data || !items.length) {
+-    return (
+-      <div className="result-section">
+-        <p>❌ No price data available</p>
++        {/* Simple 3-level indicator */}
++        <div style={{
++          display: "flex",
++          gap: "0.5rem",
++          marginTop: "0.75rem"
++        }}>
++          <div style={{
++            flex: 1,
++            height: "8px",
++            borderRadius: "4px",
++            background: sentiment_label === "Negative" ? "#ef4444" : "#e5e7eb"
++          }} />
++          <div style={{
++            flex: 1,
++            height: "8px",
++            borderRadius: "4px",
++            background: sentiment_label === "Neutral" ? "#f59e0b" : "#e5e7eb"
++          }} />
++          <div style={{
++            flex: 1,
++            height: "8px",
++            borderRadius: "4px",
++            background: sentiment_label === "Positive" ? "#22c55e" : "#e5e7eb"
++          }} />
++        </div>
++        <div style={{
++          display: "flex",
++          justifyContent: "space-between",
++          marginTop: "0.5rem",
++          fontSize: "0.75rem",
++          color: "#9ca3af",
++          fontWeight: "600"
++        }}>
++          <span>Prices Down</span>
++          <span>Stable</span>
++          <span>Prices Up</span>
++        </div>
+       </div>
+-    );
+-  }
++
++      {/* Only show top 2 most relevant headlines - simplified */}
++      {sample_headlines && sample_headlines.length > 0 && (
++        <details style={{ 
++          cursor: "pointer",
++          background: "white",
++          borderRadius: "8px",
++          padding: "0.75rem",
++          fontSize: "0.9rem"
++        }}>
++          <summary style={{ 
++            fontWeight: "600", 
++            color: "#374151",
++            cursor: "pointer"
++          }}>
++            📋 Recent Market News ({sample_headlines.length})
++          </summary>
++          <div style={{ marginTop: "0.75rem", paddingLeft: "0.5rem" }}>
++            {sample_headlines.slice(0, 2).map((headline, idx) => (
++              <div key={idx} style={{
++                padding: "0.5rem 0",
++                borderBottom: idx < 1 ? "1px solid #e5e7eb" : "none",
++                fontSize: "0.85rem",
++                color: "#6b7280",
++                lineHeight: "1.5"
++              }}>
++                <span style={{ color: farmerMsg.color, marginRight: "0.5rem" }}>•</span>
++                {headline}
++              </div>
++            ))}
++          </div>
++        </details>
++      )}
++    </div>
++  );
++});
++
++/* ---------- SIMPLIFIED PRICE FORECAST ---------- */
++const EnhancedPriceForecast = React.memo(function EnhancedPriceForecast({ forecast }) {
++  if (!forecast) return null;
++
++  const {
++    date,
++    baseline_price,
++    weather_adjustment,
++    disease_adjustment,
++    sentiment_adjustment,
++    final_price,
++    weather_reason,
++    disease_reason,
++    sentiment_reason
++  } = forecast;
++
++  // Calculate total impact
++  const totalAdjustment = weather_adjustment + disease_adjustment + sentiment_adjustment;
++  const hasPositiveImpact = totalAdjustment > 0;
+ 
+   return (
+-    <div className="result-section">
+-      <h4 className="section-title">💰 Commodity-Wise Price Forecast</h4>
+-      {Object.entries(groupedByCommodity).map(([commodity, prices]) => (
+-        <div key={commodity} className="commodity-group" style={{ marginBottom: "2rem" }}>
+-          <h5 style={{ 
+-            color: "#16a34a", 
+-            fontWeight: 600, 
+-            marginBottom: "0.75rem",
+-            fontSize: "1rem",
+-            borderBottom: "2px solid #d1fae5",
+-            paddingBottom: "0.5rem"
++    <div style={{
++      background: "white",
++      borderRadius: "10px",
++      padding: "1.25rem",
++      marginBottom: "0.75rem",
++      border: "2px solid #e5e7eb",
++      boxShadow: "0 2px 8px rgba(0,0,0,0.08)"
++    }}>
++      {/* Date */}
++      <div style={{
++        fontSize: "0.9rem",
++        fontWeight: "600",
++        color: "#6b7280",
++        marginBottom: "0.75rem",
++        display: "flex",
++        alignItems: "center",
++        gap: "0.5rem"
++      }}>
++        <span>📅</span>
++        {formatDate(date)}
++      </div>
++
++      {/* Main Price Display - Big and Clear */}
++      <div style={{
++        display: "flex",
++        justifyContent: "space-between",
++        alignItems: "center",
++        marginBottom: "1rem"
++      }}>
++        <div>
++          <div style={{ fontSize: "0.8rem", color: "#9ca3af", marginBottom: "0.25rem" }}>
++            Expected Price
++          </div>
++          <div style={{ 
++            fontSize: "2rem", 
++            fontWeight: "700", 
++            color: "#16a34a",
++            display: "flex",
++            alignItems: "baseline",
++            gap: "0.25rem"
+           }}>
+-            🌾 {commodity}
+-          </h5>
+-          <div className="data-table-container">
+-            <table className="data-table">
+-              <thead>
+-                <tr>
+-                  <th>Date</th>
+-                  <th>District</th>
+-                  <th>Predicted Price (₹/Quintal)</th>
+-                </tr>
+-              </thead>
+-              <tbody>
+-                {prices.map((item, i) => (
+-                  <tr key={i}>
+-                    <td>{formatDate(item.date) || "N/A"}</td>
+-                    <td>{item.district || safeData.district || "—"}</td>
+-                    <td className="value-cell">
+-                      ₹{Math.round(item.price || item.predicted_price || 0).toLocaleString()}
+-                    </td>
+-                  </tr>
+-                ))}
+-              </tbody>
+-            </table>
++            ₹{Math.round(final_price).toLocaleString()}
++            <span style={{ fontSize: "1rem", color: "#9ca3af" }}>/Q</span>
+           </div>
+         </div>
+-      ))}
++
++        {/* Impact Indicator */}
++        {Math.abs(totalAdjustment) > 0.5 && (
++          <div style={{
++            background: hasPositiveImpact ? "#dcfce7" : "#fee2e2",
++            color: hasPositiveImpact ? "#166534" : "#991b1b",
++            padding: "0.5rem 1rem",
++            borderRadius: "20px",
++            fontSize: "0.95rem",
++            fontWeight: "700",
++            display: "flex",
++            alignItems: "center",
++            gap: "0.5rem"
++          }}>
++            {hasPositiveImpact ? "📈" : "📉"}
++            {hasPositiveImpact ? "+" : ""}{totalAdjustment.toFixed(1)}%
++          </div>
++        )}
++      </div>
++
++      {/* Simple Impact Summary - Only if significant */}
++      {Math.abs(totalAdjustment) > 0.5 && (
++        <div style={{
++          background: "#f9fafb",
++          borderRadius: "8px",
++          padding: "0.75rem",
++          fontSize: "0.85rem",
++          color: "#6b7280"
++        }}>
++          <div style={{ fontWeight: "600", color: "#374151", marginBottom: "0.5rem" }}>
++            What's affecting the price:
++          </div>
++          {Math.abs(weather_adjustment) > 0.5 && (
++            <div style={{ marginBottom: "0.25rem" }}>
++              🌤️ Weather: {weather_adjustment > 0 ? "Favorable" : "Challenging"} 
++              ({weather_adjustment > 0 ? "+" : ""}{weather_adjustment.toFixed(1)}%)
++            </div>
++          )}
++          {Math.abs(sentiment_adjustment) > 0.5 && (
++            <div style={{ marginBottom: "0.25rem" }}>
++              📰 Market News: {sentiment_adjustment > 0 ? "Positive" : "Negative"}
++              ({sentiment_adjustment > 0 ? "+" : ""}{sentiment_adjustment.toFixed(1)}%)
++            </div>
++          )}
++          {Math.abs(disease_adjustment) > 0.5 && (
++            <div>
++              🦠 Disease Risk: Alert
++              ({disease_adjustment.toFixed(1)}%)
++            </div>
++          )}
++        </div>
++      )}
++
++      {/* Expandable Details - Only for interested users */}
++      {(weather_reason || disease_reason || sentiment_reason) && (
++        <details style={{ marginTop: "0.75rem" }}>
++          <summary style={{
++            fontSize: "0.85rem",
++            color: "#6b7280",
++            cursor: "pointer",
++            padding: "0.5rem",
++            background: "#f9fafb",
++            borderRadius: "6px",
++            fontWeight: "500"
++          }}>
++            📝 More Details
++          </summary>
++          <div style={{
++            marginTop: "0.5rem",
++            fontSize: "0.8rem",
++            color: "#6b7280",
++            padding: "0.75rem",
++            background: "#f9fafb",
++            borderRadius: "6px",
++            lineHeight: "1.6"
++          }}>
++            {weather_reason && <div style={{ marginBottom: "0.5rem" }}>🌤️ {weather_reason}</div>}
++            {sentiment_reason && <div style={{ marginBottom: "0.5rem" }}>📰 {sentiment_reason}</div>}
++            {disease_reason && <div>🦠 {disease_reason}</div>}
++          </div>
++        </details>
++      )}
+     </div>
+   );
+ });
+ 
+-/* ---------- 🆕 Commodity-Wise Arrival Table ---------- */
+-const CommodityWiseArrivalTable = React.memo(function CommodityWiseArrivalTable({ data, metricName }) {
+-  if (!data || Object.keys(data).length === 0) return null;
++/* ---------- SIMPLIFIED AI INSIGHTS PANEL ---------- */
++const AIInsightsPanel = React.memo(function AIInsightsPanel({ insights }) {
++  if (!insights) return null;
++
++  const interpretation = insights.interpretation || {};
++  const recommendations = insights.recommendations || [];
++  const risks = insights.risk_assessment || {};
++  const opportunities = insights.opportunities || [];
++
++  // Simplified market condition message
++  const getSimpleMarketMessage = () => {
++    const condition = interpretation.market_condition;
++    if (condition === "oversupply") return { icon: "⚠️", text: "Too much supply - Prices may fall", color: "#ef4444" };
++    if (condition === "shortage") return { icon: "📈", text: "Less supply - Prices rising", color: "#22c55e" };
++    return { icon: "✅", text: "Normal supply - Stable prices", color: "#f59e0b" };
++  };
++
++  const marketMsg = getSimpleMarketMessage();
+ 
+   return (
+-    <div className="result-section">
+-      <h4 className="section-title">🌾 Commodity-Wise Forecast</h4>
+-      {Object.entries(data).map(([commodity, forecasts]) => (
+-        <div key={commodity} className="commodity-group" style={{ marginBottom: "2rem" }}>
+-          <h5 style={{ 
+-            color: "#16a34a", 
+-            fontWeight: 600, 
+-            marginBottom: "0.75rem",
+-            fontSize: "1rem",
+-            borderBottom: "2px solid #d1fae5",
+-            paddingBottom: "0.5rem"
++    <div style={{
++      marginTop: "1.5rem",
++      background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
++      borderRadius: "12px",
++      padding: "1.5rem",
++      color: "white",
++      boxShadow: "0 4px 12px rgba(102, 126, 234, 0.3)"
++    }}>
++      {/* Header */}
++      <div style={{ 
++        display: "flex", 
++        alignItems: "center", 
++        gap: "0.75rem", 
++        marginBottom: "1rem" 
++      }}>
++        <span style={{ fontSize: "1.5rem" }}>🧠</span>
++        <h3 style={{ margin: 0, fontSize: "1.2rem", fontWeight: "700" }}>
++          Smart Market Advice
++        </h3>
++      </div>
++
++      {/* Main Summary - Simple */}
++      {insights.summary && (
++        <div style={{
++          background: "rgba(255, 255, 255, 0.2)",
++          padding: "1rem",
++          borderRadius: "8px",
++          marginBottom: "1rem",
++          fontSize: "1.05rem",
++          fontWeight: "600"
++        }}>
++          {insights.summary}
++        </div>
++      )}
++
++      {/* Simple Market Status */}
++      <div style={{
++        background: "rgba(255, 255, 255, 0.15)",
++        padding: "1rem",
++        borderRadius: "8px",
++        marginBottom: "1rem"
++      }}>
++        <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
++          <span style={{ fontSize: "1.5rem" }}>{marketMsg.icon}</span>
++          <div>
++            <div style={{ fontSize: "0.85rem", opacity: 0.9, marginBottom: "0.25rem" }}>
++              Market Status
++            </div>
++            <div style={{ fontSize: "1.1rem", fontWeight: "700" }}>
++              {marketMsg.text}
++            </div>
++          </div>
++        </div>
++      </div>
++
++      {/* Top 2 Actions - Simple and Clear */}
++      {recommendations.length > 0 && (
++        <div style={{ marginBottom: "1rem" }}>
++          <h4 style={{ 
++            fontSize: "1rem", 
++            marginBottom: "0.75rem", 
++            opacity: 0.95,
++            fontWeight: "700"
+           }}>
+-            🌾 {commodity}
+-          </h5>
+-          <div className="data-table-container">
+-            <table className="data-table">
+-              <thead>
+-                <tr>
+-                  <th>Date</th>
+-                  <th>{metricName}</th>
+-                </tr>
+-              </thead>
+-              <tbody>
+-                {forecasts.map((item, i) => (
+-                  <tr key={i}>
+-                    <td>{formatDate(item.date)}</td>
+-                    <td className="value-cell">
+-                      {formatValue(metricName, item.predicted_value).toLocaleString()}
+-                    </td>
+-                  </tr>
+-                ))}
+-              </tbody>
+-            </table>
++            💡 What You Should Do:
++          </h4>
++          {recommendations.slice(0, 2).map((rec, idx) => (
++            <div key={idx} style={{
++              background: "rgba(255, 255, 255, 0.15)",
++              padding: "1rem",
++              borderRadius: "8px",
++              marginBottom: "0.5rem",
++              fontSize: "0.95rem"
++            }}>
++              <div style={{ fontWeight: "700", marginBottom: "0.5rem" }}>
++                {idx + 1}. {rec.action}
++              </div>
++              <div style={{ opacity: 0.9, fontSize: "0.9rem" }}>
++                ⏰ {rec.timing}
++              </div>
++            </div>
++          ))}
++        </div>
++      )}
++
++      {/* Only Critical Risks - Simple */}
++      {risks.specific_risks && risks.specific_risks.length > 0 && (
++        <div>
++          <h4 style={{ 
++            fontSize: "1rem", 
++            marginBottom: "0.75rem", 
++            opacity: 0.95,
++            fontWeight: "700"
++          }}>
++            ⚠️ Be Careful About:
++          </h4>
++          {risks.specific_risks.slice(0, 1).map((risk, idx) => (
++            <div key={idx} style={{
++              background: "rgba(239, 68, 68, 0.2)",
++              padding: "1rem",
++              borderRadius: "8px",
++              fontSize: "0.9rem"
++            }}>
++              <div style={{ fontWeight: "700", marginBottom: "0.5rem" }}>
++                {risk.risk}
++              </div>
++              <div style={{ opacity: 0.9 }}>
++                💡 What to do: {risk.mitigation}
++              </div>
++            </div>
++          ))}
++        </div>
++      )}
++
++      {/* Profit Opportunity - If exists */}
++      {opportunities.length > 0 && opportunities[0].time_sensitive && (
++        <div style={{ marginTop: "1rem" }}>
++          <div style={{
++            background: "rgba(34, 197, 94, 0.2)",
++            padding: "1rem",
++            borderRadius: "8px",
++            fontSize: "0.95rem"
++          }}>
++            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.5rem" }}>
++              <span style={{ fontSize: "1.3rem" }}>💰</span>
++              <span style={{ fontWeight: "700" }}>Profit Opportunity!</span>
++            </div>
++            <div style={{ opacity: 0.95 }}>
++              {opportunities[0].opportunity}
++            </div>
+           </div>
+         </div>
+-      ))}
++      )}
++    </div>
++  );
++});
++
++/* ---------- Variety Selector ---------- */
++const VarietySelector = React.memo(({ varieties, commodity, market, days, onSelect, isSingleDay, originalDays }) => {
++  if (!varieties || varieties.length === 0) return null;
++  
++  const handleClick = (variety) => {
++    // Pass both variety and original days context
++    onSelect(variety, { 
++      commodity, 
++      market, 
++      days: originalDays || days,
++      originalDays: originalDays || days,
++      isSingleDay: isSingleDay 
++    });
++  };
++  
++  const displayDays = isSingleDay ? 1 : days;
++  
++  return (
++    <div className="variety-selector">
++      <h4 className="variety-title">🌾 {varieties.length} varieties of {commodity} available in {market}</h4>
++      <p className="variety-subtitle">
++        Select a variety to see {displayDays === 1 ? "tomorrow's" : `${displayDays} ${displayDays === 1 ? 'day' : 'days'}`} price forecast:
++      </p>
++      <div className="variety-buttons">
++        {varieties.map((variety, idx) => (
++          <button 
++            key={idx} 
++            className="variant-button" 
++            onClick={() => handleClick(variety)}
++            type="button"
++          >
++            <span className="variety-icon">📦</span>
++            <span>{variety}</span>
++          </button>
++        ))}
++      </div>
+     </div>
+   );
+ });
+ 
+ /* ---------- Prediction Result ---------- */
+-const PredictionResult = React.memo(function PredictionResult({ response, isPriceData }) {
++const PredictionResult = React.memo(function PredictionResult({ response, isPriceData, isSingleDay }) {
+   const [viewMode, setViewMode] = useState("total");
+-
+-  // Always declare these before any return
+   const totalData = response?.total_predicted || [];
+   const commodityData = response?.commodity_daily || {};
+-  const weatherImpact = response?.weather_impact || response?.weather_data || null;
+-
+-  // Move hooks before early return
++  
++  // If single day query, show only first day
++  const displayData = isSingleDay ? totalData.slice(0, 1) : totalData;
++  
+   const commodityChartData = useMemo(() => {
+-    if (!totalData.length || !Object.keys(commodityData).length) return [];
+-    return totalData.map((day) => {
++    if (!displayData.length || !Object.keys(commodityData).length) return [];
++    return displayData.map((day) => {
+       const point = { date: day.date, total: day.total_predicted_value };
+       Object.entries(commodityData).forEach(([commodity, data]) => {
+         const cd = data.find((d) => d.date === day.date);
+@@ -254,79 +605,32 @@ const PredictionResult = React.memo(function PredictionResult({ response, isPric
+       });
+       return point;
+     });
+-  }, [totalData, commodityData]);
+-
+-  // ✅ Place conditional return *after* all hooks
++  }, [displayData, commodityData]);
++  
+   if (!response) return null;
+-
+-  console.log("📈 PredictionResult:", {
+-    isPriceData,
+-    totalData: totalData.length,
+-    commodityCount: Object.keys(commodityData).length,
+-    hasWeatherImpact: !!weatherImpact
+-  });
++  
+   const hasCommodityData = Object.keys(commodityData).length > 0;
+-
++  
+   return (
+     <div className="prediction-result">
+-      {/* Weather Impact Section */}
+-      {weatherImpact && (
+-        <div className="result-section" style={{ background: "#f0f9ff", borderColor: "#bae6fd" }}>
+-          <h4 className="section-title">🌤️ Weather Impact Analysis</h4>
+-          <div style={{ fontSize: "14px", lineHeight: "1.6" }}>
+-            {typeof weatherImpact === 'string' ? (
+-              <p>{weatherImpact}</p>
+-            ) : (
+-              <>
+-                {weatherImpact.temperature && (
+-                  <p>🌡️ <strong>Temperature:</strong> {weatherImpact.temperature}</p>
+-                )}
+-                {weatherImpact.rainfall && (
+-                  <p>🌧️ <strong>Rainfall:</strong> {weatherImpact.rainfall}</p>
+-                )}
+-                {weatherImpact.humidity && (
+-                  <p>💧 <strong>Humidity:</strong> {weatherImpact.humidity}</p>
+-                )}
+-                {weatherImpact.impact && (
+-                  <p style={{ marginTop: "8px", fontWeight: 500 }}>
+-                    📊 <strong>Impact:</strong> {weatherImpact.impact}
+-                  </p>
+-                )}
+-                {weatherImpact.summary && (
+-                  <p style={{ marginTop: "8px", color: "#0369a1" }}>
+-                    {weatherImpact.summary}
+-                  </p>
+-                )}
+-              </>
+-            )}
+-          </div>
+-        </div>
+-      )}
+-      {/* Toggle between Total and Commodity-Wise views */}
+-      {hasCommodityData && (
++      {hasCommodityData && !isSingleDay && (
+         <div className="chart-controls">
+-          <button
+-            className={`toggle-btn ${viewMode === "total" ? "active" : ""}`}
+-            onClick={() => setViewMode("total")}
+-          >
++          <button className={`toggle-btn ${viewMode === "total" ? "active" : ""}`} onClick={() => setViewMode("total")}>
+             📊 Total Overview
+           </button>
+-          <button
+-            className={`toggle-btn ${viewMode === "commodity" ? "active" : ""}`}
+-            onClick={() => setViewMode("commodity")}
+-          >
++          <button className={`toggle-btn ${viewMode === "commodity" ? "active" : ""}`} onClick={() => setViewMode("commodity")}>
+             🌾 Commodity Details
+           </button>
+         </div>
+       )}
+       
+-      {/* Total View */}
+       {viewMode === "total" && (
+         <>
+-          {/* Total Summary Table */}
+-          {totalData.length > 0 && (
++          {displayData.length > 0 && (
+             <div className="result-section">
+-              <h4 className="section-title">📅 Overall Forecast Summary</h4>
++              <h4 className="section-title">
++                {isSingleDay ? "📅 Tomorrow's Price" : "📅 Forecast Summary"}
++              </h4>
+               <div className="data-table-container">
+                 <table className="data-table">
+                   <thead>
+@@ -336,7 +640,7 @@ const PredictionResult = React.memo(function PredictionResult({ response, isPric
+                     </tr>
+                   </thead>
+                   <tbody>
+-                    {totalData.map((item, i) => (
++                    {displayData.map((item, i) => (
+                       <tr key={i}>
+                         <td>{formatDate(item.date)}</td>
+                         <td className="value-cell">
+@@ -351,176 +655,152 @@ const PredictionResult = React.memo(function PredictionResult({ response, isPric
+               </div>
+             </div>
+           )}
+-
+-          {/* Total Chart */}
+-          <div className="result-section chart-section">
+-            <h4 className="section-title">📈 {response.metric_name} Trend</h4>
+-            {totalData.length > 0 ? (
+-              <ResponsiveContainer width="100%" height={220}>
+-                <LineChart data={totalData}>
+-                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+-                  <XAxis dataKey="date" tickFormatter={(d) => d.slice(5)} />
+-                  <YAxis />
+-                  <Tooltip 
+-                    formatter={(v) => [
+-                      `${isPriceData ? "₹" : ""}${formatValue(response.metric_name, v).toLocaleString()}${isPriceData ? "/Q" : ""}`, 
+-                      response.metric_name
+-                    ]} 
+-                  />
+-                  <Line 
+-                    dataKey="total_predicted_value" 
+-                    name={response.metric_name} 
+-                    type="monotone" 
+-                    stroke={isPriceData ? "#f59e0b" : "#16a34a"}
+-                    strokeWidth={2}
+-                  />
+-                </LineChart>
+-              </ResponsiveContainer>
+-            ) : <div className="no-chart">No forecast data</div>}
+-          </div>
++          
++          {!isSingleDay && (
++            <div className="result-section chart-section">
++              <h4 className="section-title">📈 Trend Chart</h4>
++              {displayData.length > 0 ? (
++                <ResponsiveContainer width="100%" height={220}>
++                  <LineChart data={displayData}>
++                    <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
++                    <XAxis dataKey="date" tickFormatter={(d) => d.slice(5)} />
++                    <YAxis />
++                    <Tooltip formatter={(v) => [`${isPriceData ? "₹" : ""}${formatValue(response.metric_name, v).toLocaleString()}${isPriceData ? "/Q" : ""}`, response.metric_name]} />
++                    <Line dataKey="total_predicted_value" name={response.metric_name} type="monotone" stroke={isPriceData ? "#f59e0b" : "#16a34a"} strokeWidth={2} />
++                  </LineChart>
++                </ResponsiveContainer>
++              ) : (
++                <div className="no-chart">No forecast data</div>
++              )}
++            </div>
++          )}
+         </>
+       )}
+-
+-      {/* Commodity-Wise View */}
+-      {viewMode === "commodity" && hasCommodityData && (
+-        <>
+-          {/* Commodity-Wise Tables */}
+-          <CommodityWiseArrivalTable 
+-            data={commodityData} 
+-            metricName={response.metric_name}
+-          />
+-
+-          {/* Commodity-Wise Chart */}
+-          <div className="result-section chart-section">
+-            <h4 className="section-title">📈 Commodity Comparison Chart</h4>
+-            {commodityChartData.length > 0 ? (
+-              <ResponsiveContainer width="100%" height={250}>
+-                <LineChart data={commodityChartData}>
+-                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+-                  <XAxis dataKey="date" tickFormatter={(d) => d.slice(5)} />
+-                  <YAxis />
+-                  <Tooltip 
+-                    formatter={(v) => [
+-                      `${isPriceData ? "₹" : ""}${formatValue(response.metric_name, v).toLocaleString()}${isPriceData ? "/Q" : ""}`, 
+-                      "Value"
+-                    ]} 
+-                  />
+-                  {Object.keys(commodityData).map((c, i) => (
+-                    <Line 
+-                      key={c} 
+-                      type="monotone" 
+-                      dataKey={c} 
+-                      name={c}
+-                      stroke={colors[i % colors.length]} 
+-                      strokeWidth={2} 
+-                    />
+-                  ))}
+-                </LineChart>
+-              </ResponsiveContainer>
+-            ) : <div className="no-chart">No commodity data</div>}
+-          </div>
+-        </>
++      
++      {viewMode === "commodity" && hasCommodityData && !isSingleDay && (
++        <div className="result-section chart-section">
++          <h4 className="section-title">📈 Commodity Comparison</h4>
++          {commodityChartData.length > 0 ? (
++            <ResponsiveContainer width="100%" height={250}>
++              <LineChart data={commodityChartData}>
++                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
++                <XAxis dataKey="date" tickFormatter={(d) => d.slice(5)} />
++                <YAxis />
++                <Tooltip />
++                {Object.keys(commodityData).map((c, i) => (
++                  <Line key={c} type="monotone" dataKey={c} name={c} stroke={colors[i % colors.length]} strokeWidth={2} />
++                ))}
++              </LineChart>
++            </ResponsiveContainer>
++          ) : (
++            <div className="no-chart">No commodity data</div>
++          )}
++        </div>
+       )}
+     </div>
+   );
+ });
+ 
+-/* ---------- Interactive Options Component ---------- */
+-const InteractiveOptions = React.memo(({ question, options, onSelect }) => {
+-  return (
+-    <div style={{ marginTop: "12px" }}>
+-      <p style={{ marginBottom: "10px", fontWeight: 500 }}>{question}</p>
+-      <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+-        {options.map((opt, idx) => (
+-          <button
+-            key={idx}
+-            onClick={() => onSelect(opt.value)}
+-            style={{
+-              padding: "8px 16px",
+-              borderRadius: "8px",
+-              border: "1px solid #d9d9e3",
+-              background: "#ffffff",
+-              cursor: "pointer",
+-              fontSize: "14px",
+-              transition: "all 0.15s"
+-            }}
+-            onMouseOver={(e) => e.target.style.background = "#f0f0f0"}
+-            onMouseOut={(e) => e.target.style.background = "#ffffff"}
+-          >
+-            {opt.label}
+-          </button>
+-        ))}
+-      </div>
+-    </div>
+-  );
+-});
+-
+ /* ---------- Chat Message ---------- */
+-const ChatMessage = React.memo(({ message, isBot, predictionData, isPriceData, isTyping, interactiveOptions, onOptionSelect }) => {
+-  console.log("💬 ChatMessage render:", { isBot, hasPrediction: !!predictionData, isPriceData, isTyping });
++const ChatMessage = React.memo(({ 
++  message, 
++  isBot, 
++  predictionData, 
++  isPriceData, 
++  aiInsights, 
++  varieties, 
++  onVarietySelect,
++  sentimentInfo,
++  detailedForecasts,
++  isSingleDay
++}) => {
+   return (
+-    <div className={`message-row ${isBot ? "bot" : "user"}`}>
+-      <div className="message-avatar">{isBot ? "🌱" : "🧑‍🌾"}</div>
+-      <div className={`message-card ${isBot ? "bot" : "user"}`}>
+-        {isTyping ? (
+-          <div className="typing-indicator">
+-            <div className="typing-dot"></div>
+-            <div className="typing-dot"></div>
+-            <div className="typing-dot"></div>
+-          </div>
+-        ) : (
+-          <>
+-            <div className="message-text" dangerouslySetInnerHTML={{ __html: message }} />
+-            {isBot && interactiveOptions && (
+-              <InteractiveOptions
+-                question={interactiveOptions.question}
+-                options={interactiveOptions.options}
+-                onSelect={onOptionSelect}
+-              />
+-            )}
+-            {isBot && predictionData && (
+-              <>
+-                <PredictionResult response={predictionData} isPriceData={isPriceData} />
+-                {isPriceData && (predictionData.prices || predictionData.predicted_prices) && (
+-                  <CommodityWisePriceTable data={predictionData} />
+-                )}
+-              </>
++    <div className={`chat-message ${isBot ? "bot" : "user"}`}>
++      {isBot && <div className="avatar bot-avatar">🤖</div>}
++      <div className={`message-bubble ${isBot ? "bot-bubble" : "user-bubble"}`}>
++        <div className="message-text">
++          {isBot && varieties?.variants?.length > 0
++            ? `I found several ${varieties.commodity} varieties sold in ${varieties.market}. Select your variety to get accurate price predictions 👇`
++            : <span dangerouslySetInnerHTML={{ __html: message }} />}
++        </div>
++        
++        {isBot && varieties?.variants?.length > 0 && (
++          <VarietySelector 
++            varieties={varieties.variants} 
++            commodity={varieties.commodity} 
++            market={varieties.market} 
++            days={varieties.days || 1}
++            isSingleDay={isSingleDay}
++            originalDays={varieties.originalDays || varieties.days || 1}  // ← KEY FIX: Pass original days
++            onSelect={onVarietySelect} 
++          />
++        )}
++        
++        {/* 📰 Display Sentiment Analysis */}
++        {isBot && sentimentInfo && (
++          <SentimentPanel sentimentData={sentimentInfo} />
++        )}
++        
++        {/* Display detailed price forecasts - limit to 1 if single day */}
++        {isBot && detailedForecasts && detailedForecasts.length > 0 && (
++          <div style={{ marginTop: "1rem" }}>
++            {isSingleDay && detailedForecasts.length > 1 && (
++              <div style={{
++                background: "#dbeafe",
++                padding: "0.75rem",
++                borderRadius: "8px",
++                marginBottom: "0.75rem",
++                fontSize: "0.9rem",
++                color: "#1e40af",
++                fontWeight: "600",
++                display: "flex",
++                alignItems: "center",
++                gap: "0.5rem"
++              }}>
++                <span>ℹ️</span>
++                <span>You asked for tomorrow's price - showing only the first day from {detailedForecasts.length} days of data</span>
++              </div>
+             )}
+-          </>
++            <h4 style={{ 
++              fontSize: "1rem", 
++              fontWeight: "600", 
++              color: "#14532d",
++              marginBottom: "0.75rem"
++            }}>
++              {isSingleDay ? "📊 Tomorrow's Price Details" : "📊 Detailed Price Breakdown"}
++            </h4>
++            {(isSingleDay ? detailedForecasts.slice(0, 1) : detailedForecasts).map((forecast, idx) => (
++              <EnhancedPriceForecast key={idx} forecast={forecast} />
++            ))}
++          </div>
++        )}
++        
++        {/* Keep existing prediction display */}
++        {isBot && predictionData && (
++          <PredictionResult response={predictionData} isPriceData={isPriceData} isSingleDay={isSingleDay} />
++        )}
++        
++        {isBot && aiInsights && (
++          <AIInsightsPanel insights={aiInsights} />
+         )}
+       </div>
++      {!isBot && <div className="avatar user-avatar">👤</div>}
+     </div>
+   );
+ });
+ 
+ /* ---------- Main App ---------- */
+ function App() {
+-  const [amcList, setAmcList] = useState([]);
+-  const [commodityList, setCommodityList] = useState([]);
+-  const [pendingQuery, setPendingQuery] = useState(null);
+-  const [commodityVarieties, setCommodityVarieties] = useState({});
+-
+-  useEffect(() => {
+-    console.log("🔄 Fetching commodities from backend...");
+-    axios.get(`${process.env.REACT_APP_BACKEND_URL}/get_commodities`)
+-      .then((r) => {
+-        const commodities = r.data?.commodities || [];
+-        console.log("✅ Commodities loaded:", commodities.length, "items");
+-        setCommodityList(commodities);
+-      })
+-      .catch((err) => {
+-        console.error("❌ Failed to fetch commodities:", err);
+-        setCommodityList([]);
+-      });
+-  }, []);
+-
+   const [query, setQuery] = useState("");
+   const [loading, setLoading] = useState(false);
++  const [language, setLanguage] = useState("en");
+   const [messages, setMessages] = useState([
+-    { role: "assistant", content: "👋 <strong>Welcome!</strong> I’m your TAMC Smart Agri Copilot. Ask about arrivals, price, or weather updates." }
++    { 
++      role: "assistant", 
++      content: "👋 <strong>Welcome!</strong> I am your AI-powered TAMC Smart Agri Assistant.<br/><br/>🧠 <strong>NEW: AI Intelligence + News Sentiment Analysis Active!</strong><br/><br/>📊 <strong>What I provide:</strong><br/>• Market condition analysis<br/>• News sentiment tracking<br/>• Weather & disease risk<br/>• Actionable recommendations<br/>• Profit opportunities<br/><br/>💬 <strong>Try asking:</strong><br/>• <em>\"Chilli price in Warangal tomorrow\"</em><br/>• <em>\"Price of cotton next week in Khammam\"</em><br/>• <em>\"Paddy price forecast for 3 days\"</em>" 
++    }
+   ]);
+   const messagesEndRef = useRef(null);
+-  const composerRef = useRef(null);
+   const [sessionId] = useState(() => {
+     const s = localStorage.getItem("chat_session");
+     if (s) return s;
+@@ -529,403 +809,278 @@ function App() {
+     return id;
+   });
+ 
++  // NEW: Track original days from query
++  const [originalDays, setOriginalDays] = useState(7);
++
++  useEffect(() => {
++    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
++  }, [messages]);
++
+   const recognitionRef = useRef(null);
+-  const language = "en";
+   const startVoiceInput = () => {
+     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+-    if (!SpeechRecognition) {
+-      alert("Voice recognition not supported in this browser.");
+-      return;
+-    }
++    if (!SpeechRecognition) return alert("Voice recognition not supported.");
+     if (!recognitionRef.current) {
+       recognitionRef.current = new SpeechRecognition();
+-      recognitionRef.current.lang = { en: "en-US", te: "te-IN", hi: "hi-IN" }[language];
++      recognitionRef.current.lang = languages[language].code;
+       recognitionRef.current.onresult = (e) => setQuery(e.results[0][0].transcript);
+     }
+     recognitionRef.current.start();
+   };
+ 
+-  useEffect(() => {
+-    console.log("🔄 Fetching AMCs from backend...");
+-    axios.get(`${process.env.REACT_APP_BACKEND_URL}/get_amcs`)
+-      .then((r) => {
+-        const amcs = r.data?.amc_names || [];
+-        console.log("✅ AMCs loaded:", amcs.length, "items");
+-        setAmcList(amcs);
+-      })
+-      .catch((err) => {
+-        console.error("❌ Failed to fetch AMCs:", err);
+-        setAmcList([]);
+-      });
+-  }, []);
+-
+-  useEffect(() => {
+-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+-  }, [messages]);
+-
+-  useEffect(() => {
+-    console.log("📊 Lists updated - AMCs:", amcList.length, "| Commodities:", commodityList.length);
+-  }, [amcList, commodityList]);
+-
+-  const handleInputChange = useCallback((e) => {
+-    setQuery(e.target.value);
+-    if (composerRef.current) {
+-      composerRef.current.style.height = "26px";
+-      composerRef.current.style.height = `${Math.min(composerRef.current.scrollHeight, 150)}px`;
+-      composerRef.current.style.overflowY = composerRef.current.scrollHeight > 150 ? "auto" : "hidden";
+-    }
+-  }, []);
+-
+-  useEffect(() => {
+-    if (!query && composerRef.current) {
+-      composerRef.current.style.height = "26px";
+-      composerRef.current.style.overflowY = "hidden";
+-    }
+-  }, [query]);
+-
+-  const needsForecast = (q) => /forecast|predict|arrivals|bags|farmers|tomorrow|next week/i.test(q);
+-
+-  const fetchCommodityVarieties = useCallback(async (commodityBase, district) => {
+-    try {
+-      // Fetch all matching varieties from backend
+-      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/get_commodities`);
+-      const allCommodities = res.data?.commodities || [];
+-
+-      // Filter varieties that match the base commodity
+-      const varieties = allCommodities.filter(c =>
+-        c.toLowerCase().includes(commodityBase.toLowerCase())
+-      );
+-
+-      return varieties.length > 1 ? varieties : null;
+-    } catch (error) {
+-      console.error("Failed to fetch varieties:", error);
+-      return null;
+-    }
+-  }, []);
+-
+-  const handlePriceQuery = useCallback(async (query, commodity, district) => {
+-    setLoading(true);
+-    setMessages((p) => [...p, { role: "assistant", content: "⏳ Fetching price forecast...", isTyping: true }]);
+-
+-    try {
+-      console.log("📡 Calling MCP server for price prediction");
+-
+-      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/mcp/run`, {
+-        tool: "price",
+-        params: { commodity, district },
+-      });
+-
+-      console.log("💰 Price response received:", res.data);
+-
+-      if (res.data.error) {
+-        console.error("❌ Price tool returned error:", res.data.error);
++  // UPDATED: Preserve original days through variety selection
++  const handleVarietySelect = useCallback(
++    async (variant, meta) => {
++      if (!meta?.commodity || !meta?.market) return;
++      
++      // KEY FIX: Use original days from context, not from meta
++      const days = meta.originalDays || originalDays || 1;
++      const checkSingleDay = days === 1;
++      
++      setLoading(true);
++      setMessages((p) => [
++        ...p, 
++        { role: "user", content: `✅ Selected: <strong>${variant}</strong>` },
++        { role: "assistant", content: `🧠 AI analyzing ${variant} with news sentiment...`, isTyping: true }
++      ]);
++      
++      try {
++        const res = await axios.post(
++          `${process.env.REACT_APP_BACKEND_URL}/ai/chat`,
++          {
++            query: `price of ${meta.commodity} ${variant} in ${meta.market} for ${days} days`,
++            session_id: sessionId,
++            context: { 
++              commodity: meta.commodity, 
++              district: meta.market,
++              variant, 
++              days,
++              originalDays: days  // ← Pass original days
++            }
++          },
++          { timeout: 180000 }
++        );
++        
++        const aiResponse = res.data.response || "Analysis complete.";
++        const toolResults = res.data.tool_results || {};
++        const aiInsights = res.data.ai_insights;
++        
++        let predictionData = null;
++        let isPriceData = false;
++        let sentimentInfo = null;
++        let detailedForecasts = [];
++
++        if (toolResults.price?.success) {
++          const d = toolResults.price.data;
++          isPriceData = true;
++          
++          // Extract sentiment info from first variant
++          if (Array.isArray(d.variants) && d.variants[0]?.sentiment_info) {
++            sentimentInfo = d.variants[0].sentiment_info;
++          }
++          
++          // Extract detailed forecasts with adjustments
++          if (Array.isArray(d.variants) && d.variants[0]?.forecasts) {
++            detailedForecasts = d.variants[0].forecasts;
++          }
++          
++          // Aggregate predictions for chart
++          let aggregated = [];
++          if (Array.isArray(d.variants)) {
++            const groupedByDate = {};
++            d.variants.forEach((v) => {
++              (v.forecasts || []).forEach((f) => {
++                const date = f.date;
++                const val = f.final_price ?? f.predicted_price ?? 0;
++                if (!groupedByDate[date]) groupedByDate[date] = [];
++                if (val > 0) groupedByDate[date].push(val);
++              });
++            });
++            aggregated = Object.entries(groupedByDate).map(([date, prices]) => ({
++              date,
++              total_predicted_value: Math.round(prices.reduce((a, b) => a + b, 0) / prices.length)
++            }));
++          }
++          
++          if (aggregated.length > 0) {
++            predictionData = {
++              metric_name: "Price (₹/Quintal)",
++              total_predicted: aggregated,
++              commodity: d.commodity || meta.commodity,
++              district: d.market || meta.market
++            };
++          }
++        }
++        
+         setMessages((prev) => {
+           const newMessages = prev.slice(0, -1);
+           return [
+             ...newMessages,
+-            { role: "assistant", content: `❌ ${res.data.error}` }
++            { 
++              role: "assistant", 
++              content: aiResponse, 
++              predictionData, 
++              isPriceData, 
++              aiInsights,
++              sentimentInfo,
++              detailedForecasts,
++              isSingleDay: checkSingleDay
++            }
+           ];
+         });
+-      } else {
+-        console.log("✅ Price data successful, updating UI");
++      } catch (e) {
+         setMessages((prev) => {
+           const newMessages = prev.slice(0, -1);
+-          return [
+-            ...newMessages,
+-            {
+-              role: "assistant",
+-              content: `💰 Price forecast for <strong>${commodity}</strong> in <strong>${district}</strong>`,
+-              predictionData: res.data,
+-              isPriceData: true
+-            }
+-          ];
+-        });
+-      }
+-
+-    } catch (e) {
+-      console.error("❌ Price fetch error:", e);
+-      const errorMsg = e.response?.data?.detail || "Could not fetch price forecast.";
+-
+-      setMessages((prev) => {
+-        const newMessages = prev.slice(0, -1);
+-        return [
+-          ...newMessages,
+-          { role: "assistant", content: `❌ ${errorMsg}` }
+-        ];
+-      });
+-    } finally {
+-      setLoading(false);
+-    }
+-  }, []);
+-
+-  const handleOptionSelect = useCallback((value, type) => {
+-    console.log(`✅ User selected: ${value} for ${type}`);
+-
+-    if (!pendingQuery) return;
+-
+-    if (type === "metric") {
+-      // User selected metric, now proceed with prediction
+-      setPendingQuery({ ...pendingQuery, selectedMetric: value });
+-      handlePredict(pendingQuery.originalQuery, { metric: value, commodity: pendingQuery.commodity });
+-      setPendingQuery(null);
+-    } else if (type === "variety") {
+-      // User selected variety, now proceed with price prediction
+-      handlePriceQuery(pendingQuery.originalQuery, value, pendingQuery.district);
+-      setPendingQuery(null);
+-    }
+-
+-    // Remove the interactive options from last message
+-    setMessages((prev) => {
+-      const updated = [...prev];
+-      const lastMsg = updated[updated.length - 1];
+-      if (lastMsg && lastMsg.interactiveOptions) {
+-        delete lastMsg.interactiveOptions;
+-      }
+-      return updated;
+-    });
+-  }, [pendingQuery, handlePredict, handlePriceQuery]);
+-
+-  const handlePredict = useCallback(async (q, overrideParams = {}) => {
+-    setLoading(true);
+-    setMessages((p) => [...p, { role: "assistant", content: "⏳ Generating forecast...", isTyping: true }]);
+-
+-    try {
+-      const parsed = parseQuery(q, amcList, commodityList);
+-      const location = parsed.amc_name || parsed.district;
+-
+-      if (!location) {
+-        setMessages((p) => {
+-          const up = [...p];
+-          up[up.length - 1] = {
+-            role: "assistant",
+-            content: "⚠️ Please specify a location (district or AMC name) for the forecast."
+-          };
+-          return up;
++          return [...newMessages, { role: "assistant", content: `❌ Error: ${e.message}` }];
+         });
++      } finally {
+         setLoading(false);
+-        return;
+-      }
+-
+-      // Merge overrideParams with parsed data
+-      const finalParams = {
+-        amc_name: location,
+-        days: parsed.days,
+-        metric: overrideParams.metric || parsed.metric,
+-        commodity: overrideParams.commodity || parsed.commodity || ""
+-      };
+-
+-      console.log("🔄 Calling MCP server for arrival prediction");
+-      console.log("📍 Final params:", finalParams);
+-
+-      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/mcp/run`, {
+-        tool: "arrival",
+-        params: finalParams
+-      });
+-
+-      console.log("📊 Arrival response:", res.data);
+-
+-      if (res.data.error) {
+-        setMessages((p) => {
+-          const up = [...p];
+-          up[up.length - 1] = {
+-            role: "assistant",
+-            content: `❌ ${res.data.error}`
+-          };
+-          return up;
+-        });
+-      } else {
+-        setMessages((p) => {
+-          const up = [...p];
+-          up[up.length - 1] = {
+-            role: "assistant",
+-            content: `✅ Forecast for <strong>${location}</strong>`,
+-            predictionData: res.data,
+-            isPriceData: false
+-          };
+-          return up;
+-        });
+       }
+-    } catch (e) {
+-      console.error("❌ Forecast error:", e);
+-      setMessages((p) => {
+-        const up = [...p];
+-        up[up.length - 1] = {
+-          role: "assistant",
+-          content: `❌ Error: ${e.response?.data?.detail || e.message}`
+-        };
+-        return up;
+-      });
+-    } finally {
+-      setLoading(false);
+-    }
+-  }, [amcList, commodityList]);
++    },
++    [sessionId, originalDays]
++  );
+ 
+   const handleSend = useCallback(async () => {
+     if (!query.trim() || loading) return;
+-
+-    const lower = query.toLowerCase();
++    
+     const userMessage = query;
++    const checkSingleDay = isSingleDayQuery(userMessage);
++    
++    // NEW: Set original days based on query
++    const days = checkSingleDay ? 1 : 7;
++    setOriginalDays(days);
+     
+     setMessages((p) => [...p, { role: "user", content: userMessage }]);
++    setQuery("");
+     setLoading(true);
++    setMessages((p) => [...p, { role: "assistant", content: "🧠 AI analyzing with market sentiment...", isTyping: true }]);
++    
++    try {
++      const res = await axios.post(
++        `${process.env.REACT_APP_BACKEND_URL}/ai/chat`,
++        { query: userMessage, session_id: sessionId },
++        { timeout: 180000 }
++      );
+ 
+-    // 💰 Handle price queries
+-    if (/price|rate|cost|quintal|₹|rs|rupees/i.test(lower)) {
+-      console.log("🔍 Price query detected");
+-
+-      const [commodity, district] = extractCommodityAndDistrict(lower, amcList, commodityList);
+-
+-      console.log("🎯 Extracted:", { commodity, district });
+-
+-      if (!commodity || !district) {
+-        setMessages((p) => [
+-          ...p,
+-          {
+-            role: "assistant",
+-            content: `⚠️ Please specify both commodity and district for price forecast.<br/><br/>
+-                      <strong>Detected:</strong><br/>
+-                      • Commodity: ${commodity || '❌ Not found'}<br/>
+-                      • District: ${district || '❌ Not found'}<br/><br/>
+-                      <strong>Example:</strong> <em>"What is the price of chilli in Guntur?"</em>`
+-          },
+-        ]);
+-        setQuery("");
+-        setLoading(false);
+-        return;
+-      }
+-
+-      // Check if commodity has multiple varieties
+-      const varieties = await fetchCommodityVarieties(commodity, district);
+-
+-      if (varieties && varieties.length > 1) {
+-        // Show interactive variety selection
+-        setPendingQuery({
+-          originalQuery: query,
+-          commodity: commodity,
+-          district: district
+-        });
+-
+-        setMessages((p) => [
+-          ...p,
+-          {
+-            role: "assistant",
+-            content: `💰 I found multiple varieties of <strong>${commodity}</strong> in <strong>${district}</strong>. Which variety would you like to check?`,
+-            interactiveOptions: {
+-              question: "Select variety:",
+-              type: "variety",
+-              options: varieties.map(v => ({ label: v, value: v }))
++      // Handle variety selection
++      if (res.data.has_varieties && res.data.varieties?.variants?.length) {
++        const aiResponse = res.data.response || "Please select a variety.";
++        
++        // UPDATED: Pass original days context
++        const varietyData = {
++          ...res.data.varieties,
++          days: days,
++          originalDays: days,  // ← KEY: Preserve original days
++          isSingleDay: checkSingleDay
++        };
++        
++        setMessages((prev) => {
++          const newMessages = prev.slice(0, -1);
++          return [
++            ...newMessages,
++            { 
++              role: "assistant", 
++              content: aiResponse.replace(/\n/g, "<br/>"), 
++              varieties: varietyData,
++              isSingleDay: checkSingleDay
+             }
+-          }
+-        ]);
+-        setQuery("");
++          ];
++        });
+         setLoading(false);
+         return;
+       }
+ 
+-      // No varieties or single variety, proceed directly
+-      await handlePriceQuery(query, commodity, district);
+-      setQuery("");
+-      return;
+-    }
+-
+-    // 🧠 Handle intelligent advisory queries (weather/advice)
+-if (/weather|rain|temperature|advisory|suggest|should i/i.test(lower)) {
+-  console.log("🧠 Advisory query detected");
+-
+-  setMessages((p) => [
+-    ...p,
+-    { role: "assistant", content: "☁️ Fetching advisory insights...", isTyping: true }
+-  ]);
+-
+-  try {
+-    const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/mcp/run`, {
+-      tool: "advisory",
+-      params: {
+-        query,
+-        session_id: sessionId,
++      const aiResponse = res.data.response || "Analysis complete.";
++      const toolResults = res.data.tool_results || {};
++      const aiInsights = res.data.ai_insights;
++      
++      let predictionData = null;
++      let isPriceData = false;
++      let sentimentInfo = null;
++      let detailedForecasts = [];
++
++      // Process arrivals
++      if (toolResults.arrival?.success) {
++        predictionData = toolResults.arrival.data;
++        isPriceData = false;
+       }
+-    });
+-
+-    console.log("🧠 Advisory response:", res.data);
+-
+-    setMessages((p) => {
+-      const up = [...p];
+-      up[up.length - 1] = {
+-        role: "assistant",
+-        content: res.data?.message || res.data?.advice || "✅ Advisory generated successfully!",
+-      };
+-      return up;
+-    });
+-  } catch (e) {
+-    console.error("❌ Advisory error:", e);
+-    setMessages((p) => {
+-      const up = [...p];
+-      up[up.length - 1] = {
+-        role: "assistant",
+-        content: `❌ Error: ${e.response?.data?.detail || e.message}`,
+-      };
+-      return up;
+-    });
+-  } finally {
+-    setQuery("");
+-    setLoading(false);
+-  }
+-  return;
+-}
+-
+ 
+-    // 📊 Handle arrival/forecast queries
+-    if (needsForecast(query)) {
+-      const parsed = parseQuery(query, amcList, commodityList);
+-
+-      // Check if metric is not specified explicitly
+-      const hasExplicitMetric = /bags|lots|quintals|quantity|farmers|revenue/i.test(lower);
+-
+-      if (!hasExplicitMetric) {
+-        // Show interactive prompt to ask user what metric they want
+-        setPendingQuery({
+-          originalQuery: query,
+-          commodity: parsed.commodity,
+-          location: parsed.amc_name || parsed.district
+-        });
+-
+-        setMessages((p) => [
+-          ...p,
+-          {
+-            role: "assistant",
+-            content: `📊 I can forecast arrivals for <strong>${parsed.amc_name || parsed.district || 'your location'}</strong>. What would you like to know?`,
+-            interactiveOptions: {
+-              question: "Select the metric:",
+-              options: [
+-                { label: "📦 Total Bags", value: "total_bags" },
+-                { label: "📊 Number of Lots", value: "number_of_lots" },
+-                { label: "⚖️ Quantity (Quintals)", value: "total_weight" },
+-                { label: "👥 Number of Farmers", value: "number_of_farmers" },
+-                { label: "🔢 Arrivals Count", value: "number_of_arrivals" }
+-              ]
+-            }
+-          }
+-        ]);
+-        setQuery("");
+-        setLoading(false);
+-        return;
++      // Process prices
++      if (toolResults.price?.success) {
++        const d = toolResults.price.data;
++        isPriceData = true;
++        
++        // Extract sentiment info
++        if (Array.isArray(d.variants) && d.variants[0]?.sentiment_info) {
++          sentimentInfo = d.variants[0].sentiment_info;
++        }
++        
++        // Extract detailed forecasts
++        if (Array.isArray(d.variants) && d.variants[0]?.forecasts) {
++          detailedForecasts = d.variants[0].forecasts;
++        }
++        
++        let aggregated = [];
++        if (Array.isArray(d.variants)) {
++          const groupedByDate = {};
++          d.variants.forEach((v) => {
++            (v.forecasts || []).forEach((f) => {
++              const date = f.date;
++              const val = f.final_price ?? f.predicted_price ?? 0;
++              if (!groupedByDate[date]) groupedByDate[date] = [];
++              if (val > 0) groupedByDate[date].push(val);
++            });
++          });
++          aggregated = Object.entries(groupedByDate).map(([date, prices]) => ({
++            date,
++            total_predicted_value: Math.round(prices.reduce((a, b) => a + b, 0) / prices.length)
++          }));
++        } else {
++          const raw = d.predictions || d.predicted_prices || [];
++          raw.forEach((p) => {
++            const val = p.final_price ?? p.predicted_price ?? 0;
++            aggregated.push({ date: p.date, total_predicted_value: Math.round(val) });
++          });
++        }
++        
++        if (aggregated.length > 0) {
++          predictionData = {
++            metric_name: "Price (₹/Quintal)",
++            total_predicted: aggregated,
++            commodity: d.commodity,
++            district: d.market || d.district
++          };
++        }
+       }
+ 
+-      await handlePredict(query);
+-      setQuery("");
+-      return;
++      setMessages((prev) => {
++        const newMessages = prev.slice(0, -1);
++        return [
++          ...newMessages,
++          { 
++            role: "assistant", 
++            content: aiResponse, 
++            predictionData, 
++            isPriceData, 
++            aiInsights,
++            sentimentInfo,
++            detailedForecasts,
++            isSingleDay: checkSingleDay
++          }
++        ];
++      });
++    } catch (e) {
++      const errorMsg = e.response?.data?.detail || e.message;
++      setMessages((prev) => {
++        const newMessages = prev.slice(0, -1);
++        return [...newMessages, { role: "assistant", content: `❌ Error: ${errorMsg}` }];
++      });
++    } finally {
++      setLoading(false);
+     }
++  }, [query, loading, sessionId]);
+ 
+-    // Default fallback
+-    setMessages((p) => [
+-      ...p,
+-      { role: "assistant", content: "Please mention whether you need arrivals, price, or weather information along with a location." }
+-    ]);
+-    setQuery("");
+-    setLoading(false);
+-  }, [query, loading, handlePredict, amcList, commodityList]);
+-
+-  const handleKeyDown = useCallback(
++  const handleKeyPress = useCallback(
+     (e) => {
+       if (e.key === "Enter" && !e.shiftKey) {
+         e.preventDefault();
+@@ -936,10 +1091,23 @@ if (/weather|rain|temperature|advisory|suggest|should i/i.test(lower)) {
+   );
+ 
+   return (
+-    <div className="zen-shell">
+-      <main className="zen-stage">
+-        {/* Messages display first */}
+-        <div className="message-stream">
++    <div className="app">
++      <header className="header">
++        <div className="header-content">
++          <h1>🌾 Smart Agri Assistant</h1>
++          <div className="status-indicator">
++            <select value={language} onChange={(e) => setLanguage(e.target.value)}>
++              {Object.entries(languages).map(([k, v]) => (
++                <option key={k} value={k}>{v.label}</option>
++              ))}
++            </select>
++            <span>{loading ? "🟡 AI Processing..." : "🟢 Ready"}</span>
++          </div>
++        </div>
++      </header>
++
++      <div className="chat-container">
++        <div className="messages-container">
+           {messages.map((msg, i) => (
+             <ChatMessage
+               key={i}
+@@ -947,49 +1115,41 @@ if (/weather|rain|temperature|advisory|suggest|should i/i.test(lower)) {
+               isBot={msg.role === "assistant"}
+               predictionData={msg.predictionData}
+               isPriceData={msg.isPriceData}
+-              isTyping={msg.isTyping}
+-              interactiveOptions={msg.interactiveOptions}
+-              onOptionSelect={(value) => handleOptionSelect(value, msg.interactiveOptions?.type || "metric")}
++              aiInsights={msg.aiInsights}
++              varieties={msg.varieties}
++              onVarietySelect={(v) => handleVarietySelect(v, msg.varieties)}
++              sentimentInfo={msg.sentimentInfo}
++              detailedForecasts={msg.detailedForecasts}
++              isSingleDay={msg.isSingleDay || false}
+             />
+           ))}
+           <div ref={messagesEndRef} />
+         </div>
+ 
+-        {/* Input at the bottom - ChatGPT style */}
+-        <section className="zen-input-card">
+-          <textarea
+-            ref={composerRef}
+-            rows={1}
+-            className="zen-input"
+-            placeholder="Message TAMC Assistant..."
+-            value={query}
+-            onChange={handleInputChange}
+-            onKeyDown={handleKeyDown}
+-            disabled={loading}
+-          />
+-          <div className="zen-input-actions">
+-            <button
+-              type="button"
+-              className="icon-btn"
+-              onClick={startVoiceInput}
+-              title="Voice input"
+-            >
+-              🎙️
+-            </button>
+-            <button
+-              type="button"
+-              className="zen-send"
+-              onClick={handleSend}
+-              disabled={loading || !query.trim()}
+-              title="Send message"
+-            >
+-              ↑
+-            </button>
++        <div className="input-area">
++          <div className="input-container">
++            <div className="input-wrapper">
++              <input
++                type="text"
++                value={query}
++                onChange={(e) => setQuery(e.target.value)}
++                onKeyPress={handleKeyPress}
++                placeholder="Ask about prices, sentiment, weather - AI will provide complete market intelligence..."
++                disabled={loading}
++                className="chat-input"
++              />
++              <button onClick={startVoiceInput} title="Voice Input 🎙️" className="mic-button">
++                🎙️
++              </button>
++              <button onClick={handleSend} disabled={loading || !query.trim()} className="send-button">
++                {loading ? "⏳" : "➤"}
++              </button>
++            </div>
+           </div>
+-        </section>
+-      </main>
++        </div>
++      </div>
+     </div>
+   );
+ }
+ 
+-export default App;
++export default App;
+\ No newline at end of file

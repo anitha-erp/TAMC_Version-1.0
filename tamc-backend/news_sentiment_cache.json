@@ -1,0 +1,46 @@
+{
+  "chilli": {
+    "timestamp": "2025-11-27T11:22:41.694404",
+    "data": {
+      "avg_sentiment": 0.0,
+      "sentiment_label": "Neutral",
+      "news_count": 0,
+      "top_keywords": [],
+      "sample_headlines": [],
+      "articles": []
+    }
+  },
+  "groundnut": {
+    "timestamp": "2025-11-13T11:39:29.563520",
+    "data": {
+      "avg_sentiment": 0.0,
+      "sentiment_label": "Neutral",
+      "news_count": 0,
+      "top_keywords": [],
+      "sample_headlines": [],
+      "articles": []
+    }
+  },
+  "dry chillies-red": {
+    "timestamp": "2025-11-12T23:19:50.194037",
+    "data": {
+      "avg_sentiment": 0.0,
+      "sentiment_label": "Neutral",
+      "news_count": 0,
+      "top_keywords": [],
+      "sample_headlines": [],
+      "articles": []
+    }
+  },
+  "cotton": {
+    "timestamp": "2025-11-14T11:58:09.615992",
+    "data": {
+      "avg_sentiment": 0.0,
+      "sentiment_label": "Neutral",
+      "news_count": 0,
+      "top_keywords": [],
+      "sample_headlines": [],
+      "articles": []
+    }
+  }
+}

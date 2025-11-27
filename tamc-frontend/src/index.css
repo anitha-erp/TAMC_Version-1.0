@@ -1,0 +1,16 @@
+/* index.css - basic global styles */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+button {
+  cursor: pointer;
+}

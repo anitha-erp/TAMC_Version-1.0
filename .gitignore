@@ -1,0 +1,44 @@
+# Node / React artifacts
+node_modules/
+**/node_modules/
+npm-debug.log*
+yarn-error.log*
+.parcel-cache/
+dist/
+build/
+coverage/
+
+# Python artifacts
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*.pyo
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# Secrets and environment files
+.env
+.env.*
+.python-version
+
+# Model/data caches
+*.pkl
+*.joblib
+*.pt
+*.pth
+tamc-backend/mcp_tools/model_cache/
+
+# IDE / OS clutter
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Misc
+*.log
+*.sqlite3
+*.db
