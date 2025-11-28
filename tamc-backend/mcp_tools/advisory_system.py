@@ -21,6 +21,8 @@ from pydantic import BaseModel
 import uvicorn
 import requests
 
+from weather_helper import WeatherHelper
+
 # OpenAI client (keeps same import style as original)
 try:
     from openai import OpenAI
@@ -309,11 +311,20 @@ async def generate_comprehensive_advisory(user_query: str, data: Dict[str, Any],
     conversation_history = "\n".join([f"Q: {h['query']}" for h in context.conversation_history[-3:]])
 
     context_parts = [f"Context: {context.get_context_summary()}"]
-    forecast = weather.get("forecast", []) if weather else []
-    if forecast:
-        total_rain = sum(d.get("rain_mm", 0) for d in forecast)
-        avg_temp = sum(d.get("temp_c", 0) for d in forecast) / max(1, len(forecast))
-        context_parts.append(f"Weather: {total_rain:.0f}mm rain, {avg_temp:.1f}°C")
+    insights = weather.get("insights", []) if weather else []
+
+    if insights:
+        try:
+            avg_temp = sum(i["features"]["max_temp"] for i in insights) / len(insights)
+            total_rain = sum(i["features"]["rainfall"] for i in insights)
+
+            context_parts.append(
+                f"Weather: {total_rain:.0f}mm rain expected, avg max temp {avg_temp:.1f}°C"
+            )
+            context_parts.append(f"Weather Impact: {weather.get('overall_recommendation')}")
+        except:
+            pass
+
 
     if price and "result" in price:
         # best-effort reading of predictions
@@ -367,6 +378,70 @@ IMPORTANT: Keep it brief and natural, like talking to a friend.
 
 
 # ==================== Weather Fetcher ====================
+# ==================== Enhanced Weather Advisory (WeatherHelper) ====================
+
+def enhanced_weather_advisory(location: str, commodity: str = None, days: int = 3) -> Dict:
+    """
+    Get enhanced weather advisory using WeatherHelper.
+    Includes summary, features, adjustment factor and impact.
+    """
+    try:
+        helper = WeatherHelper()
+
+        weather_insights = []
+        for day_offset in range(days):
+            forecast_date = (
+                datetime.now().date() + timedelta(days=day_offset + 1)
+            ).strftime("%Y-%m-%d")
+
+            weather_data = helper.get_weather_input(
+                district=location,
+                date=forecast_date,
+                commodity=commodity,
+                include_adjustment=bool(commodity)
+            )
+
+            weather_insights.append({
+                "date": forecast_date,
+                "summary": weather_data["summary"],
+                "features": weather_data["features"],
+                "impact": weather_data.get("adjustment_message", "No specific impact"),
+                "adjustment_factor": weather_data.get("adjustment_factor", 1.0)
+            })
+
+        return {
+            "location": location,
+            "commodity": commodity,
+            "forecast_days": days,
+            "insights": weather_insights,
+            "overall_recommendation": _generate_recommendation(weather_insights, commodity)
+        }
+
+    except Exception as e:
+        return {
+            "location": location,
+            "error": str(e),
+            "insights": [],
+            "overall_recommendation": "Weather data unavailable"
+        }
+
+
+def _generate_recommendation(insights, commodity):
+    """
+    Generate human-friendly weather recommendation based on adjustment factors.
+    """
+    if not insights:
+        return "No weather data available for recommendations"
+
+    avg_adj = sum(i.get("adjustment_factor", 1.0) for i in insights) / len(insights)
+
+    if avg_adj < 0.95:
+        return f"⚠️ Unfavorable weather for {commodity}. Consider protective measures and stay alert for diseases."
+    elif avg_adj > 1.02:
+        return f"✅ Favorable conditions for {commodity}. Good time for field activities."
+    else:
+        return f"➡️ Neutral weather for {commodity}. No major risks expected."
+
 def simple_weather_fetch(location: str, days: int = 3) -> Dict[str, Any]:
     default_weather = {
         "summary": "Weather data unavailable",
@@ -535,13 +610,19 @@ async def process_query_async(query: str, context: ConversationContext) -> Dict[
     modules_used: List[str] = []
 
     if classification.get("include_weather"):
-        # Sync fetch - do in thread to avoid blocking if desired
         location = extracted.get("district") or extracted.get("amc_name") or "Hyderabad"
-        # run in thread to keep function async
-        weather = await asyncio.to_thread(simple_weather_fetch, location, extracted.get("days", 3))
+
+        # Use enhanced WeatherHelper advisory
+        weather = enhanced_weather_advisory(
+            location=location,
+            commodity=extracted.get("commodity"),
+            days=extracted.get("days", 3)
+        )
+
         results["weather"] = weather
-        if weather and weather.get("num_days", 0) > 0:
+        if weather and weather.get("insights"):
             modules_used.append("Weather")
+
 
     # Kick off arrivals and price in parallel
     arrival_task = None

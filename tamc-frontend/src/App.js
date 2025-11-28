@@ -661,18 +661,34 @@ const PredictionResult = React.memo(function PredictionResult({ response, isPric
   const [viewMode, setViewMode] = useState("total");
   const [isExpanded, setIsExpanded] = useState(true); // Default expanded
   const totalData = response?.total_predicted || [];
-  const commodityData = response?.commodity_daily || {};
+  let commodityData = response?.commodity_daily || {};
+  
+  // 🔥 Override commodityData when aggregate mode + breakdown exists
+  if (response.mode === "aggregate" && response.commodity_breakdown) {
+    commodityData = {};
+    response.commodity_breakdown.forEach((item) => {
+      commodityData[item.commodity] = [
+        {
+          date: response.total_predicted?.[0]?.date,
+          predicted_value: item.total_predicted_value,
+        },
+      ];
+    });
+  }
   const isWeightMetricSelected = !isPriceData && isWeightMetric(response?.metric_name);
 
   // If single day query, show only first day
   const displayData = isSingleDay ? totalData.slice(0, 1) : totalData;
 
   const commodityChartData = useMemo(() => {
-    if (!displayData.length || !Object.keys(commodityData).length) return [];
+    if (!displayData.length) return [];
+    if (!commodityData || typeof commodityData !== "object") return [];
     return displayData.map((day) => {
       const point = { date: day.date, total: day.total_predicted_value };
       Object.entries(commodityData).forEach(([commodity, data]) => {
-        const cd = data.find((d) => d.date === day.date);
+        const cd = Array.isArray(data)
+          ? data.find((d) => d.date === day.date)
+          : null;
         point[commodity] = cd ? cd.predicted_value : 0;
       });
       return point;

@@ -44,14 +44,6 @@ except ModuleNotFoundError as e:
     print("⚠️ Warning: Could not import scrapers. Some features may be limited.")
     SCRAPERS_AVAILABLE = False
 
-# Import weather helper for enhanced weather integration
-try:
-    from weather_helper import WeatherHelper
-    WEATHER_HELPER_AVAILABLE = True
-except ImportError:
-    print("⚠️ Warning: Could not import weather_helper. Using basic weather fetcher.")
-    WEATHER_HELPER_AVAILABLE = False
-
 # ========== REPRODUCIBILITY ==========
 torch.manual_seed(42)
 np.random.seed(42)
@@ -587,16 +579,19 @@ class ModelCacheManager:
 
 class GRUPricePredictor:
     def __init__(self):
-        # Use WeatherHelper if available, otherwise fall back to WeatherFetcher
-        if WEATHER_HELPER_AVAILABLE:
-            self.weather_helper = WeatherHelper(WEATHER_API_KEY)
-            self.weather_fetcher = None
-            print("✅ Using WeatherHelper for enhanced weather integration (up to 14-day forecasts)")
-        else:
-            self.weather_fetcher = WeatherFetcher(WEATHER_API_KEY)
-            self.weather_helper = None
-            print("⚠️ Using basic WeatherFetcher (limited to 3-day forecasts)")
+        self.weather_fetcher = WeatherFetcher(WEATHER_API_KEY)
+        self.sentiment_analyzer = NewsSentimentAnalyzer(NEWS_API_KEY)
 
+        print(f"📄 Loading '{DB_CACHE_FILE}' into memory...")
+        self.full_historical_data = pd.read_csv(DB_CACHE_FILE, parse_dates=["date"])
+        print(f"✅ Loaded {len(self.full_historical_data)} records from local cache.")
+
+
+# ========== GRU PREDICTOR CLASS ==========
+
+class GRUPricePredictor:
+    def __init__(self):
+        self.weather_fetcher = WeatherFetcher(WEATHER_API_KEY)
         self.sentiment_analyzer = NewsSentimentAnalyzer(NEWS_API_KEY)
 
         print(f"📄 Loading '{DB_CACHE_FILE}' into memory...")
@@ -1101,7 +1096,6 @@ async def get_sentiment(commodity: str, force_refresh: bool = False):
 @app.post("/api/predict", response_model=PredictionResponse)
 async def predict_prices(request: PredictionRequest):
     """Predict prices with weather, disease, and sentiment analysis"""
-    
     if predictor is None:
         raise HTTPException(status_code=503, detail="Predictor not initialized")
     
@@ -1110,7 +1104,7 @@ async def predict_prices(request: PredictionRequest):
     prediction_days = request.prediction_days
     specific_variant = request.variant
     
-    # Get variants
+    # Get available variants
     hist_data, variants = predictor.get_available_variants(market, commodity)
     
     if hist_data is None or variants is None:
@@ -1119,10 +1113,10 @@ async def predict_prices(request: PredictionRequest):
             detail=f"No data found for commodity '{commodity}' in market '{market}'"
         )
     
-    # If user selected a specific variant
+    # Filter to specific variant if requested
     if specific_variant:
-        v_lower = specific_variant.lower()
-        matching_variants = [v for v in variants if v_lower in v.lower()]
+        specific_variant_lower = specific_variant.lower()
+        matching_variants = [v for v in variants if specific_variant_lower in v.lower()]
         
         if not matching_variants:
             raise HTTPException(
@@ -1131,169 +1125,103 @@ async def predict_prices(request: PredictionRequest):
             )
         
         variants = matching_variants
-
-    # --------------------------------------------------------------------
-    # 🔥 WEATHER FETCHING (Fixed + WeatherHelper)
-    # --------------------------------------------------------------------
-    if predictor.weather_helper:
-        days_to_fetch = min(prediction_days, 14)
-        weather_forecast_list = []
-
-        for day_offset in range(days_to_fetch):
-            forecast_date = (
-                datetime.now().date() + timedelta(days=day_offset + 1)
-            ).strftime("%Y-%m-%d")
-
-            weather_data = predictor.weather_helper.get_weather_input(
-                district=market,
-                date=forecast_date,
-                commodity=commodity,
-                include_adjustment=True
-            )
-
-            weather_forecast_list.append({
-                "date": forecast_date,
-                "temp": weather_data["features"]["max_temp"],
-                "condition": weather_data["summary"],
-                "total_rain_mm": weather_data["features"]["rainfall"],
-                "will_it_rain": weather_data["features"]["rainfall"] > 0,
-                "weather_adjustment": weather_data["adjustment_factor"],
-                "weather_message": weather_data["adjustment_message"],
-            })
-
-    else:
-        # Fallback to old 3-day WeatherAPI
-        days_to_fetch = min(prediction_days, 3)
-        weather_forecast_list = predictor.weather_fetcher.get_weather_forecast(
-            market, days=days_to_fetch
-        ) if predictor.weather_fetcher else []
-
-    # --------------------------------------------------------------------
-    # 🔥 SENTIMENT ANALYSIS
-    # --------------------------------------------------------------------
+    
+    # Fetch weather forecast
+    days_to_fetch = min(prediction_days, 3)
+    weather_forecast_list = predictor.weather_fetcher.get_weather_forecast(market, days=days_to_fetch)
+    
+    # Get sentiment analysis
     print(f"📰 Analyzing news sentiment for {commodity}...")
     sentiment_data = predictor.sentiment_analyzer.get_sentiment_analysis(commodity)
-    sentiment_score = sentiment_data.get("avg_sentiment", 0.0)
-
+    sentiment_score = sentiment_data.get('avg_sentiment', 0.0)
+    
+    # Process each variant
     variant_forecasts = []
-
-    # --------------------------------------------------------------------
-    # 🔥 PROCESS EACH VARIANT
-    # --------------------------------------------------------------------
+    
     for variant in variants:
-
-        variant_df = hist_data[hist_data["commodity_name"] == variant]
-
+        variant_df = hist_data[hist_data['commodity_name'] == variant]
         baseline_preds = predictor.predict_for_single_variant(
             variant_df, variant, market, commodity, prediction_days
         )
-
+        
         forecasts = []
-
+        
         for i, p in enumerate(baseline_preds):
-            baseline_price = p["predicted_value"]
-
-            # -----------------------------
-            # WEATHER + DISEASE + SENTIMENT
-            # -----------------------------
+            baseline_price = p['predicted_value']
+            
             if i < len(weather_forecast_list):
-
                 weather_for_this_day = weather_forecast_list[i]
-
-                # ---------- WeatherHelper Active ----------
-                if predictor.weather_helper and "weather_adjustment" in weather_for_this_day:
-                    weather_multiplier = weather_for_this_day["weather_adjustment"]
-                    weather_adj = weather_multiplier - 1.0
-                    weather_msg = weather_for_this_day["weather_message"]
-
-                    # Disease risk based on rainfall/temp
-                    disease_risk, disease_msg = predictor.estimate_disease_risk(
-                        commodity, weather_for_this_day
-                    )
-                    disease_adj = -disease_risk * 0.15
-
-                else:
-                    # ---------- OLD Weather System Fallback ----------
-                    adjustments = predictor.get_environmental_adjustment(
-                        commodity, weather_for_this_day, sentiment_score
-                    )
-                    weather_adj = adjustments["weather_adj"]
-                    disease_risk = adjustments["disease_risk"]
-                    disease_adj = adjustments["disease_adj"]
-                    weather_msg = adjustments["weather_msg"]
-                    disease_msg = adjustments["disease_msg"]
-
-                # Sentiment adj
-                sentiment_adj = float(np.clip(sentiment_score * 0.10, -0.10, 0.10))
-                sentiment_msg = f"Sentiment score: {sentiment_score:.2f}"
-
-                total_multiplier = 1 + weather_adj + disease_adj + sentiment_adj
-
+                adjustments = predictor.get_environmental_adjustment(
+                    commodity, weather_for_this_day, sentiment_score
+                )
+                
+                # Calculate final price with all adjustments
+                total_multiplier = (
+                    1 + adjustments['weather_adj'] + 
+                    adjustments['disease_adj'] + 
+                    adjustments['sentiment_adj']
+                )
                 final_price = baseline_price * total_multiplier
-                min_price = p["min_price"] * total_multiplier
-                max_price = p["max_price"] * total_multiplier
-
+                min_price = p['min_price'] * total_multiplier
+                max_price = p['max_price'] * total_multiplier
+                
+                forecasts.append(PriceForecast(
+                    date=p['date'],
+                    baseline_price=round(baseline_price, 2),
+                    weather_adjustment=round(adjustments['weather_adj'] * 100, 2),
+                    disease_risk=round(adjustments['disease_risk'], 2),
+                    disease_adjustment=round(adjustments['disease_adj'] * 100, 2),
+                    sentiment_adjustment=round(adjustments['sentiment_adj'] * 100, 2),
+                    final_price=round(final_price, 2),
+                    min_price=round(min_price, 2),
+                    max_price=round(max_price, 2),
+                    weather_reason=adjustments['weather_msg'],
+                    disease_reason=adjustments['disease_msg'],
+                    sentiment_reason=adjustments['sentiment_msg']
+                ))
             else:
-                # -----------------------------
-                # No weather data → sentiment only
-                # -----------------------------
-                weather_adj = 0
-                disease_risk = 0
-                disease_adj = 0
-                weather_msg = "No weather data (API limit)"
-                disease_msg = "No disease assessment available"
-
+                # No weather data, use sentiment only
                 sentiment_adj = float(np.clip(sentiment_score * 0.10, -0.10, 0.10))
-                sentiment_msg = f"Sentiment score: {sentiment_score:.2f}"
-
-                total_multiplier = 1 + sentiment_adj
-
-                final_price = baseline_price * total_multiplier
-                min_price = p["min_price"] * total_multiplier
-                max_price = p["max_price"] * total_multiplier
-
-            # -----------------------------
-            # Add formatted forecast result
-            # -----------------------------
-            forecasts.append(PriceForecast(
-                date=p["date"],
-                baseline_price=round(baseline_price, 2),
-                weather_adjustment=round(weather_adj * 100, 2),
-                disease_risk=round(disease_risk, 2),
-                disease_adjustment=round(disease_adj * 100, 2),
-                sentiment_adjustment=round(sentiment_adj * 100, 2),
-                final_price=round(final_price, 2),
-                min_price=round(min_price, 2),
-                max_price=round(max_price, 2),
-                weather_reason=weather_msg,
-                disease_reason=disease_msg,
-                sentiment_reason=sentiment_msg
-            ))
-
-        # Attach sentiment block
+                final_price = baseline_price * (1 + sentiment_adj)
+                min_price = p['min_price'] * (1 + sentiment_adj)
+                max_price = p['max_price'] * (1 + sentiment_adj)
+                
+                forecasts.append(PriceForecast(
+                    date=p['date'],
+                    baseline_price=round(baseline_price, 2),
+                    weather_adjustment=0.0,
+                    disease_risk=0.0,
+                    disease_adjustment=0.0,
+                    sentiment_adjustment=round(sentiment_adj * 100, 2),
+                    final_price=round(final_price, 2),
+                    min_price=round(min_price, 2),
+                    max_price=round(max_price, 2),
+                    weather_reason="No weather data (API limit)",
+                    disease_reason="No disease assessment available",
+                    sentiment_reason=f"Sentiment score: {sentiment_score:.2f}"
+                ))
+        
+        # Create sentiment info for response
         sentiment_info = SentimentInfo(
             avg_sentiment=round(sentiment_score, 3),
-            sentiment_label=sentiment_data.get("sentiment_label", "Neutral"),
-            news_count=sentiment_data.get("news_count", 0),
-            top_keywords=sentiment_data.get("top_keywords", []),
-            sample_headlines=sentiment_data.get("sample_headlines", [])
+            sentiment_label=sentiment_data.get('sentiment_label', 'Neutral'),
+            news_count=sentiment_data.get('news_count', 0),
+            top_keywords=sentiment_data.get('top_keywords', []),
+            sample_headlines=sentiment_data.get('sample_headlines', [])
         )
-
+        
         variant_forecasts.append(VariantForecast(
             variant=variant.title(),
             forecasts=forecasts,
             sentiment_info=sentiment_info
         ))
-
-    # --------------------------------------------------------------------
-    # FINAL RESPONSE
-    # --------------------------------------------------------------------
+    
     return PredictionResponse(
         commodity=commodity.title(),
         market=market.title(),
         prediction_days=prediction_days,
         variants=variant_forecasts,
-        message=f"Successfully generated forecasts for {len(variants)} variant(s) with weather, disease & sentiment analysis."
+        message=f"Successfully generated forecasts for {len(variants)} variant(s) with sentiment analysis"
     )
 
 @app.post("/api/ncdex", response_model=NCDEXResponse)

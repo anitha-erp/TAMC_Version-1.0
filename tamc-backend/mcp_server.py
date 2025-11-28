@@ -179,6 +179,13 @@ class AIIntelligenceLayer:
             data = tool_results["arrival"].get("data", {})
             total_predicted = data.get("total_predicted", [])
             
+            # Handle dict format from arrival_tool (convert {date: val} to [{date, total_predicted_value}])
+            if isinstance(total_predicted, dict):
+                total_predicted = [
+                    {"date": k, "total_predicted_value": v} 
+                    for k, v in sorted(total_predicted.items())
+                ]
+            
             commodity_daily = data.get("commodity_daily", {})
             if total_predicted:
                 first_day = total_predicted[0]
@@ -191,10 +198,32 @@ class AIIntelligenceLayer:
                 top_commodities = []
                 if commodity_daily:
                     for commodity, entries in commodity_daily.items():
-                        total_val = sum(item.get("predicted_value", 0) for item in entries[:7])
-                        top_commodities.append({"commodity": commodity, "total": total_val})
-                    top_commodities.sort(key=lambda x: x["total"], reverse=True)
-                    top_commodities = top_commodities[:3]
+
+                        # 1️⃣ Ensure entries is list
+                        if isinstance(entries, dict):
+                            entries = list(entries.values())
+                            
+                        # 2️⃣ Normalize all items to dicts
+                        normalized = []
+                        for item in entries:
+                            if isinstance(item, dict):
+                                normalized.append(item)
+                            else:
+                                # Convert float values to dict
+                                normalized.append({"predicted_value": float(item)})
+
+                        # 3️⃣ Now safe to slice + sum
+                        total_val = sum(e.get("predicted_value", 0) for e in normalized[:7])
+
+                        top_commodities.append({
+                            "commodity": commodity,
+                            "total": total_val
+                        })
+
+                        # 4️⃣ Sort and take top 3
+                        top_commodities.sort(key=lambda x: x["total"], reverse=True)
+                        top_commodities = top_commodities[:3]
+
 
                 structured["arrival_data"] = {
                     "predictions": total_predicted[:7],
@@ -412,7 +441,16 @@ Always cite concrete numbers (trend %, specific dates, rainfall, top commodities
             "\n" + "="*70 + "\n",
             "PREDICTION DATA:\n"
         ]
-        
+        # NEW: Add commodity breakdown support
+        # NEW: Add commodity breakdown into AI analysis
+        if "arrival_breakdown" in structured_data:
+            breakdown = structured_data["arrival_breakdown"]
+            # You can include this breakdown into the prompt
+            analysis_parts.append(
+                f"\nCommodity Breakdown:\n" +
+                "\n".join([f"- {b['commodity']}: {b['total_predicted_value']}" for b in breakdown])
+            )
+
         # Arrival data
         arrival_info = structured_data.get("arrival_data")
         if arrival_info:
@@ -1562,6 +1600,15 @@ Keep responses brief (2-3 sentences)."""
             )
 
         # Build response based on query type
+        # Normalize arrival predictions for frontend
+        if "arrival" in tool_results and tool_results["arrival"].get("success"):
+            arr = tool_results["arrival"]["data"]
+            if isinstance(arr.get("total_predicted"), dict):
+                arr["total_predicted"] = [
+                    {"date": d, "total_predicted_value": v}
+                    for d, v in sorted(arr["total_predicted"].items())
+                ]
+
         if intent == "arrival_forecast" and intelligence_result and intelligence_result.get("success"):
             # Arrival forecast with intelligent summary
             analysis = intelligence_result.get("analysis", {})
@@ -1690,6 +1737,11 @@ Keep responses brief (2-3 sentences)."""
             "recommendations": intelligence_result.get("analysis", {}).get("recommendations", []) if intelligence_result else [],
             "risks": intelligence_result.get("analysis", {}).get("risk_assessment") if intelligence_result else None,
             "opportunities": intelligence_result.get("analysis", {}).get("opportunities", []) if intelligence_result else [],
+            "total_predicted": (
+                tool_results.get("arrival", {})
+                .get("data", {})
+                .get("total_predicted", [])
+            ),
 
             "session_id": session_id
         }

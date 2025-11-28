@@ -42,5 +42,16 @@
       "sample_headlines": [],
       "articles": []
     }
+  },
+  "lemon": {
+    "timestamp": "2025-11-28T15:50:04.949568",
+    "data": {
+      "avg_sentiment": 0.0,
+      "sentiment_label": "Neutral",
+      "news_count": 0,
+      "top_keywords": [],
+      "sample_headlines": [],
+      "articles": []
+    }
   }
 }

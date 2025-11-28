@@ -53,6 +53,8 @@ from scrapers.telangana_integration_service import (
     get_telangana_data_info
 )
 
+from weather_helper import get_weather_input
+
 load_dotenv()
 
 WEATHER_API_KEY = os.getenv("WEATHER_API_KEY")
@@ -261,6 +263,35 @@ async def _handle_pending_clarifications(message: str, session_id: str, state: D
     return response
 
 # ========== Helper Functions ==========
+def _apply_weather_factor_to_arrivals(predictions, commodity, district):
+    """
+    Fetch and store weather factors ONLY.
+    Do NOT apply multipliers here.
+    """
+    for pred in predictions:
+        try:
+            weather_data = get_weather_input(
+                district=district,
+                date=pred["date"],
+                commodity=commodity
+            )
+
+            raw_weather_factor = weather_data["adjustment_factor"]
+
+            # Clamp to ±10%
+            weather_factor = max(0.90, min(1.10, raw_weather_factor))
+
+            pred["weather_factor"] = round(weather_factor, 4)
+            pred["weather_impact"] = weather_data.get("adjustment_message", "")
+
+            pred["baseline_value"] = pred.get("predicted_value", 0)
+
+        except Exception as e:
+            pred["weather_factor"] = 1.0
+            pred["weather_impact"] = "Weather data unavailable"
+
+    return predictions
+
 def get_telangana_cultivation_factor(commodity: str, district: str = None) -> float:
     """
     Get cultivation factor from Telangana arrival trends
@@ -300,78 +331,244 @@ def get_telangana_cultivation_factor(commodity: str, district: str = None) -> fl
 _cultivation_factor_cache = {}
 _cultivation_cache_ttl = 3600  # 1 hour
 
+# Cache for seasonal factors
+_seasonal_factor_cache = {}
+_seasonal_cache_ttl = 86400  # 24 hours
+
+def _analyze_seasonal_patterns(commodity: str, district: str = None) -> Dict[int, float]:
+    """
+    Dynamically analyze historical arrival patterns by month.
+    Returns a dictionary mapping month (1-12) to seasonal multiplier.
+    
+    Args:
+        commodity: Commodity name
+        district: Optional district filter
+    
+    Returns:
+        Dict[int, float]: Month -> seasonal multiplier (0.85 to 1.30)
+    """
+    cache_key = f"seasonal_{commodity}_{district}"
+    current_time = datetime.now().timestamp()
+    
+    # Check cache first
+    if cache_key in _seasonal_factor_cache:
+        cached_data, cached_time = _seasonal_factor_cache[cache_key]
+        age = current_time - cached_time
+        if age < _seasonal_cache_ttl:
+            logging.info(f"✅ Seasonal cache HIT for {commodity} (age: {age/3600:.1f}h)")
+            return cached_data
+        else:
+            del _seasonal_factor_cache[cache_key]
+    
+    try:
+        conn = get_connection()
+        
+        # Build query to get monthly averages over past 2 years
+        where_conditions = []
+        params = []
+        
+        if commodity:
+            where_conditions.append("commodity_name LIKE %s")
+            params.append(f"%{commodity}%")
+        
+        if district:
+            where_conditions.append("(district LIKE %s OR amc_name LIKE %s)")
+            params.extend([f"%{district}%", f"%{district}%"])
+        
+        where_clause = " AND ".join(where_conditions) if where_conditions else "1=1"
+        
+        query = f"""
+            SELECT 
+                MONTH(created_at) as month,
+                COUNT(*) as arrival_count,
+                SUM(no_of_bags) as total_bags
+            FROM lots_bkp
+            WHERE created_at >= DATE_SUB(CURDATE(), INTERVAL 730 DAY)
+              AND {where_clause}
+            GROUP BY MONTH(created_at)
+            ORDER BY month
+        """
+        
+        with conn.cursor() as cursor:
+            cursor.execute(query, params)
+            results = cursor.fetchall()
+        
+        conn.close()
+        
+        if not results or len(results) < 6:  # Need at least 6 months of data
+            logging.warning(f"⚠️ Insufficient seasonal data for {commodity}, using neutral factors")
+            return {month: 1.0 for month in range(1, 13)}
+        
+        # Calculate monthly averages
+        monthly_data = {}
+        total_arrivals = 0
+        
+        for row in results:
+            month = row['month']
+            count = row['arrival_count'] or 0
+            monthly_data[month] = count
+            total_arrivals += count
+        
+        # Calculate overall average
+        num_months = len(monthly_data)
+        overall_avg = total_arrivals / num_months if num_months > 0 else 1
+        
+        if overall_avg == 0:
+            return {month: 1.0 for month in range(1, 13)}
+        
+        # Calculate seasonal multipliers
+        seasonal_factors = {}
+        for month in range(1, 13):
+            if month in monthly_data:
+                # Raw multiplier = month_avg / overall_avg
+                raw_multiplier = monthly_data[month] / overall_avg
+                
+                # Clamp to 0.85 - 1.30 range
+                clamped = max(0.85, min(1.30, raw_multiplier))
+                seasonal_factors[month] = round(clamped, 3)
+            else:
+                # No data for this month, use neutral
+                seasonal_factors[month] = 1.0
+        
+        # Cache the results
+        _seasonal_factor_cache[cache_key] = (seasonal_factors, current_time)
+        
+        logging.info(
+            f"📊 Seasonal analysis for {commodity}: "
+            f"Peak months: {[m for m, f in seasonal_factors.items() if f > 1.1]}, "
+            f"Low months: {[m for m, f in seasonal_factors.items() if f < 0.95]}"
+        )
+        
+        return seasonal_factors
+        
+    except Exception as e:
+        logging.error(f"Error analyzing seasonal patterns: {e}")
+        # Return neutral factors on error
+        return {month: 1.0 for month in range(1, 13)}
+
+
+def _get_seasonal_factor(date_str: str, commodity: str, district: str = None) -> float:
+    """
+    Get seasonal factor for a specific date and commodity.
+    
+    Args:
+        date_str: Date in 'YYYY-MM-DD' format
+        commodity: Commodity name
+        district: Optional district filter
+    
+    Returns:
+        float: Seasonal multiplier (0.85 to 1.30)
+    """
+    try:
+        date_obj = datetime.strptime(date_str, '%Y-%m-%d')
+        month = date_obj.month
+        
+        seasonal_patterns = _analyze_seasonal_patterns(commodity, district)
+        return seasonal_patterns.get(month, 1.0)
+        
+    except Exception as e:
+        logging.error(f"Error getting seasonal factor: {e}")
+        return 1.0
+
+
 def _apply_cultivation_factor_enhanced(
     predictions: list,
     commodity: str,
     district: str | None
 ) -> list:
     """
-    Enhanced version that combines cultivation data AND Telangana arrival trends
+    Enhanced version with BALANCED K-factors:
+    - Cultivation softened (50% influence)
+    - Telangana trend softened (40% influence)
+    - Final factor = multiplicative (not weighted average)
     """
     if not predictions:
         return predictions
     
     try:
-        # Create cache key
         cache_key = f"{commodity}_{district}"
         current_time = datetime.now().timestamp()
         
-        # Check cache first
+        # -----------------------
+        # 1. CHECK CACHE
+        # -----------------------
         if cache_key in _cultivation_factor_cache:
             cached_data, cached_time = _cultivation_factor_cache[cache_key]
+            
             if current_time - cached_time < _cultivation_cache_ttl:
-                cultivation_factor = cached_data['cultivation']
-                telangana_factor = cached_data['telangana']
-                combined_factor = cached_data['combined']
+                # RAW values from cache
+                raw_cultivation = cached_data['cultivation']
+                raw_telangana = cached_data['telangana']
+                
+                # Apply BALANCED smoothing
+                cultivation_factor = (0.5 * raw_cultivation) + 0.5
+                telangana_factor = 1.0 + (raw_telangana - 1.0) * 0.4
+                
+                combined_factor = cultivation_factor * telangana_factor
+
             else:
-                # Cache expired, fetch new data
+                # Cache expired
                 del _cultivation_factor_cache[cache_key]
                 cache_key = None
         else:
             cache_key = None
         
-        # Fetch factors if not cached
+        # -----------------------
+        # 2. FETCH RAW FACTORS IF NOT CACHED
+        # -----------------------
         if cache_key is None:
-            # Get original cultivation factor
+            # RAW cultivation factor (UPAG)
             try:
-                cultivation_factor = (
+                raw_cultivation = (
                     CultivationDataService()
                     .get_cultivation_factor(commodity, district)
                     .get("impact_factor", 1.0)
                 )
             except Exception:
-                cultivation_factor = 1.0
+                raw_cultivation = 1.0
             
-            # Get Telangana arrival factor
-            telangana_factor = get_telangana_cultivation_factor(commodity, district)
+            # RAW Telangana trend factor
+            raw_telangana = get_telangana_cultivation_factor(commodity, district)
             
-            # Combine factors (weighted average: 60% cultivation, 40% Telangana trends)
-            combined_factor = (cultivation_factor * 0.6) + (telangana_factor * 0.4)
+            # Apply BALANCED smoothing
+            cultivation_factor = (0.5 * raw_cultivation) + 0.5      # 50% influence
+            telangana_factor = (0.6 * 1.0) + (0.4 * raw_telangana)  # 40% influence
             
-            # Cache the factors
+            # Multiplicative combination (balanced)
+            combined_factor = cultivation_factor * telangana_factor
+            
+            # Cache RAW values (not softened ones)
             _cultivation_factor_cache[f"{commodity}_{district}"] = (
                 {
-                    'cultivation': cultivation_factor,
-                    'telangana': telangana_factor,
+                    'cultivation': raw_cultivation,
+                    'telangana': raw_telangana,
                     'combined': combined_factor
                 },
                 current_time
             )
         
-        # Apply to predictions
+        # -----------------------
+        # 3. APPLY TO PREDICTIONS
+        # -----------------------
         for p in predictions:
-            p["predicted_value"] *= combined_factor
+            p["predicted_value"] *= cultivation_factor
+            p["predicted_value"] *= telangana_factor
+            
             p["cultivation_factor"] = round(cultivation_factor, 3)
             p["telangana_factor"] = round(telangana_factor, 3)
             p["combined_factor"] = round(combined_factor, 3)
         
-        logging.info(f"🌾 Applied factors - Cultivation: {cultivation_factor:.3f}, "
-                    f"Telangana: {telangana_factor:.3f}, Combined: {combined_factor:.3f}")
+        logging.info(
+            f"🌾 Applied Balanced Factors → "
+            f"Cultivation={cultivation_factor:.3f} | "
+            f"Telangana={telangana_factor:.3f} | "
+            f"Combined={combined_factor:.3f}"
+        )
         
         return predictions
-        
+    
     except Exception as e:
-        logging.error(f"Error applying enhanced factors: {e}")
+        logging.error(f"Error applying enhanced cultivation factors: {e}")
         return predictions
 
 
@@ -1440,6 +1637,32 @@ async def enhanced_prediction_with_telangana(params: PredictionRequest) -> Dict:
             # Aggregate by date and AMC
             # We sum the 'y' value (which is already the correct metric)
             df_agg = df.groupby(['date', 'amc_name'])['y'].sum().reset_index()
+            # 🔥 NEW: Commodity Breakdown in Aggregate Mode (Option A)
+            logging.info("⚡ Aggregate Mode Enabled → Building Commodity Breakdown")
+            
+            # Recalculate breakdown using original df BEFORE aggregation
+            original_df = pd.DataFrame(results)
+
+            # Normalize names
+            original_df['date'] = pd.to_datetime(original_df['date'])
+            original_df = original_df.rename(columns={'metric_value': 'y'})
+
+            breakdown = []
+
+            for comm, grp in original_df.groupby("commodity_name"):
+                # Sum last N days
+                total_val = grp['y'].sum()
+                breakdown.append({
+                    "commodity": comm,
+                    "total_predicted_value": float(round(total_val, 2))
+                })
+
+            # Sort descending
+            breakdown.sort(key=lambda x: x['total_predicted_value'], reverse=True)
+
+            # Save to attach to final response
+            commodity_breakdown = breakdown
+
             df_agg['commodity_name'] = 'All Commodities'
             
             # Replace original df with aggregated df
@@ -1485,37 +1708,15 @@ async def enhanced_prediction_with_telangana(params: PredictionRequest) -> Dict:
                 pred_val = record['predicted_value']
                 drop_pct = record.get('weather_drop_pct', 0)
                 intensity = record.get('weather_intensity', 'none')
+                
+                # Update totals
+                date_totals[date] += pred_val
+                commodity_totals[commodity_val][date] += pred_val
+                
                 if intensity not in weather_factor_counts:
                     intensity = 'none'
                 weather_factor_counts[intensity] += 1
-                
-                date_totals[date] += pred_val
-                date_weather_drop_totals[date] += pred_val * drop_pct / 100
-                commodity_totals[commodity_val][date] += pred_val
-
-        # Convert overall totals
-        total_daily = []
-        for date in sorted(date_totals.keys()):
-            total_value = date_totals[date]
-            weighted_drop = (date_weather_drop_totals[date] / total_value * 100) if total_value > 0 else 0
-            total_daily.append({
-                'date': date,
-                'total_predicted_value': total_value,
-                'weather_drop_pct': round(weighted_drop, 2)
-            })
         
-        # Convert per-commodity totals
-        commodity_daily = {
-            commodity_val: [
-                {'date': d, 'predicted_value': v} 
-                for d, v in sorted(dates.items())
-            ]
-            for commodity_val, dates in commodity_totals.items()
-        }
-        
-        metric_name = metric_display_map.get(metric, "Predicted Value")
-        
-        # Check if we have Telangana data for this commodity
         telangana_data = None
         telangana_stats = None
         telangana_trend = None
@@ -1542,6 +1743,30 @@ async def enhanced_prediction_with_telangana(params: PredictionRequest) -> Dict:
         elapsed_time = (datetime.now() - start_time).total_seconds()
         logging.info(f"⏱️ Prediction completed in {elapsed_time:.2f} seconds")
         
+        # Prepare response variables
+        total_daily = dict(date_totals)
+        commodity_daily = {k: dict(v) for k, v in commodity_totals.items()}
+        metric_name = metric_display_map.get(metric, metric)
+
+        # 🔧 Normalize commodity_daily for frontend (always array)
+        for comm, val in commodity_daily.items():
+            # Case 1: dict → convert to list of {date,predicted_value}
+            if isinstance(val, dict):
+                commodity_daily[comm] = [
+                    {"date": d, "predicted_value": v}
+                    for d, v in sorted(val.items())
+                ]
+
+            # Case 2: value is single number (aggregate mode)
+            elif isinstance(val, (int, float)):
+                commodity_daily[comm] = [
+                    {
+                        "date": rec["date"],
+                        "predicted_value": rec["total_predicted_value"]
+                    }
+                    for rec in total_predicted
+                ]
+
         response = {
             "commodity_predictions": predictions,
             "prediction_keys": list(predictions.keys()),
@@ -1555,6 +1780,7 @@ async def enhanced_prediction_with_telangana(params: PredictionRequest) -> Dict:
             "total_models": len(predictions),
             "processing_time": round(elapsed_time, 2),
             "commodity_daily": commodity_daily,
+            "commodity_breakdown": commodity_breakdown if not commodity and unique_commodities > 10 else None,
             "telangana_data": {
                 "available": telangana_data is not None,
                 "data_points": len(telangana_data['dates']) if telangana_data else 0,
