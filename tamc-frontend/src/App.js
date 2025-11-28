@@ -1910,7 +1910,7 @@ function App() {
         </div>
 
         {/* Input Section */}
-        <div className="pb-8 px-4">
+        <div className="pb-11 px-3">
           <div className="max-w-3xl mx-auto">
             <div className="bg-white rounded-3xl border border-gray-300 shadow-lg overflow-hidden">
               <div className="px-5 pt-4">
