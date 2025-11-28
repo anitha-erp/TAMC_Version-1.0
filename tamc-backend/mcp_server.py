@@ -231,6 +231,8 @@ class AIIntelligenceLayer:
                         predictions.append({
                             "date": forecast.get("date"),
                             "predicted_price": forecast.get("final_price", forecast.get("baseline_price", 0)),
+                            "min_price": forecast.get("min_price", 0),
+                            "max_price": forecast.get("max_price", 0),
                             "variant": variant.get("variant")
                         })
             else:
@@ -240,6 +242,8 @@ class AIIntelligenceLayer:
                 structured["price_data"] = {
                     "predictions": predictions[:7],
                     "current_price": predictions[0].get("predicted_price", 0) if predictions else 0,
+                    "current_min": predictions[0].get("min_price", 0) if predictions else 0,
+                    "current_max": predictions[0].get("max_price", 0) if predictions else 0,
                     "week_end_price": predictions[-1].get("predicted_price", 0) if len(predictions) > 1 else 0,
                     "average_price": sum(p.get("predicted_price", 0) for p in predictions) / len(predictions),
                     "price_trend": self._calculate_trend(predictions, "predicted_price"),
@@ -429,7 +433,7 @@ Always cite concrete numbers (trend %, specific dates, rainfall, top commodities
         if structured_data.get("price_data"):
             price = structured_data["price_data"]
             prompt_parts.append("\n\n💰 PRICE FORECAST:")
-            prompt_parts.append(f"  • Current: ₹{price['current_price']:,.0f}/quintal")
+            prompt_parts.append(f"  • Current: ₹{price['current_price']:,.0f}/quintal (Range: ₹{price['current_min']:,.0f} - ₹{price['current_max']:,.0f})")
             prompt_parts.append(f"  • Week-end: ₹{price['week_end_price']:,.0f}/quintal")
             prompt_parts.append(f"  • Average: ₹{price['average_price']:,.0f}/quintal")
             
@@ -864,7 +868,9 @@ async def execute_arrival_tool(params: Dict) -> Dict:
         if variant:
             print(f"   📦 Variant: {variant}")
 
-        response = requests.post(ARRIVAL_API_URL, json=payload, timeout=ARRIVAL_TIMEOUT)
+        # Use longer timeout for aggregate queries (processing many commodities)
+        timeout = 60 if aggregate_mode else 30
+        response = requests.post(ARRIVAL_API_URL, json=payload, timeout=timeout)
         response.raise_for_status()
 
         return {
@@ -1472,12 +1478,19 @@ Keep responses brief (2-3 sentences)."""
         if all_failed:
             commodity = context.extracted_params.get("commodity", "").title()
             location = (context.extracted_params.get("district") or context.extracted_params.get("amc_name", "")).title()
+            is_aggregate = context.extracted_params.get("aggregate_mode", False)
 
-            # Generate a helpful error message
-            if commodity and location:
+            # Generate a helpful error message based on query type
+            if is_aggregate and location:
+                # Aggregate query (all commodities) with location - different error message
+                error_msg = f"Sorry, I couldn't retrieve aggregate market data for {location}. This could mean:\n• The server is experiencing high load (please try again)\n• There might be a temporary connection issue\n• {location} market data might be temporarily unavailable"
+            elif commodity and location:
                 error_msg = f"Sorry, I couldn't find {commodity} data for {location}. This could mean:\n• {commodity} might not be traded in {location}\n• The commodity name might be spelled differently\n• Try checking available commodities: Chilli, Cotton, Groundnut, Paddy"
             elif commodity:
                 error_msg = f"Sorry, I couldn't find {commodity} data. Please specify a location (e.g., Warangal, Khammam)."
+            elif location:
+                # Location specified but no commodity - suggest adding commodity
+                error_msg = f"Please specify a commodity for {location} (e.g., 'Chilli arrivals in {location}') or ask for 'total bags in {location}' for aggregate data."
             else:
                 error_msg = "I couldn't process your request. Please specify both commodity and location (e.g., 'Chilli price in Khammam')."
 

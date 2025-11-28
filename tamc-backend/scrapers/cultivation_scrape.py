@@ -80,7 +80,7 @@ class CultivationDataService:
         }
 
         try:
-            resp = requests.post(self.api_url, headers=headers, json=payload, timeout=15)
+            resp = requests.post(self.api_url, headers=headers, json=payload, timeout=3)
             logging.info(f"🔍 Status Code: {resp.status_code}")
             if resp.status_code != 200:
                 logging.error("⚠️ Failed to fetch cultivation data")

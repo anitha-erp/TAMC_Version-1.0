@@ -12,7 +12,7 @@ const formatDate = (d) => (d ? d.split("-").reverse().join("/") : "");
 const isInt = (f) => /bag|arrivals|count|lots|farmers/i.test(f);
 const formatValue = (f, v) => {
   if (typeof v !== "number") return v;
-  if (isInt(f) || /chilli|paddy|cotton|onion|tomato|bags|arrivals/i.test(f)) return Math.round(v);
+  if (isInt(f) || /chilli|paddy|cotton|onion|bags|arrivals/i.test(f)) return Math.round(v);
   return Math.round(v);
 };
 
@@ -33,7 +33,7 @@ const colors = ["#16a34a", "#ef4444", "#f59e0b", "#3b82f6", "#8b5cf6", "#ec4899"
 
 const mentionsCommodity = (text = "") => {
   if (!text) return false;
-  return /\b(chilli|cotton|paddy|onion|tomato|groundnut|turmeric|maize|rice|wheat|soybean|sugarcane)\b/i.test(text);
+  return /\b(chilli|cotton|paddy|onion|groundnut|turmeric|maize|rice|wheat|soybean|sugarcane)\b/i.test(text);
 };
 
 const summarizeForecast = (response, weatherData, isPriceData) => {
@@ -129,10 +129,10 @@ const getUnitSuffix = (metricName) => {
 // Helper to detect if query is asking for single day
 const isSingleDayQuery = (query) => {
   const lowerQuery = query.toLowerCase();
-  return /\b(tomorrow|today)\b/.test(lowerQuery) || 
-         /\b(1|one)\s*(day)\b/.test(lowerQuery) ||
-         /price.*tomorrow/i.test(lowerQuery) ||
-         /tomorrow.*price/i.test(lowerQuery);
+  return /\b(tomorrow|today)\b/.test(lowerQuery) ||
+    /\b(1|one)\s*(day)\b/.test(lowerQuery) ||
+    /price.*tomorrow/i.test(lowerQuery) ||
+    /tomorrow.*price/i.test(lowerQuery);
 };
 
 /* ---------- 📰 FARMER-FRIENDLY SENTIMENT PANEL ---------- */
@@ -219,94 +219,94 @@ const SentimentPanel = React.memo(function SentimentPanel({ sentimentData }) {
       {isExpanded && (
         <div>
 
-      {/* Action Box */}
-      <div style={{
-        background: "white",
-        borderRadius: "8px",
-        padding: "1rem",
-        marginBottom: "1rem",
-        boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
-        borderLeft: `4px solid ${farmerMsg.color}`
-      }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-          <span style={{ fontSize: "1.5rem" }}>💡</span>
-          <span style={{ 
-            fontSize: "1rem", 
-            fontWeight: "600",
-            color: "#374151"
-          }}>
-            {farmerMsg.action}
-          </span>
-        </div>
-      </div>
-
-      {/* Simple Visual Indicator */}
-      <div style={{
-        background: "white",
-        borderRadius: "8px",
-        padding: "1rem",
-        marginBottom: "1rem",
-        boxShadow: "0 2px 4px rgba(0,0,0,0.05)"
-      }}>
-        <div style={{ 
-          display: "flex", 
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: "0.75rem"
-        }}>
-          <span style={{ fontSize: "0.95rem", color: "#6b7280", fontWeight: "600" }}>
-            📰 Based on {news_count} recent market reports
-          </span>
+          {/* Action Box */}
           <div style={{
-            background: farmerMsg.color,
-            color: "white",
-            padding: "0.35rem 0.9rem",
-            borderRadius: "20px",
-            fontSize: "0.85rem",
-            fontWeight: "700"
+            background: "white",
+            borderRadius: "8px",
+            padding: "1rem",
+            marginBottom: "1rem",
+            boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
+            borderLeft: `4px solid ${farmerMsg.color}`
           }}>
-            {sentiment_label}
+            <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+              <span style={{ fontSize: "1.5rem" }}>💡</span>
+              <span style={{
+                fontSize: "1rem",
+                fontWeight: "600",
+                color: "#374151"
+              }}>
+                {farmerMsg.action}
+              </span>
+            </div>
           </div>
-        </div>
 
-        {/* Simple 3-level indicator */}
-        <div style={{
-          display: "flex",
-          gap: "0.5rem",
-          marginTop: "0.75rem"
-        }}>
+          {/* Simple Visual Indicator */}
           <div style={{
-            flex: 1,
-            height: "8px",
-            borderRadius: "4px",
-            background: sentiment_label === "Negative" ? "#ef4444" : "#e5e7eb"
-          }} />
-          <div style={{
-            flex: 1,
-            height: "8px",
-            borderRadius: "4px",
-            background: sentiment_label === "Neutral" ? "#f59e0b" : "#e5e7eb"
-          }} />
-          <div style={{
-            flex: 1,
-            height: "8px",
-            borderRadius: "4px",
-            background: sentiment_label === "Positive" ? "#22c55e" : "#e5e7eb"
-          }} />
-        </div>
-        <div style={{
-          display: "flex",
-          justifyContent: "space-between",
-          marginTop: "0.5rem",
-          fontSize: "0.75rem",
-          color: "#9ca3af",
-          fontWeight: "600"
-        }}>
-          <span>Prices Down</span>
-          <span>Stable</span>
-          <span>Prices Up</span>
-        </div>
-      </div>
+            background: "white",
+            borderRadius: "8px",
+            padding: "1rem",
+            marginBottom: "1rem",
+            boxShadow: "0 2px 4px rgba(0,0,0,0.05)"
+          }}>
+            <div style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginBottom: "0.75rem"
+            }}>
+              <span style={{ fontSize: "0.95rem", color: "#6b7280", fontWeight: "600" }}>
+                📰 Based on {news_count} recent market reports
+              </span>
+              <div style={{
+                background: farmerMsg.color,
+                color: "white",
+                padding: "0.35rem 0.9rem",
+                borderRadius: "20px",
+                fontSize: "0.85rem",
+                fontWeight: "700"
+              }}>
+                {sentiment_label}
+              </div>
+            </div>
+
+            {/* Simple 3-level indicator */}
+            <div style={{
+              display: "flex",
+              gap: "0.5rem",
+              marginTop: "0.75rem"
+            }}>
+              <div style={{
+                flex: 1,
+                height: "8px",
+                borderRadius: "4px",
+                background: sentiment_label === "Negative" ? "#ef4444" : "#e5e7eb"
+              }} />
+              <div style={{
+                flex: 1,
+                height: "8px",
+                borderRadius: "4px",
+                background: sentiment_label === "Neutral" ? "#f59e0b" : "#e5e7eb"
+              }} />
+              <div style={{
+                flex: 1,
+                height: "8px",
+                borderRadius: "4px",
+                background: sentiment_label === "Positive" ? "#22c55e" : "#e5e7eb"
+              }} />
+            </div>
+            <div style={{
+              display: "flex",
+              justifyContent: "space-between",
+              marginTop: "0.5rem",
+              fontSize: "0.75rem",
+              color: "#9ca3af",
+              fontWeight: "600"
+            }}>
+              <span>Prices Down</span>
+              <span>Stable</span>
+              <span>Prices Up</span>
+            </div>
+          </div>
         </div>
       )}
     </div>
@@ -324,10 +324,13 @@ const EnhancedPriceForecast = React.memo(function EnhancedPriceForecast({ foreca
     disease_adjustment,
     sentiment_adjustment,
     final_price,
+    min_price,
+    max_price,
     weather_reason,
     disease_reason,
     sentiment_reason
   } = forecast;
+
 
   // Calculate total impact
   const totalAdjustment = weather_adjustment + disease_adjustment + sentiment_adjustment;
@@ -356,7 +359,7 @@ const EnhancedPriceForecast = React.memo(function EnhancedPriceForecast({ foreca
         {formatDate(date)}
       </div>
 
-      {/* Main Price Display - Big and Clear */}
+      {/* Main Price Display - Big and Clear with Range */}
       <div style={{
         display: "flex",
         justifyContent: "space-between",
@@ -365,18 +368,28 @@ const EnhancedPriceForecast = React.memo(function EnhancedPriceForecast({ foreca
       }}>
         <div>
           <div style={{ fontSize: "0.8rem", color: "#9ca3af", marginBottom: "0.25rem" }}>
-            Expected Price
+            Expected Price Range
           </div>
-          <div style={{ 
-            fontSize: "2rem", 
-            fontWeight: "700", 
+          <div style={{
+            fontSize: "1.75rem",
+            fontWeight: "700",
             color: "#16a34a",
             display: "flex",
             alignItems: "baseline",
-            gap: "0.25rem"
+            gap: "0.5rem"
           }}>
-            ₹{Math.round(final_price).toLocaleString()}
-            <span style={{ fontSize: "1rem", color: "#9ca3af" }}>/Q</span>
+            <span>₹{Math.round(min_price).toLocaleString()}</span>
+            <span style={{ fontSize: "1.2rem", color: "#6b7280", fontWeight: "500" }}>-</span>
+            <span>₹{Math.round(max_price).toLocaleString()}</span>
+            <span style={{ fontSize: "0.9rem", color: "#9ca3af" }}>/Q</span>
+          </div>
+          <div style={{ 
+            fontSize: "0.75rem", 
+            color: "#6b7280", 
+            marginTop: "0.25rem",
+            fontWeight: "500"
+          }}>
+            Mid-point: ₹{Math.round(final_price).toLocaleString()}/Q
           </div>
         </div>
 
@@ -413,7 +426,7 @@ const EnhancedPriceForecast = React.memo(function EnhancedPriceForecast({ foreca
           </div>
           {Math.abs(weather_adjustment) > 0.5 && (
             <div style={{ marginBottom: "0.25rem" }}>
-              🌤️ Weather: {weather_adjustment > 0 ? "Favorable" : "Challenging"} 
+              🌤️ Weather: {weather_adjustment > 0 ? "Favorable" : "Challenging"}
               ({weather_adjustment > 0 ? "+" : ""}{weather_adjustment.toFixed(1)}%)
             </div>
           )}
@@ -686,7 +699,7 @@ const PredictionResult = React.memo(function PredictionResult({ response, isPric
     const prefix = isPriceData ? "₹" : "";
     return [`${prefix}${roundedValue}${suffix}`, label];
   };
-  
+
   return (
     <div className="mt-4">
       {/* Collapse/Expand Toggle */}
@@ -702,9 +715,8 @@ const PredictionResult = React.memo(function PredictionResult({ response, isPric
           </span>
         </div>
         <div
-          className={`flex items-center justify-center w-6 h-6 bg-white rounded-md text-xs transition-transform duration-200 ${
-            isExpanded ? "rotate-180" : ""
-          }`}
+          className={`flex items-center justify-center w-6 h-6 bg-white rounded-md text-xs transition-transform duration-200 ${isExpanded ? "rotate-180" : ""
+            }`}
         >
           ▼
         </div>
@@ -713,167 +725,190 @@ const PredictionResult = React.memo(function PredictionResult({ response, isPric
       {/* Collapsible Content */}
       {isExpanded && (
         <div>
-        {/* Summary Explanation Section */}
-        {summaryItems.length > 0 && (
-          <div className="mt-3 bg-white border border-gray-200 rounded-2xl p-4 shadow-sm">
-            <h4 className="font-bold text-gray-900 text-sm mb-3 flex items-center gap-2">
-              <span className="text-lg">💡</span>
-              <span>Forecast Highlights</span>
-            </h4>
-            <div className="grid gap-3 md:grid-cols-2">
-              {summaryItems.map((item, idx) => (
-                <div
-                  key={`${item.title}-${idx}`}
-                  className="flex items-start gap-3 p-3 rounded-xl border border-gray-100 bg-gradient-to-r from-gray-50 to-white"
-                >
-                  <span className="text-xl">{item.icon}</span>
-                  <div className="flex-1">
-                    <div className="text-sm font-semibold text-gray-900 flex items-center gap-2">
-                      {item.title}
-                      {item.badge && (
-                        <span
-                          className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
-                            item.badge.tone === "up"
-                              ? "bg-green-100 text-green-700"
-                              : item.badge.tone === "down"
-                              ? "bg-red-100 text-red-700"
-                              : "bg-yellow-100 text-yellow-700"
-                          }`}
-                        >
-                          {item.badge.label}
-                        </span>
-                      )}
-                    </div>
-                    <div className="text-xs text-gray-600 mt-0.5">{item.detail}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {hasCommodityData && !isSingleDay && (
-          <div className="flex gap-2 mt-3 mb-3">
-            <button
-              className={`px-4 py-2 rounded-lg font-medium text-sm transition-all ${
-                viewMode === "total"
-                  ? "bg-green-600 text-white shadow-md"
-                  : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-              }`}
-              onClick={() => setViewMode("total")}
-            >
-              📊 Total Overview
-            </button>
-            <button
-              className={`px-4 py-2 rounded-lg font-medium text-sm transition-all ${
-                viewMode === "commodity"
-                  ? "bg-green-600 text-white shadow-md"
-                  : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-              }`}
-              onClick={() => setViewMode("commodity")}
-            >
-              🌾 Commodity Details
-            </button>
-          </div>
-        )}
-
-        {viewMode === "total" && (
-        <>
-          {displayData.length > 0 && (
-            <div className="mt-3 bg-gradient-to-br from-gray-50 to-white border border-gray-200 rounded-xl p-4 shadow-sm">
-              <h4 className="font-bold text-gray-800 mb-3 text-sm flex items-center gap-2">
-                📅 {isSingleDay ? (isPriceData ? "Tomorrow's Price" : `Tomorrow's ${response.metric_name}`) : "Forecast Summary"}
+          {/* Summary Explanation Section */}
+          {summaryItems.length > 0 && (
+            <div className="mt-3 bg-white border border-gray-200 rounded-2xl p-4 shadow-sm">
+              <h4 className="font-bold text-gray-900 text-sm mb-3 flex items-center gap-2">
+                <span className="text-lg">💡</span>
+                <span>Forecast Highlights</span>
               </h4>
-              <div className="overflow-x-auto">
-                <table className="w-full border-collapse">
-                  <thead>
-                    <tr className="bg-gradient-to-r from-gray-100 to-gray-50">
-                      <th className="px-4 py-2.5 text-left text-xs font-bold text-gray-700 border-b-2 border-gray-300">Date</th>
-                      <th className="px-4 py-2.5 text-left text-xs font-bold text-gray-700 border-b-2 border-gray-300">{response.metric_name}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {displayData.map((item, i) => (
-                      <tr key={i} className={`${i % 2 === 0 ? "bg-white" : "bg-gray-50"} hover:bg-blue-50 transition-colors`}>
-                        <td className="px-4 py-2.5 text-sm text-gray-700 border-b border-gray-200">{formatDate(item.date)}</td>
-                        <td className="px-4 py-2.5 text-sm font-semibold text-gray-900 border-b border-gray-200">
-                          {(() => {
-                            const numericValue = toNumber(item.total_predicted_value);
-                            const roundedValue = formatValue(response.metric_name, numericValue);
-                            const formattedRoundedValue =
-                              typeof roundedValue === "number" ? roundedValue.toLocaleString() : roundedValue;
-                            const unitSuffix = isPriceData ? "/Q" : getUnitSuffix(response.metric_name);
-                            const kgValue = isWeightMetricSelected ? convertQuintalsToKg(numericValue).toLocaleString() : null;
-                            return (
-                              <div className="flex flex-col">
-                                <span>
-                                  {isPriceData && "₹"}
-                                  {formattedRoundedValue}
-                                  {unitSuffix}
-                                </span>
-                                {isWeightMetricSelected && kgValue && (
-                                  <span className="text-xs text-gray-500 font-medium mt-0.5">
-                                    ≈ {kgValue} kg
-                                  </span>
-                                )}
-                              </div>
-                            );
-                          })()}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+              <div className="grid gap-3 md:grid-cols-2">
+                {summaryItems.map((item, idx) => (
+                  <div
+                    key={`${item.title}-${idx}`}
+                    className="flex items-start gap-3 p-3 rounded-xl border border-gray-100 bg-gradient-to-r from-gray-50 to-white"
+                  >
+                    <span className="text-xl">{item.icon}</span>
+                    <div className="flex-1">
+                      <div className="text-sm font-semibold text-gray-900 flex items-center gap-2">
+                        {item.title}
+                        {item.badge && (
+                          <span
+                            className={`text-xs font-semibold px-2 py-0.5 rounded-full ${item.badge.tone === "up"
+                                ? "bg-green-100 text-green-700"
+                                : item.badge.tone === "down"
+                                  ? "bg-red-100 text-red-700"
+                                  : "bg-yellow-100 text-yellow-700"
+                              }`}
+                          >
+                            {item.badge.label}
+                          </span>
+                        )}
+                      </div>
+                      <div className="text-xs text-gray-600 mt-0.5">{item.detail}</div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           )}
 
-          {/* Display Weather Impact if available */}
-          {weatherData && (
-            <WeatherImpactDisplay weatherData={weatherData} />
+          {hasCommodityData && !isSingleDay && (
+            <div className="flex gap-2 mt-3 mb-3">
+              <button
+                className={`px-4 py-2 rounded-lg font-medium text-sm transition-all ${viewMode === "total"
+                    ? "bg-green-600 text-white shadow-md"
+                    : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                  }`}
+                onClick={() => setViewMode("total")}
+              >
+                📊 Total Overview
+              </button>
+              <button
+                className={`px-4 py-2 rounded-lg font-medium text-sm transition-all ${viewMode === "commodity"
+                    ? "bg-green-600 text-white shadow-md"
+                    : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                  }`}
+                onClick={() => setViewMode("commodity")}
+              >
+                🌾 Commodity Details
+              </button>
+            </div>
           )}
 
-          {!isSingleDay && (
+          {viewMode === "total" && (
+            <>
+              {displayData.length > 0 && (
+                <div className="mt-3 bg-gradient-to-br from-gray-50 to-white border border-gray-200 rounded-xl p-4 shadow-sm">
+                  <h4 className="font-bold text-gray-800 mb-3 text-sm flex items-center gap-2">
+                    📅 {isSingleDay ? (isPriceData ? "Tomorrow's Price" : `Tomorrow's ${response.metric_name}`) : "Forecast Summary"}
+                  </h4>
+                  <div className="overflow-x-auto">
+                    <table className="w-full border-collapse">
+                      <thead>
+                        <tr className="bg-gradient-to-r from-gray-100 to-gray-50">
+                          <th className="px-4 py-2.5 text-left text-xs font-bold text-gray-700 border-b-2 border-gray-300">Date</th>
+                          <th className="px-4 py-2.5 text-left text-xs font-bold text-gray-700 border-b-2 border-gray-300">{response.metric_name}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {displayData.map((item, i) => (
+                          <tr key={i} className={`${i % 2 === 0 ? "bg-white" : "bg-gray-50"} hover:bg-blue-50 transition-colors`}>
+                            <td className="px-4 py-2.5 text-sm text-gray-700 border-b border-gray-200">{formatDate(item.date)}</td>
+                            <td className="px-4 py-2.5 text-sm font-semibold text-gray-900 border-b border-gray-200">
+                              {(() => {
+                                const numericValue = toNumber(item.total_predicted_value);
+                                const roundedValue = formatValue(response.metric_name, numericValue);
+
+                                const formattedRoundedValue =
+                                  typeof roundedValue === "number" ? roundedValue.toLocaleString() : roundedValue;
+
+                                const unitSuffix = isPriceData ? "/Q" : getUnitSuffix(response.metric_name);
+                                const kgValue = isWeightMetricSelected
+                                  ? convertQuintalsToKg(numericValue).toLocaleString()
+                                  : null;
+
+                                // 🔥 ADD PRICE RANGE (only for PRICE type)
+                                const PRICE_RANGE = 0.05; // ±5%
+                                const minPrice = numericValue * (1 - PRICE_RANGE);
+                                const maxPrice = numericValue * (1 + PRICE_RANGE);
+
+                                return (
+                                  <div className="flex flex-col">
+                                    {/* If PRICE → show RANGE */}
+                                    {isPriceData ? (
+                                      <>
+                                        <span>
+                                          ₹{Math.round(minPrice).toLocaleString()} - ₹{Math.round(maxPrice).toLocaleString()} /Q
+                                        </span>
+
+                                        <span className="text-xs text-gray-500 font-medium mt-0.5">
+                                          Mid: ₹{formattedRoundedValue} /Q
+                                        </span>
+                                      </>
+                                    ) : (
+                                      // If NOT PRICE → show normal metric
+                                      <span>
+                                        {formattedRoundedValue}
+                                        {unitSuffix}
+                                      </span>
+                                    )}
+
+                                    {/* Weight Conversion */}
+                                    {isWeightMetricSelected && kgValue && (
+                                      <span className="text-xs text-gray-500 font-medium mt-0.5">
+                                        ≈ {kgValue} kg
+                                      </span>
+                                    )}
+                                  </div>
+                                );
+                              })()}
+                            </td>
+
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
+
+              {/* Display Weather Impact if available */}
+              {weatherData && (
+                <WeatherImpactDisplay weatherData={weatherData} />
+              )}
+
+              {!isSingleDay && (
+                <div className="mt-3 bg-gradient-to-br from-gray-50 to-white border border-gray-200 rounded-xl p-4 shadow-sm">
+                  <h4 className="font-bold text-gray-800 mb-3 text-sm flex items-center gap-2">📈 Trend Chart</h4>
+                  {displayData.length > 0 ? (
+                    <ResponsiveContainer width="100%" height={220}>
+                      <LineChart data={displayData}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                        <XAxis dataKey="date" tickFormatter={(d) => d.slice(5)} />
+                        <YAxis />
+                        <Tooltip formatter={(value) => buildTooltipValue(value)} />
+                        <Line dataKey="total_predicted_value" name={response.metric_name} type="monotone" stroke={isPriceData ? "#f59e0b" : "#16a34a"} strokeWidth={2} />
+                      </LineChart>
+                    </ResponsiveContainer>
+                  ) : (
+                    <div className="text-center text-gray-500 py-4">No forecast data</div>
+                  )}
+                </div>
+              )}
+            </>
+          )}
+
+          {viewMode === "commodity" && hasCommodityData && !isSingleDay && (
             <div className="mt-3 bg-gradient-to-br from-gray-50 to-white border border-gray-200 rounded-xl p-4 shadow-sm">
-              <h4 className="font-bold text-gray-800 mb-3 text-sm flex items-center gap-2">📈 Trend Chart</h4>
-              {displayData.length > 0 ? (
-                <ResponsiveContainer width="100%" height={220}>
-                  <LineChart data={displayData}>
+              <h4 className="font-bold text-gray-800 mb-3 text-sm flex items-center gap-2">📈 Commodity Comparison</h4>
+              {commodityChartData.length > 0 ? (
+                <ResponsiveContainer width="100%" height={250}>
+                  <LineChart data={commodityChartData}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                     <XAxis dataKey="date" tickFormatter={(d) => d.slice(5)} />
                     <YAxis />
-                    <Tooltip formatter={(value) => buildTooltipValue(value)} />
-                    <Line dataKey="total_predicted_value" name={response.metric_name} type="monotone" stroke={isPriceData ? "#f59e0b" : "#16a34a"} strokeWidth={2} />
+                    <Tooltip formatter={(value, name) => buildTooltipValue(value, name)} />
+                    {Object.keys(commodityData).map((c, i) => (
+                      <Line key={c} type="monotone" dataKey={c} name={c} stroke={colors[i % colors.length]} strokeWidth={2} />
+                    ))}
                   </LineChart>
                 </ResponsiveContainer>
               ) : (
-                <div className="text-center text-gray-500 py-4">No forecast data</div>
+                <div className="no-chart">No commodity data</div>
               )}
             </div>
           )}
-        </>
-      )}
-      
-        {viewMode === "commodity" && hasCommodityData && !isSingleDay && (
-          <div className="mt-3 bg-gradient-to-br from-gray-50 to-white border border-gray-200 rounded-xl p-4 shadow-sm">
-            <h4 className="font-bold text-gray-800 mb-3 text-sm flex items-center gap-2">📈 Commodity Comparison</h4>
-            {commodityChartData.length > 0 ? (
-              <ResponsiveContainer width="100%" height={250}>
-                <LineChart data={commodityChartData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                  <XAxis dataKey="date" tickFormatter={(d) => d.slice(5)} />
-                  <YAxis />
-                  <Tooltip formatter={(value, name) => buildTooltipValue(value, name)} />
-                  {Object.keys(commodityData).map((c, i) => (
-                    <Line key={c} type="monotone" dataKey={c} name={c} stroke={colors[i % colors.length]} strokeWidth={2} />
-                  ))}
-                </LineChart>
-              </ResponsiveContainer>
-            ) : (
-              <div className="no-chart">No commodity data</div>
-            )}
-          </div>
-        )}
         </div>
       )}
     </div>
@@ -985,64 +1020,64 @@ const ChatMessage = React.memo(({
               {!shouldHideText && (
                 <div className="text-gray-800 leading-relaxed text-base message-content" dangerouslySetInnerHTML={{ __html: formatMessage(message) }} />
               )}
-            {isBot && interactiveOptions && (
-              <InteractiveOptions
-                prompt={interactiveOptions.question}
-                options={interactiveOptions.options}
-                onSelect={onOptionSelect}
-                disabled={false}
-              />
-            )}
+              {isBot && interactiveOptions && (
+                <InteractiveOptions
+                  prompt={interactiveOptions.question}
+                  options={interactiveOptions.options}
+                  onSelect={onOptionSelect}
+                  disabled={false}
+                />
+              )}
 
-        {/* Display detailed price forecasts - limit to 1 if single day */}
-        {isBot && detailedForecasts && detailedForecasts.length > 0 && (
-          <div style={{ marginTop: "1rem" }}>
-            {isSingleDay && detailedForecasts.length > 1 && (
-              <div style={{
-                background: "#dbeafe",
-                padding: "0.75rem",
-                borderRadius: "8px",
-                marginBottom: "0.75rem",
-                fontSize: "0.9rem",
-                color: "#1e40af",
-                fontWeight: "600",
-                display: "flex",
-                alignItems: "center",
-                gap: "0.5rem"
-              }}>
-                <span>ℹ️</span>
-                <span>You asked for {/\btoday\b/i.test(userQuery || "") ? "today's" : "tomorrow's"} price - showing only the first day from {detailedForecasts.length} days of data</span>
-              </div>
-            )}
-            <h4 style={{
-              fontSize: "1rem",
-              fontWeight: "600",
-              color: "#14532d",
-              marginBottom: "0.75rem"
-            }}>
-              {isSingleDay ? `📊 ${/\btoday\b/i.test(userQuery || "") ? "Today's" : "Tomorrow's"} Price Details` : "📊 Detailed Price Breakdown"}
-            </h4>
-            {(isSingleDay ? detailedForecasts.slice(0, 1) : detailedForecasts).map((forecast, idx) => (
-              <EnhancedPriceForecast key={idx} forecast={forecast} />
-            ))}
-          </div>
-        )}
+              {/* Display detailed price forecasts - limit to 1 if single day */}
+              {isBot && detailedForecasts && detailedForecasts.length > 0 && (
+                <div style={{ marginTop: "1rem" }}>
+                  {isSingleDay && detailedForecasts.length > 1 && (
+                    <div style={{
+                      background: "#dbeafe",
+                      padding: "0.75rem",
+                      borderRadius: "8px",
+                      marginBottom: "0.75rem",
+                      fontSize: "0.9rem",
+                      color: "#1e40af",
+                      fontWeight: "600",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.5rem"
+                    }}>
+                      <span>ℹ️</span>
+                      <span>You asked for {/\btoday\b/i.test(userQuery || "") ? "today's" : "tomorrow's"} price - showing only the first day from {detailedForecasts.length} days of data</span>
+                    </div>
+                  )}
+                  <h4 style={{
+                    fontSize: "1rem",
+                    fontWeight: "600",
+                    color: "#14532d",
+                    marginBottom: "0.75rem"
+                  }}>
+                    {isSingleDay ? `📊 ${/\btoday\b/i.test(userQuery || "") ? "Today's" : "Tomorrow's"} Price Details` : "📊 Detailed Price Breakdown"}
+                  </h4>
+                  {(isSingleDay ? detailedForecasts.slice(0, 1) : detailedForecasts).map((forecast, idx) => (
+                    <EnhancedPriceForecast key={idx} forecast={forecast} />
+                  ))}
+                </div>
+              )}
 
-        {/* Keep existing prediction display */}
-            {isBot && predictionData && (
-              <PredictionResult
-                response={predictionData}
-                isPriceData={isPriceData}
-                isSingleDay={isSingleDay}
-                weatherData={weatherData}
-              />
-            )}
+              {/* Keep existing prediction display */}
+              {isBot && predictionData && (
+                <PredictionResult
+                  response={predictionData}
+                  isPriceData={isPriceData}
+                  isSingleDay={isSingleDay}
+                  weatherData={weatherData}
+                />
+              )}
 
-            {isBot && aiInsights && (
-              <AIInsightsPanel insights={aiInsights} queryType={queryType} />
-            )}
-          </>
-        )}
+              {isBot && aiInsights && (
+                <AIInsightsPanel insights={aiInsights} queryType={queryType} />
+              )}
+            </>
+          )}
         </div>
         {!isBot && (
           <div className="w-8 h-8 rounded-full bg-purple-600 flex items-center justify-center flex-shrink-0">
@@ -1613,17 +1648,17 @@ function App() {
       if (toolResults.price?.success && !isAdvisoryOnly) {
         const d = toolResults.price.data;
         isPriceData = true;
-        
+
         // Extract sentiment info
         if (Array.isArray(d.variants) && d.variants[0]?.sentiment_info) {
           sentimentInfo = d.variants[0].sentiment_info;
         }
-        
+
         // Extract detailed forecasts
         if (Array.isArray(d.variants) && d.variants[0]?.forecasts) {
           detailedForecasts = d.variants[0].forecasts;
         }
-        
+
         let aggregated = [];
         if (Array.isArray(d.variants)) {
           const groupedByDate = {};
@@ -1646,7 +1681,7 @@ function App() {
             aggregated.push({ date: p.date, total_predicted_value: Math.round(val) });
           });
         }
-        
+
         if (aggregated.length > 0) {
           predictionData = {
             metric_name: "Price (₹/Quintal)",
@@ -1733,25 +1768,22 @@ function App() {
               <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
                 <button
                   onClick={() => handleLanguageChange("English")}
-                  className={`w-full text-left px-4 py-2 hover:bg-gray-50 first:rounded-t-lg transition-all text-sm ${
-                    language === "English" ? "bg-gray-100 font-semibold" : ""
-                  }`}
+                  className={`w-full text-left px-4 py-2 hover:bg-gray-50 first:rounded-t-lg transition-all text-sm ${language === "English" ? "bg-gray-100 font-semibold" : ""
+                    }`}
                 >
                   English
                 </button>
                 <button
                   onClick={() => handleLanguageChange("తెలుగు")}
-                  className={`w-full text-left px-4 py-2 hover:bg-gray-50 transition-all text-sm ${
-                    language === "తెలుగు" ? "bg-gray-100 font-semibold" : ""
-                  }`}
+                  className={`w-full text-left px-4 py-2 hover:bg-gray-50 transition-all text-sm ${language === "తెలుగు" ? "bg-gray-100 font-semibold" : ""
+                    }`}
                 >
                   తెలుగు (Telugu)
                 </button>
                 <button
                   onClick={() => handleLanguageChange("हिंदी")}
-                  className={`w-full text-left px-4 py-2 hover:bg-gray-50 last:rounded-b-lg transition-all text-sm ${
-                    language === "हिंदी" ? "bg-gray-100 font-semibold" : ""
-                  }`}
+                  className={`w-full text-left px-4 py-2 hover:bg-gray-50 last:rounded-b-lg transition-all text-sm ${language === "हिंदी" ? "bg-gray-100 font-semibold" : ""
+                    }`}
                 >
                   हिंदी (Hindi)
                 </button>
@@ -1777,7 +1809,7 @@ function App() {
               {/* Suggestion Cards */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-w-3xl w-full">
                 <button
-                  onClick={() => sendMessage("What will be tomato price in Warangal tomorrow")}
+                  onClick={() => sendMessage("What will be cotton price in Warangal tomorrow")}
                   disabled={loading}
                   className="p-4 bg-white border border-gray-200 rounded-2xl hover:bg-gray-50 hover:border-gray-300 transition-all text-left group disabled:opacity-50 disabled:cursor-not-allowed"
                 >
@@ -1785,7 +1817,7 @@ function App() {
                     <span className="text-2xl">💰</span>
                     <div>
                       <div className="font-medium text-gray-800 mb-1">Price Forecast</div>
-                      <div className="text-sm text-gray-600">What will be tomato price in Warangal tomorrow</div>
+                      <div className="text-sm text-gray-600">What will be cotton price in Warangal tomorrow</div>
                     </div>
                   </div>
                 </button>
@@ -1827,7 +1859,7 @@ function App() {
                     <span className="text-2xl">💰</span>
                     <div>
                       <div className="font-medium text-gray-800 mb-1">Price Forecast</div>
-                      <div className="text-sm text-gray-600">Chilli prices in Warangal tomorrow</div>
+                      <div className="text-sm text-gray-600">Chilli prices in Warangal next week</div>
                     </div>
                   </div>
                 </button>
@@ -1882,24 +1914,23 @@ function App() {
                 <div className="flex gap-2 items-center">
                   <button
                     type="button"
-                    className={`p-2 text-sm rounded-lg transition-all flex items-center gap-2 ${
-                      isListening
+                    className={`p-2 text-sm rounded-lg transition-all flex items-center gap-2 ${isListening
                         ? 'bg-red-100 text-red-600 listening-pulse'
                         : 'text-gray-600 hover:bg-gray-100'
-                    }`}
+                      }`}
                     onClick={startVoiceInput}
                     title={isListening ? "Listening..." : "Click to speak"}
                     disabled={isListening}
                   >
                     {isListening ? (
                       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
-                        <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+                        <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z" />
+                        <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z" />
                       </svg>
                     ) : (
                       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
-                        <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+                        <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z" />
+                        <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z" />
                       </svg>
                     )}
                     {isListening && (
@@ -1919,6 +1950,10 @@ function App() {
             </div>
           </div>
         </div>
+      </div>
+      {/* Footer: Version Number */}
+      <div className="fixed bottom-0 left-0 w-full text-center py-3 text-gray-500 text-xs bg-white border-t shadow-sm">
+        CropCast AI • Version 1.0
       </div>
     </div>
   );

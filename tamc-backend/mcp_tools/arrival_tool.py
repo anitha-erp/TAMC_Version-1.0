@@ -296,6 +296,10 @@ def get_telangana_cultivation_factor(commodity: str, district: str = None) -> fl
         return 1.0
 
 
+# Cache for cultivation factors to avoid repeated HTTP calls
+_cultivation_factor_cache = {}
+_cultivation_cache_ttl = 3600  # 1 hour
+
 def _apply_cultivation_factor_enhanced(
     predictions: list,
     commodity: str,
@@ -308,21 +312,51 @@ def _apply_cultivation_factor_enhanced(
         return predictions
     
     try:
-        # Get original cultivation factor
-        try:
-            cultivation_factor = (
-                CultivationDataService()
-                .get_cultivation_factor(commodity, district)
-                .get("impact_factor", 1.0)
+        # Create cache key
+        cache_key = f"{commodity}_{district}"
+        current_time = datetime.now().timestamp()
+        
+        # Check cache first
+        if cache_key in _cultivation_factor_cache:
+            cached_data, cached_time = _cultivation_factor_cache[cache_key]
+            if current_time - cached_time < _cultivation_cache_ttl:
+                cultivation_factor = cached_data['cultivation']
+                telangana_factor = cached_data['telangana']
+                combined_factor = cached_data['combined']
+            else:
+                # Cache expired, fetch new data
+                del _cultivation_factor_cache[cache_key]
+                cache_key = None
+        else:
+            cache_key = None
+        
+        # Fetch factors if not cached
+        if cache_key is None:
+            # Get original cultivation factor
+            try:
+                cultivation_factor = (
+                    CultivationDataService()
+                    .get_cultivation_factor(commodity, district)
+                    .get("impact_factor", 1.0)
+                )
+            except Exception:
+                cultivation_factor = 1.0
+            
+            # Get Telangana arrival factor
+            telangana_factor = get_telangana_cultivation_factor(commodity, district)
+            
+            # Combine factors (weighted average: 60% cultivation, 40% Telangana trends)
+            combined_factor = (cultivation_factor * 0.6) + (telangana_factor * 0.4)
+            
+            # Cache the factors
+            _cultivation_factor_cache[f"{commodity}_{district}"] = (
+                {
+                    'cultivation': cultivation_factor,
+                    'telangana': telangana_factor,
+                    'combined': combined_factor
+                },
+                current_time
             )
-        except Exception:
-            cultivation_factor = 1.0
-        
-        # Get Telangana arrival factor
-        telangana_factor = get_telangana_cultivation_factor(commodity, district)
-        
-        # Combine factors (weighted average: 60% cultivation, 40% Telangana trends)
-        combined_factor = (cultivation_factor * 0.6) + (telangana_factor * 0.4)
         
         # Apply to predictions
         for p in predictions:
@@ -618,7 +652,7 @@ class OptimizedLSTMGRUForecaster:
 class ParallelForecastEngine:
     """Process multiple AMC-commodity combinations in parallel"""
     
-    def __init__(self, max_workers=4):
+    def __init__(self, max_workers=8):
         self.max_workers = max_workers
     
     def process_single_forecast(self, args):
@@ -1398,8 +1432,21 @@ async def enhanced_prediction_with_telangana(params: PredictionRequest) -> Dict:
         location = district or amc_name or "Hyderabad"
         weather_info = fetch_multi_day_weather(location, forecast_days)
         
+        # Optimization: If too many commodities for an aggregate query, group them first
+        unique_commodities = df['commodity_name'].nunique()
+        if not commodity and unique_commodities > 10:
+            logging.info(f"⚡ High commodity count ({unique_commodities}) detected. Switching to Aggregate Mode.")
+            
+            # Aggregate by date and AMC
+            # We sum the 'y' value (which is already the correct metric)
+            df_agg = df.groupby(['date', 'amc_name'])['y'].sum().reset_index()
+            df_agg['commodity_name'] = 'All Commodities'
+            
+            # Replace original df with aggregated df
+            df = df_agg
+
         # Prepare parallel processing
-        forecast_engine = ParallelForecastEngine(max_workers=4)
+        forecast_engine = ParallelForecastEngine(max_workers=8)
         
         forecast_args = []
         for (amc, comm), df_subset in df.groupby(['amc_name', 'commodity_name']):

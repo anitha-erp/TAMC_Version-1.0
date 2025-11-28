@@ -84,7 +84,7 @@ HISTORICAL_SCRAPE_DAYS = 60
 class PredictionRequest(BaseModel):
     commodity: str = Field(..., description="Commodity name (e.g., 'Chilli', 'Cotton')")
     market: str = Field(..., description="Market name (e.g., 'Warangal', 'Khammam')")
-    prediction_days: int = Field(1, ge=1, le=7, description="Number of days to predict (1-7)")
+    prediction_days: int = Field(1, ge=1, le=30, description="Number of days to predict (1-30)")
     variant: Optional[str] = Field(None, description="Specific variant (optional)")
 
 class SentimentInfo(BaseModel):
@@ -102,6 +102,8 @@ class PriceForecast(BaseModel):
     disease_adjustment: float
     sentiment_adjustment: float
     final_price: float
+    min_price: float
+    max_price: float
     weather_reason: str
     disease_reason: str
     sentiment_reason: str
@@ -656,7 +658,7 @@ class GRUPricePredictor:
         optimizer = torch.optim.Adam(model.parameters(), lr=lr)
         loss_fn = nn.MSELoss()
 
-        max_epochs = 100
+        max_epochs = 120
         patience = 5
         patience_counter = 0
         best_val_loss = float('inf')
@@ -714,8 +716,12 @@ class GRUPricePredictor:
 
     def predict_for_single_variant(self, variant_df, variant, market, commodity, prediction_days):
         PRICE_COLUMN = "max_price"
-        MA_WINDOW = 7
-        seq_len = 14
+
+        # Updated moving average window
+        MA_WINDOW = 14
+
+        # Updated sequence length
+        seq_len = 21
 
         raw_series_pd = variant_df[PRICE_COLUMN]
         ma_series_pd = raw_series_pd.rolling(window=MA_WINDOW).mean()
@@ -730,7 +736,17 @@ class GRUPricePredictor:
             for i in range(prediction_days):
                 pred_date = (datetime.now().date() + timedelta(days=i + 1)).strftime("%Y-%m-%d")
                 daily_price = last_price * (1 + np.random.uniform(-0.03, 0.03))
-                preds.append({"date": pred_date, "predicted_value": round(max(daily_price, 0), 2)})
+                
+                # Calculate min/max range (+/- 5%)
+                min_pred = daily_price * 0.95
+                max_pred = daily_price * 1.05
+                
+                preds.append({
+                    "date": pred_date, 
+                    "predicted_value": round(max(daily_price, 0), 2),
+                    "min_price": round(max(min_pred, 0), 2),
+                    "max_price": round(max(max_pred, 0), 2)
+                })
             return preds
 
         cached_model = self.model_cache.load_model(market, commodity, variant)
@@ -750,7 +766,17 @@ class GRUPricePredictor:
                 for i in range(prediction_days):
                     pred_date = (datetime.now().date() + timedelta(days=i + 1)).strftime("%Y-%m-%d")
                     daily_price = last_price * (1 + np.random.uniform(-0.03, 0.03))
-                    preds.append({"date": pred_date, "predicted_value": round(max(daily_price, 0), 2)})
+                    
+                    # Calculate min/max range (+/- 5%)
+                    min_pred = daily_price * 0.95
+                    max_pred = daily_price * 1.05
+                    
+                    preds.append({
+                        "date": pred_date, 
+                        "predicted_value": round(max(daily_price, 0), 2),
+                        "min_price": round(max(min_pred, 0), 2),
+                        "max_price": round(max(max_pred, 0), 2)
+                    })
                 return preds
 
             self.model_cache.save_model(model, market, commodity, variant)
@@ -769,14 +795,28 @@ class GRUPricePredictor:
                 pred_scaled_tensor = model(last_seq)
             pred_scaled = float(pred_scaled_tensor.cpu().numpy().reshape(-1)[0])
             pred = pred_scaled * std_val + mean_val
+
             pred = 0.6 * pred + 0.4 * last_price
-            min_allowed = last_price * 0.9
-            max_allowed = last_price * 1.1
+
+            # Updated clipping
+            min_allowed = last_price * 0.85
+            max_allowed = last_price * 1.15
             pred = float(np.clip(pred, min_allowed, max_allowed))
+
             pred = float(np.clip(pred, 500, 60000))
 
             pred_date = (datetime.now().date() + timedelta(days=day_i + 1)).strftime("%Y-%m-%d")
-            preds.append({"date": pred_date, "predicted_value": round(pred, 2)})
+            
+            # Calculate min/max range (+/- 5%)
+            min_pred = pred * 0.95
+            max_pred = pred * 1.05
+            
+            preds.append({
+                "date": pred_date, 
+                "predicted_value": round(pred, 2),
+                "min_price": round(min_pred, 2),
+                "max_price": round(max_pred, 2)
+            })
 
             new_point_scaled = (pred - mean_val) / std_val
             new_point_tensor = torch.tensor([[[new_point_scaled]]], dtype=torch.float32).to(self.device)
@@ -784,6 +824,7 @@ class GRUPricePredictor:
             last_price = pred
 
         return preds
+
 
     def estimate_disease_risk(self, commodity, weather_forecast):
         """Estimate disease risk based on weather conditions"""
@@ -1109,6 +1150,8 @@ async def predict_prices(request: PredictionRequest):
                     adjustments['sentiment_adj']
                 )
                 final_price = baseline_price * total_multiplier
+                min_price = p['min_price'] * total_multiplier
+                max_price = p['max_price'] * total_multiplier
                 
                 forecasts.append(PriceForecast(
                     date=p['date'],
@@ -1118,6 +1161,8 @@ async def predict_prices(request: PredictionRequest):
                     disease_adjustment=round(adjustments['disease_adj'] * 100, 2),
                     sentiment_adjustment=round(adjustments['sentiment_adj'] * 100, 2),
                     final_price=round(final_price, 2),
+                    min_price=round(min_price, 2),
+                    max_price=round(max_price, 2),
                     weather_reason=adjustments['weather_msg'],
                     disease_reason=adjustments['disease_msg'],
                     sentiment_reason=adjustments['sentiment_msg']
@@ -1126,6 +1171,8 @@ async def predict_prices(request: PredictionRequest):
                 # No weather data, use sentiment only
                 sentiment_adj = float(np.clip(sentiment_score * 0.10, -0.10, 0.10))
                 final_price = baseline_price * (1 + sentiment_adj)
+                min_price = p['min_price'] * (1 + sentiment_adj)
+                max_price = p['max_price'] * (1 + sentiment_adj)
                 
                 forecasts.append(PriceForecast(
                     date=p['date'],
@@ -1135,6 +1182,8 @@ async def predict_prices(request: PredictionRequest):
                     disease_adjustment=0.0,
                     sentiment_adjustment=round(sentiment_adj * 100, 2),
                     final_price=round(final_price, 2),
+                    min_price=round(min_price, 2),
+                    max_price=round(max_price, 2),
                     weather_reason="No weather data (API limit)",
                     disease_reason="No disease assessment available",
                     sentiment_reason=f"Sentiment score: {sentiment_score:.2f}"
