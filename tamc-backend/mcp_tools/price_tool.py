@@ -366,6 +366,37 @@ def standardize_naapanta_data(df, market_name):
     standardized_df = standardized_df.dropna(subset=['date'])
     return standardized_df
 
+def preprocess_old(df):
+    df = df.copy()
+
+    df["posted_on"] = pd.to_datetime(df["posted_on"], errors="coerce")
+
+    # STEP 1 — Extract correct mandi price
+    # Use rate_for_qui (price per quintal)
+    price = pd.to_numeric(df.get("rate_for_qui", 0), errors="coerce").fillna(0)
+
+    # If rate_for_qui missing -> fallback to bid_amount
+    fallback = pd.to_numeric(df.get("bid_amount", 0), errors="coerce").fillna(0)
+
+    price = price.where(price > 0, fallback)
+
+    # STEP 2 — Build clean dataframe
+    df_clean = pd.DataFrame({
+        "date": df["posted_on"],
+        "amc_name": df["amc_name"].astype(str).str.lower(),
+        "commodity_name": df["commodity_name"].astype(str).str.lower(),
+        "arrivals": df["aprox_quantity"].fillna(0),
+        "min_price": price,
+        "max_price": price,
+        "avg_price": price,
+        "district": df["district"].astype(str).str.lower() if "district" in df else None
+    })
+
+    # STEP 3 — DO NOT DROP ZERO PRICES
+    df_clean = df_clean.dropna(subset=["date", "commodity_name"])
+
+    return df_clean
+
 def get_or_update_db_data(cache_file=DB_CACHE_FILE):
     """Build or refresh the data cache (24-hour validity)"""
     if os.path.exists(cache_file):
@@ -389,24 +420,6 @@ def get_or_update_db_data(cache_file=DB_CACHE_FILE):
         print("📄 Connecting to the database...")
         df_old = pd.read_sql("SELECT * FROM lots_bkp", engine)
         print("✅ Database connection successful. 'lots_bkp' table loaded.")
-
-        def preprocess_old(df):
-            df = df.copy()
-            df["posted_on"] = pd.to_datetime(df["posted_on"], errors="coerce")
-            # Use bid_amount if rate_for_qui is empty, otherwise use rate_for_qui
-            price_data = df.get("bid_amount", 0).fillna(0)
-            rate_data = df.get("rate_for_qui", 0).fillna(0)
-            # Prefer rate_for_qui if available, otherwise use bid_amount
-            price_data = rate_data.where(rate_data > 0, price_data)
-            return pd.DataFrame({
-                "date": df["posted_on"], "amc_name": df["amc_name"],
-                "commodity_name": df["commodity_name"],
-                "arrivals": df.get("aprox_quantity", 0).fillna(0),
-                "min_price": price_data,
-                "max_price": price_data,
-                "avg_price": price_data,
-                "district": df.get("district", None)
-            })
 
         df_old_clean = preprocess_old(df_old)
         all_data_frames.append(df_old_clean)
@@ -474,7 +487,6 @@ def get_or_update_db_data(cache_file=DB_CACHE_FILE):
 
     merged_df = merged_df.dropna(subset=["date", "commodity_name", "amc_name"])
     merged_df['max_price'] = pd.to_numeric(merged_df['max_price'], errors='coerce')
-    merged_df = merged_df[merged_df['max_price'] > 0]
 
     merged_df = merged_df.sort_values("date")
     merged_df = merged_df.drop_duplicates(
@@ -629,14 +641,18 @@ class GRUPricePredictor:
         df = self.full_historical_data.copy()
         df['amc_name'] = df['amc_name'].astype(str).str.lower()
         df['commodity_name'] = df['commodity_name'].astype(str).str.lower()
-        market = market.lower().strip() if market else ""
-        commodity = commodity.lower().replace(" ", "").replace("-", "")
+
+        market_clean = market.lower().strip()
+        commodity_clean = commodity.lower().strip()
+
         df_filtered = df[
-            df['amc_name'].str.contains(market, na=False) &
-            df['commodity_name'].str.replace(" ", "").str.replace("-", "").str.contains(commodity, na=False)
+            df['amc_name'].str.contains(market_clean, na=False) &
+            df['commodity_name'].str.contains(commodity_clean, na=False)
         ]
+
         cutoff_date = pd.Timestamp.now() - pd.Timedelta(days=days)
         df_filtered = df_filtered[df_filtered['date'] >= cutoff_date]
+
         return df_filtered.sort_values("date").reset_index(drop=True)
 
     def prepare_sequences(self, series, seq_len=14):
@@ -717,12 +733,8 @@ class GRUPricePredictor:
         if historical_data.empty:
             return None, None
 
-        historical_data_original = historical_data[
-            (historical_data[PRICE_COLUMN] > 500) & (historical_data[PRICE_COLUMN] < 60000)
-        ].copy()
-
-        if historical_data_original.empty:
-            return None, None
+        # DO NOT FILTER OUT DB ROWS
+        historical_data_original = historical_data.copy()
 
         variants = historical_data_original['commodity_name'].unique()
 
@@ -1295,6 +1307,7 @@ async def predict_prices(request: PredictionRequest):
         variants=variant_forecasts,
         message=f"Successfully generated forecasts for {len(variants)} variant(s) with weather, disease & sentiment analysis."
     )
+
 
 @app.post("/api/ncdex", response_model=NCDEXResponse)
 async def get_ncdex_price(request: NCDEXRequest):

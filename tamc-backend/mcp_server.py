@@ -786,6 +786,10 @@ def validate_tool_results(tool_results: Dict, requested_params: Dict) -> Dict:
     🔧 FIX 2 & 4: Validate that tool results match the requested commodity/location.
     Returns validation result with error message if data doesn't match.
     """
+    # SKIP WEATHER validation completely
+    if "weather" in tool_results:
+        return {"valid": True}
+
     requested_commodity = requested_params.get("commodity", "").lower().strip()
     requested_location = (requested_params.get("district") or requested_params.get("amc_name", "")).lower().strip()
 
@@ -1035,20 +1039,26 @@ async def execute_advisory_tool(query: str, params: Dict, session_id: str) -> Di
         }
 
 async def execute_weather_tool(params: Dict) -> Dict:
-    """Execute weather forecast"""
+    """Execute weather forecast - uses arrival_tool's weather function"""
     try:
-        from mcp_tools.arrival_tool import fetch_multi_day_weather
+        # Import from the correct location based on project structure
+        import sys
+        import os
+        
+        # Add mcp_tools to path if not already there
+        mcp_tools_path = os.path.join(os.path.dirname(__file__), 'mcp_tools')
+        if os.path.exists(mcp_tools_path) and mcp_tools_path not in sys.path:
+            sys.path.insert(0, mcp_tools_path)
+        
+        # Try importing from mcp_tools first, fallback to direct import
+        try:
+            from mcp_tools.arrival_tool import fetch_multi_day_weather
+        except ImportError:
+            from arrival_tool import fetch_multi_day_weather
 
         location = params.get("district") or params.get("amc_name") or params.get("location", "")
         days = params.get("days", 7)
-
-        if not location:
-            return {
-                "success": False,
-                "error": "Location is required for weather forecast",
-                "tool": "weather"
-            }
-
+        
         # Fetch weather data
         weather_data = fetch_multi_day_weather(location, days)
 
@@ -1301,6 +1311,18 @@ async def ai_powered_chat(request: ChatRequest):
             context.extracted_params["amc_name"] = district_value
 
         intent = analysis.get("intent", "")
+        # 🔧 FIX: Normalize AI typos in intent
+        intent_corrections = {
+            "weatheer_advice": "weather_advice",
+            "wheather_advice": "weather_advice",
+            "waether_advice": "weather_advice",
+            "wether_advice": "weather_advice",
+        }
+
+        if intent in intent_corrections:
+            print(f"🔧 Corrected misspelled intent: {intent} → {intent_corrections[intent]}")
+            intent = intent_corrections[intent]
+
         tools_needed = analysis.get("tools_needed", [])
 
         # 🔧 SMART: If query is ONLY a variety name AND AI says general_question BUT we have active context
@@ -1517,9 +1539,15 @@ Keep responses brief (2-3 sentences)."""
             commodity = context.extracted_params.get("commodity", "").title()
             location = (context.extracted_params.get("district") or context.extracted_params.get("amc_name", "")).title()
             is_aggregate = context.extracted_params.get("aggregate_mode", False)
-
+            
             # Generate a helpful error message based on query type
-            if is_aggregate and location:
+            if intent == "weather_advice":
+                # Weather query - doesn't need commodity
+                if location:
+                    error_msg = f"Sorry, I couldn't retrieve weather data for {location}. This could mean:\n• The weather service is temporarily unavailable\n• There might be a connection issue\n• Try again in a moment or check the location name"
+                else:
+                    error_msg = "Please specify a location for the weather forecast (e.g., 'weather in Khammam', 'weather forecast for Warangal')."
+            elif is_aggregate and location:
                 # Aggregate query (all commodities) with location - different error message
                 error_msg = f"Sorry, I couldn't retrieve aggregate market data for {location}. This could mean:\n• The server is experiencing high load (please try again)\n• There might be a temporary connection issue\n• {location} market data might be temporarily unavailable"
             elif commodity and location:
@@ -1620,52 +1648,37 @@ Keep responses brief (2-3 sentences)."""
             summary = analysis.get("summary", "Forecast data available.")
             ai_response = f"📊 {summary}"
         elif intent == "weather_advice" and "weather" in tool_results:
-            # Weather forecast response
             weather_result = tool_results["weather"]
+
             if weather_result.get("success"):
-                weather_data = weather_result.get("data", {})
-                location = weather_data.get("location", context.extracted_params.get("district", "the area"))
+                raw = weather_result.get("data", {})
 
-                response_parts = [f"🌤️ Weather forecast for {location}:"]
+                forecast_days = raw.get("forecast_days", [])
+                location = raw.get("location", context.extracted_params.get("district", "the area"))
 
-                # Format weather forecast
-                forecast_days = weather_data.get("forecast_days", [])
+                response_parts = [f"🌤️ Weather forecast for {location}:\n"]
+
                 if forecast_days:
-                    response_parts.append(f"\nShowing {len(forecast_days)}-day forecast:\n")
+                    for day in forecast_days[:7]:
+                        date = day.get("date", "")
+                        info = day.get("day", {})
+                        condition_raw = info.get("condition", {})
 
-                    # Calculate averages
-                    total_temp = 0
-                    total_rainfall = 0
-
-                    for day_data in forecast_days[:7]:  # Show up to 7 days
-                        day_info = day_data.get("day", {})
-                        date = day_data.get("date", "")
-
-                        # Extract condition text from dict
-                        condition_data = day_info.get("condition", {})
-                        if isinstance(condition_data, dict):
-                            condition = condition_data.get("text", "N/A")
+                        if isinstance(condition_raw, dict):
+                            condition = condition_raw.get("text", "N/A")
                         else:
-                            condition = str(condition_data)
+                            condition = str(condition_raw)
 
-                        temp = day_info.get("avgtemp_c", 0)
-                        rain = day_info.get("totalprecip_mm", 0)
-
-                        total_temp += temp
-                        total_rainfall += rain
+                        temp = info.get("avgtemp_c", "--")
+                        rain = info.get("totalprecip_mm", "--")
 
                         response_parts.append(f"📅 {date}: {condition}, {temp}°C, Rain: {rain}mm")
 
-                    # Add summary with calculated averages
-                    avg_temp = round(total_temp / len(forecast_days), 1) if forecast_days else 0
-                    response_parts.append(f"\n📊 Average: {avg_temp}°C, Total rainfall: {total_rainfall}mm")
-                else:
-                    response_parts.append("\nWeather data available.")
-
                 ai_response = "\n".join(response_parts)
+
             else:
-                error = weather_result.get("error", "Unable to fetch weather data")
-                ai_response = f"⚠️ {error}. Please try again or check the location name."
+                ai_response = f"⚠️ {weather_result.get('error', 'Unable to fetch weather data')}."
+
         elif intent in ["advisory_request", "multi_tool"] or "advisory" in tool_results:
             # For advisory queries, show full insights with recommendations
             if intelligence_result and intelligence_result.get("success"):

@@ -611,15 +611,24 @@ async def process_query_async(query: str, context: ConversationContext) -> Dict[
 
     if classification.get("include_weather"):
         location = extracted.get("district") or extracted.get("amc_name") or "Hyderabad"
-
-        # Use enhanced WeatherHelper advisory
         weather = enhanced_weather_advisory(
             location=location,
             commodity=extracted.get("commodity"),
             days=extracted.get("days", 3)
         )
+        
+        # ✅ Wrap weather in consistent structure so MCP understands it
+        results["weather"] = {
+            "summary": (
+                weather.get("insights", [{}])[0].get("summary")
+                if weather.get("insights")
+                else weather.get("summary", "Weather data unavailable")
+            ),
+            "insights": weather.get("insights", []),
+            "overall_recommendation": weather.get("overall_recommendation", "No weather insights available"),
+            "raw": weather
+        }
 
-        results["weather"] = weather
         if weather and weather.get("insights"):
             modules_used.append("Weather")
 

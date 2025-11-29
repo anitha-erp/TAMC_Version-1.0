@@ -1632,51 +1632,56 @@ async def enhanced_prediction_with_telangana(params: PredictionRequest) -> Dict:
         # Optimization: If too many commodities for an aggregate query, group them first
         unique_commodities = df['commodity_name'].nunique()
         if not commodity and unique_commodities > 10:
-            logging.info(f"⚡ High commodity count ({unique_commodities}) detected. Switching to Aggregate Mode.")
-            
-            # Aggregate by date and AMC
-            # We sum the 'y' value (which is already the correct metric)
+            logging.info(f"⚡ High commodity count ({unique_commodities}) detected. Switching to Aggregate Mode (BUT keeping commodity-wise data).")
+    
+            # (A) Build aggregated TOTAL data
             df_agg = df.groupby(['date', 'amc_name'])['y'].sum().reset_index()
-            # 🔥 NEW: Commodity Breakdown in Aggregate Mode (Option A)
-            logging.info("⚡ Aggregate Mode Enabled → Building Commodity Breakdown")
-            
-            # Recalculate breakdown using original df BEFORE aggregation
-            original_df = pd.DataFrame(results)
+            df_agg['commodity_name'] = 'All Commodities'
 
-            # Normalize names
+            # (B) Keep original df for commodity-wise forecasts
+            df_original = df.copy()
+
+            # Store aggregate separately (DO NOT replace df)
+            df_total = df_agg
+
+            # Build commodity breakdown
+            logging.info("⚡ Aggregate Mode Enabled → Building Commodity Breakdown")
+
+            original_df = pd.DataFrame(results)
             original_df['date'] = pd.to_datetime(original_df['date'])
             original_df = original_df.rename(columns={'metric_value': 'y'})
 
             breakdown = []
-
             for comm, grp in original_df.groupby("commodity_name"):
-                # Sum last N days
                 total_val = grp['y'].sum()
                 breakdown.append({
                     "commodity": comm,
                     "total_predicted_value": float(round(total_val, 2))
                 })
 
-            # Sort descending
             breakdown.sort(key=lambda x: x['total_predicted_value'], reverse=True)
-
-            # Save to attach to final response
             commodity_breakdown = breakdown
 
-            df_agg['commodity_name'] = 'All Commodities'
-            
-            # Replace original df with aggregated df
-            df = df_agg
+        else:
+            # Normal case → no aggregation
+            df_original = df.copy()
+            df_total = None
+
 
         # Prepare parallel processing
         forecast_engine = ParallelForecastEngine(max_workers=8)
         
         forecast_args = []
-        for (amc, comm), df_subset in df.groupby(['amc_name', 'commodity_name']):
-            forecast_args.append((
-                amc, comm, df_subset, metric, forecast_days, weather_info, district
-            ))
         
+        # (1) Commodity-wise predictions
+        for (amc, comm), df_subset in df_original.groupby(['amc_name', 'commodity_name']):
+            forecast_args.append((amc, comm, df_subset, metric, forecast_days, weather_info, district))
+
+        # (2) Add TOTAL prediction (if aggregate mode used)
+        if df_total is not None:
+            for amc, df_amc in df_total.groupby('amc_name'):
+                forecast_args.append((amc, "All Commodities", df_amc, metric, forecast_days, weather_info, district))
+
         # Process all forecasts in parallel
         logging.info(f"🚀 Processing {len(forecast_args)} forecasts in parallel...")
         results = await forecast_engine.process_all_forecasts(forecast_args)

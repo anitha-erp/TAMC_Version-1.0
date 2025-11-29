@@ -63,7 +63,7 @@ class WeatherHelper:
                 url = f"{self.base_url}/forecast.json"
                 params = {
                     "key": self.api_key,
-                    "q": location,
+                    "q": f"{location}, India",
                     "days": min(days_diff + 1, 14),
                     "aqi": "no"
                 }
@@ -72,7 +72,7 @@ class WeatherHelper:
                 url = f"{self.base_url}/history.json"
                 params = {
                     "key": self.api_key,
-                    "q": location,
+                    "q": f"{location}, India",
                     "dt": date
                 }
             elif days_diff == 0:
@@ -80,7 +80,7 @@ class WeatherHelper:
                 url = f"{self.base_url}/forecast.json"
                 params = {
                     "key": self.api_key,
-                    "q": location,
+                    "q": f"{location}, India",
                     "days": 1,
                     "aqi": "no"
                 }
