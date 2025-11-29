@@ -21,6 +21,11 @@ from pydantic import BaseModel
 import uvicorn
 import requests
 
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from normalizer import clean_amc, clean_district, clean_commodity
 from weather_helper import WeatherHelper
 
 # OpenAI client (keeps same import style as original)
@@ -206,14 +211,15 @@ Return ONLY a JSON object with these fields (use null if not mentioned):
 
         extracted = json.loads(result_text)
         final_params = {
-            "district": extracted.get("district") or context.district,
-            "amc_name": extracted.get("amc_name") or context.amc_name,
-            "commodity": extracted.get("commodity") or context.commodity,
+            "district": clean_district(extracted.get("district") or context.district),
+            "amc_name": clean_amc(extracted.get("amc_name") or context.amc_name),
+            "commodity": clean_commodity(extracted.get("commodity") or context.commodity),
             "state": extracted.get("state") or context.state,
             "days": extracted.get("days", 7),
             "needs_clarification": extracted.get("needs_clarification", False),
             "missing_params": extracted.get("missing_params", [])
         }
+
         return final_params
     except Exception as e:
         logger.error(f"Parameter extraction error: {e}")

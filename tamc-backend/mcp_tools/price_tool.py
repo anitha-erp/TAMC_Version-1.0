@@ -27,6 +27,12 @@ import re
 from textblob import TextBlob
 from dotenv import load_dotenv
 
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from normalizer import clean_amc, clean_district, clean_commodity
+
 # Ensure project root is in Python path
 import sys, os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -62,11 +68,11 @@ os.environ["PYTHONHASHSEED"] = "42"
 warnings.filterwarnings("ignore")
 
 # Get database credentials from environment variables
-DB_USER = os.getenv("DB_USER", "root")
+DB_USER = os.getenv("DB_USER", "")
 DB_PASSWORD = os.getenv("DB_PASSWORD", "")
-DB_HOST = os.getenv("DB_HOST", "localhost")
-DB_PORT = os.getenv("DB_PORT", "3306")
-DB_NAME = os.getenv("DB_NAME", "tamc_production")
+DB_HOST = os.getenv("DB_HOST", "")
+DB_PORT = os.getenv("DB_PORT", "")
+DB_NAME = os.getenv("DB_NAME", "")
 
 password = quote_plus(DB_PASSWORD)
 engine = create_engine(f"mysql+pymysql://{DB_USER}:{password}@{DB_HOST}:{DB_PORT}/{DB_NAME}")
@@ -418,8 +424,8 @@ def get_or_update_db_data(cache_file=DB_CACHE_FILE):
     # Load from database
     try:
         print("📄 Connecting to the database...")
-        df_old = pd.read_sql("SELECT * FROM lots_bkp", engine)
-        print("✅ Database connection successful. 'lots_bkp' table loaded.")
+        df_old = pd.read_sql("SELECT * FROM lots_new", engine)
+        print("✅ Database connection successful. 'lots_new' table loaded.")
 
         df_old_clean = preprocess_old(df_old)
         all_data_frames.append(df_old_clean)
@@ -1117,8 +1123,8 @@ async def predict_prices(request: PredictionRequest):
     if predictor is None:
         raise HTTPException(status_code=503, detail="Predictor not initialized")
     
-    commodity = request.commodity
-    market = request.market
+    market = clean_amc(request.market)
+    commodity = clean_commodity(request.commodity)
     prediction_days = request.prediction_days
     specific_variant = request.variant
     

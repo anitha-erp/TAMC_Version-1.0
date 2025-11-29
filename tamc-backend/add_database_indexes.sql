@@ -9,35 +9,35 @@
 USE tamc_production;
 
 -- Check existing indexes first
-SHOW INDEXES FROM lots_bkp;
+SHOW INDEXES FROM lots_new;
 
 -- ================================================================
 -- INDEX 1: Commodity + Date (Most Common Query)
 -- Used when fetching historical data for predictions
 -- ================================================================
 CREATE INDEX IF NOT EXISTS idx_commodity_date
-ON lots_bkp(commodity, date);
+ON lots_new(commodity, date);
 
 -- ================================================================
 -- INDEX 2: AMC + Commodity + Date (Location-specific queries)
 -- Used when user asks about specific market location
 -- ================================================================
 CREATE INDEX IF NOT EXISTS idx_amc_commodity_date
-ON lots_bkp(amc_name, commodity, date);
+ON lots_new(amc_name, commodity, date);
 
 -- ================================================================
 -- INDEX 3: Date only (For aggregate queries)
 -- Used when fetching overall market trends
 -- ================================================================
 CREATE INDEX IF NOT EXISTS idx_date
-ON lots_bkp(date);
+ON lots_new(date);
 
 -- ================================================================
 -- INDEX 4: District + Commodity (District-level analysis)
 -- Used for district-wide predictions
 -- ================================================================
 CREATE INDEX IF NOT EXISTS idx_district_commodity
-ON lots_bkp(district, commodity, date);
+ON lots_new(district, commodity, date);
 
 -- ================================================================
 -- OPTIONAL: Index for new_lots table (if exists)
@@ -51,7 +51,7 @@ ON new_lots(amc_name, commodity, date);
 -- ================================================================
 -- Verify indexes were created
 -- ================================================================
-SHOW INDEXES FROM lots_bkp WHERE Key_name LIKE 'idx_%';
+SHOW INDEXES FROM lots_new WHERE Key_name LIKE 'idx_%';
 
 -- ================================================================
 -- EXPECTED RESULTS:
@@ -65,5 +65,5 @@ SELECT
     COUNT(*) as TotalIndexes
 FROM information_schema.statistics
 WHERE table_schema = 'tamc_production'
-AND table_name = 'lots_bkp'
+AND table_name = 'lots_new'
 AND index_name LIKE 'idx_%';

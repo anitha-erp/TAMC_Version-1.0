@@ -38,7 +38,14 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 
 # Import cultivation module
-import os, sys
+
+
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+
+from normalizer import clean_amc, clean_district, clean_commodity, clean_mandal
 
 # Ensure project root (tamc-backend) is on sys.path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -382,7 +389,7 @@ def _analyze_seasonal_patterns(commodity: str, district: str = None) -> Dict[int
                 MONTH(created_at) as month,
                 COUNT(*) as arrival_count,
                 SUM(no_of_bags) as total_bags
-            FROM lots_bkp
+            FROM lots_new
             WHERE created_at >= DATE_SUB(CURDATE(), INTERVAL 730 DAY)
               AND {where_clause}
             GROUP BY MONTH(created_at)
@@ -597,11 +604,11 @@ class ChatResponse(BaseModel):
 
 # ========== Database Configuration ==========
 DB_CONFIG = {
-    "host": os.getenv("DB_HOST", "localhost"),
+    "host": os.getenv("DB_HOST", ""),
     "port": int(os.getenv("DB_PORT", "3306")),
-    "user": os.getenv("DB_USER", "root"),
+    "user": os.getenv("DB_USER", ""),
     "password": os.getenv("DB_PASSWORD", ""),
-    "database": os.getenv("DB_NAME", "tamc_production"),
+    "database": os.getenv("DB_NAME", ""),
     "cursorclass": pymysql.cursors.DictCursor,
 }
 
@@ -967,7 +974,7 @@ class ParameterExtractor:
                 with conn.cursor() as cursor:
                     exact_query = """
                         SELECT DISTINCT district, amc_name
-                        FROM lots_bkp
+                        FROM lots_new
                         WHERE (district IS NOT NULL AND LOWER(district) = LOWER(%s))
                            OR (amc_name IS NOT NULL AND LOWER(amc_name) = LOWER(%s))
                         LIMIT 1
@@ -987,7 +994,7 @@ class ParameterExtractor:
                 with conn.cursor() as cursor:
                     query = """
                         SELECT DISTINCT district, amc_name
-                        FROM lots_bkp
+                        FROM lots_new
                         WHERE (district IS NOT NULL AND LOWER(district) LIKE %s)
                            OR (amc_name IS NOT NULL AND LOWER(amc_name) LIKE %s)
                         LIMIT 5
@@ -1081,7 +1088,7 @@ class ParameterExtractor:
         conn = get_connection()
         try:
             with conn.cursor() as cursor:
-                cursor.execute("SELECT DISTINCT commodity_name FROM lots_bkp WHERE commodity_name IS NOT NULL LIMIT 200;")
+                cursor.execute("SELECT DISTINCT commodity_name FROM lots_new WHERE commodity_name IS NOT NULL LIMIT 200;")
                 results = cursor.fetchall()
                 
                 if not results:
@@ -1117,7 +1124,7 @@ class ParameterExtractor:
                     cursor.execute(
                         """
                         SELECT DISTINCT commodity_name
-                        FROM lots_bkp
+                        FROM lots_new
                         WHERE commodity_name IS NOT NULL
                           AND LOWER(commodity_name) LIKE %s
                         ORDER BY commodity_name
@@ -1494,6 +1501,12 @@ async def enhanced_prediction_with_telangana(params: PredictionRequest) -> Dict:
     try:
         start_time = datetime.now()
         data = params.dict()
+        
+        # 🔥 Cleaned inputs
+        data["district"] = clean_district(data.get("district"))
+        data["amc_name"] = clean_amc(data.get("amc_name"))
+        data["commodity"] = clean_commodity(data.get("commodity"))
+
         cache_key = make_cache_key(data)
         
         # Check prediction cache
@@ -1558,11 +1571,11 @@ async def enhanced_prediction_with_telangana(params: PredictionRequest) -> Dict:
                 SUM(CASE WHEN '{metric}' = 'total_bags' THEN no_of_bags
                          WHEN '{metric}' = 'number_of_arrivals' THEN 1
                          WHEN '{metric}' = 'number_of_lots' THEN 1
-                        WHEN '{metric}' = 'total_weight' THEN netWeight / 100
+                         WHEN '{metric}' = 'total_weight' THEN aprox_quantity
                          WHEN '{metric}' = 'number_of_farmers' THEN 1
-                         WHEN '{metric}' = 'total_revenue' THEN net_amount
+                         WHEN '{metric}' = 'total_revenue' THEN aprox_quantity * rate_for_qui
                          ELSE 0 END) AS metric_value
-            FROM lots_bkp
+            FROM lots_new
             WHERE created_at >= DATE_SUB(CURDATE(), INTERVAL 180 DAY)
             {where_clause}
             GROUP BY date, amc_name, commodity_name
@@ -1595,11 +1608,11 @@ async def enhanced_prediction_with_telangana(params: PredictionRequest) -> Dict:
                     SUM(CASE WHEN '{metric}' = 'total_bags' THEN no_of_bags
                              WHEN '{metric}' = 'number_of_arrivals' THEN 1
                              WHEN '{metric}' = 'number_of_lots' THEN 1
-                            WHEN '{metric}' = 'total_weight' THEN netWeight / 100
+                             WHEN '{metric}' = 'total_weight' THEN aprox_quantity
                              WHEN '{metric}' = 'number_of_farmers' THEN 1
-                             WHEN '{metric}' = 'total_revenue' THEN net_amount
+                             WHEN '{metric}' = 'total_revenue' THEN aprox_quantity * rate_for_qui
                              ELSE 0 END) AS metric_value
-                FROM lots_bkp
+                FROM lots_new
                 WHERE created_at >= DATE_SUB(CURDATE(), INTERVAL 180 DAY)
                   AND (LOWER(district) LIKE LOWER(%s) OR LOWER(amc_name) LIKE LOWER(%s))
                 GROUP BY date, amc_name, commodity_name
@@ -1619,7 +1632,6 @@ async def enhanced_prediction_with_telangana(params: PredictionRequest) -> Dict:
 
         if not results:
             return {"error": f"No historical data found for '{district or amc_name}'. Please check the spelling."}
-
         # Convert to DataFrame
         df = pd.DataFrame(results)
         df['date'] = pd.to_datetime(df['date'])
@@ -1828,7 +1840,7 @@ async def get_amcs():
         conn = get_connection()
         try:
             with conn.cursor() as cursor:
-                cursor.execute("SELECT DISTINCT amc_name FROM lots_bkp WHERE amc_name IS NOT NULL ORDER BY amc_name;")
+                cursor.execute("SELECT DISTINCT amc_name FROM lots_new WHERE amc_name IS NOT NULL ORDER BY amc_name;")
                 results = cursor.fetchall()
                 amc_names = [row['amc_name'] for row in results if row.get('amc_name')]
         finally:
@@ -2120,14 +2132,14 @@ async def debug_locations():
             with conn.cursor() as cursor:
                 cursor.execute("""
                     SELECT DISTINCT district, COUNT(*) as record_count 
-                    FROM lots_bkp WHERE district IS NOT NULL 
+                    FROM lots_new WHERE district IS NOT NULL 
                     GROUP BY district ORDER BY record_count DESC LIMIT 20
                 """)
                 district_results = cursor.fetchall()
                 
                 cursor.execute("""
                     SELECT DISTINCT amc_name, COUNT(*) as record_count 
-                    FROM lots_bkp WHERE amc_name IS NOT NULL 
+                    FROM lots_new WHERE amc_name IS NOT NULL 
                     GROUP BY amc_name ORDER BY record_count DESC LIMIT 20
                 """)
                 amc_results = cursor.fetchall()

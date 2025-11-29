@@ -1,0 +1,3212 @@
+{
+    "unique_commodities": [
+        {
+            "commodity_name": null
+        },
+        {
+            "commodity_name": "Bitter Gourd (COVER)"
+        },
+        {
+            "commodity_name": "LOBHA"
+        },
+        {
+            "commodity_name": "Sweet Corn"
+        },
+        {
+            "commodity_name": "Bottle Ground (COVER)"
+        },
+        {
+            "commodity_name": "Donda"
+        },
+        {
+            "commodity_name": "Ribbed Ground (COVER)"
+        },
+        {
+            "commodity_name": "Cluster Bean"
+        },
+        {
+            "commodity_name": "LADY FINGER"
+        },
+        {
+            "commodity_name": "Pumpkin (R)"
+        },
+        {
+            "commodity_name": "Field Bean (Non Seed)"
+        },
+        {
+            "commodity_name": "Teisel Gourd (Local)"
+        },
+        {
+            "commodity_name": "Brinjal (COVER)"
+        },
+        {
+            "commodity_name": "FIELD BEANS"
+        },
+        {
+            "commodity_name": "Tomato"
+        },
+        {
+            "commodity_name": "Lady Finger (Local)"
+        },
+        {
+            "commodity_name": "Keera (Local)"
+        },
+        {
+            "commodity_name": "Green Onion"
+        },
+        {
+            "commodity_name": "Ground Nut (Raw)"
+        },
+        {
+            "commodity_name": "GREEN CHILLY"
+        },
+        {
+            "commodity_name": "Brinjal (Gulabi, Round)"
+        },
+        {
+            "commodity_name": "Potato (Local)"
+        },
+        {
+            "commodity_name": "Cabbage (Local)"
+        },
+        {
+            "commodity_name": "Coriander"
+        },
+        {
+            "commodity_name": "Green Chillies (Common)"
+        },
+        {
+            "commodity_name": "CUCUMBER"
+        },
+        {
+            "commodity_name": "Sweet  Potato"
+        },
+        {
+            "commodity_name": "Snake Guard"
+        },
+        {
+            "commodity_name": "Bitter Gourd"
+        },
+        {
+            "commodity_name": "Cauliflower"
+        },
+        {
+            "commodity_name": "Ribbed Ground (Local)"
+        },
+        {
+            "commodity_name": "Green Mango (Raw)"
+        },
+        {
+            "commodity_name": "Beet Root"
+        },
+        {
+            "commodity_name": "Drum Stick"
+        },
+        {
+            "commodity_name": "French Bean (L)"
+        },
+        {
+            "commodity_name": "Donda (Pencil)"
+        },
+        {
+            "commodity_name": "TAMARIND"
+        },
+        {
+            "commodity_name": "Capsicum"
+        },
+        {
+            "commodity_name": "COTTON-BAGS"
+        },
+        {
+            "commodity_name": "CHILLI-TEJA"
+        },
+        {
+            "commodity_name": "CHILLI-TAALU"
+        },
+        {
+            "commodity_name": "CHILLI-WONDER HOT"
+        },
+        {
+            "commodity_name": "CHILLI-MOKSHA COLD"
+        },
+        {
+            "commodity_name": "CHILLI-TALU"
+        },
+        {
+            "commodity_name": "CHILLI-VENKATASAI COLD"
+        },
+        {
+            "commodity_name": "CHILLI TEJA"
+        },
+        {
+            "commodity_name": "CHILLI-MALLISHWARA COLD"
+        },
+        {
+            "commodity_name": "CHILLI DEEPIKA"
+        },
+        {
+            "commodity_name": "CHILLI-1048"
+        },
+        {
+            "commodity_name": "CHILLI-LAXMI SRINIVASA COLD"
+        },
+        {
+            "commodity_name": "CHILLI-VIJAYABHANU COLD"
+        },
+        {
+            "commodity_name": "CHILLI-NEW KAKATIYA COLD"
+        },
+        {
+            "commodity_name": "CHILLI-US341"
+        },
+        {
+            "commodity_name": "CHILLI-VENKATAGIRI COLD"
+        },
+        {
+            "commodity_name": "CHILLI-AMBICA COLD"
+        },
+        {
+            "commodity_name": "CHILLI-AKSHAYA COLD"
+        },
+        {
+            "commodity_name": "CHILLI-LAVU"
+        },
+        {
+            "commodity_name": "CHILLI-VENNELA COLD"
+        },
+        {
+            "commodity_name": "CHILLI-SRI KARTHIK COLD"
+        },
+        {
+            "commodity_name": "CHILLI-GANGA COLD"
+        },
+        {
+            "commodity_name": "CHILLI-CHANDRAKIRAN COLD"
+        },
+        {
+            "commodity_name": "CHILLI-KALPALATHA COLD"
+        },
+        {
+            "commodity_name": "CHILLI-CHAMUNDI COLD"
+        },
+        {
+            "commodity_name": "CHILLI-THIRUMALA COLD"
+        },
+        {
+            "commodity_name": "CHILLI-MAHA GANAPATHI COLD"
+        },
+        {
+            "commodity_name": "CHILLI-SUPRIYA COLD"
+        },
+        {
+            "commodity_name": "CHILLI-SRI TULASIMATHA COLD"
+        },
+        {
+            "commodity_name": "CHILLI D.D"
+        },
+        {
+            "commodity_name": "CHILLI-KALYANI COLD"
+        },
+        {
+            "commodity_name": "GROUNDNUT-DRY"
+        },
+        {
+            "commodity_name": "CHILLI-HYNDAVI COLD"
+        },
+        {
+            "commodity_name": "GROUNDNUT-WET"
+        },
+        {
+            "commodity_name": "CHILLI DESHI"
+        },
+        {
+            "commodity_name": "CHILLI-OM SAI COLD"
+        },
+        {
+            "commodity_name": "CHILLI-VIJETHA COLD"
+        },
+        {
+            "commodity_name": "Lemon"
+        },
+        {
+            "commodity_name": "CHILLI-VAGDEVI COLD"
+        },
+        {
+            "commodity_name": "CHILLI SINGALPATTI"
+        },
+        {
+            "commodity_name": "CHILLI"
+        },
+        {
+            "commodity_name": "CHILLI-VEERABHADRA COLD"
+        },
+        {
+            "commodity_name": "CHILLI-BANJARA 856"
+        },
+        {
+            "commodity_name": "CHILLI-GANGAPUTHRA COLD"
+        },
+        {
+            "commodity_name": "CHILLI-ADITYA COLD"
+        },
+        {
+            "commodity_name": "CHILLI-SRI DEVI COLD"
+        },
+        {
+            "commodity_name": "CHILLI-LAXMI SAI COLD"
+        },
+        {
+            "commodity_name": "CHILLI-WARANGAL HI-TECH COLD"
+        },
+        {
+            "commodity_name": "French Bean"
+        },
+        {
+            "commodity_name": "Rice"
+        },
+        {
+            "commodity_name": "Yam"
+        },
+        {
+            "commodity_name": "Field Bean"
+        },
+        {
+            "commodity_name": "TURMERIC FINGER"
+        },
+        {
+            "commodity_name": "Onion"
+        },
+        {
+            "commodity_name": "Green Tamarind"
+        },
+        {
+            "commodity_name": "Green Chilies"
+        },
+        {
+            "commodity_name": "Gajar"
+        },
+        {
+            "commodity_name": "Beet/ Root"
+        },
+        {
+            "commodity_name": "Ribbed Gourd"
+        },
+        {
+            "commodity_name": "Teasel Gourd"
+        },
+        {
+            "commodity_name": "Raddish"
+        },
+        {
+            "commodity_name": "uuu"
+        },
+        {
+            "commodity_name": "vamshi"
+        },
+        {
+            "commodity_name": "Bottle Ground"
+        }
+    ],
+    "unique_amcs": [
+        {
+            "amc_name": null,
+            "district": null,
+            "mandal": "SHIMLA"
+        },
+        {
+            "amc_name": null,
+            "district": "JANGAON",
+            "mandal": "BACHANNAPET"
+        },
+        {
+            "amc_name": null,
+            "district": null,
+            "mandal": null
+        },
+        {
+            "amc_name": null,
+            "district": "JOGULAMBA GADWAL",
+            "mandal": "ALAMPUR"
+        },
+        {
+            "amc_name": null,
+            "district": "JANGAON",
+            "mandal": "JANGOAN"
+        },
+        {
+            "amc_name": null,
+            "district": "Kurnool",
+            "mandal": "Kurnool"
+        },
+        {
+            "amc_name": null,
+            "district": "Kurnul",
+            "mandal": "Kurnul"
+        },
+        {
+            "amc_name": null,
+            "district": null,
+            "mandal": "BACHANNAPET"
+        },
+        {
+            "amc_name": null,
+            "district": "JAYASHANKAR BHUPALPALLY",
+            "mandal": null
+        },
+        {
+            "amc_name": null,
+            "district": "SIDDIPET",
+            "mandal": "MULUG-SIDDIPET"
+        },
+        {
+            "amc_name": null,
+            "district": "JAGITYAL",
+            "mandal": "IBRAHIMPATNAM"
+        },
+        {
+            "amc_name": null,
+            "district": "JANGAON",
+            "mandal": "GHANPUR (STN)"
+        },
+        {
+            "amc_name": null,
+            "district": null,
+            "mandal": "MULUG-SIDDIPET"
+        },
+        {
+            "amc_name": null,
+            "district": "MEDCHAL-MALKAJGIRI",
+            "mandal": "SHAMIRPET"
+        },
+        {
+            "amc_name": null,
+            "district": "SIDDIPET",
+            "mandal": "WARGAL"
+        },
+        {
+            "amc_name": null,
+            "district": "SIDDIPET",
+            "mandal": "DOULTABAD"
+        },
+        {
+            "amc_name": null,
+            "district": "SIDDIPET",
+            "mandal": "JAGDEVPUR"
+        },
+        {
+            "amc_name": null,
+            "district": "SIDDIPET",
+            "mandal": "GAJWEL"
+        },
+        {
+            "amc_name": null,
+            "district": "SIDDIPET",
+            "mandal": "RAIPOLE"
+        },
+        {
+            "amc_name": null,
+            "district": "SIDDIPET",
+            "mandal": "MARKOOK"
+        },
+        {
+            "amc_name": null,
+            "district": "JAYASHANKAR BHUPALPALLY",
+            "mandal": "GOVINDARAOPET"
+        },
+        {
+            "amc_name": null,
+            "district": "HYDERABAD",
+            "mandal": "AMEERPET"
+        },
+        {
+            "amc_name": null,
+            "district": "HYDERABAD",
+            "mandal": "AMBERPET"
+        },
+        {
+            "amc_name": null,
+            "district": "HYDERABAD",
+            "mandal": "CHARMINAR"
+        },
+        {
+            "amc_name": null,
+            "district": "JAGITYAL",
+            "mandal": null
+        },
+        {
+            "amc_name": null,
+            "district": "HYDERABAD",
+            "mandal": "GOLCONDA"
+        },
+        {
+            "amc_name": null,
+            "district": null,
+            "mandal": "AMEERPET"
+        },
+        {
+            "amc_name": null,
+            "district": "JANGAON",
+            "mandal": null
+        },
+        {
+            "amc_name": null,
+            "district": "MEDCHAL-MALKAJGIRI",
+            "mandal": "MEDCHAL"
+        },
+        {
+            "amc_name": null,
+            "district": null,
+            "mandal": "WARGAL"
+        },
+        {
+            "amc_name": null,
+            "district": "SIDDIPET",
+            "mandal": "KOMURAVELLI"
+        },
+        {
+            "amc_name": null,
+            "district": "MEDAK",
+            "mandal": "CHEGUNTA"
+        },
+        {
+            "amc_name": null,
+            "district": "RANGAREDDY",
+            "mandal": "BALAPUR"
+        },
+        {
+            "amc_name": null,
+            "district": "SIDDIPET",
+            "mandal": "KONDAPAK"
+        },
+        {
+            "amc_name": null,
+            "district": "KHAMMAM",
+            "mandal": "SATHUPALLI"
+        },
+        {
+            "amc_name": null,
+            "district": "ADILABAD",
+            "mandal": "ADILABAD (URBAN)"
+        },
+        {
+            "amc_name": null,
+            "district": "SIDDIPET",
+            "mandal": "THOGUTA"
+        },
+        {
+            "amc_name": null,
+            "district": "JANGAON",
+            "mandal": "GUNDALA"
+        },
+        {
+            "amc_name": null,
+            "district": null,
+            "mandal": "GAJWEL"
+        },
+        {
+            "amc_name": null,
+            "district": "MEDAK",
+            "mandal": "KOWDIPALLY"
+        },
+        {
+            "amc_name": null,
+            "district": "JAGITYAL",
+            "mandal": "GOLLAPALLI"
+        },
+        {
+            "amc_name": null,
+            "district": null,
+            "mandal": "SHAMIRPET"
+        },
+        {
+            "amc_name": null,
+            "district": "SIDDIPET",
+            "mandal": "DUBBAK"
+        },
+        {
+            "amc_name": null,
+            "district": null,
+            "mandal": "CHEGUNTA"
+        },
+        {
+            "amc_name": null,
+            "district": "HYDERABAD",
+            "mandal": "SECUNDERABAD"
+        },
+        {
+            "amc_name": null,
+            "district": "KARIMNAGAR",
+            "mandal": "KARIMNAGAR"
+        },
+        {
+            "amc_name": null,
+            "district": "JAGITYAL",
+            "mandal": "DHARMAPURI"
+        },
+        {
+            "amc_name": null,
+            "district": null,
+            "mandal": "BANDLAGUDA"
+        },
+        {
+            "amc_name": null,
+            "district": "HYDERABAD",
+            "mandal": null
+        },
+        {
+            "amc_name": null,
+            "district": "BHADRADRI KOTHAGUDEM",
+            "mandal": "ANNAPUREDDYPALLI"
+        },
+        {
+            "amc_name": null,
+            "district": "HYDERABAD",
+            "mandal": "KHAIRTABAD"
+        },
+        {
+            "amc_name": null,
+            "district": "SIDDIPET",
+            "mandal": "SIDDIPET (RURAL)"
+        },
+        {
+            "amc_name": null,
+            "district": "MEDCHAL-MALKAJGIRI",
+            "mandal": "KEESARA"
+        },
+        {
+            "amc_name": null,
+            "district": "JAYASHANKAR BHUPALPALLY",
+            "mandal": "TEKUMATLA"
+        },
+        {
+            "amc_name": null,
+            "district": "JANGAON",
+            "mandal": "LINGALA GHANPUR"
+        },
+        {
+            "amc_name": null,
+            "district": "JANGAON",
+            "mandal": "NARMETTA"
+        },
+        {
+            "amc_name": null,
+            "district": "HYDERABAD",
+            "mandal": "BANDLAGUDA"
+        },
+        {
+            "amc_name": null,
+            "district": "BHADRADRI KOTHAGUDEM",
+            "mandal": "TEKULAPALLI"
+        },
+        {
+            "amc_name": null,
+            "district": null,
+            "mandal": "RAIPOLE"
+        },
+        {
+            "amc_name": null,
+            "district": null,
+            "mandal": "JAGDEVPUR"
+        },
+        {
+            "amc_name": null,
+            "district": null,
+            "mandal": "KONDAPAK"
+        },
+        {
+            "amc_name": null,
+            "district": null,
+            "mandal": "DOULTABAD"
+        },
+        {
+            "amc_name": null,
+            "district": "YADADRI BHUVANAGIRI",
+            "mandal": "CHOUTUPPAL"
+        },
+        {
+            "amc_name": null,
+            "district": "MEDAK",
+            "mandal": "TOOPRAN"
+        },
+        {
+            "amc_name": null,
+            "district": null,
+            "mandal": "MARKOOK"
+        },
+        {
+            "amc_name": null,
+            "district": "SURYAPET",
+            "mandal": "CHIVEMLA"
+        },
+        {
+            "amc_name": null,
+            "district": "JAGITYAL",
+            "mandal": "JAGTIAL RURAL"
+        },
+        {
+            "amc_name": null,
+            "district": "hyderabad",
+            "mandal": "ammerpet"
+        },
+        {
+            "amc_name": null,
+            "district": "SIDDIPET",
+            "mandal": "HUSNABAD"
+        },
+        {
+            "amc_name": null,
+            "district": "SIDDIPET",
+            "mandal": "MIRDODDI"
+        },
+        {
+            "amc_name": null,
+            "district": "JANGAON",
+            "mandal": "THARIGOPPULA"
+        },
+        {
+            "amc_name": null,
+            "district": "MEDAK",
+            "mandal": "MEDAK"
+        },
+        {
+            "amc_name": null,
+            "district": "WARANGAL(RURAL)",
+            "mandal": "MULUG-SIDDIPET"
+        },
+        {
+            "amc_name": null,
+            "district": "",
+            "mandal": ""
+        },
+        {
+            "amc_name": null,
+            "district": "KAMAREDDY",
+            "mandal": "MULUG-SIDDIPET"
+        },
+        {
+            "amc_name": null,
+            "district": "WARANGAL(URBAN)",
+            "mandal": "MULUG-SIDDIPET"
+        },
+        {
+            "amc_name": null,
+            "district": "YADADRI BHUVANAGIRI",
+            "mandal": "MULUG-SIDDIPET"
+        },
+        {
+            "amc_name": null,
+            "district": "ADILABAD",
+            "mandal": "ADILABAD RURAL"
+        },
+        {
+            "amc_name": null,
+            "district": "HYDERABAD",
+            "mandal": "HIMAYATNAGAR"
+        },
+        {
+            "amc_name": null,
+            "district": "BHADRADRI KOTHAGUDEM",
+            "mandal": "YELLANDU"
+        },
+        {
+            "amc_name": null,
+            "district": "SIDDIPET",
+            "mandal": "AKKANNAPET"
+        },
+        {
+            "amc_name": "VANTIMAMIDI",
+            "district": "SIDDIPET",
+            "mandal": "MULUG-SIDDIPET"
+        },
+        {
+            "amc_name": "VANTIMAMIDI",
+            "district": "JANGAON",
+            "mandal": "MULUG-SIDDIPET"
+        },
+        {
+            "amc_name": "VANTIMAMIDI",
+            "district": "WARANGAL(URBAN)",
+            "mandal": "MULUG-SIDDIPET"
+        },
+        {
+            "amc_name": "VANTIMAMIDI",
+            "district": "SIDDIPET",
+            "mandal": "GAJWEL"
+        },
+        {
+            "amc_name": "VANTIMAMIDI",
+            "district": "SIDDIPET",
+            "mandal": "MIRDODDI"
+        },
+        {
+            "amc_name": "VANTIMAMIDI",
+            "district": "SIDDIPET",
+            "mandal": ""
+        },
+        {
+            "amc_name": "VANTIMAMIDI",
+            "district": "SIDDIPET",
+            "mandal": "MOGUDAMPALLY"
+        },
+        {
+            "amc_name": "VANTIMAMIDI",
+            "district": "MEDCHAL-MALKAJGIRI",
+            "mandal": "MEDCHAL"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "wgl",
+            "mandal": "wdpt"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "-",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "wgl",
+            "mandal": "damera"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "warangal",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "wgl",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "khammam ",
+            "mandal": "khammam "
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "tr",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": "MUCHARLA"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "BHPL",
+            "mandal": "rekonda"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "Warngal ",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "BHPl",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "Warangal ",
+            "mandal": "narsampet"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "wgl",
+            "mandal": "nagaram"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "wgl",
+            "mandal": "nspt"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "Warangal ",
+            "mandal": "chennaroapet"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "Warangal ",
+            "mandal": "gessugonda"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "",
+            "mandal": "o"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "Dharmaram",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "wgl",
+            "mandal": "sangem"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": "BO"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "",
+            "mandal": "Aatmakur"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "whl",
+            "mandal": "damera"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "jayashankar bhupally",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KHAMMAM",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "wgk",
+            "mandal": "athmakur"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "jayashankar bhupalpaly ",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "hnk",
+            "mandal": "damera"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "dr",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "jayasankar bhoopalapalli ",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "wgl",
+            "mandal": "sagem"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "bhupalapally ",
+            "mandal": "regonda"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "",
+            "mandal": "."
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "bhupalapalli ",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "khammam",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "Thogarrai ",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "",
+            "mandal": "nspt"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "ts",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": "PS "
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "wgl",
+            "mandal": "dharmasager"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "Laxmi Srinivasa cold",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "konapir",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "ts",
+            "mandal": "Vijetha cold"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "0",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "",
+            "mandal": "Karthik cold"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "etukalapalli",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": "G"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "",
+            "mandal": "parkal"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "manugonda ",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "Narsampeta ",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "జయశంకర్ ",
+            "mandal": "ఘనపూర్ "
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "t",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "jayashankar ",
+            "mandal": "ghanpur "
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "whl",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "bply",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "karimnagar ",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "hanmakonda ",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": "NEW"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "h",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "kar",
+            "mandal": "ts"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": "MBD"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "H",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "ADILABAD",
+            "mandal": "HUZURNAGAR"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": "MUCHAR"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "K",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "rd",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": ". ",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": " . ",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "te",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "Hanamkonda ",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "SURYAPET",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "yadadri",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "hnk",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": "BACHODU"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "jayashankar",
+            "mandal": "chityala"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "Suryapet ",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "karimnagar ",
+            "mandal": "illanthakunta"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "test",
+            "mandal": "test"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "Hyderabad",
+            "mandal": "Hyderabad"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "kmm",
+            "mandal": "spl"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "jbplp",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "jayashankar ",
+            "mandal": "mahadevpuram "
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "jayashankar ",
+            "mandal": "bhupalpalli"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "warangal ",
+            "mandal": "Gudur "
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "waranghal ",
+            "mandal": "paralal "
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "waranghal ",
+            "mandal": "para8"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "",
+            "mandal": "r"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": "RAMPURAM"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": "P"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "jayashankar ",
+            "mandal": "illanthakunta "
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": "PULLUR"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "Zeffergad",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": "CHAN"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": "TAMMARAM"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "jayas6",
+            "mandal": "ghanapuram"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "Warangal",
+            "mandal": "Wardhannapet"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": "yerrakunta"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "mulugu",
+            "mandal": "etunagaram"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "jaganadapuram",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": "RAM"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "warangal",
+            "mandal": "DHUGGONDI"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": "R"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "Lingampalli",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KHAMMAM",
+            "mandal": "MUDIGONDA"
+        },
+        {
+            "amc_name": "Maddupalli",
+            "district": "KHAMMAM",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "Chelmeda",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "jn",
+            "mandal": "palakurthi"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KHAMMAM",
+            "mandal": "KHAMMAM (RURAL)"
+        },
+        {
+            "amc_name": "Maddupalli",
+            "district": "",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": "gollacherla"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": "POCHARAM"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "",
+            "mandal": "bicha"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "Thiunapalli",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "Banojipeta",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "jn",
+            "mandal": "pkl"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "jn",
+            "mandal": "pk"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "jsbp",
+            "mandal": "sangem"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": "KO"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "warangal ",
+            "mandal": "damera"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "BZP",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "adhilabad",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "bp",
+            "mandal": "gp"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "jsbp",
+            "mandal": "tekumadla"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "spt",
+            "mandal": "atmakur"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "wgl",
+            "mandal": "nallabelli"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": "BHUKYA "
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "D",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "mulugu",
+            "mandal": "gr peta"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "jn",
+            "mandal": "plk"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "wgl",
+            "mandal": "inavol"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "ppl",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "mh",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "battupelli",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "100",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "Pr Pally ",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "bupl",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": "SU"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "15",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "jn",
+            "mandal": "pkt"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "jegganapet ",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": "GOL"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "Giralaveedu",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "mahadevpur",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "Macchapur",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": "v nagar"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": "K"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": "CHILLA"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": "b padu"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": "rajaram"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "",
+            "mandal": "ADLOOR"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "",
+            "mandal": "VALALLA"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "",
+            "mandal": "ANNARAM"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "",
+            "mandal": "NELLIBANDA"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "R",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "Deva nagar",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "",
+            "mandal": "GOLALGUDEM"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "",
+            "mandal": "CHAND"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "",
+            "mandal": "VALALA"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "",
+            "mandal": "29"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "",
+            "mandal": "GOREN"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "",
+            "mandal": "AITI"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "",
+            "mandal": "THIKAL"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "",
+            "mandal": "KADAPRTHY"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "",
+            "mandal": "THIAPRTHY"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "",
+            "mandal": "CHANDAM"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "",
+            "mandal": "NI"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "",
+            "mandal": "KANG"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "Nagaram",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KMM",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "",
+            "mandal": "ERRAGADLA GUDEM"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "",
+            "mandal": "VALAL"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "",
+            "mandal": "VALLALA"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "",
+            "mandal": "KADPAARTHY"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "",
+            "mandal": "MANGALPALLY"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "",
+            "mandal": "wgl"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": "HS "
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "",
+            "mandal": "NAKREKAL"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "",
+            "mandal": "LAXMIPURAM"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "",
+            "mandal": "GOLLGUDEM"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "",
+            "mandal": "Kondaram"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "`",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "pakala",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "korupol",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "",
+            "mandal": "Chnadam"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "Jaypuram",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "tr",
+            "mandal": "tr"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "Thirumalagiri",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "",
+            "mandal": "Chanud"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": ", ",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "tgtr",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "tg",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "nizambad",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "warangal ",
+            "mandal": "tr"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "warangal ",
+            "mandal": "warangal "
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "bupalapally",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": "S"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "",
+            "mandal": "Cha"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "భూపాలపల్లి",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "bhupalpally ",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Khammam",
+            "district": " KHA",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "",
+            "mandal": "Marrur"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "వరంగల్ ",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "manthani",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "jayashenker",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KHAMMAM",
+            "mandal": "KHAMMAM (URBAN)"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "bhupalpelly",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "",
+            "mandal": "mansingthanda "
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "gadchiroli",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "mukugu",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "mulugu",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KHAMMAM",
+            "mandal": "T.PALEM (M) "
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "ములుగు ",
+            "mandal": "వెంకటాపూర్ "
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "parkal",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "vajadu",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KHAMMAM",
+            "mandal": "WYRA"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "mahadepur",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "భూపాలపల్లి ",
+            "mandal": "ganpur"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KHAM",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "etunagaram",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KHAMMAM",
+            "mandal": "Thirumalayapalem"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "Bhadrachalam",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "eaturnagram ",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KHAMMAM",
+            "mandal": "GARLA"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "erunagaram",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "NALGONDA",
+            "mandal": "NAKREKAL"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "NALGONDA",
+            "mandal": "KETHAPALLY"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "NALGONDA",
+            "mandal": "SHALIGOWRARAM"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "NALGONDA",
+            "mandal": "NAKREKASL"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "NALGONDA",
+            "mandal": "KETHAOPALLY"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "NALGONDA",
+            "mandal": "KATTANGUR"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "NALGONA",
+            "mandal": "SHALIGOURARAM"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "NALGONDA",
+            "mandal": "SHALIGOURARAM"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "NALGONDA",
+            "mandal": "NAREKAL"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "NALGONDA",
+            "mandal": "NAKRWEKAL"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "NALGONDA",
+            "mandal": "NAKREAKL"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "NALGONDA",
+            "mandal": "SHALIOWRARAM"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "NALGONDAA",
+            "mandal": "NAKREKAL"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "NALGONDAQ",
+            "mandal": "SHALIGOWRARAM"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "NALGONDAQ",
+            "mandal": "NAKREKAL"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "NALGONDA",
+            "mandal": "THIPARTHY"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "NLAGONDA",
+            "mandal": "NAKREKAL"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "NALGONDA",
+            "mandal": "KATTNGUR"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KHAMMAM",
+            "mandal": "SINGARENI (P)"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "NALGODA",
+            "mandal": "NAKREKAL"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "NALGONDA",
+            "mandal": "SHALIGOW"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "NALGONDA",
+            "mandal": "THIPRATHI"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "NAGLONDA",
+            "mandal": "NAKREKAL"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "",
+            "mandal": "maripelligudam "
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "eturunagaram ",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": "Q"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "bhadrachelam ",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "",
+            "mandal": "LACHAGUDEM"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "etunagram",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KHA",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "regonda",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "hanamkond ",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "jengon",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "hanumakonda",
+            "mandal": "hasanparthy"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "fort warangal",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "wgl",
+            "mandal": "khilawarangal"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "hanamkonda",
+            "mandal": "hanamkonda"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "",
+            "mandal": "khila wgi"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "ADILABAD",
+            "mandal": "ADILABAD RURAL"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "ADILABAD",
+            "mandal": "MAVALA"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "ADILABAD",
+            "mandal": "ADILABAD RURAL"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "BHADRADRI KOTHAGUDEM",
+            "mandal": "PALVONCHA"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "JAGITYAL",
+            "mandal": "RAIKAL"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "BHADRADRI KOTHAGUDEM",
+            "mandal": "KOTHAGUDEM"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "BHADRADRI KOTHAGUDEM",
+            "mandal": "CHANDRUGONDA"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "NALGONDA",
+            "mandal": "KETHEPALLY"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "NALGONDA",
+            "mandal": "THIPPARTHY"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(URBAN)",
+            "mandal": "WARANGAL"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KHAMMAM",
+            "mandal": "TIRUMALAYAPALEM"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(URBAN)",
+            "mandal": "HANAMKONDA"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(RURAL)",
+            "mandal": "GEESUGONDA"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "MAHABUBABAD",
+            "mandal": "DORNAKAL"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(RURAL)",
+            "mandal": "ATHMAKUR"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(RURAL)",
+            "mandal": "WARDHANNAPET"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "HYDERABAD",
+            "mandal": "AMEERPET"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "JAGITYAL",
+            "mandal": "SARANGAPUR(J)"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KHAMMAM",
+            "mandal": null
+        },
+        {
+            "amc_name": "Khammam",
+            "district": null,
+            "mandal": null
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(RURAL)",
+            "mandal": "RAYAPARTHY"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "JAGITYAL",
+            "mandal": "JAGTIAL"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "MAHABUBABAD",
+            "mandal": "CHINNAGUDUR"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "SURYAPET",
+            "mandal": "MOTHEY"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "HYDERABAD",
+            "mandal": "AMBERPET"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "SURYAPET",
+            "mandal": "ATHMAKUR (S)"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "JANGAON",
+            "mandal": "NARMETTA"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "JANGAON",
+            "mandal": "THARIGOPPULA"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "JAYASHANKAR BHUPALPALLY",
+            "mandal": "CHITYAL"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "ADILABAD",
+            "mandal": "ADILABAD RURAL"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "BHADRADRI KOTHAGUDEM",
+            "mandal": "KOTHAGUDEM"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "JANGAON",
+            "mandal": "JANGOAN"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "JAYASHANKAR BHUPALPALLY",
+            "mandal": "BHUPALPALLY"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "JAYASHANKAR BHUPALPALLY",
+            "mandal": "TEKUMATLA"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KHAMMAM",
+            "mandal": "CHINTHAKANI"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "MAHABUBABAD",
+            "mandal": "KURAVI"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KHAMMAM",
+            "mandal": "KAMEPALLI"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "HYDERABAD",
+            "mandal": "AMEERPET"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "",
+            "mandal": "dugondi"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "BHADRADRI KOTHAGUDEM",
+            "mandal": "PALVONCHA"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KHAMMAM",
+            "mandal": "KUSUMANCHI"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "SIDDIPET",
+            "mandal": "MULUG-SIDDIPET"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(URBAN)",
+            "mandal": "KHILA WARANGAL"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(RURAL)",
+            "mandal": "SANGEM"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "KARIMNAGAR",
+            "mandal": "kamalapur "
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KHAMMAM",
+            "mandal": "RAGHUNADHAPALEM"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "MAHABUBABAD",
+            "mandal": "MARIPEDA"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KHAMMAM",
+            "mandal": "BONAKAL"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KHAMMAM",
+            "mandal": "ENKOOR"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KHAMMAM",
+            "mandal": "KONIJERLA"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "Vancjarpalli",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(RURAL)",
+            "mandal": "DAMERA"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "",
+            "mandal": "sangem"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "BHADRADRI KOTHAGUDEM",
+            "mandal": "BHADRACHALAM"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(RURAL)",
+            "mandal": "CHENNARAOPET"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KHAMMAM",
+            "mandal": "SINGARENI"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KHAMMAM",
+            "mandal": "NELAKONDAPALLI"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "ADILABAD",
+            "mandal": "GUDIHATNOOR"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "JAYASHANKAR BHUPALPALLY",
+            "mandal": "GHANPUR (MULUG)"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "JANGAON",
+            "mandal": "BACHANNAPET"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "SURYAPET",
+            "mandal": "NUTHANAKAL"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "WANAPARTHY",
+            "mandal": "WANAPARTHY"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "YADADRI BHUVANAGIRI",
+            "mandal": "CHOUTUPPAL"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "ADILABAD",
+            "mandal": "MAVALA"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "WANAPARTHY",
+            "mandal": "PANGAL"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "JAGITYAL",
+            "mandal": "JAGTIAL RURAL"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "HYDERABAD",
+            "mandal": "HIMAYATNAGAR"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "HYDERABAD",
+            "mandal": "MARREDPALLY"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "HYDERABAD",
+            "mandal": "NAMPALLY-HYB"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "HYDERABAD",
+            "mandal": "TIRUMALGHERRY"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "JAGITYAL",
+            "mandal": "BEERPUR"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "NALGONDA",
+            "mandal": "NALGONDA"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "SURYAPET",
+            "mandal": "HUZURNAGAR"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(URBAN)",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(RURAL)",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "MAHABUBABAD",
+            "mandal": "DANTHALAPALLE"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(RURAL)",
+            "mandal": "PARKAL"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "MAHABUBABAD",
+            "mandal": "BAYYARAM"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "MAHABUBABAD",
+            "mandal": "MAHABUBABAD"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "SURYAPET",
+            "mandal": "NUTHANAKAL"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(RURAL)",
+            "mandal": "PARVATHAGIRI"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(URBAN)",
+            "mandal": "DHARMASAGAR"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "MAHABUBABAD",
+            "mandal": "GARLA"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "KARIMNAGAR",
+            "mandal": "KARIMNAGAR"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "BHADRADRI KOTHAGUDEM",
+            "mandal": "TEKULAPALLI"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(RURAL)",
+            "mandal": "KHANAPUR-WR"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "JAYASHANKAR BHUPALPALLY",
+            "mandal": ""
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "JANGAON",
+            "mandal": "JANGAON"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "JAGITYAL",
+            "mandal": "JANGAON"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "JANGAON",
+            "mandal": null
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "MAHABUBABAD",
+            "mandal": "THORRUR"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "JANGAON",
+            "mandal": "LINGALA GHANPUR"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(RURAL)",
+            "mandal": "NARSAMPET"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "JANGAON",
+            "mandal": "JANGOAN"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "SURYAPET",
+            "mandal": "MADDIRALA"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(URBAN)",
+            "mandal": "HASANPARTHY"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "warangal ",
+            "mandal": "GEESUGONDA "
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "WARANGAL(RURAL)",
+            "mandal": "RAYAPARTHY"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(URBAN)",
+            "mandal": "KAMALAPUR"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(RURAL)",
+            "mandal": "mouglupalli "
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "NALGONDA",
+            "mandal": "MIRYALAGUDA"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "NTR KRISHNA",
+            "mandal": "VATSAVAI"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "JAYASHANKAR BHUPALPALLY",
+            "mandal": "MOGULLAPALLY"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "SURYAPET",
+            "mandal": "MUNAGALA"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "JANGAON",
+            "mandal": "DEVARUPPULA"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(RURAL)",
+            "mandal": "WARANGAL "
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "MULUG",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(URBAN)",
+            "mandal": "sag"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "JAYASHANKAR BHUPALPALLY",
+            "mandal": "MULUG"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "JANGAON",
+            "mandal": "RAGUNATHPALLY"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "JANGAON",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "JAYASHANKAR BHUPALPALLY",
+            "mandal": "REGONDA"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "JAYASHANKAR BHUPALPALLY",
+            "mandal": "BHUPALPALLY"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "BHADRADRI KOTHAGUDEM",
+            "mandal": "YELLANDU"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(RURAL)",
+            "mandal": "NEKKONDA"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WANAPARTHY",
+            "mandal": "WANAPARTHY"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(RURAL)",
+            "mandal": "SHAYAMPET"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(URBAN)",
+            "mandal": "gisugonda"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "",
+            "mandal": "gisugonda"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "",
+            "mandal": "darmasagar"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "",
+            "mandal": "da"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "",
+            "mandal": "ATMAKUR "
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "",
+            "mandal": "ATHMAKUR "
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "",
+            "mandal": "sa "
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "nspt",
+            "mandal": "npt"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "",
+            "mandal": "tr"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "hanamkonda ",
+            "mandal": "hasanparthy"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "MULUG",
+            "mandal": "mallampelli"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "SURYAPET",
+            "mandal": "MELLACHERVU"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KRISHNA",
+            "mandal": "VATSAVAI"
+        },
+        {
+            "amc_name": "VANTIMAMIDI",
+            "district": "YADADRI BHUVANAGIRI",
+            "mandal": "MULUG-SIDDIPET"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "NALGONDA",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KRISHNA",
+            "mandal": "CHITYALA"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "MEDCHAL-MALKAJGIRI",
+            "mandal": "KUKATPALLY"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "MEDCHAL-MALKAJGIRI",
+            "mandal": "GHATKESAR"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "MEDCHAL-MALKAJGIRI",
+            "mandal": "MEDIPALLY"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "JAYASHANKAR BHUPALPALLY",
+            "mandal": "REGONDA"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "JOGULAMBA GADWAL",
+            "mandal": "DHAROOR"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "JAGITYAL",
+            "mandal": "DHARMAPURI"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "SURYAPET",
+            "mandal": "CHINTHALAPALEM"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "NALGONDA",
+            "mandal": "KONDA MALLEPALLY"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "",
+            "mandal": "dharmaram"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "oglapur",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KHAMMAM",
+            "mandal": "KALLURU"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KHAMMAM",
+            "mandal": "MADHIRA"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "ADILABAD",
+            "mandal": null
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "BHADRADRI KOTHAGUDEM",
+            "mandal": "TEKULAPALLI"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "BHADRADRI KOTHAGUDEM",
+            "mandal": "YELLANDU"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "SURYAPET",
+            "mandal": "MOTHEY"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "PEDDAPALLI",
+            "mandal": "PEDDAPALLI"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "MAHABUBNAGAR",
+            "mandal": "MAHABUANAGAR (R)"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "WANAPARTHY",
+            "mandal": "GOPALPET"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "SANGAREDDY",
+            "mandal": "SANGAREDDY"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "RANGAREDDY",
+            "mandal": "ABDULLAPURMET"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "NIRMAL",
+            "mandal": "BASAR"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "JAGITYAL",
+            "mandal": "MALLAPUR"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "SURYAPET",
+            "mandal": "KODAD"
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "BHADRADRI KOTHAGUDEM",
+            "mandal": "KARAKAGUDEM"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "MULUG",
+            "mandal": "mulugu"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "",
+            "mandal": "muligu"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "",
+            "mandal": "mulugu"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "PEDDAPALLI",
+            "mandal": "ODELA"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(URBAN)",
+            "mandal": "VELAIR"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(URBAN)",
+            "mandal": "KHAZIPET"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "JANGAON",
+            "mandal": "NARMETTA"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "JANGAON",
+            "mandal": "DEVARUPPULA"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "ADILABAD",
+            "mandal": "MAVALA"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "JAGITYAL",
+            "mandal": "RAIKAL"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "JAGITYAL",
+            "mandal": "BEERPUR"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "JANGAON",
+            "mandal": "BACHANNAPET"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "JAGITYAL",
+            "mandal": "JAGTIAL"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "KARIMNAGAR",
+            "mandal": "JAMMIKUNTA"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "PEDDAPALLI",
+            "mandal": "SRIRAMPUR"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "JAGITYAL",
+            "mandal": "JAGTIAL RURAL"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(RURAL)",
+            "mandal": "DUGGONDI"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "ADILABAD",
+            "mandal": "ADILABAD RURAL"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(RURAL)",
+            "mandal": "NALLABELLI"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "HYDERABAD",
+            "mandal": "HIMAYATNAGAR"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "JAYASHANKAR BHUPALPALLY",
+            "mandal": "KATARAM"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "JAYASHANKAR BHUPALPALLY",
+            "mandal": "PALIMELA"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "JAYASHANKAR BHUPALPALLY",
+            "mandal": "GHANPUR (MULUG)"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "JANGAON",
+            "mandal": "PALAKURTHY (JG)"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "JANGAON",
+            "mandal": "station ghanpur "
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "KHAMMAM",
+            "mandal": "KHAMMAM (RURAL)"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(RURAL)",
+            "mandal": "rayaparthi "
+        },
+        {
+            "amc_name": "Warangal",
+            "district": " warangal ",
+            "mandal": "geesukonda"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(RURAL)",
+            "mandal": "geesukonda "
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "Hanmakonda",
+            "mandal": "Hanmakonda "
+        },
+        {
+            "amc_name": "BOWENPALLY",
+            "district": "JOGULAMBA GADWAL",
+            "mandal": "UNDAVELLY"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KHAMMAM",
+            "mandal": "THALLADA"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "JAYASHANKAR BHUPALPALLY",
+            "mandal": "CHITYAL"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WANAPARTHY",
+            "mandal": "MADANAPUR"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "JAYASHANKAR BHUPALPALLY",
+            "mandal": "MAHADEVPUR"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KRISHNA",
+            "mandal": "NANDIGAMA"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KRISHNA",
+            "mandal": "KRISHNA"
+        },
+        {
+            "amc_name": "Vantimamidi",
+            "district": "SIDDIPET",
+            "mandal": "SIDDIPET (RURAL)"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "NALGONDA",
+            "mandal": "CHANDUR"
+        },
+        {
+            "amc_name": "Bowenpally",
+            "district": "test",
+            "mandal": "test"
+        },
+        {
+            "amc_name": "Bowenpally",
+            "district": "JOGULAMBA GADWAL",
+            "mandal": "GADWAL"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "NALGONDA",
+            "mandal": "PENPAHAD"
+        },
+        {
+            "amc_name": "Bowenpally",
+            "district": "HYDERABAD",
+            "mandal": null
+        },
+        {
+            "amc_name": "Bowenpally",
+            "district": "BHADRADRI KOTHAGUDEM",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Bowenpally",
+            "district": "HYDERABAD",
+            "mandal": "JANGOAN"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "",
+            "mandal": "mougalapallu"
+        },
+        {
+            "amc_name": "Bowenpally",
+            "district": "ADILABAD",
+            "mandal": "TIRUMALGHERRY"
+        },
+        {
+            "amc_name": "Bowenpally",
+            "district": "ADILABAD",
+            "mandal": "MARREDPALLY"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "NALGONDA",
+            "mandal": "THIRUMALAGIRI"
+        },
+        {
+            "amc_name": "Bowenpally",
+            "district": "HYDERABAD",
+            "mandal": "ADILABAD RURAL"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "",
+            "mandal": "damera"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "shyamnagar",
+            "mandal": ""
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "parkal",
+            "mandal": "parkal"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "BHADRADRI KOTHAGUDEM",
+            "mandal": "KOTHAGUDEM"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "NALGONDA",
+            "mandal": "SURYAPET"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "BHADRADRI KOTHAGUDEM",
+            "mandal": "BONAKAL"
+        },
+        {
+            "amc_name": "Vantimamidi",
+            "district": "ADILABAD",
+            "mandal": "ADILABAD RURAL"
+        },
+        {
+            "amc_name": "Vantimamidi",
+            "district": "MEDCHAL-MALKAJGIRI",
+            "mandal": "SHAMIRPET"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "NALGONDA",
+            "mandal": "NARKETPALLY"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KHAMMAM",
+            "mandal": "OTHER"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "WARANGAL(RURAL)",
+            "mandal": "WARDHANNAPET"
+        },
+        {
+            "amc_name": "Bowenpally",
+            "district": "ADILABAD",
+            "mandal": "GUDIHATNOOR"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "KHAMMAM",
+            "mandal": "VEMSOOR"
+        },
+        {
+            "amc_name": "Khammam",
+            "district": "SURYAPET",
+            "mandal": "CHIVEMLA"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "WARANGAL(URBAN)",
+            "mandal": "ELKATHURTHY"
+        },
+        {
+            "amc_name": "Nakrekal",
+            "district": "NALGONDA",
+            "mandal": "NARKETPALLY"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "JAYASHANKAR BHUPALPALLY",
+            "mandal": "rajupeta"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "",
+            "mandal": "ladella"
+        },
+        {
+            "amc_name": "Warangal",
+            "district": "KHAMMAM",
+            "mandal": "BONAKAL"
+        }
+    ]
+}
