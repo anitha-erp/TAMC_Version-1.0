@@ -1094,7 +1094,7 @@ async def get_variants(
     return VariantsResponse(
         commodity=commodity.title(),
         market=market.title(),
-        variants=[v.title() for v in variants],
+        variants=list(variants),  # ✅ Use raw variants exactly as they exist
         count=len(variants)
     )
 

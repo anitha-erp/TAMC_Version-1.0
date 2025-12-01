@@ -1,6 +1,6 @@
 {
   "chilli": {
-    "timestamp": "2025-11-29T19:13:47.110763",
+    "timestamp": "2025-12-01T17:55:57.945049",
     "data": {
       "avg_sentiment": 0.0,
       "sentiment_label": "Neutral",
@@ -11,7 +11,40 @@
     }
   },
   "cotton": {
-    "timestamp": "2025-11-29T13:31:13.688544",
+    "timestamp": "2025-12-01T16:52:02.292667",
+    "data": {
+      "avg_sentiment": 0.0,
+      "sentiment_label": "Neutral",
+      "news_count": 0,
+      "top_keywords": [],
+      "sample_headlines": [],
+      "articles": []
+    }
+  },
+  "cotton-bags": {
+    "timestamp": "2025-12-01T13:28:28.913380",
+    "data": {
+      "avg_sentiment": 0.0,
+      "sentiment_label": "Neutral",
+      "news_count": 0,
+      "top_keywords": [],
+      "sample_headlines": [],
+      "articles": []
+    }
+  },
+  "groundnut": {
+    "timestamp": "2025-12-01T16:53:03.849944",
+    "data": {
+      "avg_sentiment": 0.0,
+      "sentiment_label": "Neutral",
+      "news_count": 0,
+      "top_keywords": [],
+      "sample_headlines": [],
+      "articles": []
+    }
+  },
+  "bottle ground": {
+    "timestamp": "2025-12-01T18:54:17.338512",
     "data": {
       "avg_sentiment": 0.0,
       "sentiment_label": "Neutral",

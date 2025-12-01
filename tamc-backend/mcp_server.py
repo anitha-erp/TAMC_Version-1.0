@@ -38,7 +38,7 @@ PRICE_VARIANTS_URL = "http://127.0.0.1:8002/api/variants"
 ADVISORY_API_URL = "http://127.0.0.1:8003/chat"
 
 PRICE_TIMEOUT = 30  # Reduced from 240s (4 min) to 30s
-ARRIVAL_TIMEOUT = 20  # Reduced from 180s (3 min) to 20s
+ARRIVAL_TIMEOUT = 300  # Reduced from 180s (3 min) to 20s
 
 # Central location catalog for matching/correction
 KNOWN_LOCATIONS = [
@@ -931,6 +931,11 @@ async def execute_arrival_tool(params: Dict) -> Dict:
 async def execute_price_tool(params: Dict) -> Dict:
     """Execute price prediction"""
     try:
+        # ✅ NEW: Validate that metric wasn't accidentally included
+        if "metric" in params:
+            print(f"⚠️ WARNING: 'metric' parameter found in price query - removing it (metrics only apply to arrivals)")
+            params = {k: v for k, v in params.items() if k != "metric"}
+        
         commodity = params.get("commodity", "")
         location = params.get("district") or params.get("amc_name") or params.get("location")
         days = params.get("days", 1)
@@ -942,19 +947,22 @@ async def execute_price_tool(params: Dict) -> Dict:
                 "error": f"Missing {'commodity' if not commodity else 'location'}",
                 "tool": "price"
             }
-
-        # Clean variant name - remove commodity prefix if present
+        
         if variant and commodity:
-            # If variant starts with "Commodity-", strip it
-            # E.g., "Chilli-Laxmi Srinivasa Cold" -> "Laxmi Srinivasa Cold"
-            commodity_prefix = f"{commodity}-"
-            if variant.startswith(commodity_prefix):
-                variant = variant[len(commodity_prefix):]
-                print(f"   🔧 Cleaned variant name: {variant}")
-            # Also try lowercase matching
-            elif variant.lower().startswith(commodity_prefix.lower()):
-                variant = variant[len(commodity_prefix):]
-                print(f"   🔧 Cleaned variant name: {variant}")
+            commodity_lower = commodity.lower()
+            variant_lower = variant.lower()
+
+            # Count occurrences of the commodity word itself (not with hyphen)
+            count_word = variant_lower.count(commodity_lower)
+
+            # If the commodity appears more than once, do NOT clean
+            if count_word > 1:
+                print(f"⚠️ Skipping cleaning (multi-occurrence): {variant}")
+            else:
+                prefix = f"{commodity_lower}-"
+                if variant_lower.startswith(prefix):
+                    variant = variant[len(prefix):].strip()
+                    print(f"🔧 Cleaned variant: {variant}")
 
         # Check varieties if no variant specified
         if not variant:
@@ -986,7 +994,7 @@ async def execute_price_tool(params: Dict) -> Dict:
 
         print(f"💰 Calling Price Tool: {commodity} in {location}")
         if variant:
-            print(f"   📦 Variant: {variant}")
+            print(f"   📦 Variant: {variant} (using as-is from API)")
 
         payload = {
             "commodity": commodity,
@@ -994,9 +1002,10 @@ async def execute_price_tool(params: Dict) -> Dict:
             "prediction_days": days,
             "variant": variant
         }
-
+        
+        # Current code (lines 700-720 approx):
         response = requests.post(PRICE_API_URL, json=payload, timeout=PRICE_TIMEOUT)
-        response.raise_for_status()
+        response.raise_for_status()  # This throws an exception for 4xx/5xx status codes
 
         return {
             "success": True,
@@ -1007,7 +1016,7 @@ async def execute_price_tool(params: Dict) -> Dict:
     except Exception as e:
         print(f"❌ Price Tool Error: {e}")
         return {
-            "success": False,
+            "success": False,  # ✅ This should be False for errors
             "error": str(e),
             "tool": "price"
         }
@@ -1387,16 +1396,14 @@ async def ai_powered_chat(request: ChatRequest):
         context.extracted_params["_last_intent"] = intent
 
         # 🔧 SMART: Only set metric if AI didn't already set it
-        # Let AI be smart - only help if it missed obvious keywords
+        # ⚠️ CRITICAL: Only for ARRIVAL queries (not price queries!)
         if intent == "arrival_forecast" and not context.extracted_params.get("metric"):
             query_lower = query.lower()
             # Only set metric if query CLEARLY mentions it and AI missed it
             if "quintal" in query_lower or "quantity" in query_lower or "weight" in query_lower:
                 context.extracted_params["metric"] = "total_weight"
-                print(f"🔧 AI missed metric, auto-set to 'total_weight'")
             elif "farmer" in query_lower:
                 context.extracted_params["metric"] = "number_of_farmers"
-                print(f"🔧 AI missed metric, auto-set to 'number_of_farmers'")
             elif "bag" in query_lower:
                 context.extracted_params["metric"] = "total_bags"
                 print(f"🔧 AI missed metric, auto-set to 'total_bags'")
@@ -1406,6 +1413,21 @@ async def ai_powered_chat(request: ChatRequest):
             elif "revenue" in query_lower or "income" in query_lower:
                 context.extracted_params["metric"] = "total_revenue"
                 print(f"🔧 AI missed metric, auto-set to 'total_revenue'")
+
+        # ✅ NEW: Clear metric for price queries (should NEVER have metric)
+        if intent == "price_inquiry" and "metric" in context.extracted_params:
+            context.extracted_params.pop("metric")
+            print(f"🧹 Removed 'metric' from price query (metric only applies to arrivals)")
+
+        # ✅ NEW: Clear metric for weather queries (should NEVER have metric)
+        if intent == "weather_advice" and "metric" in context.extracted_params:
+            context.extracted_params.pop("metric")
+            print(f"🧹 Removed 'metric' from weather query (metric only applies to arrivals)")
+
+        # ✅ NEW: Clear metric if it was accidentally set by AI for non-arrival queries
+        if intent not in ["arrival_forecast"] and "metric" in context.extracted_params:
+            context.extracted_params.pop("metric")
+            print(f"🧹 Removed 'metric' from {intent} query (metric only applies to arrivals)")
 
         # 🔧 FIX: For pure arrival queries, ONLY call arrival tool (don't add advisory)
         # For pure price queries, ONLY call price tool (don't add advisory)

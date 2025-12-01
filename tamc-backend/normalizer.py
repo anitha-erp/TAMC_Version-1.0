@@ -183,8 +183,18 @@ def clean_commodity(raw):
     # 3) Title case
     tmp = tmp.strip().title()
 
-    # 4) Fuzzy match with DB commodity list
-    best = _best_match(tmp, RAW_COMMODITIES)
+    # 4) Extract base commodity names from DB (remove variant suffixes)
+    # For example: "COTTON-BAGS" -> "Cotton", "Groundnut-Dry" -> "Groundnut"
+    base_commodities = set()
+    for commodity in RAW_COMMODITIES:
+        if commodity:
+            # Split on hyphen and take the first part as the base commodity
+            base = commodity.split('-')[0].strip().title()
+            if base:
+                base_commodities.add(base)
+    
+    # 5) Fuzzy match with base commodity names only
+    best = _best_match(tmp, list(base_commodities))
     return best
 
 
