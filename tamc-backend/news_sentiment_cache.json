@@ -1,6 +1,6 @@
 {
   "chilli": {
-    "timestamp": "2025-12-03T10:20:17.425662",
+    "timestamp": "2025-12-03T16:49:11.623031",
     "data": {
       "avg_sentiment": 0.0,
       "sentiment_label": "Neutral",
@@ -33,7 +33,7 @@
     }
   },
   "groundnut": {
-    "timestamp": "2025-12-01T16:53:03.849944",
+    "timestamp": "2025-12-03T15:41:07.938847",
     "data": {
       "avg_sentiment": 0.0,
       "sentiment_label": "Neutral",
@@ -45,6 +45,28 @@
   },
   "bottle ground": {
     "timestamp": "2025-12-03T14:56:47.830594",
+    "data": {
+      "avg_sentiment": 0.0,
+      "sentiment_label": "Neutral",
+      "news_count": 0,
+      "top_keywords": [],
+      "sample_headlines": [],
+      "articles": []
+    }
+  },
+  "lemon": {
+    "timestamp": "2025-12-03T17:11:22.755363",
+    "data": {
+      "avg_sentiment": 0.0,
+      "sentiment_label": "Neutral",
+      "news_count": 0,
+      "top_keywords": [],
+      "sample_headlines": [],
+      "articles": []
+    }
+  },
+  "beans": {
+    "timestamp": "2025-12-03T17:19:13.797946",
     "data": {
       "avg_sentiment": 0.0,
       "sentiment_label": "Neutral",

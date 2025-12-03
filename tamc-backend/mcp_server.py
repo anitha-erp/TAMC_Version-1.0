@@ -1,6 +1,6 @@
 # ===============================================================
 # 🧠 AI-POWERED MCP SERVER with Intelligence Layer
-# Version: 5.1 - WITH REPEAT COMMODITY QUERY FIX
+# Version: 5.2 - WITH LOCATION DETECTION FIX
 # ===============================================================
 
 import os
@@ -16,6 +16,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from openai import OpenAI
 from dotenv import load_dotenv
+from difflib import get_close_matches
 
 load_dotenv()
 
@@ -37,19 +38,61 @@ PRICE_API_URL = "http://127.0.0.1:8002/api/predict"
 PRICE_VARIANTS_URL = "http://127.0.0.1:8002/api/variants"
 ADVISORY_API_URL = "http://127.0.0.1:8003/chat"
 
-PRICE_TIMEOUT = 30  # Reduced from 240s (4 min) to 30s
-ARRIVAL_TIMEOUT = 120   # 2 minutes
+PRICE_TIMEOUT = 30
+ARRIVAL_TIMEOUT = 120
 
-# Central location catalog for matching/correction
-KNOWN_LOCATIONS = [
-    "Warangal", "Khammam", "Hyderabad", "Nakrekal", "Karimnagar",
-    "Nizamabad", "Mahbubnagar", "Adilabad", "Nalgonda", "Medak",
-    "Warangal Urban", "Warangal Rural", "Hanamkonda"
-]
+# ✅ DYNAMIC LOCATION LOADING
+def load_known_locations():
+    """Dynamically load all known locations from database"""
+    try:
+        response = requests.get("http://127.0.0.1:8000/debug/locations", timeout=10)
+        if response.status_code == 200:
+            data = response.json()
+            
+            # Extract districts
+            districts = [item['district'] for item in data.get('top_districts', []) if item.get('district')]
+            
+            # Extract AMCs
+            amcs = [item['amc_name'] for item in data.get('top_amcs', []) if item.get('amc_name')]
+            
+            # Combine and deduplicate
+            all_locations = list(set(districts + amcs))
+            
+            print(f"✅ Loaded {len(all_locations)} known locations from database")
+            return all_locations
+    except Exception as e:
+        print(f"⚠️ Failed to load locations from DB: {e}")
+        # Fallback to hardcoded list with ALL missing markets added
+        return [
+            "Warangal", "Khammam", "Hyderabad", "Nakrekal", "Karimnagar",
+            "Nizamabad", "Mahbubnagar", "Adilabad", "Nalgonda", "Medak",
+            "Warangal Urban", "Warangal Rural", "Hanamkonda",
+            "Bowenpally", "Vantimamidi", "Rangareddy", "Suryapet", 
+            "Vikarabad", "Siddipet", "Jangaon"
+        ]
+
+# Load locations at startup
+KNOWN_LOCATIONS = load_known_locations()
+
+# Add spelling variations/aliases
+LOCATION_ALIASES = {
+    "vantimamidi": "Vantimamidi",
+    "vantamamidi": "Vantimamidi",  # Common typo
+    "bowenpally": "Bowenpally",
+    "bowenpally amc": "Bowenpally",
+    "boenpally": "Bowenpally",  # Common typo
+    "hanamkonda": "Warangal",
+    "warangal urban": "Warangal"
+}
+
+# Build complete lookup (normalized + aliases)
 LOCATION_LOOKUP = {loc.lower(): loc for loc in KNOWN_LOCATIONS}
+LOCATION_LOOKUP.update(LOCATION_ALIASES)
+
+print(f"📍 Location catalog ready: {len(LOCATION_LOOKUP)} entries")
 
 # ----------------------- FastAPI App -----------------------
-app = FastAPI(title="🧠 AI-Powered MCP Server", version="5.1")
+app = FastAPI(title="🧠 AI-Powered MCP Server", version="5.2")
 
 app.add_middleware(
     CORSMiddleware,
@@ -62,8 +105,8 @@ app.add_middleware(
 # ----------------------- Conversation Memory -----------------------
 conversation_sessions = {}
 
-# ----------------------- Status Tracking (Phase 1.5 Optimization) -----------------------
-request_status = {}  # Stores current status for each session
+# ----------------------- Status Tracking -----------------------
+request_status = {}
 
 def update_status(session_id: str, status: str):
     """Update current processing status for a session"""
@@ -102,7 +145,6 @@ class ChatRequest(BaseModel):
 class AIIntelligenceLayer:
     """
     Discrete AI layer that interprets tool results and generates insights
-    This is the missing layer between tools and user response
     """
     
     def __init__(self):
@@ -115,16 +157,11 @@ class AIIntelligenceLayer:
         tool_results: Dict,
         context: Dict = None
     ) -> Dict:
-        """
-        Main analysis function - interprets raw tool data
-        """
+        """Main analysis function - interprets raw tool data"""
         if not self.client:
             return self._fallback_analysis(tool_results)
         
-        # Structure the data
         structured_data = self._structure_tool_data(tool_results)
-        
-        # Build analysis prompt
         analysis_prompt = self._build_analysis_prompt(query, structured_data, context)
         
         try:
@@ -140,7 +177,6 @@ class AIIntelligenceLayer:
             
             result = response.choices[0].message.content.strip()
             
-            # Parse JSON
             if "```json" in result:
                 result = result.split("```json")[1].split("```")[0].strip()
             
@@ -179,7 +215,6 @@ class AIIntelligenceLayer:
             data = tool_results["arrival"].get("data", {})
             total_predicted = data.get("total_predicted", [])
             
-            # Handle dict format from arrival_tool (convert {date: val} to [{date, total_predicted_value}])
             if isinstance(total_predicted, dict):
                 total_predicted = [
                     {"date": k, "total_predicted_value": v} 
@@ -198,21 +233,16 @@ class AIIntelligenceLayer:
                 top_commodities = []
                 if commodity_daily:
                     for commodity, entries in commodity_daily.items():
-
-                        # 1️⃣ Ensure entries is list
                         if isinstance(entries, dict):
                             entries = list(entries.values())
                             
-                        # 2️⃣ Normalize all items to dicts
                         normalized = []
                         for item in entries:
                             if isinstance(item, dict):
                                 normalized.append(item)
                             else:
-                                # Convert float values to dict
                                 normalized.append({"predicted_value": float(item)})
 
-                        # 3️⃣ Now safe to slice + sum
                         total_val = sum(e.get("predicted_value", 0) for e in normalized[:7])
 
                         top_commodities.append({
@@ -220,10 +250,8 @@ class AIIntelligenceLayer:
                             "total": total_val
                         })
 
-                        # 4️⃣ Sort and take top 3
-                        top_commodities.sort(key=lambda x: x["total"], reverse=True)
-                        top_commodities = top_commodities[:3]
-
+                    top_commodities.sort(key=lambda x: x["total"], reverse=True)
+                    top_commodities = top_commodities[:3]
 
                 structured["arrival_data"] = {
                     "predictions": total_predicted[:7],
@@ -251,10 +279,8 @@ class AIIntelligenceLayer:
         if "price" in tool_results and tool_results["price"].get("success"):
             data = tool_results["price"].get("data", {})
             
-            # Handle different response structures
             predictions = []
             if "variants" in data and isinstance(data["variants"], list):
-                # Extract from variants structure
                 for variant in data["variants"]:
                     for forecast in variant.get("forecasts", []):
                         predictions.append({
@@ -441,15 +467,6 @@ Always cite concrete numbers (trend %, specific dates, rainfall, top commodities
             "\n" + "="*70 + "\n",
             "PREDICTION DATA:\n"
         ]
-        # NEW: Add commodity breakdown support
-        # NEW: Add commodity breakdown into AI analysis
-        if "arrival_breakdown" in structured_data:
-            breakdown = structured_data["arrival_breakdown"]
-            # You can include this breakdown into the prompt
-            analysis_parts.append(
-                f"\nCommodity Breakdown:\n" +
-                "\n".join([f"- {b['commodity']}: {b['total_predicted_value']}" for b in breakdown])
-            )
 
         # Arrival data
         arrival_info = structured_data.get("arrival_data")
@@ -490,7 +507,7 @@ Always cite concrete numbers (trend %, specific dates, rainfall, top commodities
         
         # Context
         if context:
-            prompt_parts.append("\n\n📍 CONTEXT:")
+            prompt_parts.append("\n\n🔍 CONTEXT:")
             if context.get("commodity"):
                 prompt_parts.append(f"  • Commodity: {context['commodity']}")
             if context.get("location"):
@@ -543,7 +560,6 @@ class AIIntelligence:
         if not client:
             print("⚠️ OpenAI client not initialized")
 
-    # ✅ NEW: Helper to extract commodity from query
     def _extract_commodity(self, query: str) -> str:
         q = query.lower().strip()
         commodities = ["chilli", "cotton", "paddy", "onion", "tomato", "groundnut", "turmeric", "maize"]
@@ -552,7 +568,6 @@ class AIIntelligence:
                 return commodity.title()
         return None
 
-    # ✅ NEW: Helper to check if query has explicit variant
     def _has_explicit_variant(self, query: str) -> bool:
         q = query.lower().strip()
         indicators = ["-", "deshi", "vagdevi", "vijaya", "cold", "hot", "hybrid", "local", "variety"]
@@ -569,13 +584,11 @@ class AIIntelligence:
             for msg in context.history[-5:]
         ])
         
-        # ✅ NEW: Detect repeat commodity query without explicit variant
         current_commodity = self._extract_commodity(query)
         previous_commodity = context.extracted_params.get("commodity")
         previous_variant = context.extracted_params.get("variant")
 
         if current_commodity and current_commodity == previous_commodity and not self._has_explicit_variant(query):
-            # 🔄 Same commodity, no explicit variant → clear previous selection
             context.extracted_params.pop("variant", None)
             print(f"🔄 Repeat commodity '{current_commodity}' - clearing previous variant selection")
         
@@ -606,20 +619,9 @@ Return ONLY valid JSON:
 
 IMPORTANT - Be SMART about tool calls:
 1. **Informational questions** → "general_question", tools_needed: []
-   Examples: "What is chilli?", "Tell me about green chillies", "How to grow tomatoes?"
-
 2. **Variety names alone** (without context) → "general_question", tools_needed: []
-   Example: "Green Chilli-Green Chilly" (no previous context) → Just answer about the variety
-
-3. **ONLY call tools when user wants PREDICTIONS/DATA**:
-   - "What is the price?" → "price_inquiry", ["price"]
-   - "Expected arrivals?" → "arrival_forecast", ["arrival"]
-   - "Should I bring to market?" → "advisory_request", ["advisory"]
-   - "Weather in Khammam?" → "weather_advice", ["weather"]
-   - "Rainfall forecast?" → "weather_advice", ["weather"]
-
+3. **ONLY call tools when user wants PREDICTIONS/DATA**
 4. **Weather queries**: When user asks about weather, rain, temperature, climate → "weather_advice", ["weather"]
-
 5. **Context matters**: If user previously asked for price/arrivals and now selects a variety, that's a continuation.
 
 Metric keywords (only for arrival queries):
@@ -657,10 +659,9 @@ Be intelligent - understand what the user NEEDS, not just keywords."""
             return self._fallback_analysis(query)
     
     def _fallback_analysis(self, query: str) -> Dict:
-        """Priority-based fallback (only if pattern + AI both fail)"""
+        """Priority-based fallback"""
         lower_q = query.lower().strip()
 
-        # Check for greetings first
         greetings = ["hello", "hi", "hey", "thanks", "bye"]
         if any(g in lower_q.split() for g in greetings):
             return {
@@ -671,8 +672,6 @@ Be intelligent - understand what the user NEEDS, not just keywords."""
                 "needs_clarification": False
             }
 
-        # Priority-based tool selection (returns ONLY ONE tool)
-        # Priority 1: Advisory (highest - decision/recommendation queries)
         if any(kw in lower_q for kw in ["should", "advice", "recommend", "suggest", "bring", "decision", "what to do", "whether", "market trend"]):
             print("🎯 FALLBACK: Advisory (priority 1)")
             return {
@@ -683,7 +682,6 @@ Be intelligent - understand what the user NEEDS, not just keywords."""
                 "needs_clarification": False
             }
 
-        # Priority 2: Price (medium priority)
         elif any(kw in lower_q for kw in ["price", "rate", "cost"]):
             print("🎯 FALLBACK: Price (priority 2)")
             return {
@@ -694,7 +692,6 @@ Be intelligent - understand what the user NEEDS, not just keywords."""
                 "needs_clarification": False
             }
 
-        # Priority 3: Arrival (default for agriculture queries)
         elif any(kw in lower_q for kw in ["arrival", "supply", "bags", "lot", "quantity", "farmer"]):
             print("🎯 FALLBACK: Arrival (priority 3)")
             return {
@@ -705,7 +702,6 @@ Be intelligent - understand what the user NEEDS, not just keywords."""
                 "needs_clarification": False
             }
 
-        # No keywords matched → general question
         else:
             print("🎯 FALLBACK: General question (no keywords)")
             return {
@@ -942,6 +938,10 @@ async def execute_price_tool(params: Dict) -> Dict:
         
         commodity = params.get("commodity", "")
         location = params.get("district") or params.get("amc_name") or params.get("location")
+        # If still None or "-", use last known location
+        if not location or location == "-":
+            location = context.last_location
+
         days = params.get("days", 1)
         variant = params.get("variant")
 
@@ -1211,19 +1211,31 @@ async def ai_powered_chat(request: ChatRequest):
                 detected_location = loc_name
                 break
 
-        if detected_location:
-            previous_location = context.extracted_params.get("district") or context.extracted_params.get("amc_name")
-            if not previous_location or previous_location.lower() != detected_location.lower():
-                context.extracted_params["district"] = detected_location
-                context.extracted_params["amc_name"] = detected_location
-                new_params.setdefault("district", detected_location)
-                new_params.setdefault("amc_name", detected_location)
-                print(f"🔍 Detected location in query: {detected_location} (context updated)")
+        if detected_location and detected_location != "-":
+            # Always use new valid detected location first
+            context.last_location = detected_location.lower()
+
+            context.extracted_params["district"] = detected_location
+            context.extracted_params["amc_name"] = detected_location
+
+            new_params["district"] = detected_location
+            new_params["amc_name"] = detected_location
+
+        else:
+            # No new location → fallback to last known GOOD location
+            last = context.last_location
+
+            if last and last != "-":
+                context.extracted_params["district"] = last
+                context.extracted_params["amc_name"] = last
+
+                new_params["district"] = last
+                new_params["amc_name"] = last
 
         # 🔧 CRITICAL FIX: Clear old location if query explicitly mentions a different new location via keywords
         location_keywords = ["in", "at", "from", "market"]
         for keyword in location_keywords:
-            pattern = f"\\b{keyword}\\s+(\\w+)"
+            pattern = rf"\b{keyword}\s+([a-zA-Z0-9\s-]+)"
             match = re.search(pattern, query_lower)
             if match:
                 potential_location = match.group(1)
