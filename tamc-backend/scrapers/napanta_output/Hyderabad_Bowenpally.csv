@@ -1,0 +1,931 @@
+Commodity,Market,Variety,Max,Avg,Min,Fetch_Date
+Amla(Nelli Kai), Bowenpally,Amla," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-12-02
+Beetroot, Bowenpally,Beetroot," ₹ 3,500"," ₹ 2,800"," ₹ 1,000",2025-12-02
+Bitter gourd, Bowenpally,Bitter Gourd," ₹ 3,300"," ₹ 2,800"," ₹ 1,000",2025-12-02
+Bottle gourd, Bowenpally,Bottle Gourd," ₹ 1,200"," ₹ 1,000", ₹ 400,2025-12-02
+Brinjal, Bowenpally,Arkasheela Mattigulla," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-12-02
+Cabbage, Bowenpally,Cabbage," ₹ 1,500"," ₹ 1,200", ₹ 500,2025-12-02
+Capsicum, Bowenpally,Capsicum," ₹ 3,200"," ₹ 2,800"," ₹ 1,000",2025-12-02
+Carrot, Bowenpally,Carrot," ₹ 6,000"," ₹ 4,500", ₹ 800,2025-12-02
+Cauliflower, Bowenpally,African Sarson," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-12-02
+Chow Chow, Bowenpally,Chow Chow," ₹ 1,000", ₹ 800, ₹ 500,2025-12-02
+Cluster beans, Bowenpally,Cluster Beans," ₹ 6,000"," ₹ 5,000"," ₹ 3,000",2025-12-02
+Colacasia, Bowenpally,Colacasia," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-12-02
+Cucumbar(Kheera), Bowenpally,Cucumbar," ₹ 1,200"," ₹ 1,000", ₹ 500,2025-12-02
+Drumstick, Bowenpally,Drumstick," ₹ 10,000"," ₹ 8,500"," ₹ 5,000",2025-12-02
+Field Pea, Bowenpally,Field Pea," ₹ 5,000"," ₹ 4,000"," ₹ 2,000",2025-12-02
+French Beans (Frasbean), Bowenpally,French Beans (Frasbean)," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-12-02
+Green Chilli, Bowenpally,Green Chilly," ₹ 3,000"," ₹ 2,800"," ₹ 1,800",2025-12-02
+Groundnut pods (raw), Bowenpally,Groundnut pods (raw)," ₹ 5,500"," ₹ 5,000"," ₹ 3,000",2025-12-02
+Onion, Bowenpally,1st Sort," ₹ 1,800"," ₹ 1,400", ₹ 500,2025-12-02
+Onion Green, Bowenpally,Onion Green," ₹ 5,000"," ₹ 4,200"," ₹ 2,000",2025-12-02
+Potato, Bowenpally,(Red Nanital)," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-12-02
+Pumpkin, Bowenpally,Other," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-12-02
+Raddish, Bowenpally,Other, ₹ 400, ₹ 300, ₹ 200,2025-12-02
+Ridgeguard(Tori), Bowenpally,Other," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-12-02
+Snakeguard, Bowenpally,Other," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-12-02
+Sweet Potato, Bowenpally,Hosur Green," ₹ 3,300"," ₹ 3,000"," ₹ 2,000",2025-12-02
+Tomato, Bowenpally,Deshi," ₹ 1,800"," ₹ 1,500", ₹ 400,2025-12-02
+Yam (Ratalu), Bowenpally,Other," ₹ 3,500"," ₹ 3,200"," ₹ 2,000",2025-12-02
+White Pumpkin, Bowenpally,Other," ₹ 1,000", ₹ 900, ₹ 500,2025-12-02
+Bhindi(Ladies Finger), Bowenpally,Bhindi," ₹ 2,200"," ₹ 1,800"," ₹ 1,200",2025-12-02
+Knool Khol, Bowenpally,Knool Khol," ₹ 1,800"," ₹ 1,600"," ₹ 1,000",2025-12-02
+Amla(Nelli Kai), Bowenpally,Amla," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-12-01
+Beetroot, Bowenpally,Beetroot," ₹ 3,500"," ₹ 2,800"," ₹ 1,000",2025-12-01
+Bitter gourd, Bowenpally,Bitter Gourd," ₹ 3,300"," ₹ 2,800"," ₹ 1,000",2025-12-01
+Bottle gourd, Bowenpally,Bottle Gourd," ₹ 1,200"," ₹ 1,000", ₹ 400,2025-12-01
+Brinjal, Bowenpally,Arkasheela Mattigulla," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-12-01
+Cabbage, Bowenpally,Cabbage," ₹ 1,500"," ₹ 1,200", ₹ 500,2025-12-01
+Capsicum, Bowenpally,Capsicum," ₹ 3,200"," ₹ 2,800"," ₹ 1,000",2025-12-01
+Carrot, Bowenpally,Carrot," ₹ 6,000"," ₹ 4,500", ₹ 800,2025-12-01
+Cauliflower, Bowenpally,African Sarson," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-12-01
+Chow Chow, Bowenpally,Chow Chow," ₹ 1,000", ₹ 800, ₹ 500,2025-12-01
+Cluster beans, Bowenpally,Cluster Beans," ₹ 6,000"," ₹ 5,000"," ₹ 3,000",2025-12-01
+Colacasia, Bowenpally,Colacasia," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-12-01
+Cucumbar(Kheera), Bowenpally,Cucumbar," ₹ 1,200"," ₹ 1,000", ₹ 500,2025-12-01
+Drumstick, Bowenpally,Drumstick," ₹ 10,000"," ₹ 8,500"," ₹ 5,000",2025-12-01
+Field Pea, Bowenpally,Field Pea," ₹ 5,000"," ₹ 4,000"," ₹ 2,000",2025-12-01
+French Beans (Frasbean), Bowenpally,French Beans (Frasbean)," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-12-01
+Green Chilli, Bowenpally,Green Chilly," ₹ 3,000"," ₹ 2,800"," ₹ 1,800",2025-12-01
+Groundnut pods (raw), Bowenpally,Groundnut pods (raw)," ₹ 5,500"," ₹ 5,000"," ₹ 3,000",2025-12-01
+Onion, Bowenpally,1st Sort," ₹ 1,800"," ₹ 1,400", ₹ 500,2025-12-01
+Onion Green, Bowenpally,Onion Green," ₹ 5,000"," ₹ 4,200"," ₹ 2,000",2025-12-01
+Potato, Bowenpally,(Red Nanital)," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-12-01
+Pumpkin, Bowenpally,Other," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-12-01
+Raddish, Bowenpally,Other, ₹ 400, ₹ 300, ₹ 200,2025-12-01
+Ridgeguard(Tori), Bowenpally,Other," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-12-01
+Snakeguard, Bowenpally,Other," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-12-01
+Sweet Potato, Bowenpally,Hosur Green," ₹ 3,300"," ₹ 3,000"," ₹ 2,000",2025-12-01
+Tomato, Bowenpally,Deshi," ₹ 1,800"," ₹ 1,500", ₹ 400,2025-12-01
+Yam (Ratalu), Bowenpally,Other," ₹ 3,500"," ₹ 3,200"," ₹ 2,000",2025-12-01
+White Pumpkin, Bowenpally,Other," ₹ 1,000", ₹ 900, ₹ 500,2025-12-01
+Bhindi(Ladies Finger), Bowenpally,Bhindi," ₹ 2,200"," ₹ 1,800"," ₹ 1,200",2025-12-01
+Knool Khol, Bowenpally,Knool Khol," ₹ 1,800"," ₹ 1,600"," ₹ 1,000",2025-12-01
+Amla(Nelli Kai), Bowenpally,Amla," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-30
+Beetroot, Bowenpally,Beetroot," ₹ 3,500"," ₹ 2,800"," ₹ 1,000",2025-11-30
+Bitter gourd, Bowenpally,Bitter Gourd," ₹ 3,300"," ₹ 2,800"," ₹ 1,000",2025-11-30
+Bottle gourd, Bowenpally,Bottle Gourd," ₹ 1,200"," ₹ 1,000", ₹ 400,2025-11-30
+Brinjal, Bowenpally,Arkasheela Mattigulla," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-30
+Cabbage, Bowenpally,Cabbage," ₹ 1,500"," ₹ 1,200", ₹ 500,2025-11-30
+Capsicum, Bowenpally,Capsicum," ₹ 3,200"," ₹ 2,800"," ₹ 1,000",2025-11-30
+Carrot, Bowenpally,Carrot," ₹ 6,000"," ₹ 4,500", ₹ 800,2025-11-30
+Cauliflower, Bowenpally,African Sarson," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-30
+Chow Chow, Bowenpally,Chow Chow," ₹ 1,000", ₹ 800, ₹ 500,2025-11-30
+Cluster beans, Bowenpally,Cluster Beans," ₹ 6,000"," ₹ 5,000"," ₹ 3,000",2025-11-30
+Colacasia, Bowenpally,Colacasia," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-30
+Cucumbar(Kheera), Bowenpally,Cucumbar," ₹ 1,200"," ₹ 1,000", ₹ 500,2025-11-30
+Drumstick, Bowenpally,Drumstick," ₹ 10,000"," ₹ 8,500"," ₹ 5,000",2025-11-30
+Field Pea, Bowenpally,Field Pea," ₹ 5,000"," ₹ 4,000"," ₹ 2,000",2025-11-30
+French Beans (Frasbean), Bowenpally,French Beans (Frasbean)," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-30
+Green Chilli, Bowenpally,Green Chilly," ₹ 3,000"," ₹ 2,800"," ₹ 1,800",2025-11-30
+Groundnut pods (raw), Bowenpally,Groundnut pods (raw)," ₹ 5,500"," ₹ 5,000"," ₹ 3,000",2025-11-30
+Onion, Bowenpally,1st Sort," ₹ 1,800"," ₹ 1,400", ₹ 500,2025-11-30
+Onion Green, Bowenpally,Onion Green," ₹ 5,000"," ₹ 4,200"," ₹ 2,000",2025-11-30
+Potato, Bowenpally,(Red Nanital)," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-30
+Pumpkin, Bowenpally,Other," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-30
+Raddish, Bowenpally,Other, ₹ 400, ₹ 300, ₹ 200,2025-11-30
+Ridgeguard(Tori), Bowenpally,Other," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-30
+Snakeguard, Bowenpally,Other," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-30
+Sweet Potato, Bowenpally,Hosur Green," ₹ 3,300"," ₹ 3,000"," ₹ 2,000",2025-11-30
+Tomato, Bowenpally,Deshi," ₹ 1,800"," ₹ 1,500", ₹ 400,2025-11-30
+Yam (Ratalu), Bowenpally,Other," ₹ 3,500"," ₹ 3,200"," ₹ 2,000",2025-11-30
+White Pumpkin, Bowenpally,Other," ₹ 1,000", ₹ 900, ₹ 500,2025-11-30
+Bhindi(Ladies Finger), Bowenpally,Bhindi," ₹ 2,200"," ₹ 1,800"," ₹ 1,200",2025-11-30
+Knool Khol, Bowenpally,Knool Khol," ₹ 1,800"," ₹ 1,600"," ₹ 1,000",2025-11-30
+Amla(Nelli Kai), Bowenpally,Amla," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-29
+Beetroot, Bowenpally,Beetroot," ₹ 3,500"," ₹ 2,800"," ₹ 1,000",2025-11-29
+Bitter gourd, Bowenpally,Bitter Gourd," ₹ 3,300"," ₹ 2,800"," ₹ 1,000",2025-11-29
+Bottle gourd, Bowenpally,Bottle Gourd," ₹ 1,200"," ₹ 1,000", ₹ 400,2025-11-29
+Brinjal, Bowenpally,Arkasheela Mattigulla," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-29
+Cabbage, Bowenpally,Cabbage," ₹ 1,500"," ₹ 1,200", ₹ 500,2025-11-29
+Capsicum, Bowenpally,Capsicum," ₹ 3,200"," ₹ 2,800"," ₹ 1,000",2025-11-29
+Carrot, Bowenpally,Carrot," ₹ 6,000"," ₹ 4,500", ₹ 800,2025-11-29
+Cauliflower, Bowenpally,African Sarson," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-29
+Chow Chow, Bowenpally,Chow Chow," ₹ 1,000", ₹ 800, ₹ 500,2025-11-29
+Cluster beans, Bowenpally,Cluster Beans," ₹ 6,000"," ₹ 5,000"," ₹ 3,000",2025-11-29
+Colacasia, Bowenpally,Colacasia," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-29
+Cucumbar(Kheera), Bowenpally,Cucumbar," ₹ 1,200"," ₹ 1,000", ₹ 500,2025-11-29
+Drumstick, Bowenpally,Drumstick," ₹ 10,000"," ₹ 8,500"," ₹ 5,000",2025-11-29
+Field Pea, Bowenpally,Field Pea," ₹ 5,000"," ₹ 4,000"," ₹ 2,000",2025-11-29
+French Beans (Frasbean), Bowenpally,French Beans (Frasbean)," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-29
+Green Chilli, Bowenpally,Green Chilly," ₹ 3,000"," ₹ 2,800"," ₹ 1,800",2025-11-29
+Groundnut pods (raw), Bowenpally,Groundnut pods (raw)," ₹ 5,500"," ₹ 5,000"," ₹ 3,000",2025-11-29
+Onion, Bowenpally,1st Sort," ₹ 1,800"," ₹ 1,400", ₹ 500,2025-11-29
+Onion Green, Bowenpally,Onion Green," ₹ 5,000"," ₹ 4,200"," ₹ 2,000",2025-11-29
+Potato, Bowenpally,(Red Nanital)," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-29
+Pumpkin, Bowenpally,Other," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-29
+Raddish, Bowenpally,Other, ₹ 400, ₹ 300, ₹ 200,2025-11-29
+Ridgeguard(Tori), Bowenpally,Other," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-29
+Snakeguard, Bowenpally,Other," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-29
+Sweet Potato, Bowenpally,Hosur Green," ₹ 3,300"," ₹ 3,000"," ₹ 2,000",2025-11-29
+Tomato, Bowenpally,Deshi," ₹ 1,800"," ₹ 1,500", ₹ 400,2025-11-29
+Yam (Ratalu), Bowenpally,Other," ₹ 3,500"," ₹ 3,200"," ₹ 2,000",2025-11-29
+White Pumpkin, Bowenpally,Other," ₹ 1,000", ₹ 900, ₹ 500,2025-11-29
+Bhindi(Ladies Finger), Bowenpally,Bhindi," ₹ 2,200"," ₹ 1,800"," ₹ 1,200",2025-11-29
+Knool Khol, Bowenpally,Knool Khol," ₹ 1,800"," ₹ 1,600"," ₹ 1,000",2025-11-29
+Amla(Nelli Kai), Bowenpally,Amla," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-28
+Beetroot, Bowenpally,Beetroot," ₹ 3,500"," ₹ 2,800"," ₹ 1,000",2025-11-28
+Bitter gourd, Bowenpally,Bitter Gourd," ₹ 3,300"," ₹ 2,800"," ₹ 1,000",2025-11-28
+Bottle gourd, Bowenpally,Bottle Gourd," ₹ 1,200"," ₹ 1,000", ₹ 400,2025-11-28
+Brinjal, Bowenpally,Arkasheela Mattigulla," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-28
+Cabbage, Bowenpally,Cabbage," ₹ 1,500"," ₹ 1,200", ₹ 500,2025-11-28
+Capsicum, Bowenpally,Capsicum," ₹ 3,200"," ₹ 2,800"," ₹ 1,000",2025-11-28
+Carrot, Bowenpally,Carrot," ₹ 6,000"," ₹ 4,500", ₹ 800,2025-11-28
+Cauliflower, Bowenpally,African Sarson," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-28
+Chow Chow, Bowenpally,Chow Chow," ₹ 1,000", ₹ 800, ₹ 500,2025-11-28
+Cluster beans, Bowenpally,Cluster Beans," ₹ 6,000"," ₹ 5,000"," ₹ 3,000",2025-11-28
+Colacasia, Bowenpally,Colacasia," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-28
+Cucumbar(Kheera), Bowenpally,Cucumbar," ₹ 1,200"," ₹ 1,000", ₹ 500,2025-11-28
+Drumstick, Bowenpally,Drumstick," ₹ 10,000"," ₹ 8,500"," ₹ 5,000",2025-11-28
+Field Pea, Bowenpally,Field Pea," ₹ 5,000"," ₹ 4,000"," ₹ 2,000",2025-11-28
+French Beans (Frasbean), Bowenpally,French Beans (Frasbean)," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-28
+Green Chilli, Bowenpally,Green Chilly," ₹ 3,000"," ₹ 2,800"," ₹ 1,800",2025-11-28
+Groundnut pods (raw), Bowenpally,Groundnut pods (raw)," ₹ 5,500"," ₹ 5,000"," ₹ 3,000",2025-11-28
+Onion, Bowenpally,1st Sort," ₹ 1,800"," ₹ 1,400", ₹ 500,2025-11-28
+Onion Green, Bowenpally,Onion Green," ₹ 5,000"," ₹ 4,200"," ₹ 2,000",2025-11-28
+Potato, Bowenpally,(Red Nanital)," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-28
+Pumpkin, Bowenpally,Other," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-28
+Raddish, Bowenpally,Other, ₹ 400, ₹ 300, ₹ 200,2025-11-28
+Ridgeguard(Tori), Bowenpally,Other," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-28
+Snakeguard, Bowenpally,Other," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-28
+Sweet Potato, Bowenpally,Hosur Green," ₹ 3,300"," ₹ 3,000"," ₹ 2,000",2025-11-28
+Tomato, Bowenpally,Deshi," ₹ 1,800"," ₹ 1,500", ₹ 400,2025-11-28
+Yam (Ratalu), Bowenpally,Other," ₹ 3,500"," ₹ 3,200"," ₹ 2,000",2025-11-28
+White Pumpkin, Bowenpally,Other," ₹ 1,000", ₹ 900, ₹ 500,2025-11-28
+Bhindi(Ladies Finger), Bowenpally,Bhindi," ₹ 2,200"," ₹ 1,800"," ₹ 1,200",2025-11-28
+Knool Khol, Bowenpally,Knool Khol," ₹ 1,800"," ₹ 1,600"," ₹ 1,000",2025-11-28
+Amla(Nelli Kai), Bowenpally,Amla," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-27
+Beetroot, Bowenpally,Beetroot," ₹ 3,500"," ₹ 2,800"," ₹ 1,000",2025-11-27
+Bitter gourd, Bowenpally,Bitter Gourd," ₹ 3,300"," ₹ 2,800"," ₹ 1,000",2025-11-27
+Bottle gourd, Bowenpally,Bottle Gourd," ₹ 1,200"," ₹ 1,000", ₹ 400,2025-11-27
+Brinjal, Bowenpally,Arkasheela Mattigulla," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-27
+Cabbage, Bowenpally,Cabbage," ₹ 1,500"," ₹ 1,200", ₹ 500,2025-11-27
+Capsicum, Bowenpally,Capsicum," ₹ 3,200"," ₹ 2,800"," ₹ 1,000",2025-11-27
+Carrot, Bowenpally,Carrot," ₹ 6,000"," ₹ 4,500", ₹ 800,2025-11-27
+Cauliflower, Bowenpally,African Sarson," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-27
+Chow Chow, Bowenpally,Chow Chow," ₹ 1,000", ₹ 800, ₹ 500,2025-11-27
+Cluster beans, Bowenpally,Cluster Beans," ₹ 6,000"," ₹ 5,000"," ₹ 3,000",2025-11-27
+Colacasia, Bowenpally,Colacasia," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-27
+Cucumbar(Kheera), Bowenpally,Cucumbar," ₹ 1,200"," ₹ 1,000", ₹ 500,2025-11-27
+Drumstick, Bowenpally,Drumstick," ₹ 10,000"," ₹ 8,500"," ₹ 5,000",2025-11-27
+Field Pea, Bowenpally,Field Pea," ₹ 5,000"," ₹ 4,000"," ₹ 2,000",2025-11-27
+French Beans (Frasbean), Bowenpally,French Beans (Frasbean)," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-27
+Green Chilli, Bowenpally,Green Chilly," ₹ 3,000"," ₹ 2,800"," ₹ 1,800",2025-11-27
+Groundnut pods (raw), Bowenpally,Groundnut pods (raw)," ₹ 5,500"," ₹ 5,000"," ₹ 3,000",2025-11-27
+Onion, Bowenpally,1st Sort," ₹ 1,800"," ₹ 1,400", ₹ 500,2025-11-27
+Onion Green, Bowenpally,Onion Green," ₹ 5,000"," ₹ 4,200"," ₹ 2,000",2025-11-27
+Potato, Bowenpally,(Red Nanital)," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-27
+Pumpkin, Bowenpally,Other," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-27
+Raddish, Bowenpally,Other, ₹ 400, ₹ 300, ₹ 200,2025-11-27
+Ridgeguard(Tori), Bowenpally,Other," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-27
+Snakeguard, Bowenpally,Other," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-27
+Sweet Potato, Bowenpally,Hosur Green," ₹ 3,300"," ₹ 3,000"," ₹ 2,000",2025-11-27
+Tomato, Bowenpally,Deshi," ₹ 1,800"," ₹ 1,500", ₹ 400,2025-11-27
+Yam (Ratalu), Bowenpally,Other," ₹ 3,500"," ₹ 3,200"," ₹ 2,000",2025-11-27
+White Pumpkin, Bowenpally,Other," ₹ 1,000", ₹ 900, ₹ 500,2025-11-27
+Bhindi(Ladies Finger), Bowenpally,Bhindi," ₹ 2,200"," ₹ 1,800"," ₹ 1,200",2025-11-27
+Knool Khol, Bowenpally,Knool Khol," ₹ 1,800"," ₹ 1,600"," ₹ 1,000",2025-11-27
+Amla(Nelli Kai), Bowenpally,Amla," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-26
+Beetroot, Bowenpally,Beetroot," ₹ 3,500"," ₹ 2,800"," ₹ 1,000",2025-11-26
+Bitter gourd, Bowenpally,Bitter Gourd," ₹ 3,300"," ₹ 2,800"," ₹ 1,000",2025-11-26
+Bottle gourd, Bowenpally,Bottle Gourd," ₹ 1,200"," ₹ 1,000", ₹ 400,2025-11-26
+Brinjal, Bowenpally,Arkasheela Mattigulla," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-26
+Cabbage, Bowenpally,Cabbage," ₹ 1,500"," ₹ 1,200", ₹ 500,2025-11-26
+Capsicum, Bowenpally,Capsicum," ₹ 3,200"," ₹ 2,800"," ₹ 1,000",2025-11-26
+Carrot, Bowenpally,Carrot," ₹ 6,000"," ₹ 4,500", ₹ 800,2025-11-26
+Cauliflower, Bowenpally,African Sarson," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-26
+Chow Chow, Bowenpally,Chow Chow," ₹ 1,000", ₹ 800, ₹ 500,2025-11-26
+Cluster beans, Bowenpally,Cluster Beans," ₹ 6,000"," ₹ 5,000"," ₹ 3,000",2025-11-26
+Colacasia, Bowenpally,Colacasia," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-26
+Cucumbar(Kheera), Bowenpally,Cucumbar," ₹ 1,200"," ₹ 1,000", ₹ 500,2025-11-26
+Drumstick, Bowenpally,Drumstick," ₹ 10,000"," ₹ 8,500"," ₹ 5,000",2025-11-26
+Field Pea, Bowenpally,Field Pea," ₹ 5,000"," ₹ 4,000"," ₹ 2,000",2025-11-26
+French Beans (Frasbean), Bowenpally,French Beans (Frasbean)," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-26
+Green Chilli, Bowenpally,Green Chilly," ₹ 3,000"," ₹ 2,800"," ₹ 1,800",2025-11-26
+Groundnut pods (raw), Bowenpally,Groundnut pods (raw)," ₹ 5,500"," ₹ 5,000"," ₹ 3,000",2025-11-26
+Onion, Bowenpally,1st Sort," ₹ 1,800"," ₹ 1,400", ₹ 500,2025-11-26
+Onion Green, Bowenpally,Onion Green," ₹ 5,000"," ₹ 4,200"," ₹ 2,000",2025-11-26
+Potato, Bowenpally,(Red Nanital)," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-26
+Pumpkin, Bowenpally,Other," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-26
+Raddish, Bowenpally,Other, ₹ 400, ₹ 300, ₹ 200,2025-11-26
+Ridgeguard(Tori), Bowenpally,Other," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-26
+Snakeguard, Bowenpally,Other," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-26
+Sweet Potato, Bowenpally,Hosur Green," ₹ 3,300"," ₹ 3,000"," ₹ 2,000",2025-11-26
+Tomato, Bowenpally,Deshi," ₹ 1,800"," ₹ 1,500", ₹ 400,2025-11-26
+Yam (Ratalu), Bowenpally,Other," ₹ 3,500"," ₹ 3,200"," ₹ 2,000",2025-11-26
+White Pumpkin, Bowenpally,Other," ₹ 1,000", ₹ 900, ₹ 500,2025-11-26
+Bhindi(Ladies Finger), Bowenpally,Bhindi," ₹ 2,200"," ₹ 1,800"," ₹ 1,200",2025-11-26
+Knool Khol, Bowenpally,Knool Khol," ₹ 1,800"," ₹ 1,600"," ₹ 1,000",2025-11-26
+Amla(Nelli Kai), Bowenpally,Amla," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-25
+Beetroot, Bowenpally,Beetroot," ₹ 3,500"," ₹ 2,800"," ₹ 1,000",2025-11-25
+Bitter gourd, Bowenpally,Bitter Gourd," ₹ 3,300"," ₹ 2,800"," ₹ 1,000",2025-11-25
+Bottle gourd, Bowenpally,Bottle Gourd," ₹ 1,200"," ₹ 1,000", ₹ 400,2025-11-25
+Brinjal, Bowenpally,Arkasheela Mattigulla," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-25
+Cabbage, Bowenpally,Cabbage," ₹ 1,500"," ₹ 1,200", ₹ 500,2025-11-25
+Capsicum, Bowenpally,Capsicum," ₹ 3,200"," ₹ 2,800"," ₹ 1,000",2025-11-25
+Carrot, Bowenpally,Carrot," ₹ 6,000"," ₹ 4,500", ₹ 800,2025-11-25
+Cauliflower, Bowenpally,African Sarson," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-25
+Chow Chow, Bowenpally,Chow Chow," ₹ 1,000", ₹ 800, ₹ 500,2025-11-25
+Cluster beans, Bowenpally,Cluster Beans," ₹ 6,000"," ₹ 5,000"," ₹ 3,000",2025-11-25
+Colacasia, Bowenpally,Colacasia," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-25
+Cucumbar(Kheera), Bowenpally,Cucumbar," ₹ 1,200"," ₹ 1,000", ₹ 500,2025-11-25
+Drumstick, Bowenpally,Drumstick," ₹ 10,000"," ₹ 8,500"," ₹ 5,000",2025-11-25
+Field Pea, Bowenpally,Field Pea," ₹ 5,000"," ₹ 4,000"," ₹ 2,000",2025-11-25
+French Beans (Frasbean), Bowenpally,French Beans (Frasbean)," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-25
+Green Chilli, Bowenpally,Green Chilly," ₹ 3,000"," ₹ 2,800"," ₹ 1,800",2025-11-25
+Groundnut pods (raw), Bowenpally,Groundnut pods (raw)," ₹ 5,500"," ₹ 5,000"," ₹ 3,000",2025-11-25
+Onion, Bowenpally,1st Sort," ₹ 1,800"," ₹ 1,400", ₹ 500,2025-11-25
+Onion Green, Bowenpally,Onion Green," ₹ 5,000"," ₹ 4,200"," ₹ 2,000",2025-11-25
+Potato, Bowenpally,(Red Nanital)," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-25
+Pumpkin, Bowenpally,Other," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-25
+Raddish, Bowenpally,Other, ₹ 400, ₹ 300, ₹ 200,2025-11-25
+Ridgeguard(Tori), Bowenpally,Other," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-25
+Snakeguard, Bowenpally,Other," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-25
+Sweet Potato, Bowenpally,Hosur Green," ₹ 3,300"," ₹ 3,000"," ₹ 2,000",2025-11-25
+Tomato, Bowenpally,Deshi," ₹ 1,800"," ₹ 1,500", ₹ 400,2025-11-25
+Yam (Ratalu), Bowenpally,Other," ₹ 3,500"," ₹ 3,200"," ₹ 2,000",2025-11-25
+White Pumpkin, Bowenpally,Other," ₹ 1,000", ₹ 900, ₹ 500,2025-11-25
+Bhindi(Ladies Finger), Bowenpally,Bhindi," ₹ 2,200"," ₹ 1,800"," ₹ 1,200",2025-11-25
+Knool Khol, Bowenpally,Knool Khol," ₹ 1,800"," ₹ 1,600"," ₹ 1,000",2025-11-25
+Amla(Nelli Kai), Bowenpally,Amla," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-24
+Beetroot, Bowenpally,Beetroot," ₹ 3,500"," ₹ 2,800"," ₹ 1,000",2025-11-24
+Bitter gourd, Bowenpally,Bitter Gourd," ₹ 3,300"," ₹ 2,800"," ₹ 1,000",2025-11-24
+Bottle gourd, Bowenpally,Bottle Gourd," ₹ 1,200"," ₹ 1,000", ₹ 400,2025-11-24
+Brinjal, Bowenpally,Arkasheela Mattigulla," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-24
+Cabbage, Bowenpally,Cabbage," ₹ 1,500"," ₹ 1,200", ₹ 500,2025-11-24
+Capsicum, Bowenpally,Capsicum," ₹ 3,200"," ₹ 2,800"," ₹ 1,000",2025-11-24
+Carrot, Bowenpally,Carrot," ₹ 6,000"," ₹ 4,500", ₹ 800,2025-11-24
+Cauliflower, Bowenpally,African Sarson," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-24
+Chow Chow, Bowenpally,Chow Chow," ₹ 1,000", ₹ 800, ₹ 500,2025-11-24
+Cluster beans, Bowenpally,Cluster Beans," ₹ 6,000"," ₹ 5,000"," ₹ 3,000",2025-11-24
+Colacasia, Bowenpally,Colacasia," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-24
+Cucumbar(Kheera), Bowenpally,Cucumbar," ₹ 1,200"," ₹ 1,000", ₹ 500,2025-11-24
+Drumstick, Bowenpally,Drumstick," ₹ 10,000"," ₹ 8,500"," ₹ 5,000",2025-11-24
+Field Pea, Bowenpally,Field Pea," ₹ 5,000"," ₹ 4,000"," ₹ 2,000",2025-11-24
+French Beans (Frasbean), Bowenpally,French Beans (Frasbean)," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-24
+Green Chilli, Bowenpally,Green Chilly," ₹ 3,000"," ₹ 2,800"," ₹ 1,800",2025-11-24
+Groundnut pods (raw), Bowenpally,Groundnut pods (raw)," ₹ 5,500"," ₹ 5,000"," ₹ 3,000",2025-11-24
+Onion, Bowenpally,1st Sort," ₹ 1,800"," ₹ 1,400", ₹ 500,2025-11-24
+Onion Green, Bowenpally,Onion Green," ₹ 5,000"," ₹ 4,200"," ₹ 2,000",2025-11-24
+Potato, Bowenpally,(Red Nanital)," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-24
+Pumpkin, Bowenpally,Other," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-24
+Raddish, Bowenpally,Other, ₹ 400, ₹ 300, ₹ 200,2025-11-24
+Ridgeguard(Tori), Bowenpally,Other," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-24
+Snakeguard, Bowenpally,Other," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-24
+Sweet Potato, Bowenpally,Hosur Green," ₹ 3,300"," ₹ 3,000"," ₹ 2,000",2025-11-24
+Tomato, Bowenpally,Deshi," ₹ 1,800"," ₹ 1,500", ₹ 400,2025-11-24
+Yam (Ratalu), Bowenpally,Other," ₹ 3,500"," ₹ 3,200"," ₹ 2,000",2025-11-24
+White Pumpkin, Bowenpally,Other," ₹ 1,000", ₹ 900, ₹ 500,2025-11-24
+Bhindi(Ladies Finger), Bowenpally,Bhindi," ₹ 2,200"," ₹ 1,800"," ₹ 1,200",2025-11-24
+Knool Khol, Bowenpally,Knool Khol," ₹ 1,800"," ₹ 1,600"," ₹ 1,000",2025-11-24
+Amla(Nelli Kai), Bowenpally,Amla," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-23
+Beetroot, Bowenpally,Beetroot," ₹ 3,500"," ₹ 2,800"," ₹ 1,000",2025-11-23
+Bitter gourd, Bowenpally,Bitter Gourd," ₹ 3,300"," ₹ 2,800"," ₹ 1,000",2025-11-23
+Bottle gourd, Bowenpally,Bottle Gourd," ₹ 1,200"," ₹ 1,000", ₹ 400,2025-11-23
+Brinjal, Bowenpally,Arkasheela Mattigulla," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-23
+Cabbage, Bowenpally,Cabbage," ₹ 1,500"," ₹ 1,200", ₹ 500,2025-11-23
+Capsicum, Bowenpally,Capsicum," ₹ 3,200"," ₹ 2,800"," ₹ 1,000",2025-11-23
+Carrot, Bowenpally,Carrot," ₹ 6,000"," ₹ 4,500", ₹ 800,2025-11-23
+Cauliflower, Bowenpally,African Sarson," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-23
+Chow Chow, Bowenpally,Chow Chow," ₹ 1,000", ₹ 800, ₹ 500,2025-11-23
+Cluster beans, Bowenpally,Cluster Beans," ₹ 6,000"," ₹ 5,000"," ₹ 3,000",2025-11-23
+Colacasia, Bowenpally,Colacasia," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-23
+Cucumbar(Kheera), Bowenpally,Cucumbar," ₹ 1,200"," ₹ 1,000", ₹ 500,2025-11-23
+Drumstick, Bowenpally,Drumstick," ₹ 10,000"," ₹ 8,500"," ₹ 5,000",2025-11-23
+Field Pea, Bowenpally,Field Pea," ₹ 5,000"," ₹ 4,000"," ₹ 2,000",2025-11-23
+French Beans (Frasbean), Bowenpally,French Beans (Frasbean)," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-23
+Green Chilli, Bowenpally,Green Chilly," ₹ 3,000"," ₹ 2,800"," ₹ 1,800",2025-11-23
+Groundnut pods (raw), Bowenpally,Groundnut pods (raw)," ₹ 5,500"," ₹ 5,000"," ₹ 3,000",2025-11-23
+Onion, Bowenpally,1st Sort," ₹ 1,800"," ₹ 1,400", ₹ 500,2025-11-23
+Onion Green, Bowenpally,Onion Green," ₹ 5,000"," ₹ 4,200"," ₹ 2,000",2025-11-23
+Potato, Bowenpally,(Red Nanital)," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-23
+Pumpkin, Bowenpally,Other," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-23
+Raddish, Bowenpally,Other, ₹ 400, ₹ 300, ₹ 200,2025-11-23
+Ridgeguard(Tori), Bowenpally,Other," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-23
+Snakeguard, Bowenpally,Other," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-23
+Sweet Potato, Bowenpally,Hosur Green," ₹ 3,300"," ₹ 3,000"," ₹ 2,000",2025-11-23
+Tomato, Bowenpally,Deshi," ₹ 1,800"," ₹ 1,500", ₹ 400,2025-11-23
+Yam (Ratalu), Bowenpally,Other," ₹ 3,500"," ₹ 3,200"," ₹ 2,000",2025-11-23
+White Pumpkin, Bowenpally,Other," ₹ 1,000", ₹ 900, ₹ 500,2025-11-23
+Bhindi(Ladies Finger), Bowenpally,Bhindi," ₹ 2,200"," ₹ 1,800"," ₹ 1,200",2025-11-23
+Knool Khol, Bowenpally,Knool Khol," ₹ 1,800"," ₹ 1,600"," ₹ 1,000",2025-11-23
+Amla(Nelli Kai), Bowenpally,Amla," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-22
+Beetroot, Bowenpally,Beetroot," ₹ 3,500"," ₹ 2,800"," ₹ 1,000",2025-11-22
+Bitter gourd, Bowenpally,Bitter Gourd," ₹ 3,300"," ₹ 2,800"," ₹ 1,000",2025-11-22
+Bottle gourd, Bowenpally,Bottle Gourd," ₹ 1,200"," ₹ 1,000", ₹ 400,2025-11-22
+Brinjal, Bowenpally,Arkasheela Mattigulla," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-22
+Cabbage, Bowenpally,Cabbage," ₹ 1,500"," ₹ 1,200", ₹ 500,2025-11-22
+Capsicum, Bowenpally,Capsicum," ₹ 3,200"," ₹ 2,800"," ₹ 1,000",2025-11-22
+Carrot, Bowenpally,Carrot," ₹ 6,000"," ₹ 4,500", ₹ 800,2025-11-22
+Cauliflower, Bowenpally,African Sarson," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-22
+Chow Chow, Bowenpally,Chow Chow," ₹ 1,000", ₹ 800, ₹ 500,2025-11-22
+Cluster beans, Bowenpally,Cluster Beans," ₹ 6,000"," ₹ 5,000"," ₹ 3,000",2025-11-22
+Colacasia, Bowenpally,Colacasia," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-22
+Cucumbar(Kheera), Bowenpally,Cucumbar," ₹ 1,200"," ₹ 1,000", ₹ 500,2025-11-22
+Drumstick, Bowenpally,Drumstick," ₹ 10,000"," ₹ 8,500"," ₹ 5,000",2025-11-22
+Field Pea, Bowenpally,Field Pea," ₹ 5,000"," ₹ 4,000"," ₹ 2,000",2025-11-22
+French Beans (Frasbean), Bowenpally,French Beans (Frasbean)," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-22
+Green Chilli, Bowenpally,Green Chilly," ₹ 3,000"," ₹ 2,800"," ₹ 1,800",2025-11-22
+Groundnut pods (raw), Bowenpally,Groundnut pods (raw)," ₹ 5,500"," ₹ 5,000"," ₹ 3,000",2025-11-22
+Onion, Bowenpally,1st Sort," ₹ 1,800"," ₹ 1,400", ₹ 500,2025-11-22
+Onion Green, Bowenpally,Onion Green," ₹ 5,000"," ₹ 4,200"," ₹ 2,000",2025-11-22
+Potato, Bowenpally,(Red Nanital)," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-22
+Pumpkin, Bowenpally,Other," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-22
+Raddish, Bowenpally,Other, ₹ 400, ₹ 300, ₹ 200,2025-11-22
+Ridgeguard(Tori), Bowenpally,Other," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-22
+Snakeguard, Bowenpally,Other," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-22
+Sweet Potato, Bowenpally,Hosur Green," ₹ 3,300"," ₹ 3,000"," ₹ 2,000",2025-11-22
+Tomato, Bowenpally,Deshi," ₹ 1,800"," ₹ 1,500", ₹ 400,2025-11-22
+Yam (Ratalu), Bowenpally,Other," ₹ 3,500"," ₹ 3,200"," ₹ 2,000",2025-11-22
+White Pumpkin, Bowenpally,Other," ₹ 1,000", ₹ 900, ₹ 500,2025-11-22
+Bhindi(Ladies Finger), Bowenpally,Bhindi," ₹ 2,200"," ₹ 1,800"," ₹ 1,200",2025-11-22
+Knool Khol, Bowenpally,Knool Khol," ₹ 1,800"," ₹ 1,600"," ₹ 1,000",2025-11-22
+Amla(Nelli Kai), Bowenpally,Amla," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-21
+Beetroot, Bowenpally,Beetroot," ₹ 3,500"," ₹ 2,800"," ₹ 1,000",2025-11-21
+Bitter gourd, Bowenpally,Bitter Gourd," ₹ 3,300"," ₹ 2,800"," ₹ 1,000",2025-11-21
+Bottle gourd, Bowenpally,Bottle Gourd," ₹ 1,200"," ₹ 1,000", ₹ 400,2025-11-21
+Brinjal, Bowenpally,Arkasheela Mattigulla," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-21
+Cabbage, Bowenpally,Cabbage," ₹ 1,500"," ₹ 1,200", ₹ 500,2025-11-21
+Capsicum, Bowenpally,Capsicum," ₹ 3,200"," ₹ 2,800"," ₹ 1,000",2025-11-21
+Carrot, Bowenpally,Carrot," ₹ 6,000"," ₹ 4,500", ₹ 800,2025-11-21
+Cauliflower, Bowenpally,African Sarson," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-21
+Chow Chow, Bowenpally,Chow Chow," ₹ 1,000", ₹ 800, ₹ 500,2025-11-21
+Cluster beans, Bowenpally,Cluster Beans," ₹ 6,000"," ₹ 5,000"," ₹ 3,000",2025-11-21
+Colacasia, Bowenpally,Colacasia," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-21
+Cucumbar(Kheera), Bowenpally,Cucumbar," ₹ 1,200"," ₹ 1,000", ₹ 500,2025-11-21
+Drumstick, Bowenpally,Drumstick," ₹ 10,000"," ₹ 8,500"," ₹ 5,000",2025-11-21
+Field Pea, Bowenpally,Field Pea," ₹ 5,000"," ₹ 4,000"," ₹ 2,000",2025-11-21
+French Beans (Frasbean), Bowenpally,French Beans (Frasbean)," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-21
+Green Chilli, Bowenpally,Green Chilly," ₹ 3,000"," ₹ 2,800"," ₹ 1,800",2025-11-21
+Groundnut pods (raw), Bowenpally,Groundnut pods (raw)," ₹ 5,500"," ₹ 5,000"," ₹ 3,000",2025-11-21
+Onion, Bowenpally,1st Sort," ₹ 1,800"," ₹ 1,400", ₹ 500,2025-11-21
+Onion Green, Bowenpally,Onion Green," ₹ 5,000"," ₹ 4,200"," ₹ 2,000",2025-11-21
+Potato, Bowenpally,(Red Nanital)," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-21
+Pumpkin, Bowenpally,Other," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-21
+Raddish, Bowenpally,Other, ₹ 400, ₹ 300, ₹ 200,2025-11-21
+Ridgeguard(Tori), Bowenpally,Other," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-21
+Snakeguard, Bowenpally,Other," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-21
+Sweet Potato, Bowenpally,Hosur Green," ₹ 3,300"," ₹ 3,000"," ₹ 2,000",2025-11-21
+Tomato, Bowenpally,Deshi," ₹ 1,800"," ₹ 1,500", ₹ 400,2025-11-21
+Yam (Ratalu), Bowenpally,Other," ₹ 3,500"," ₹ 3,200"," ₹ 2,000",2025-11-21
+White Pumpkin, Bowenpally,Other," ₹ 1,000", ₹ 900, ₹ 500,2025-11-21
+Bhindi(Ladies Finger), Bowenpally,Bhindi," ₹ 2,200"," ₹ 1,800"," ₹ 1,200",2025-11-21
+Knool Khol, Bowenpally,Knool Khol," ₹ 1,800"," ₹ 1,600"," ₹ 1,000",2025-11-21
+Amla(Nelli Kai), Bowenpally,Amla," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-20
+Beetroot, Bowenpally,Beetroot," ₹ 3,500"," ₹ 2,800"," ₹ 1,000",2025-11-20
+Bitter gourd, Bowenpally,Bitter Gourd," ₹ 3,300"," ₹ 2,800"," ₹ 1,000",2025-11-20
+Bottle gourd, Bowenpally,Bottle Gourd," ₹ 1,200"," ₹ 1,000", ₹ 400,2025-11-20
+Brinjal, Bowenpally,Arkasheela Mattigulla," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-20
+Cabbage, Bowenpally,Cabbage," ₹ 1,500"," ₹ 1,200", ₹ 500,2025-11-20
+Capsicum, Bowenpally,Capsicum," ₹ 3,200"," ₹ 2,800"," ₹ 1,000",2025-11-20
+Carrot, Bowenpally,Carrot," ₹ 6,000"," ₹ 4,500", ₹ 800,2025-11-20
+Cauliflower, Bowenpally,African Sarson," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-20
+Chow Chow, Bowenpally,Chow Chow," ₹ 1,000", ₹ 800, ₹ 500,2025-11-20
+Cluster beans, Bowenpally,Cluster Beans," ₹ 6,000"," ₹ 5,000"," ₹ 3,000",2025-11-20
+Colacasia, Bowenpally,Colacasia," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-20
+Cucumbar(Kheera), Bowenpally,Cucumbar," ₹ 1,200"," ₹ 1,000", ₹ 500,2025-11-20
+Drumstick, Bowenpally,Drumstick," ₹ 10,000"," ₹ 8,500"," ₹ 5,000",2025-11-20
+Field Pea, Bowenpally,Field Pea," ₹ 5,000"," ₹ 4,000"," ₹ 2,000",2025-11-20
+French Beans (Frasbean), Bowenpally,French Beans (Frasbean)," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-20
+Green Chilli, Bowenpally,Green Chilly," ₹ 3,000"," ₹ 2,800"," ₹ 1,800",2025-11-20
+Groundnut pods (raw), Bowenpally,Groundnut pods (raw)," ₹ 5,500"," ₹ 5,000"," ₹ 3,000",2025-11-20
+Onion, Bowenpally,1st Sort," ₹ 1,800"," ₹ 1,400", ₹ 500,2025-11-20
+Onion Green, Bowenpally,Onion Green," ₹ 5,000"," ₹ 4,200"," ₹ 2,000",2025-11-20
+Potato, Bowenpally,(Red Nanital)," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-20
+Pumpkin, Bowenpally,Other," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-20
+Raddish, Bowenpally,Other, ₹ 400, ₹ 300, ₹ 200,2025-11-20
+Ridgeguard(Tori), Bowenpally,Other," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-20
+Snakeguard, Bowenpally,Other," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-20
+Sweet Potato, Bowenpally,Hosur Green," ₹ 3,300"," ₹ 3,000"," ₹ 2,000",2025-11-20
+Tomato, Bowenpally,Deshi," ₹ 1,800"," ₹ 1,500", ₹ 400,2025-11-20
+Yam (Ratalu), Bowenpally,Other," ₹ 3,500"," ₹ 3,200"," ₹ 2,000",2025-11-20
+White Pumpkin, Bowenpally,Other," ₹ 1,000", ₹ 900, ₹ 500,2025-11-20
+Bhindi(Ladies Finger), Bowenpally,Bhindi," ₹ 2,200"," ₹ 1,800"," ₹ 1,200",2025-11-20
+Knool Khol, Bowenpally,Knool Khol," ₹ 1,800"," ₹ 1,600"," ₹ 1,000",2025-11-20
+Amla(Nelli Kai), Bowenpally,Amla," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-19
+Beetroot, Bowenpally,Beetroot," ₹ 3,500"," ₹ 2,800"," ₹ 1,000",2025-11-19
+Bitter gourd, Bowenpally,Bitter Gourd," ₹ 3,300"," ₹ 2,800"," ₹ 1,000",2025-11-19
+Bottle gourd, Bowenpally,Bottle Gourd," ₹ 1,200"," ₹ 1,000", ₹ 400,2025-11-19
+Brinjal, Bowenpally,Arkasheela Mattigulla," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-19
+Cabbage, Bowenpally,Cabbage," ₹ 1,500"," ₹ 1,200", ₹ 500,2025-11-19
+Capsicum, Bowenpally,Capsicum," ₹ 3,200"," ₹ 2,800"," ₹ 1,000",2025-11-19
+Carrot, Bowenpally,Carrot," ₹ 6,000"," ₹ 4,500", ₹ 800,2025-11-19
+Cauliflower, Bowenpally,African Sarson," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-19
+Chow Chow, Bowenpally,Chow Chow," ₹ 1,000", ₹ 800, ₹ 500,2025-11-19
+Cluster beans, Bowenpally,Cluster Beans," ₹ 6,000"," ₹ 5,000"," ₹ 3,000",2025-11-19
+Colacasia, Bowenpally,Colacasia," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-19
+Cucumbar(Kheera), Bowenpally,Cucumbar," ₹ 1,200"," ₹ 1,000", ₹ 500,2025-11-19
+Drumstick, Bowenpally,Drumstick," ₹ 10,000"," ₹ 8,500"," ₹ 5,000",2025-11-19
+Field Pea, Bowenpally,Field Pea," ₹ 5,000"," ₹ 4,000"," ₹ 2,000",2025-11-19
+French Beans (Frasbean), Bowenpally,French Beans (Frasbean)," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-19
+Green Chilli, Bowenpally,Green Chilly," ₹ 3,000"," ₹ 2,800"," ₹ 1,800",2025-11-19
+Groundnut pods (raw), Bowenpally,Groundnut pods (raw)," ₹ 5,500"," ₹ 5,000"," ₹ 3,000",2025-11-19
+Onion, Bowenpally,1st Sort," ₹ 1,800"," ₹ 1,400", ₹ 500,2025-11-19
+Onion Green, Bowenpally,Onion Green," ₹ 5,000"," ₹ 4,200"," ₹ 2,000",2025-11-19
+Potato, Bowenpally,(Red Nanital)," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-19
+Pumpkin, Bowenpally,Other," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-19
+Raddish, Bowenpally,Other, ₹ 400, ₹ 300, ₹ 200,2025-11-19
+Ridgeguard(Tori), Bowenpally,Other," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-19
+Snakeguard, Bowenpally,Other," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-19
+Sweet Potato, Bowenpally,Hosur Green," ₹ 3,300"," ₹ 3,000"," ₹ 2,000",2025-11-19
+Tomato, Bowenpally,Deshi," ₹ 1,800"," ₹ 1,500", ₹ 400,2025-11-19
+Yam (Ratalu), Bowenpally,Other," ₹ 3,500"," ₹ 3,200"," ₹ 2,000",2025-11-19
+White Pumpkin, Bowenpally,Other," ₹ 1,000", ₹ 900, ₹ 500,2025-11-19
+Bhindi(Ladies Finger), Bowenpally,Bhindi," ₹ 2,200"," ₹ 1,800"," ₹ 1,200",2025-11-19
+Knool Khol, Bowenpally,Knool Khol," ₹ 1,800"," ₹ 1,600"," ₹ 1,000",2025-11-19
+Amla(Nelli Kai), Bowenpally,Amla," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-18
+Beetroot, Bowenpally,Beetroot," ₹ 3,500"," ₹ 2,800"," ₹ 1,000",2025-11-18
+Bitter gourd, Bowenpally,Bitter Gourd," ₹ 3,300"," ₹ 2,800"," ₹ 1,000",2025-11-18
+Bottle gourd, Bowenpally,Bottle Gourd," ₹ 1,200"," ₹ 1,000", ₹ 400,2025-11-18
+Brinjal, Bowenpally,Arkasheela Mattigulla," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-18
+Cabbage, Bowenpally,Cabbage," ₹ 1,500"," ₹ 1,200", ₹ 500,2025-11-18
+Capsicum, Bowenpally,Capsicum," ₹ 3,200"," ₹ 2,800"," ₹ 1,000",2025-11-18
+Carrot, Bowenpally,Carrot," ₹ 6,000"," ₹ 4,500", ₹ 800,2025-11-18
+Cauliflower, Bowenpally,African Sarson," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-18
+Chow Chow, Bowenpally,Chow Chow," ₹ 1,000", ₹ 800, ₹ 500,2025-11-18
+Cluster beans, Bowenpally,Cluster Beans," ₹ 6,000"," ₹ 5,000"," ₹ 3,000",2025-11-18
+Colacasia, Bowenpally,Colacasia," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-18
+Cucumbar(Kheera), Bowenpally,Cucumbar," ₹ 1,200"," ₹ 1,000", ₹ 500,2025-11-18
+Drumstick, Bowenpally,Drumstick," ₹ 10,000"," ₹ 8,500"," ₹ 5,000",2025-11-18
+Field Pea, Bowenpally,Field Pea," ₹ 5,000"," ₹ 4,000"," ₹ 2,000",2025-11-18
+French Beans (Frasbean), Bowenpally,French Beans (Frasbean)," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-18
+Green Chilli, Bowenpally,Green Chilly," ₹ 3,000"," ₹ 2,800"," ₹ 1,800",2025-11-18
+Groundnut pods (raw), Bowenpally,Groundnut pods (raw)," ₹ 5,500"," ₹ 5,000"," ₹ 3,000",2025-11-18
+Onion, Bowenpally,1st Sort," ₹ 1,800"," ₹ 1,400", ₹ 500,2025-11-18
+Onion Green, Bowenpally,Onion Green," ₹ 5,000"," ₹ 4,200"," ₹ 2,000",2025-11-18
+Potato, Bowenpally,(Red Nanital)," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-18
+Pumpkin, Bowenpally,Other," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-18
+Raddish, Bowenpally,Other, ₹ 400, ₹ 300, ₹ 200,2025-11-18
+Ridgeguard(Tori), Bowenpally,Other," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-18
+Snakeguard, Bowenpally,Other," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-18
+Sweet Potato, Bowenpally,Hosur Green," ₹ 3,300"," ₹ 3,000"," ₹ 2,000",2025-11-18
+Tomato, Bowenpally,Deshi," ₹ 1,800"," ₹ 1,500", ₹ 400,2025-11-18
+Yam (Ratalu), Bowenpally,Other," ₹ 3,500"," ₹ 3,200"," ₹ 2,000",2025-11-18
+White Pumpkin, Bowenpally,Other," ₹ 1,000", ₹ 900, ₹ 500,2025-11-18
+Bhindi(Ladies Finger), Bowenpally,Bhindi," ₹ 2,200"," ₹ 1,800"," ₹ 1,200",2025-11-18
+Knool Khol, Bowenpally,Knool Khol," ₹ 1,800"," ₹ 1,600"," ₹ 1,000",2025-11-18
+Amla(Nelli Kai), Bowenpally,Amla," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-17
+Beetroot, Bowenpally,Beetroot," ₹ 3,500"," ₹ 2,800"," ₹ 1,000",2025-11-17
+Bitter gourd, Bowenpally,Bitter Gourd," ₹ 3,300"," ₹ 2,800"," ₹ 1,000",2025-11-17
+Bottle gourd, Bowenpally,Bottle Gourd," ₹ 1,200"," ₹ 1,000", ₹ 400,2025-11-17
+Brinjal, Bowenpally,Arkasheela Mattigulla," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-17
+Cabbage, Bowenpally,Cabbage," ₹ 1,500"," ₹ 1,200", ₹ 500,2025-11-17
+Capsicum, Bowenpally,Capsicum," ₹ 3,200"," ₹ 2,800"," ₹ 1,000",2025-11-17
+Carrot, Bowenpally,Carrot," ₹ 6,000"," ₹ 4,500", ₹ 800,2025-11-17
+Cauliflower, Bowenpally,African Sarson," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-17
+Chow Chow, Bowenpally,Chow Chow," ₹ 1,000", ₹ 800, ₹ 500,2025-11-17
+Cluster beans, Bowenpally,Cluster Beans," ₹ 6,000"," ₹ 5,000"," ₹ 3,000",2025-11-17
+Colacasia, Bowenpally,Colacasia," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-17
+Cucumbar(Kheera), Bowenpally,Cucumbar," ₹ 1,200"," ₹ 1,000", ₹ 500,2025-11-17
+Drumstick, Bowenpally,Drumstick," ₹ 10,000"," ₹ 8,500"," ₹ 5,000",2025-11-17
+Field Pea, Bowenpally,Field Pea," ₹ 5,000"," ₹ 4,000"," ₹ 2,000",2025-11-17
+French Beans (Frasbean), Bowenpally,French Beans (Frasbean)," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-17
+Green Chilli, Bowenpally,Green Chilly," ₹ 3,000"," ₹ 2,800"," ₹ 1,800",2025-11-17
+Groundnut pods (raw), Bowenpally,Groundnut pods (raw)," ₹ 5,500"," ₹ 5,000"," ₹ 3,000",2025-11-17
+Onion, Bowenpally,1st Sort," ₹ 1,800"," ₹ 1,400", ₹ 500,2025-11-17
+Onion Green, Bowenpally,Onion Green," ₹ 5,000"," ₹ 4,200"," ₹ 2,000",2025-11-17
+Potato, Bowenpally,(Red Nanital)," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-17
+Pumpkin, Bowenpally,Other," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-17
+Raddish, Bowenpally,Other, ₹ 400, ₹ 300, ₹ 200,2025-11-17
+Ridgeguard(Tori), Bowenpally,Other," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-17
+Snakeguard, Bowenpally,Other," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-17
+Sweet Potato, Bowenpally,Hosur Green," ₹ 3,300"," ₹ 3,000"," ₹ 2,000",2025-11-17
+Tomato, Bowenpally,Deshi," ₹ 1,800"," ₹ 1,500", ₹ 400,2025-11-17
+Yam (Ratalu), Bowenpally,Other," ₹ 3,500"," ₹ 3,200"," ₹ 2,000",2025-11-17
+White Pumpkin, Bowenpally,Other," ₹ 1,000", ₹ 900, ₹ 500,2025-11-17
+Bhindi(Ladies Finger), Bowenpally,Bhindi," ₹ 2,200"," ₹ 1,800"," ₹ 1,200",2025-11-17
+Knool Khol, Bowenpally,Knool Khol," ₹ 1,800"," ₹ 1,600"," ₹ 1,000",2025-11-17
+Amla(Nelli Kai), Bowenpally,Amla," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-16
+Beetroot, Bowenpally,Beetroot," ₹ 3,500"," ₹ 2,800"," ₹ 1,000",2025-11-16
+Bitter gourd, Bowenpally,Bitter Gourd," ₹ 3,300"," ₹ 2,800"," ₹ 1,000",2025-11-16
+Bottle gourd, Bowenpally,Bottle Gourd," ₹ 1,200"," ₹ 1,000", ₹ 400,2025-11-16
+Brinjal, Bowenpally,Arkasheela Mattigulla," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-16
+Cabbage, Bowenpally,Cabbage," ₹ 1,500"," ₹ 1,200", ₹ 500,2025-11-16
+Capsicum, Bowenpally,Capsicum," ₹ 3,200"," ₹ 2,800"," ₹ 1,000",2025-11-16
+Carrot, Bowenpally,Carrot," ₹ 6,000"," ₹ 4,500", ₹ 800,2025-11-16
+Cauliflower, Bowenpally,African Sarson," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-16
+Chow Chow, Bowenpally,Chow Chow," ₹ 1,000", ₹ 800, ₹ 500,2025-11-16
+Cluster beans, Bowenpally,Cluster Beans," ₹ 6,000"," ₹ 5,000"," ₹ 3,000",2025-11-16
+Colacasia, Bowenpally,Colacasia," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-16
+Cucumbar(Kheera), Bowenpally,Cucumbar," ₹ 1,200"," ₹ 1,000", ₹ 500,2025-11-16
+Drumstick, Bowenpally,Drumstick," ₹ 10,000"," ₹ 8,500"," ₹ 5,000",2025-11-16
+Field Pea, Bowenpally,Field Pea," ₹ 5,000"," ₹ 4,000"," ₹ 2,000",2025-11-16
+French Beans (Frasbean), Bowenpally,French Beans (Frasbean)," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-16
+Green Chilli, Bowenpally,Green Chilly," ₹ 3,000"," ₹ 2,800"," ₹ 1,800",2025-11-16
+Groundnut pods (raw), Bowenpally,Groundnut pods (raw)," ₹ 5,500"," ₹ 5,000"," ₹ 3,000",2025-11-16
+Onion, Bowenpally,1st Sort," ₹ 1,800"," ₹ 1,400", ₹ 500,2025-11-16
+Onion Green, Bowenpally,Onion Green," ₹ 5,000"," ₹ 4,200"," ₹ 2,000",2025-11-16
+Potato, Bowenpally,(Red Nanital)," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-16
+Pumpkin, Bowenpally,Other," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-16
+Raddish, Bowenpally,Other, ₹ 400, ₹ 300, ₹ 200,2025-11-16
+Ridgeguard(Tori), Bowenpally,Other," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-16
+Snakeguard, Bowenpally,Other," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-16
+Sweet Potato, Bowenpally,Hosur Green," ₹ 3,300"," ₹ 3,000"," ₹ 2,000",2025-11-16
+Tomato, Bowenpally,Deshi," ₹ 1,800"," ₹ 1,500", ₹ 400,2025-11-16
+Yam (Ratalu), Bowenpally,Other," ₹ 3,500"," ₹ 3,200"," ₹ 2,000",2025-11-16
+White Pumpkin, Bowenpally,Other," ₹ 1,000", ₹ 900, ₹ 500,2025-11-16
+Bhindi(Ladies Finger), Bowenpally,Bhindi," ₹ 2,200"," ₹ 1,800"," ₹ 1,200",2025-11-16
+Knool Khol, Bowenpally,Knool Khol," ₹ 1,800"," ₹ 1,600"," ₹ 1,000",2025-11-16
+Amla(Nelli Kai), Bowenpally,Amla," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-15
+Beetroot, Bowenpally,Beetroot," ₹ 3,500"," ₹ 2,800"," ₹ 1,000",2025-11-15
+Bitter gourd, Bowenpally,Bitter Gourd," ₹ 3,300"," ₹ 2,800"," ₹ 1,000",2025-11-15
+Bottle gourd, Bowenpally,Bottle Gourd," ₹ 1,200"," ₹ 1,000", ₹ 400,2025-11-15
+Brinjal, Bowenpally,Arkasheela Mattigulla," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-15
+Cabbage, Bowenpally,Cabbage," ₹ 1,500"," ₹ 1,200", ₹ 500,2025-11-15
+Capsicum, Bowenpally,Capsicum," ₹ 3,200"," ₹ 2,800"," ₹ 1,000",2025-11-15
+Carrot, Bowenpally,Carrot," ₹ 6,000"," ₹ 4,500", ₹ 800,2025-11-15
+Cauliflower, Bowenpally,African Sarson," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-15
+Chow Chow, Bowenpally,Chow Chow," ₹ 1,000", ₹ 800, ₹ 500,2025-11-15
+Cluster beans, Bowenpally,Cluster Beans," ₹ 6,000"," ₹ 5,000"," ₹ 3,000",2025-11-15
+Colacasia, Bowenpally,Colacasia," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-15
+Cucumbar(Kheera), Bowenpally,Cucumbar," ₹ 1,200"," ₹ 1,000", ₹ 500,2025-11-15
+Drumstick, Bowenpally,Drumstick," ₹ 10,000"," ₹ 8,500"," ₹ 5,000",2025-11-15
+Field Pea, Bowenpally,Field Pea," ₹ 5,000"," ₹ 4,000"," ₹ 2,000",2025-11-15
+French Beans (Frasbean), Bowenpally,French Beans (Frasbean)," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-15
+Green Chilli, Bowenpally,Green Chilly," ₹ 3,000"," ₹ 2,800"," ₹ 1,800",2025-11-15
+Groundnut pods (raw), Bowenpally,Groundnut pods (raw)," ₹ 5,500"," ₹ 5,000"," ₹ 3,000",2025-11-15
+Onion, Bowenpally,1st Sort," ₹ 1,800"," ₹ 1,400", ₹ 500,2025-11-15
+Onion Green, Bowenpally,Onion Green," ₹ 5,000"," ₹ 4,200"," ₹ 2,000",2025-11-15
+Potato, Bowenpally,(Red Nanital)," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-15
+Pumpkin, Bowenpally,Other," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-15
+Raddish, Bowenpally,Other, ₹ 400, ₹ 300, ₹ 200,2025-11-15
+Ridgeguard(Tori), Bowenpally,Other," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-15
+Snakeguard, Bowenpally,Other," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-15
+Sweet Potato, Bowenpally,Hosur Green," ₹ 3,300"," ₹ 3,000"," ₹ 2,000",2025-11-15
+Tomato, Bowenpally,Deshi," ₹ 1,800"," ₹ 1,500", ₹ 400,2025-11-15
+Yam (Ratalu), Bowenpally,Other," ₹ 3,500"," ₹ 3,200"," ₹ 2,000",2025-11-15
+White Pumpkin, Bowenpally,Other," ₹ 1,000", ₹ 900, ₹ 500,2025-11-15
+Bhindi(Ladies Finger), Bowenpally,Bhindi," ₹ 2,200"," ₹ 1,800"," ₹ 1,200",2025-11-15
+Knool Khol, Bowenpally,Knool Khol," ₹ 1,800"," ₹ 1,600"," ₹ 1,000",2025-11-15
+Amla(Nelli Kai), Bowenpally,Amla," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-14
+Beetroot, Bowenpally,Beetroot," ₹ 3,500"," ₹ 2,800"," ₹ 1,000",2025-11-14
+Bitter gourd, Bowenpally,Bitter Gourd," ₹ 3,300"," ₹ 2,800"," ₹ 1,000",2025-11-14
+Bottle gourd, Bowenpally,Bottle Gourd," ₹ 1,200"," ₹ 1,000", ₹ 400,2025-11-14
+Brinjal, Bowenpally,Arkasheela Mattigulla," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-14
+Cabbage, Bowenpally,Cabbage," ₹ 1,500"," ₹ 1,200", ₹ 500,2025-11-14
+Capsicum, Bowenpally,Capsicum," ₹ 3,200"," ₹ 2,800"," ₹ 1,000",2025-11-14
+Carrot, Bowenpally,Carrot," ₹ 6,000"," ₹ 4,500", ₹ 800,2025-11-14
+Cauliflower, Bowenpally,African Sarson," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-14
+Chow Chow, Bowenpally,Chow Chow," ₹ 1,000", ₹ 800, ₹ 500,2025-11-14
+Cluster beans, Bowenpally,Cluster Beans," ₹ 6,000"," ₹ 5,000"," ₹ 3,000",2025-11-14
+Colacasia, Bowenpally,Colacasia," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-14
+Cucumbar(Kheera), Bowenpally,Cucumbar," ₹ 1,200"," ₹ 1,000", ₹ 500,2025-11-14
+Drumstick, Bowenpally,Drumstick," ₹ 10,000"," ₹ 8,500"," ₹ 5,000",2025-11-14
+Field Pea, Bowenpally,Field Pea," ₹ 5,000"," ₹ 4,000"," ₹ 2,000",2025-11-14
+French Beans (Frasbean), Bowenpally,French Beans (Frasbean)," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-14
+Green Chilli, Bowenpally,Green Chilly," ₹ 3,000"," ₹ 2,800"," ₹ 1,800",2025-11-14
+Groundnut pods (raw), Bowenpally,Groundnut pods (raw)," ₹ 5,500"," ₹ 5,000"," ₹ 3,000",2025-11-14
+Onion, Bowenpally,1st Sort," ₹ 1,800"," ₹ 1,400", ₹ 500,2025-11-14
+Onion Green, Bowenpally,Onion Green," ₹ 5,000"," ₹ 4,200"," ₹ 2,000",2025-11-14
+Potato, Bowenpally,(Red Nanital)," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-14
+Pumpkin, Bowenpally,Other," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-14
+Raddish, Bowenpally,Other, ₹ 400, ₹ 300, ₹ 200,2025-11-14
+Ridgeguard(Tori), Bowenpally,Other," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-14
+Snakeguard, Bowenpally,Other," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-14
+Sweet Potato, Bowenpally,Hosur Green," ₹ 3,300"," ₹ 3,000"," ₹ 2,000",2025-11-14
+Tomato, Bowenpally,Deshi," ₹ 1,800"," ₹ 1,500", ₹ 400,2025-11-14
+Yam (Ratalu), Bowenpally,Other," ₹ 3,500"," ₹ 3,200"," ₹ 2,000",2025-11-14
+White Pumpkin, Bowenpally,Other," ₹ 1,000", ₹ 900, ₹ 500,2025-11-14
+Bhindi(Ladies Finger), Bowenpally,Bhindi," ₹ 2,200"," ₹ 1,800"," ₹ 1,200",2025-11-14
+Knool Khol, Bowenpally,Knool Khol," ₹ 1,800"," ₹ 1,600"," ₹ 1,000",2025-11-14
+Amla(Nelli Kai), Bowenpally,Amla," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-13
+Beetroot, Bowenpally,Beetroot," ₹ 3,500"," ₹ 2,800"," ₹ 1,000",2025-11-13
+Bitter gourd, Bowenpally,Bitter Gourd," ₹ 3,300"," ₹ 2,800"," ₹ 1,000",2025-11-13
+Bottle gourd, Bowenpally,Bottle Gourd," ₹ 1,200"," ₹ 1,000", ₹ 400,2025-11-13
+Brinjal, Bowenpally,Arkasheela Mattigulla," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-13
+Cabbage, Bowenpally,Cabbage," ₹ 1,500"," ₹ 1,200", ₹ 500,2025-11-13
+Capsicum, Bowenpally,Capsicum," ₹ 3,200"," ₹ 2,800"," ₹ 1,000",2025-11-13
+Carrot, Bowenpally,Carrot," ₹ 6,000"," ₹ 4,500", ₹ 800,2025-11-13
+Cauliflower, Bowenpally,African Sarson," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-13
+Chow Chow, Bowenpally,Chow Chow," ₹ 1,000", ₹ 800, ₹ 500,2025-11-13
+Cluster beans, Bowenpally,Cluster Beans," ₹ 6,000"," ₹ 5,000"," ₹ 3,000",2025-11-13
+Colacasia, Bowenpally,Colacasia," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-13
+Cucumbar(Kheera), Bowenpally,Cucumbar," ₹ 1,200"," ₹ 1,000", ₹ 500,2025-11-13
+Drumstick, Bowenpally,Drumstick," ₹ 10,000"," ₹ 8,500"," ₹ 5,000",2025-11-13
+Field Pea, Bowenpally,Field Pea," ₹ 5,000"," ₹ 4,000"," ₹ 2,000",2025-11-13
+French Beans (Frasbean), Bowenpally,French Beans (Frasbean)," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-13
+Green Chilli, Bowenpally,Green Chilly," ₹ 3,000"," ₹ 2,800"," ₹ 1,800",2025-11-13
+Groundnut pods (raw), Bowenpally,Groundnut pods (raw)," ₹ 5,500"," ₹ 5,000"," ₹ 3,000",2025-11-13
+Onion, Bowenpally,1st Sort," ₹ 1,800"," ₹ 1,400", ₹ 500,2025-11-13
+Onion Green, Bowenpally,Onion Green," ₹ 5,000"," ₹ 4,200"," ₹ 2,000",2025-11-13
+Potato, Bowenpally,(Red Nanital)," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-13
+Pumpkin, Bowenpally,Other," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-13
+Raddish, Bowenpally,Other, ₹ 400, ₹ 300, ₹ 200,2025-11-13
+Ridgeguard(Tori), Bowenpally,Other," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-13
+Snakeguard, Bowenpally,Other," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-13
+Sweet Potato, Bowenpally,Hosur Green," ₹ 3,300"," ₹ 3,000"," ₹ 2,000",2025-11-13
+Tomato, Bowenpally,Deshi," ₹ 1,800"," ₹ 1,500", ₹ 400,2025-11-13
+Yam (Ratalu), Bowenpally,Other," ₹ 3,500"," ₹ 3,200"," ₹ 2,000",2025-11-13
+White Pumpkin, Bowenpally,Other," ₹ 1,000", ₹ 900, ₹ 500,2025-11-13
+Bhindi(Ladies Finger), Bowenpally,Bhindi," ₹ 2,200"," ₹ 1,800"," ₹ 1,200",2025-11-13
+Knool Khol, Bowenpally,Knool Khol," ₹ 1,800"," ₹ 1,600"," ₹ 1,000",2025-11-13
+Amla(Nelli Kai), Bowenpally,Amla," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-12
+Beetroot, Bowenpally,Beetroot," ₹ 3,500"," ₹ 2,800"," ₹ 1,000",2025-11-12
+Bitter gourd, Bowenpally,Bitter Gourd," ₹ 3,300"," ₹ 2,800"," ₹ 1,000",2025-11-12
+Bottle gourd, Bowenpally,Bottle Gourd," ₹ 1,200"," ₹ 1,000", ₹ 400,2025-11-12
+Brinjal, Bowenpally,Arkasheela Mattigulla," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-12
+Cabbage, Bowenpally,Cabbage," ₹ 1,500"," ₹ 1,200", ₹ 500,2025-11-12
+Capsicum, Bowenpally,Capsicum," ₹ 3,200"," ₹ 2,800"," ₹ 1,000",2025-11-12
+Carrot, Bowenpally,Carrot," ₹ 6,000"," ₹ 4,500", ₹ 800,2025-11-12
+Cauliflower, Bowenpally,African Sarson," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-12
+Chow Chow, Bowenpally,Chow Chow," ₹ 1,000", ₹ 800, ₹ 500,2025-11-12
+Cluster beans, Bowenpally,Cluster Beans," ₹ 6,000"," ₹ 5,000"," ₹ 3,000",2025-11-12
+Colacasia, Bowenpally,Colacasia," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-12
+Cucumbar(Kheera), Bowenpally,Cucumbar," ₹ 1,200"," ₹ 1,000", ₹ 500,2025-11-12
+Drumstick, Bowenpally,Drumstick," ₹ 10,000"," ₹ 8,500"," ₹ 5,000",2025-11-12
+Field Pea, Bowenpally,Field Pea," ₹ 5,000"," ₹ 4,000"," ₹ 2,000",2025-11-12
+French Beans (Frasbean), Bowenpally,French Beans (Frasbean)," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-12
+Green Chilli, Bowenpally,Green Chilly," ₹ 3,000"," ₹ 2,800"," ₹ 1,800",2025-11-12
+Groundnut pods (raw), Bowenpally,Groundnut pods (raw)," ₹ 5,500"," ₹ 5,000"," ₹ 3,000",2025-11-12
+Onion, Bowenpally,1st Sort," ₹ 1,800"," ₹ 1,400", ₹ 500,2025-11-12
+Onion Green, Bowenpally,Onion Green," ₹ 5,000"," ₹ 4,200"," ₹ 2,000",2025-11-12
+Potato, Bowenpally,(Red Nanital)," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-12
+Pumpkin, Bowenpally,Other," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-12
+Raddish, Bowenpally,Other, ₹ 400, ₹ 300, ₹ 200,2025-11-12
+Ridgeguard(Tori), Bowenpally,Other," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-12
+Snakeguard, Bowenpally,Other," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-12
+Sweet Potato, Bowenpally,Hosur Green," ₹ 3,300"," ₹ 3,000"," ₹ 2,000",2025-11-12
+Tomato, Bowenpally,Deshi," ₹ 1,800"," ₹ 1,500", ₹ 400,2025-11-12
+Yam (Ratalu), Bowenpally,Other," ₹ 3,500"," ₹ 3,200"," ₹ 2,000",2025-11-12
+White Pumpkin, Bowenpally,Other," ₹ 1,000", ₹ 900, ₹ 500,2025-11-12
+Bhindi(Ladies Finger), Bowenpally,Bhindi," ₹ 2,200"," ₹ 1,800"," ₹ 1,200",2025-11-12
+Knool Khol, Bowenpally,Knool Khol," ₹ 1,800"," ₹ 1,600"," ₹ 1,000",2025-11-12
+Amla(Nelli Kai), Bowenpally,Amla," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-11
+Beetroot, Bowenpally,Beetroot," ₹ 3,500"," ₹ 2,800"," ₹ 1,000",2025-11-11
+Bitter gourd, Bowenpally,Bitter Gourd," ₹ 3,300"," ₹ 2,800"," ₹ 1,000",2025-11-11
+Bottle gourd, Bowenpally,Bottle Gourd," ₹ 1,200"," ₹ 1,000", ₹ 400,2025-11-11
+Brinjal, Bowenpally,Arkasheela Mattigulla," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-11
+Cabbage, Bowenpally,Cabbage," ₹ 1,500"," ₹ 1,200", ₹ 500,2025-11-11
+Capsicum, Bowenpally,Capsicum," ₹ 3,200"," ₹ 2,800"," ₹ 1,000",2025-11-11
+Carrot, Bowenpally,Carrot," ₹ 6,000"," ₹ 4,500", ₹ 800,2025-11-11
+Cauliflower, Bowenpally,African Sarson," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-11
+Chow Chow, Bowenpally,Chow Chow," ₹ 1,000", ₹ 800, ₹ 500,2025-11-11
+Cluster beans, Bowenpally,Cluster Beans," ₹ 6,000"," ₹ 5,000"," ₹ 3,000",2025-11-11
+Colacasia, Bowenpally,Colacasia," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-11
+Cucumbar(Kheera), Bowenpally,Cucumbar," ₹ 1,200"," ₹ 1,000", ₹ 500,2025-11-11
+Drumstick, Bowenpally,Drumstick," ₹ 10,000"," ₹ 8,500"," ₹ 5,000",2025-11-11
+Field Pea, Bowenpally,Field Pea," ₹ 5,000"," ₹ 4,000"," ₹ 2,000",2025-11-11
+French Beans (Frasbean), Bowenpally,French Beans (Frasbean)," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-11
+Green Chilli, Bowenpally,Green Chilly," ₹ 3,000"," ₹ 2,800"," ₹ 1,800",2025-11-11
+Groundnut pods (raw), Bowenpally,Groundnut pods (raw)," ₹ 5,500"," ₹ 5,000"," ₹ 3,000",2025-11-11
+Onion, Bowenpally,1st Sort," ₹ 1,800"," ₹ 1,400", ₹ 500,2025-11-11
+Onion Green, Bowenpally,Onion Green," ₹ 5,000"," ₹ 4,200"," ₹ 2,000",2025-11-11
+Potato, Bowenpally,(Red Nanital)," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-11
+Pumpkin, Bowenpally,Other," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-11
+Raddish, Bowenpally,Other, ₹ 400, ₹ 300, ₹ 200,2025-11-11
+Ridgeguard(Tori), Bowenpally,Other," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-11
+Snakeguard, Bowenpally,Other," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-11
+Sweet Potato, Bowenpally,Hosur Green," ₹ 3,300"," ₹ 3,000"," ₹ 2,000",2025-11-11
+Tomato, Bowenpally,Deshi," ₹ 1,800"," ₹ 1,500", ₹ 400,2025-11-11
+Yam (Ratalu), Bowenpally,Other," ₹ 3,500"," ₹ 3,200"," ₹ 2,000",2025-11-11
+White Pumpkin, Bowenpally,Other," ₹ 1,000", ₹ 900, ₹ 500,2025-11-11
+Bhindi(Ladies Finger), Bowenpally,Bhindi," ₹ 2,200"," ₹ 1,800"," ₹ 1,200",2025-11-11
+Knool Khol, Bowenpally,Knool Khol," ₹ 1,800"," ₹ 1,600"," ₹ 1,000",2025-11-11
+Amla(Nelli Kai), Bowenpally,Amla," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-10
+Beetroot, Bowenpally,Beetroot," ₹ 3,500"," ₹ 2,800"," ₹ 1,000",2025-11-10
+Bitter gourd, Bowenpally,Bitter Gourd," ₹ 3,300"," ₹ 2,800"," ₹ 1,000",2025-11-10
+Bottle gourd, Bowenpally,Bottle Gourd," ₹ 1,200"," ₹ 1,000", ₹ 400,2025-11-10
+Brinjal, Bowenpally,Arkasheela Mattigulla," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-10
+Cabbage, Bowenpally,Cabbage," ₹ 1,500"," ₹ 1,200", ₹ 500,2025-11-10
+Capsicum, Bowenpally,Capsicum," ₹ 3,200"," ₹ 2,800"," ₹ 1,000",2025-11-10
+Carrot, Bowenpally,Carrot," ₹ 6,000"," ₹ 4,500", ₹ 800,2025-11-10
+Cauliflower, Bowenpally,African Sarson," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-10
+Chow Chow, Bowenpally,Chow Chow," ₹ 1,000", ₹ 800, ₹ 500,2025-11-10
+Cluster beans, Bowenpally,Cluster Beans," ₹ 6,000"," ₹ 5,000"," ₹ 3,000",2025-11-10
+Colacasia, Bowenpally,Colacasia," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-10
+Cucumbar(Kheera), Bowenpally,Cucumbar," ₹ 1,200"," ₹ 1,000", ₹ 500,2025-11-10
+Drumstick, Bowenpally,Drumstick," ₹ 10,000"," ₹ 8,500"," ₹ 5,000",2025-11-10
+Field Pea, Bowenpally,Field Pea," ₹ 5,000"," ₹ 4,000"," ₹ 2,000",2025-11-10
+French Beans (Frasbean), Bowenpally,French Beans (Frasbean)," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-10
+Green Chilli, Bowenpally,Green Chilly," ₹ 3,000"," ₹ 2,800"," ₹ 1,800",2025-11-10
+Groundnut pods (raw), Bowenpally,Groundnut pods (raw)," ₹ 5,500"," ₹ 5,000"," ₹ 3,000",2025-11-10
+Onion, Bowenpally,1st Sort," ₹ 1,800"," ₹ 1,400", ₹ 500,2025-11-10
+Onion Green, Bowenpally,Onion Green," ₹ 5,000"," ₹ 4,200"," ₹ 2,000",2025-11-10
+Potato, Bowenpally,(Red Nanital)," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-10
+Pumpkin, Bowenpally,Other," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-10
+Raddish, Bowenpally,Other, ₹ 400, ₹ 300, ₹ 200,2025-11-10
+Ridgeguard(Tori), Bowenpally,Other," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-10
+Snakeguard, Bowenpally,Other," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-10
+Sweet Potato, Bowenpally,Hosur Green," ₹ 3,300"," ₹ 3,000"," ₹ 2,000",2025-11-10
+Tomato, Bowenpally,Deshi," ₹ 1,800"," ₹ 1,500", ₹ 400,2025-11-10
+Yam (Ratalu), Bowenpally,Other," ₹ 3,500"," ₹ 3,200"," ₹ 2,000",2025-11-10
+White Pumpkin, Bowenpally,Other," ₹ 1,000", ₹ 900, ₹ 500,2025-11-10
+Bhindi(Ladies Finger), Bowenpally,Bhindi," ₹ 2,200"," ₹ 1,800"," ₹ 1,200",2025-11-10
+Knool Khol, Bowenpally,Knool Khol," ₹ 1,800"," ₹ 1,600"," ₹ 1,000",2025-11-10
+Amla(Nelli Kai), Bowenpally,Amla," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-09
+Beetroot, Bowenpally,Beetroot," ₹ 3,500"," ₹ 2,800"," ₹ 1,000",2025-11-09
+Bitter gourd, Bowenpally,Bitter Gourd," ₹ 3,300"," ₹ 2,800"," ₹ 1,000",2025-11-09
+Bottle gourd, Bowenpally,Bottle Gourd," ₹ 1,200"," ₹ 1,000", ₹ 400,2025-11-09
+Brinjal, Bowenpally,Arkasheela Mattigulla," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-09
+Cabbage, Bowenpally,Cabbage," ₹ 1,500"," ₹ 1,200", ₹ 500,2025-11-09
+Capsicum, Bowenpally,Capsicum," ₹ 3,200"," ₹ 2,800"," ₹ 1,000",2025-11-09
+Carrot, Bowenpally,Carrot," ₹ 6,000"," ₹ 4,500", ₹ 800,2025-11-09
+Cauliflower, Bowenpally,African Sarson," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-09
+Chow Chow, Bowenpally,Chow Chow," ₹ 1,000", ₹ 800, ₹ 500,2025-11-09
+Cluster beans, Bowenpally,Cluster Beans," ₹ 6,000"," ₹ 5,000"," ₹ 3,000",2025-11-09
+Colacasia, Bowenpally,Colacasia," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-09
+Cucumbar(Kheera), Bowenpally,Cucumbar," ₹ 1,200"," ₹ 1,000", ₹ 500,2025-11-09
+Drumstick, Bowenpally,Drumstick," ₹ 10,000"," ₹ 8,500"," ₹ 5,000",2025-11-09
+Field Pea, Bowenpally,Field Pea," ₹ 5,000"," ₹ 4,000"," ₹ 2,000",2025-11-09
+French Beans (Frasbean), Bowenpally,French Beans (Frasbean)," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-09
+Green Chilli, Bowenpally,Green Chilly," ₹ 3,000"," ₹ 2,800"," ₹ 1,800",2025-11-09
+Groundnut pods (raw), Bowenpally,Groundnut pods (raw)," ₹ 5,500"," ₹ 5,000"," ₹ 3,000",2025-11-09
+Onion, Bowenpally,1st Sort," ₹ 1,800"," ₹ 1,400", ₹ 500,2025-11-09
+Onion Green, Bowenpally,Onion Green," ₹ 5,000"," ₹ 4,200"," ₹ 2,000",2025-11-09
+Potato, Bowenpally,(Red Nanital)," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-09
+Pumpkin, Bowenpally,Other," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-09
+Raddish, Bowenpally,Other, ₹ 400, ₹ 300, ₹ 200,2025-11-09
+Ridgeguard(Tori), Bowenpally,Other," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-09
+Snakeguard, Bowenpally,Other," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-09
+Sweet Potato, Bowenpally,Hosur Green," ₹ 3,300"," ₹ 3,000"," ₹ 2,000",2025-11-09
+Tomato, Bowenpally,Deshi," ₹ 1,800"," ₹ 1,500", ₹ 400,2025-11-09
+Yam (Ratalu), Bowenpally,Other," ₹ 3,500"," ₹ 3,200"," ₹ 2,000",2025-11-09
+White Pumpkin, Bowenpally,Other," ₹ 1,000", ₹ 900, ₹ 500,2025-11-09
+Bhindi(Ladies Finger), Bowenpally,Bhindi," ₹ 2,200"," ₹ 1,800"," ₹ 1,200",2025-11-09
+Knool Khol, Bowenpally,Knool Khol," ₹ 1,800"," ₹ 1,600"," ₹ 1,000",2025-11-09
+Amla(Nelli Kai), Bowenpally,Amla," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-08
+Beetroot, Bowenpally,Beetroot," ₹ 3,500"," ₹ 2,800"," ₹ 1,000",2025-11-08
+Bitter gourd, Bowenpally,Bitter Gourd," ₹ 3,300"," ₹ 2,800"," ₹ 1,000",2025-11-08
+Bottle gourd, Bowenpally,Bottle Gourd," ₹ 1,200"," ₹ 1,000", ₹ 400,2025-11-08
+Brinjal, Bowenpally,Arkasheela Mattigulla," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-08
+Cabbage, Bowenpally,Cabbage," ₹ 1,500"," ₹ 1,200", ₹ 500,2025-11-08
+Capsicum, Bowenpally,Capsicum," ₹ 3,200"," ₹ 2,800"," ₹ 1,000",2025-11-08
+Carrot, Bowenpally,Carrot," ₹ 6,000"," ₹ 4,500", ₹ 800,2025-11-08
+Cauliflower, Bowenpally,African Sarson," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-08
+Chow Chow, Bowenpally,Chow Chow," ₹ 1,000", ₹ 800, ₹ 500,2025-11-08
+Cluster beans, Bowenpally,Cluster Beans," ₹ 6,000"," ₹ 5,000"," ₹ 3,000",2025-11-08
+Colacasia, Bowenpally,Colacasia," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-08
+Cucumbar(Kheera), Bowenpally,Cucumbar," ₹ 1,200"," ₹ 1,000", ₹ 500,2025-11-08
+Drumstick, Bowenpally,Drumstick," ₹ 10,000"," ₹ 8,500"," ₹ 5,000",2025-11-08
+Field Pea, Bowenpally,Field Pea," ₹ 5,000"," ₹ 4,000"," ₹ 2,000",2025-11-08
+French Beans (Frasbean), Bowenpally,French Beans (Frasbean)," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-08
+Green Chilli, Bowenpally,Green Chilly," ₹ 3,000"," ₹ 2,800"," ₹ 1,800",2025-11-08
+Groundnut pods (raw), Bowenpally,Groundnut pods (raw)," ₹ 5,500"," ₹ 5,000"," ₹ 3,000",2025-11-08
+Onion, Bowenpally,1st Sort," ₹ 1,800"," ₹ 1,400", ₹ 500,2025-11-08
+Onion Green, Bowenpally,Onion Green," ₹ 5,000"," ₹ 4,200"," ₹ 2,000",2025-11-08
+Potato, Bowenpally,(Red Nanital)," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-08
+Pumpkin, Bowenpally,Other," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-08
+Raddish, Bowenpally,Other, ₹ 400, ₹ 300, ₹ 200,2025-11-08
+Ridgeguard(Tori), Bowenpally,Other," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-08
+Snakeguard, Bowenpally,Other," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-08
+Sweet Potato, Bowenpally,Hosur Green," ₹ 3,300"," ₹ 3,000"," ₹ 2,000",2025-11-08
+Tomato, Bowenpally,Deshi," ₹ 1,800"," ₹ 1,500", ₹ 400,2025-11-08
+Yam (Ratalu), Bowenpally,Other," ₹ 3,500"," ₹ 3,200"," ₹ 2,000",2025-11-08
+White Pumpkin, Bowenpally,Other," ₹ 1,000", ₹ 900, ₹ 500,2025-11-08
+Bhindi(Ladies Finger), Bowenpally,Bhindi," ₹ 2,200"," ₹ 1,800"," ₹ 1,200",2025-11-08
+Knool Khol, Bowenpally,Knool Khol," ₹ 1,800"," ₹ 1,600"," ₹ 1,000",2025-11-08
+Amla(Nelli Kai), Bowenpally,Amla," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-07
+Beetroot, Bowenpally,Beetroot," ₹ 3,500"," ₹ 2,800"," ₹ 1,000",2025-11-07
+Bitter gourd, Bowenpally,Bitter Gourd," ₹ 3,300"," ₹ 2,800"," ₹ 1,000",2025-11-07
+Bottle gourd, Bowenpally,Bottle Gourd," ₹ 1,200"," ₹ 1,000", ₹ 400,2025-11-07
+Brinjal, Bowenpally,Arkasheela Mattigulla," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-07
+Cabbage, Bowenpally,Cabbage," ₹ 1,500"," ₹ 1,200", ₹ 500,2025-11-07
+Capsicum, Bowenpally,Capsicum," ₹ 3,200"," ₹ 2,800"," ₹ 1,000",2025-11-07
+Carrot, Bowenpally,Carrot," ₹ 6,000"," ₹ 4,500", ₹ 800,2025-11-07
+Cauliflower, Bowenpally,African Sarson," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-07
+Chow Chow, Bowenpally,Chow Chow," ₹ 1,000", ₹ 800, ₹ 500,2025-11-07
+Cluster beans, Bowenpally,Cluster Beans," ₹ 6,000"," ₹ 5,000"," ₹ 3,000",2025-11-07
+Colacasia, Bowenpally,Colacasia," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-07
+Cucumbar(Kheera), Bowenpally,Cucumbar," ₹ 1,200"," ₹ 1,000", ₹ 500,2025-11-07
+Drumstick, Bowenpally,Drumstick," ₹ 10,000"," ₹ 8,500"," ₹ 5,000",2025-11-07
+Field Pea, Bowenpally,Field Pea," ₹ 5,000"," ₹ 4,000"," ₹ 2,000",2025-11-07
+French Beans (Frasbean), Bowenpally,French Beans (Frasbean)," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-07
+Green Chilli, Bowenpally,Green Chilly," ₹ 3,000"," ₹ 2,800"," ₹ 1,800",2025-11-07
+Groundnut pods (raw), Bowenpally,Groundnut pods (raw)," ₹ 5,500"," ₹ 5,000"," ₹ 3,000",2025-11-07
+Onion, Bowenpally,1st Sort," ₹ 1,800"," ₹ 1,400", ₹ 500,2025-11-07
+Onion Green, Bowenpally,Onion Green," ₹ 5,000"," ₹ 4,200"," ₹ 2,000",2025-11-07
+Potato, Bowenpally,(Red Nanital)," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-07
+Pumpkin, Bowenpally,Other," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-07
+Raddish, Bowenpally,Other, ₹ 400, ₹ 300, ₹ 200,2025-11-07
+Ridgeguard(Tori), Bowenpally,Other," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-07
+Snakeguard, Bowenpally,Other," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-07
+Sweet Potato, Bowenpally,Hosur Green," ₹ 3,300"," ₹ 3,000"," ₹ 2,000",2025-11-07
+Tomato, Bowenpally,Deshi," ₹ 1,800"," ₹ 1,500", ₹ 400,2025-11-07
+Yam (Ratalu), Bowenpally,Other," ₹ 3,500"," ₹ 3,200"," ₹ 2,000",2025-11-07
+White Pumpkin, Bowenpally,Other," ₹ 1,000", ₹ 900, ₹ 500,2025-11-07
+Bhindi(Ladies Finger), Bowenpally,Bhindi," ₹ 2,200"," ₹ 1,800"," ₹ 1,200",2025-11-07
+Knool Khol, Bowenpally,Knool Khol," ₹ 1,800"," ₹ 1,600"," ₹ 1,000",2025-11-07
+Amla(Nelli Kai), Bowenpally,Amla," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-06
+Beetroot, Bowenpally,Beetroot," ₹ 3,500"," ₹ 2,800"," ₹ 1,000",2025-11-06
+Bitter gourd, Bowenpally,Bitter Gourd," ₹ 3,300"," ₹ 2,800"," ₹ 1,000",2025-11-06
+Bottle gourd, Bowenpally,Bottle Gourd," ₹ 1,200"," ₹ 1,000", ₹ 400,2025-11-06
+Brinjal, Bowenpally,Arkasheela Mattigulla," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-06
+Cabbage, Bowenpally,Cabbage," ₹ 1,500"," ₹ 1,200", ₹ 500,2025-11-06
+Capsicum, Bowenpally,Capsicum," ₹ 3,200"," ₹ 2,800"," ₹ 1,000",2025-11-06
+Carrot, Bowenpally,Carrot," ₹ 6,000"," ₹ 4,500", ₹ 800,2025-11-06
+Cauliflower, Bowenpally,African Sarson," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-06
+Chow Chow, Bowenpally,Chow Chow," ₹ 1,000", ₹ 800, ₹ 500,2025-11-06
+Cluster beans, Bowenpally,Cluster Beans," ₹ 6,000"," ₹ 5,000"," ₹ 3,000",2025-11-06
+Colacasia, Bowenpally,Colacasia," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-06
+Cucumbar(Kheera), Bowenpally,Cucumbar," ₹ 1,200"," ₹ 1,000", ₹ 500,2025-11-06
+Drumstick, Bowenpally,Drumstick," ₹ 10,000"," ₹ 8,500"," ₹ 5,000",2025-11-06
+Field Pea, Bowenpally,Field Pea," ₹ 5,000"," ₹ 4,000"," ₹ 2,000",2025-11-06
+French Beans (Frasbean), Bowenpally,French Beans (Frasbean)," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-06
+Green Chilli, Bowenpally,Green Chilly," ₹ 3,000"," ₹ 2,800"," ₹ 1,800",2025-11-06
+Groundnut pods (raw), Bowenpally,Groundnut pods (raw)," ₹ 5,500"," ₹ 5,000"," ₹ 3,000",2025-11-06
+Onion, Bowenpally,1st Sort," ₹ 1,800"," ₹ 1,400", ₹ 500,2025-11-06
+Onion Green, Bowenpally,Onion Green," ₹ 5,000"," ₹ 4,200"," ₹ 2,000",2025-11-06
+Potato, Bowenpally,(Red Nanital)," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-06
+Pumpkin, Bowenpally,Other," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-06
+Raddish, Bowenpally,Other, ₹ 400, ₹ 300, ₹ 200,2025-11-06
+Ridgeguard(Tori), Bowenpally,Other," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-06
+Snakeguard, Bowenpally,Other," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-06
+Sweet Potato, Bowenpally,Hosur Green," ₹ 3,300"," ₹ 3,000"," ₹ 2,000",2025-11-06
+Tomato, Bowenpally,Deshi," ₹ 1,800"," ₹ 1,500", ₹ 400,2025-11-06
+Yam (Ratalu), Bowenpally,Other," ₹ 3,500"," ₹ 3,200"," ₹ 2,000",2025-11-06
+White Pumpkin, Bowenpally,Other," ₹ 1,000", ₹ 900, ₹ 500,2025-11-06
+Bhindi(Ladies Finger), Bowenpally,Bhindi," ₹ 2,200"," ₹ 1,800"," ₹ 1,200",2025-11-06
+Knool Khol, Bowenpally,Knool Khol," ₹ 1,800"," ₹ 1,600"," ₹ 1,000",2025-11-06
+Amla(Nelli Kai), Bowenpally,Amla," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-05
+Beetroot, Bowenpally,Beetroot," ₹ 3,500"," ₹ 2,800"," ₹ 1,000",2025-11-05
+Bitter gourd, Bowenpally,Bitter Gourd," ₹ 3,300"," ₹ 2,800"," ₹ 1,000",2025-11-05
+Bottle gourd, Bowenpally,Bottle Gourd," ₹ 1,200"," ₹ 1,000", ₹ 400,2025-11-05
+Brinjal, Bowenpally,Arkasheela Mattigulla," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-05
+Cabbage, Bowenpally,Cabbage," ₹ 1,500"," ₹ 1,200", ₹ 500,2025-11-05
+Capsicum, Bowenpally,Capsicum," ₹ 3,200"," ₹ 2,800"," ₹ 1,000",2025-11-05
+Carrot, Bowenpally,Carrot," ₹ 6,000"," ₹ 4,500", ₹ 800,2025-11-05
+Cauliflower, Bowenpally,African Sarson," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-05
+Chow Chow, Bowenpally,Chow Chow," ₹ 1,000", ₹ 800, ₹ 500,2025-11-05
+Cluster beans, Bowenpally,Cluster Beans," ₹ 6,000"," ₹ 5,000"," ₹ 3,000",2025-11-05
+Colacasia, Bowenpally,Colacasia," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-05
+Cucumbar(Kheera), Bowenpally,Cucumbar," ₹ 1,200"," ₹ 1,000", ₹ 500,2025-11-05
+Drumstick, Bowenpally,Drumstick," ₹ 10,000"," ₹ 8,500"," ₹ 5,000",2025-11-05
+Field Pea, Bowenpally,Field Pea," ₹ 5,000"," ₹ 4,000"," ₹ 2,000",2025-11-05
+French Beans (Frasbean), Bowenpally,French Beans (Frasbean)," ₹ 6,000"," ₹ 5,000"," ₹ 2,000",2025-11-05
+Green Chilli, Bowenpally,Green Chilly," ₹ 3,000"," ₹ 2,800"," ₹ 1,800",2025-11-05
+Groundnut pods (raw), Bowenpally,Groundnut pods (raw)," ₹ 5,500"," ₹ 5,000"," ₹ 3,000",2025-11-05
+Onion, Bowenpally,1st Sort," ₹ 1,800"," ₹ 1,400", ₹ 500,2025-11-05
+Onion Green, Bowenpally,Onion Green," ₹ 5,000"," ₹ 4,200"," ₹ 2,000",2025-11-05
+Potato, Bowenpally,(Red Nanital)," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-05
+Pumpkin, Bowenpally,Other," ₹ 2,500"," ₹ 2,200"," ₹ 1,000",2025-11-05
+Raddish, Bowenpally,Other, ₹ 400, ₹ 300, ₹ 200,2025-11-05
+Ridgeguard(Tori), Bowenpally,Other," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-05
+Snakeguard, Bowenpally,Other," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-05
+Sweet Potato, Bowenpally,Hosur Green," ₹ 3,300"," ₹ 3,000"," ₹ 2,000",2025-11-05
+Tomato, Bowenpally,Deshi," ₹ 1,800"," ₹ 1,500", ₹ 400,2025-11-05
+Yam (Ratalu), Bowenpally,Other," ₹ 3,500"," ₹ 3,200"," ₹ 2,000",2025-11-05
+White Pumpkin, Bowenpally,Other," ₹ 1,000", ₹ 900, ₹ 500,2025-11-05
+Bhindi(Ladies Finger), Bowenpally,Bhindi," ₹ 2,200"," ₹ 1,800"," ₹ 1,200",2025-11-05
+Knool Khol, Bowenpally,Knool Khol," ₹ 1,800"," ₹ 1,600"," ₹ 1,000",2025-11-05
+Amla(Nelli Kai), Bowenpally,Amla," ₹ 7,000"," ₹ 5,500"," ₹ 3,000",2025-11-04
+Beetroot, Bowenpally,Beetroot," ₹ 4,000"," ₹ 2,800"," ₹ 1,000",2025-11-04
+Bitter gourd, Bowenpally,Bitter Gourd," ₹ 4,000"," ₹ 3,000"," ₹ 1,000",2025-11-04
+Bottle gourd, Bowenpally,Bottle Gourd," ₹ 1,400"," ₹ 1,100", ₹ 400,2025-11-04
+Brinjal, Bowenpally,Arkasheela Mattigulla," ₹ 2,500"," ₹ 2,000"," ₹ 1,000",2025-11-04
+Cabbage, Bowenpally,Cabbage," ₹ 1,500"," ₹ 1,200", ₹ 500,2025-11-04
+Capsicum, Bowenpally,Capsicum," ₹ 3,500"," ₹ 3,000"," ₹ 1,000",2025-11-04
+Carrot, Bowenpally,Carrot," ₹ 6,000"," ₹ 4,000", ₹ 500,2025-11-04
+Cauliflower, Bowenpally,African Sarson," ₹ 2,000"," ₹ 1,500", ₹ 500,2025-11-04
+Chow Chow, Bowenpally,Chow Chow," ₹ 1,000", ₹ 800, ₹ 500,2025-11-04
+Colacasia, Bowenpally,Colacasia," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-04
+Cucumbar(Kheera), Bowenpally,Cucumbar," ₹ 1,200"," ₹ 1,100", ₹ 600,2025-11-04
+Drumstick, Bowenpally,Drumstick," ₹ 10,000"," ₹ 7,500"," ₹ 4,000",2025-11-04
+Field Pea, Bowenpally,Field Pea," ₹ 4,500"," ₹ 3,500"," ₹ 1,500",2025-11-04
+French Beans (Frasbean), Bowenpally,French Beans (Frasbean)," ₹ 7,000"," ₹ 5,000"," ₹ 2,000",2025-11-04
+Green Chilli, Bowenpally,Green Chilly," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-04
+Groundnut pods (raw), Bowenpally,Groundnut pods (raw)," ₹ 5,500"," ₹ 4,000"," ₹ 2,000",2025-11-04
+Onion, Bowenpally,1st Sort," ₹ 1,800"," ₹ 1,400", ₹ 500,2025-11-04
+Onion Green, Bowenpally,Onion Green," ₹ 5,000"," ₹ 4,000"," ₹ 2,000",2025-11-04
+Potato, Bowenpally,(Red Nanital)," ₹ 2,500"," ₹ 2,000", ₹ 800,2025-11-04
+Pumpkin, Bowenpally,Other," ₹ 2,500"," ₹ 2,000", ₹ 800,2025-11-04
+Raddish, Bowenpally,Other, ₹ 500, ₹ 400, ₹ 200,2025-11-04
+Snakeguard, Bowenpally,Other," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-04
+Sweet Potato, Bowenpally,Hosur Green," ₹ 3,300"," ₹ 2,500"," ₹ 1,000",2025-11-04
+Tomato, Bowenpally,Deshi," ₹ 2,000"," ₹ 1,500", ₹ 400,2025-11-04
+White Pumpkin, Bowenpally,Other," ₹ 1,000", ₹ 900, ₹ 500,2025-11-04
+Yam (Ratalu), Bowenpally,Other," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-04
+Bhindi(Ladies Finger), Bowenpally,Bhindi," ₹ 2,200"," ₹ 1,800"," ₹ 1,200",2025-11-04
+Cluster beans, Bowenpally,Cluster Beans," ₹ 6,000"," ₹ 5,000"," ₹ 3,000",2025-11-04
+Ridgeguard(Tori), Bowenpally,Other," ₹ 2,200"," ₹ 1,800"," ₹ 1,000",2025-11-04
+Knool Khol, Bowenpally,Knool Khol," ₹ 1,800"," ₹ 1,600"," ₹ 1,000",2025-11-04
+Amla(Nelli Kai), Bowenpally,Amla," ₹ 10,000"," ₹ 8,000"," ₹ 4,000",2025-11-03
+Beetroot, Bowenpally,Beetroot," ₹ 4,000"," ₹ 3,000"," ₹ 1,000",2025-11-03
+Bhindi(Ladies Finger), Bowenpally,Bhindi," ₹ 2,200"," ₹ 1,800"," ₹ 1,200",2025-11-03
+Bitter gourd, Bowenpally,Bitter Gourd," ₹ 4,000"," ₹ 3,000"," ₹ 1,000",2025-11-03
+Bottle gourd, Bowenpally,Bottle Gourd," ₹ 1,200"," ₹ 1,000", ₹ 400,2025-11-03
+Brinjal, Bowenpally,Arkasheela Mattigulla," ₹ 3,000"," ₹ 2,500"," ₹ 1,000",2025-11-03
+Cabbage, Bowenpally,Cabbage," ₹ 1,500"," ₹ 1,300", ₹ 800,2025-11-03
+Capsicum, Bowenpally,Capsicum," ₹ 3,500"," ₹ 2,600"," ₹ 1,000",2025-11-03
+Carrot, Bowenpally,Carrot," ₹ 6,000"," ₹ 4,000", ₹ 800,2025-11-03
+Cauliflower, Bowenpally,African Sarson," ₹ 2,000"," ₹ 1,500", ₹ 500,2025-11-03
+Chow Chow, Bowenpally,Chow Chow," ₹ 1,000", ₹ 800, ₹ 500,2025-11-03
+Cluster beans, Bowenpally,Cluster Beans," ₹ 6,000"," ₹ 5,000"," ₹ 3,000",2025-11-03
+Colacasia, Bowenpally,Colacasia," ₹ 2,000"," ₹ 1,800"," ₹ 1,000",2025-11-03
+Cucumbar(Kheera), Bowenpally,Cucumbar," ₹ 1,200"," ₹ 1,000", ₹ 400,2025-11-03
+Drumstick, Bowenpally,Drumstick," ₹ 10,000"," ₹ 7,500"," ₹ 4,000",2025-11-03
+Field Pea, Bowenpally,Field Pea," ₹ 5,000"," ₹ 4,000"," ₹ 2,000",2025-11-03
+French Beans (Frasbean), Bowenpally,French Beans (Frasbean)," ₹ 7,500"," ₹ 5,000"," ₹ 2,000",2025-11-03
+Green Chilli, Bowenpally,Green Chilly," ₹ 2,500"," ₹ 2,000"," ₹ 1,000",2025-11-03
+Groundnut pods (raw), Bowenpally,Groundnut pods (raw)," ₹ 5,500"," ₹ 4,600"," ₹ 3,000",2025-11-03
+Onion, Bowenpally,1st Sort," ₹ 1,000", ₹ 800, ₹ 500,2025-11-03
+Onion Green, Bowenpally,Onion Green," ₹ 5,500"," ₹ 4,000"," ₹ 2,000",2025-11-03
+Potato, Bowenpally,(Red Nanital)," ₹ 2,300"," ₹ 1,800"," ₹ 1,000",2025-11-03
+Pumpkin, Bowenpally,Other," ₹ 3,000"," ₹ 2,500"," ₹ 1,000",2025-11-03
+Raddish, Bowenpally,Other, ₹ 400, ₹ 350, ₹ 200,2025-11-03
+Ridgeguard(Tori), Bowenpally,Other," ₹ 2,200"," ₹ 1,800"," ₹ 1,000",2025-11-03
+Snakeguard, Bowenpally,Other," ₹ 2,500"," ₹ 2,000"," ₹ 1,000",2025-11-03
+Sweet Potato, Bowenpally,Hosur Green," ₹ 3,300"," ₹ 2,800"," ₹ 1,500",2025-11-03
+Tomato, Bowenpally,Deshi," ₹ 2,000"," ₹ 1,500", ₹ 400,2025-11-03
+White Pumpkin, Bowenpally,Other," ₹ 1,500"," ₹ 1,200", ₹ 500,2025-11-03
+Yam (Ratalu), Bowenpally,Other," ₹ 4,000"," ₹ 3,500"," ₹ 2,000",2025-11-03
+Knool Khol, Bowenpally,Knool Khol," ₹ 1,800"," ₹ 1,600"," ₹ 1,000",2025-11-03

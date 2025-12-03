@@ -1682,15 +1682,18 @@ async def enhanced_prediction_with_telangana(params: PredictionRequest) -> Dict:
 
         # Prepare parallel processing
         forecast_engine = ParallelForecastEngine(max_workers=8)
-        
+
         forecast_args = []
-        
-        # (1) Commodity-wise predictions
+
+        # (1) Commodity-wise predictions (always needed)
         for (amc, comm), df_subset in df_original.groupby(['amc_name', 'commodity_name']):
             forecast_args.append((amc, comm, df_subset, metric, forecast_days, weather_info, district))
 
-        # (2) Add TOTAL prediction (if aggregate mode used)
-        if df_total is not None:
+        # Define aggregate_mode correctly
+        aggregate_mode = (not commodity) and (unique_commodities > 10)
+
+        # (2) Add TOTAL prediction only when aggregate mode is used
+        if aggregate_mode and df_total is not None:
             for amc, df_amc in df_total.groupby('amc_name'):
                 forecast_args.append((amc, "All Commodities", df_amc, metric, forecast_days, weather_info, district))
 

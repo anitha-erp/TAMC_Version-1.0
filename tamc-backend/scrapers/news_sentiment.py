@@ -1,4 +1,4 @@
-# scrapers/news_sentiment.py
+﻿# scrapers/news_sentiment.py
 # News sentiment scraper for agricultural commodities
 # Uses NewsAPI + TextBlob for sentiment analysis + KeyBERT for keyword extraction
 
@@ -20,7 +20,7 @@ try:
     KEYBERT_AVAILABLE = True
 except ImportError:
     KEYBERT_AVAILABLE = False
-    print("⚠️ KeyBERT not installed. Using simple keyword extraction.")
+    print("WARNING: KeyBERT not installed. Using simple keyword extraction.")
 
 # Configuration
 NEWS_API_KEY = os.getenv("NEWS_API_KEY")
@@ -63,7 +63,7 @@ def load_from_cache(commodity):
             return df, data.get('metadata', {})
         return None, None
     except Exception as e:
-        print(f"⚠️ Error loading cache: {e}")
+        print(f"WARNING: Error loading cache: {e}")
         return None, None
 
 def save_to_cache(commodity, df, metadata):
@@ -86,7 +86,7 @@ def save_to_cache(commodity, df, metadata):
         
         print(f"💾 Cached {len(articles)} articles for '{commodity}'")
     except Exception as e:
-        print(f"⚠️ Error saving cache: {e}")
+        print(f"WARNING: Error saving cache: {e}")
 
 # ========== NEWS FETCHING ==========
 
@@ -124,7 +124,7 @@ def fetch_recent_news(query="agriculture", days_back=7, page_size=50):
         data = r.json()
         
         if data.get("status") != "ok":
-            print(f"⚠️ News API error: {data.get('message', 'Unknown error')}")
+            print(f"WARNING: News API error: {data.get('message', 'Unknown error')}")
             return None
 
         articles = data.get("articles", [])
@@ -287,7 +287,7 @@ def get_news_sentiment_score(commodity_name, days_back=7, page_size=50, force_re
     df = fetch_recent_news(query=commodity_name, days_back=days_back, page_size=page_size)
     
     if df is None or df.empty:
-        print(f"⚠️ No news available for '{commodity_name}'")
+        print(f"WARNING: No news available for '{commodity_name}'")
         return 0.0, None, {"error": "No news found"}
     
     # Analyze sentiment

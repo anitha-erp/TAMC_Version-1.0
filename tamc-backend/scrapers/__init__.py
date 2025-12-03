@@ -17,11 +17,11 @@ except ImportError:
     print("⚠️ ncdex_scrape not available")
     get_or_update_ncdex_data = None
 
-try:
-    from .naapanta_scrape import get_historical_prices_for_prediction
-except ImportError:
-    print("⚠️ naapanta_scrape not available")
-    get_historical_prices_for_prediction = None
+# try:
+#     from .naapanta_scrape import get_historical_prices_for_prediction
+# except ImportError:
+#     print("⚠️ naapanta_scrape not available")
+#     get_historical_prices_for_prediction = None
 
 try:
     from .news_sentiment import (
@@ -39,7 +39,7 @@ except ImportError:
 
 __all__ = [
     'get_or_update_ncdex_data',
-    'get_historical_prices_for_prediction',
+    # 'get_historical_prices_for_prediction',
     'get_news_sentiment_score',
     'get_sentiment_summary',
     'fetch_recent_news',

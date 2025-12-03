@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import os
 import pickle
@@ -8,8 +8,8 @@ from pathlib import Path
 from typing import List, Optional, Tuple
 
 import pandas as pd
-from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
 from playwright.sync_api import sync_playwright
+from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
 
 NAPANTA_DEFAULT_DAYS = int(os.getenv("NAPANTA_DEFAULT_DAYS", "30"))
 NAPANTA_MAX_DAYS = int(os.getenv("NAPANTA_MAX_DAYS", "90"))
@@ -126,16 +126,16 @@ class NapantaPriceScraper:
 
             except PlaywrightTimeoutError:
                 if attempt < retry_count:
-                    print(f"⚠️ Timeout on attempt {attempt + 1}/{retry_count + 1}, retrying...")
+                    print(f"WARNING: Timeout on attempt {attempt + 1}/{retry_count + 1}, retrying...")
                     page.wait_for_timeout(1000)
                     continue
                 return None
             except Exception as exc:
                 if attempt < retry_count:
-                    print(f"⚠️ Error on attempt {attempt + 1}: {exc}, retrying...")
+                    print(f"WARNING: Error on attempt {attempt + 1}: {exc}, retrying...")
                     page.wait_for_timeout(1000)
                     continue
-                print(f"⚠️ Error fetching {date_str} after {retry_count + 1} attempts: {exc}")
+                print(f"WARNING: Error fetching {date_str} after {retry_count + 1} attempts: {exc}")
                 return None
 
         return None
@@ -166,7 +166,7 @@ class NapantaPriceScraper:
                 )
                 return filters
             except Exception as exc:
-                print(f"❌ Error fetching filters: {exc}")
+                print(f"ERROR: Error fetching filters: {exc}")
                 return None
 
     def fetch_historical_prices(
@@ -192,28 +192,30 @@ class NapantaPriceScraper:
         if commodity:
             output_name += f"_{commodity.replace(' ', '_')}"
         output_name += f"_{days_back}days.csv"
-        output_path = Path(NAPANTA_OUTPUT_DIR) / output_name
+        output_dir = Path(NAPANTA_OUTPUT_DIR)
+        output_dir.mkdir(parents=True, exist_ok=True)
+        output_path = output_dir / output_name
 
         existing_df, existing_dates = self._load_existing_output(output_path)
         new_frames: List[pd.DataFrame] = []
         consecutive_failures = 0
 
-        print(f"\n🚀 Naapanta scraper | {state} > {district} > {market} | days: {days_back}")
+        print(f"\n Naapanta scraper | {state} > {district} > {market} | days: {days_back}")
         if existing_dates:
-            print(f"🔁 Skipping {len(existing_dates)} date(s) already in {output_name}")
+            print(f" Skipping {len(existing_dates)} date(s) already in {output_name}")
 
         with self._browser_page() as page:
             for idx, date_str in enumerate(dates, 1):
                 if date_str in existing_dates:
                     continue
 
-                print(f"📅 Fetching {date_str} ({idx}/{days_back})...")
+                print(f" Fetching {date_str} ({idx}/{days_back})...")
                 df = self._scrape_single_date(page, state, district, market, date_str)
                 if df is None or df.empty:
                     consecutive_failures += 1
-                    print(f"   ⚠️ No data for {date_str}")
+                    print(f"   WARNING: No data for {date_str}")
                     if consecutive_failures >= NAPANTA_MAX_CONSECUTIVE_FAILURES:
-                        print(f"   ❌ {NAPANTA_MAX_CONSECUTIVE_FAILURES} consecutive failures, stopping scrape.")
+                        print(f"   ERROR: {NAPANTA_MAX_CONSECUTIVE_FAILURES} consecutive failures, stopping scrape.")
                         break
                 else:
                     consecutive_failures = 0
@@ -225,7 +227,7 @@ class NapantaPriceScraper:
                     page.wait_for_timeout(int(self.request_delay * 1000))
 
         if not new_frames and existing_df is None:
-            print("❌ No historical data fetched")
+            print("ERROR: No historical data fetched")
             return None
 
         combined_df = pd.concat([df for df in [existing_df, *new_frames] if df is not None], ignore_index=True)
@@ -238,7 +240,7 @@ class NapantaPriceScraper:
         )
 
         combined_df.to_csv(output_path, index=False, encoding='utf-8-sig')
-        print(f"\n💾 Saved {len(combined_df)} rows to {output_path}")
+        print(f"\n Saved {len(combined_df)} rows to {output_path}")
 
         if commodity and 'Commodity' in combined_df.columns:
             sample = combined_df[combined_df['Commodity'].str.lower().str.contains(commodity.lower(), na=False)]
@@ -249,7 +251,7 @@ class NapantaPriceScraper:
             first = sample.iloc[0]['Commodity'] if 'Commodity' in sample.columns else commodity or 'Commodity'
             trend = sample[['Fetch_Date', 'Avg_Price', 'Min_Price', 'Max_Price']].head(5)
             trend['Fetch_Date'] = trend['Fetch_Date'].dt.strftime('%Y-%m-%d')
-            print(f"📈 Recent price trend for {first}:")
+            print(f" Recent price trend for {first}:")
             print(trend.to_string(index=False))
 
         return combined_df
@@ -300,7 +302,7 @@ def interactive_historical_scraper():
         print("✅ SUCCESS! Historical price data ready for prediction model")
         print("=" * 70)
     else:
-        print("\n❌ Failed to extract historical data")
+        print("\nERROR: Failed to extract historical data")
     return df
 
 
@@ -334,5 +336,6 @@ def get_or_update_naapanta_data(state, district, market=None, commodity=None, da
             print(f"✅ Cached {len(df)} Naapanta records for future use.")
         return df
     except Exception as exc:
-        print(f"⚠️ Error fetching Naapanta data: {exc}")
+        print(f"WARNING: Error fetching Naapanta data: {exc}")
         return None
+

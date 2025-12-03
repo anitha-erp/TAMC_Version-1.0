@@ -38,7 +38,7 @@ PRICE_VARIANTS_URL = "http://127.0.0.1:8002/api/variants"
 ADVISORY_API_URL = "http://127.0.0.1:8003/chat"
 
 PRICE_TIMEOUT = 30  # Reduced from 240s (4 min) to 30s
-ARRIVAL_TIMEOUT = 300  # Reduced from 180s (3 min) to 20s
+ARRIVAL_TIMEOUT = 120   # 2 minutes
 
 # Central location catalog for matching/correction
 KNOWN_LOCATIONS = [
@@ -910,16 +910,20 @@ async def execute_arrival_tool(params: Dict) -> Dict:
         if variant:
             print(f"   📦 Variant: {variant}")
 
-        # Use longer timeout for aggregate queries (processing many commodities)
-        timeout = 60 if aggregate_mode else 30
+        # 🚀 Always use a larger timeout — arrival can take long for 40–80 commodities
+        timeout = 120
+
         response = requests.post(ARRIVAL_API_URL, json=payload, timeout=timeout)
         response.raise_for_status()
 
-        return {
-            "success": True,
-            "data": response.json(),
-            "tool": "arrival"
-        }
+        data = response.json()
+
+        # ⚡ Fast exit for cached results
+        if data.get("cached", False):
+            print("⚡ Cached result detected — returning immediately.")
+            return {"success": True, "data": data, "tool": "arrival"}
+
+        return {"success": True, "data": data, "tool": "arrival"}
     except Exception as e:
         print(f"❌ Arrival Tool Error: {e}")
         return {
@@ -1234,28 +1238,37 @@ async def ai_powered_chat(request: ChatRequest):
                     break
 
         # 🔧 CRITICAL FIX: Detect "overall/all commodities" queries and clear commodity context
-        # This prevents previous commodity from being preserved for aggregate queries
+        # Detect aggregate keywords
         aggregate_keywords = [
-            "overall", "all commodities", "all commodity", "total",
-            "combined", "aggregate", "entire market", "whole market",
+            "overall", "all commodities", "all commodity", "combined",
+            "aggregate", "entire market", "whole market",
             "every commodity", "all crops"
         ]
 
-        has_aggregate_query = any(keyword in query.lower() for keyword in aggregate_keywords)
+        query_lower = query.lower()
 
-        if has_aggregate_query:
-            # Clear commodity and variant from context
+        has_aggregate_keyword = any(k in query_lower for k in aggregate_keywords)
+
+        # ✔ Check if commodity is present
+        commodity_in_query = new_params.get("commodity") or context.extracted_params.get("commodity")
+
+        # --------------------------------------------------------------
+        # ✅ FIX: Commodity ALWAYS overrides aggregate keywords
+        # --------------------------------------------------------------
+        if has_aggregate_keyword and not commodity_in_query:
+            # TRUE aggregate query → clear old commodity
             context.extracted_params.pop("commodity", None)
             context.extracted_params.pop("variant", None)
-            print(f"🔄 Cleared commodity from context (aggregate query detected: '{query}')")
 
-            # Force new params to None to prevent re-adding during merge
+            print(f"🔄 Aggregate query detected (no commodity). Enabling aggregate_mode.")
+
             new_params["commodity"] = None
             new_params["variant"] = None
+
             new_params["aggregate_mode"] = True
             context.extracted_params["aggregate_mode"] = True
         else:
-            # If user didn't explicitly request aggregate view, remove flag
+            # If commodity exists OR no aggregate keyword → remove aggregate flag
             context.extracted_params.pop("aggregate_mode", None)
 
         # FIRST: Detect if query explicitly mentions "variety" keyword OR looks like a variety name

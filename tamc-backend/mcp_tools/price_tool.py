@@ -89,9 +89,16 @@ NEWS_CACHE_FILE = "news_sentiment_cache.json"
 
 os.makedirs(MODEL_CACHE_DIR, exist_ok=True)
 
-MARKETS_TO_SCRAPE = ["Warangal", "Khammam", "Nakrekal"]
-COMMODITIES_TO_SCRAPE = ["Chilli", "Cotton", "Lemon", "Groundnut"]
-HISTORICAL_SCRAPE_DAYS = 60
+# District-AMC market pairs to scrape from Naapanta (format: district, amc_market)
+MARKETS_TO_SCRAPE = [
+    ("Hyderabad", "Bowenpally"),
+    ("Khammam", "Khammam"),
+    ("Medak", "Vantamamidi"),
+    ("Nalgonda", "Nakrekal"),
+    ("Warangal", "Warangal")
+]
+
+HISTORICAL_SCRAPE_DAYS = 30  # Reduced from 60 to speed up startup
 
 # ========== PYDANTIC MODELS ==========
 
@@ -443,29 +450,30 @@ def get_or_update_db_data(cache_file=DB_CACHE_FILE):
 
         print(f"\n🌎 Fetching {HISTORICAL_SCRAPE_DAYS} days of historical data from Naapanta...")
         print(f"   Markets: {MARKETS_TO_SCRAPE}")
-        print(f"   Commodities: {COMMODITIES_TO_SCRAPE}")
+
 
         all_naapanta_data = []
 
-        for market in MARKETS_TO_SCRAPE:
-            for commodity in COMMODITIES_TO_SCRAPE:
-                print(f"   ...Scraping {commodity} in {market}...")
+        # Use ThreadPoolExecutor to run sync Playwright outside asyncio event loop
+        with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
+            for market in MARKETS_TO_SCRAPE:
+                district, amc_market = market
+                print(f"   ...Scraping {district}-{amc_market} (all commodities)...")
 
-                f = io.StringIO()
-                with contextlib.redirect_stdout(f):
-                    try:
-                        with concurrent.futures.ThreadPoolExecutor() as executor:
-                            future = executor.submit(
-                                get_historical_prices_for_prediction,
-                                "Telangana", market, market, commodity,
-                                HISTORICAL_SCRAPE_DAYS
-                            )
-                            naapanta_hist_df = future.result(timeout=120)
-                    except Exception as e:
-                        naapanta_hist_df = None
+                # Run scraper in thread to avoid asyncio conflict
+                try:
+                    future = executor.submit(
+                        get_historical_prices_for_prediction,
+                        "Telangana", district, amc_market, None,
+                        HISTORICAL_SCRAPE_DAYS
+                    )
+                    naapanta_hist_df = future.result(timeout=300)  # 5 minute timeout per market
+                except Exception as e:
+                    print(f"     -> ERROR during scrape: {type(e).__name__}: {str(e)}")
+                    naapanta_hist_df = None
 
                 if naapanta_hist_df is not None:
-                    standardized_df = standardize_naapanta_data(naapanta_hist_df, market)
+                    standardized_df = standardize_naapanta_data(naapanta_hist_df, amc_market)
 
                     if not standardized_df.empty:
                         print(f"     -> Found {len(standardized_df)} historical records.")
@@ -473,7 +481,9 @@ def get_or_update_db_data(cache_file=DB_CACHE_FILE):
                     else:
                         print(f"     -> No data found.")
                 else:
-                    print(f"     -> Scrape failed.")
+                    print(f"     -> Scrape returned None (check error above).")
+
+
 
         if all_naapanta_data:
             df_naapanta_combined = pd.concat(all_naapanta_data, ignore_index=True)
@@ -1017,9 +1027,12 @@ async def startup_event():
     print("=" * 50)
     
     # Load or refresh data cache
-    if not get_or_update_db_data():
-        print("❌ CRITICAL: Failed to load data. Exiting.")
-        exit()
+    try:
+        if not get_or_update_db_data():
+            print("⚠️ WARNING: Failed to load initial data. API will start but predictions may fail.")
+    except Exception as e:
+        print(f"⚠️ WARNING: Error during startup data load: {e}")
+        # Do not exit, allow server to start
     
     # Initialize predictor
     print("\n📊 Initializing Enhanced Price Predictor...")
@@ -1376,10 +1389,10 @@ async def get_markets():
     """Get list of available markets"""
     return {"markets": MARKETS_TO_SCRAPE, "count": len(MARKETS_TO_SCRAPE)}
 
-@app.get("/api/commodities")
-async def get_commodities():
-    """Get list of available commodities"""
-    return {"commodities": COMMODITIES_TO_SCRAPE, "count": len(COMMODITIES_TO_SCRAPE)}
+# @app.get("/api/commodities")
+# async def get_commodities():
+#     """Get list of available commodities"""
+#     return {"commodities": COMMODITIES_TO_SCRAPE, "count": len(COMMODITIES_TO_SCRAPE)}
 
 # ========== RUN SERVER ==========
 
