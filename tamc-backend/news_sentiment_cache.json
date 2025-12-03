@@ -75,5 +75,16 @@
       "sample_headlines": [],
       "articles": []
     }
+  },
+  "sweet corn": {
+    "timestamp": "2025-12-03T18:28:25.969755",
+    "data": {
+      "avg_sentiment": 0.0,
+      "sentiment_label": "Neutral",
+      "news_count": 0,
+      "top_keywords": [],
+      "sample_headlines": [],
+      "articles": []
+    }
   }
 }

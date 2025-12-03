@@ -40,6 +40,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 # Load environment variables
 load_dotenv()
 
+
 # Import helper scripts
 try:
     from scrapers.ncdex_scrape import get_or_update_ncdex_data
@@ -520,6 +521,85 @@ def get_or_update_db_data(cache_file=DB_CACHE_FILE):
         print(f"❌ CRITICAL: Failed to save cache file '{cache_file}': {e}")
         return False
 
+# ========== OUTLIER DETECTION ==========
+
+def remove_price_outliers(df, price_columns=['min_price', 'max_price', 'avg_price'], multiplier=3.0):
+    """
+    Remove extreme price outliers using IQR (Interquartile Range) method.
+    
+    Args:
+        df: DataFrame with price data
+        price_columns: List of price columns to check
+        multiplier: IQR multiplier (default 3.0 for very extreme outliers)
+    
+    Returns:
+        DataFrame with outliers removed
+    """
+    if df.empty:
+        return df
+    
+    df_clean = df.copy()
+    initial_count = len(df_clean)
+    
+    # Track outliers to remove
+    outlier_mask = pd.Series([False] * len(df_clean), index=df_clean.index)
+    
+    # Group by commodity to detect outliers per commodity
+    for col in price_columns:
+        if col not in df_clean.columns:
+            continue
+        
+        # Convert to numeric
+        df_clean[col] = pd.to_numeric(df_clean[col], errors='coerce')
+        
+        # For each commodity, remove outliers separately
+        for commodity in df_clean['commodity_name'].unique():
+            commodity_mask = df_clean['commodity_name'] == commodity
+            commodity_prices = df_clean.loc[commodity_mask, col]
+            
+            # Only check non-zero prices
+            non_zero_prices = commodity_prices[commodity_prices > 0]
+            
+            if len(non_zero_prices) < 10:  # Skip if too few data points
+                continue
+            
+            # Calculate IQR
+            Q1 = non_zero_prices.quantile(0.25)
+            Q3 = non_zero_prices.quantile(0.75)
+            IQR = Q3 - Q1
+            
+            # Define outlier bounds
+            lower_bound = Q1 - multiplier * IQR
+            upper_bound = Q3 + multiplier * IQR
+            
+            # Mark outliers (but keep zeros)
+            # An outlier is a non-zero price that falls outside the bounds
+            is_outlier = (
+                commodity_mask & 
+                (df_clean[col] > 0) & 
+                ((df_clean[col] < lower_bound) | (df_clean[col] > upper_bound))
+            )
+            outlier_mask |= is_outlier
+            
+            # Log outliers found for this commodity
+            num_outliers = is_outlier.sum()
+            if num_outliers > 0:
+                outlier_values = df_clean.loc[is_outlier, col].values
+                print(f"   🔍 {commodity} ({col}): Found {num_outliers} outliers "
+                      f"(bounds: {lower_bound:.2f} - {upper_bound:.2f})")
+                print(f"      Outlier values: {outlier_values[:5]}{'...' if len(outlier_values) > 5 else ''}")
+    
+    # Remove all marked outliers
+    df_clean = df_clean[~outlier_mask].reset_index(drop=True)
+    
+    removed_count = initial_count - len(df_clean)
+    if removed_count > 0:
+        print(f"   ✅ Removed {removed_count} outlier records ({removed_count/initial_count*100:.2f}% of data)")
+    else:
+        print(f"   ✅ No outliers detected")
+    
+    return df_clean
+
 # ========== WEATHER FETCHER ==========
 
 class WeatherFetcher:
@@ -630,6 +710,10 @@ class GRUPricePredictor:
         print(f"📄 Loading '{DB_CACHE_FILE}' into memory...")
         self.full_historical_data = pd.read_csv(DB_CACHE_FILE, parse_dates=["date"])
         print(f"✅ Loaded {len(self.full_historical_data)} records from local cache.")
+        
+        # Apply outlier filtering
+        print(f"🧹 Filtering price outliers...")
+        self.full_historical_data = remove_price_outliers(self.full_historical_data)
 
         self.model_cache = ModelCacheManager(cache_dir=MODEL_CACHE_DIR, cache_duration_hours=24)
 
