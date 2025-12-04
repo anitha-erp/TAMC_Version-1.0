@@ -1,6 +1,6 @@
 {
   "chilli": {
-    "timestamp": "2025-12-03T16:49:11.623031",
+    "timestamp": "2025-12-04T17:19:45.564243",
     "data": {
       "avg_sentiment": 0.0,
       "sentiment_label": "Neutral",
@@ -11,7 +11,7 @@
     }
   },
   "cotton": {
-    "timestamp": "2025-12-03T12:35:48.633141",
+    "timestamp": "2025-12-04T12:57:24.857358",
     "data": {
       "avg_sentiment": 0.0,
       "sentiment_label": "Neutral",
@@ -44,7 +44,7 @@
     }
   },
   "bottle ground": {
-    "timestamp": "2025-12-03T14:56:47.830594",
+    "timestamp": "2025-12-04T12:33:41.778727",
     "data": {
       "avg_sentiment": 0.0,
       "sentiment_label": "Neutral",
@@ -55,7 +55,7 @@
     }
   },
   "lemon": {
-    "timestamp": "2025-12-03T17:11:22.755363",
+    "timestamp": "2025-12-04T11:57:15.821429",
     "data": {
       "avg_sentiment": 0.0,
       "sentiment_label": "Neutral",
@@ -78,6 +78,116 @@
   },
   "sweet corn": {
     "timestamp": "2025-12-03T18:28:25.969755",
+    "data": {
+      "avg_sentiment": 0.0,
+      "sentiment_label": "Neutral",
+      "news_count": 0,
+      "top_keywords": [],
+      "sample_headlines": [],
+      "articles": []
+    }
+  },
+  "bitter gourd": {
+    "timestamp": "2025-12-04T12:40:29.554663",
+    "data": {
+      "avg_sentiment": 0.0,
+      "sentiment_label": "Neutral",
+      "news_count": 0,
+      "top_keywords": [],
+      "sample_headlines": [],
+      "articles": []
+    }
+  },
+  "tomato": {
+    "timestamp": "2025-12-04T12:59:09.683091",
+    "data": {
+      "avg_sentiment": 0.0,
+      "sentiment_label": "Neutral",
+      "news_count": 0,
+      "top_keywords": [],
+      "sample_headlines": [],
+      "articles": []
+    }
+  },
+  "ridgeguard": {
+    "timestamp": "2025-12-04T15:43:24.758955",
+    "data": {
+      "avg_sentiment": 0.0,
+      "sentiment_label": "Neutral",
+      "news_count": 0,
+      "top_keywords": [],
+      "sample_headlines": [],
+      "articles": []
+    }
+  },
+  "french bean": {
+    "timestamp": "2025-12-04T15:44:15.552824",
+    "data": {
+      "avg_sentiment": 0.0,
+      "sentiment_label": "Neutral",
+      "news_count": 0,
+      "top_keywords": [],
+      "sample_headlines": [],
+      "articles": []
+    }
+  },
+  "keera": {
+    "timestamp": "2025-12-04T16:10:53.846061",
+    "data": {
+      "avg_sentiment": 0.0,
+      "sentiment_label": "Neutral",
+      "news_count": 0,
+      "top_keywords": [],
+      "sample_headlines": [],
+      "articles": []
+    }
+  },
+  "arhar": {
+    "timestamp": "2025-12-04T17:08:09.232080",
+    "data": {
+      "avg_sentiment": 0.0,
+      "sentiment_label": "Neutral",
+      "news_count": 0,
+      "top_keywords": [],
+      "sample_headlines": [],
+      "articles": []
+    }
+  },
+  "maize": {
+    "timestamp": "2025-12-04T17:08:43.640728",
+    "data": {
+      "avg_sentiment": 0.0,
+      "sentiment_label": "Neutral",
+      "news_count": 0,
+      "top_keywords": [],
+      "sample_headlines": [],
+      "articles": []
+    }
+  },
+  "paddy": {
+    "timestamp": "2025-12-04T17:12:46.737783",
+    "data": {
+      "avg_sentiment": 0.0,
+      "sentiment_label": "Neutral",
+      "news_count": 0,
+      "top_keywords": [],
+      "sample_headlines": [],
+      "articles": []
+    }
+  },
+  "bhindi": {
+    "timestamp": "2025-12-04T17:18:19.431188",
+    "data": {
+      "avg_sentiment": 0.0,
+      "sentiment_label": "Neutral",
+      "news_count": 0,
+      "top_keywords": [],
+      "sample_headlines": [],
+      "articles": []
+    }
+  },
+  "guava-guava": {
+    "timestamp": "2025-12-04T17:25:25.545562",
     "data": {
       "avg_sentiment": 0.0,
       "sentiment_label": "Neutral",

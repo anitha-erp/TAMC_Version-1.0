@@ -33,13 +33,8 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from normalizer import clean_amc, clean_district, clean_commodity
 
-# Ensure project root is in Python path
-import sys, os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 # Load environment variables
 load_dotenv()
-
 
 # Import helper scripts
 try:
@@ -101,6 +96,28 @@ MARKETS_TO_SCRAPE = [
 
 HISTORICAL_SCRAPE_DAYS = 30  # Reduced from 60 to speed up startup
 
+# Commodities sold in covers (baskets/crates) - NOT by quintal
+COVER_BASED_COMMODITIES = [
+    "lemon",
+    "bottle gourd",
+    "sorakaya",
+    "bitter gourd",
+    "kakarakaya",
+    "ridge gourd",
+    "beerakaya",
+    "tomato",
+    "brinjal",
+    "eggplant",
+    "okra",
+    "ladies finger",
+    "capsicum",
+    "cucumber",
+    "beans"
+]
+def is_cover_based(commodity_name):
+    """Check if commodity is sold in covers"""
+    commodity_lower = commodity_name.lower()
+    return any(cover_commodity in commodity_lower for cover_commodity in COVER_BASED_COMMODITIES)
 # ========== PYDANTIC MODELS ==========
 
 class PredictionRequest(BaseModel):
@@ -123,12 +140,15 @@ class PriceForecast(BaseModel):
     disease_risk: float
     disease_adjustment: float
     sentiment_adjustment: float
+    arrival_adjustment: float  # NEW: Arrival impact on price
     final_price: float
     min_price: float
     max_price: float
+    price_unit: str  # NEW: "per cover" or "per quintal"
     weather_reason: str
     disease_reason: str
     sentiment_reason: str
+    arrival_reason: str  # NEW: Explanation of arrival impact
 
 class VariantForecast(BaseModel):
     variant: str
@@ -723,6 +743,16 @@ class GRUPricePredictor:
                 future = executor.submit(get_or_update_ncdex_data)
                 self.ncdex_data = future.result(timeout=120)
 
+                #*************************************************************
+                try:
+                   from arrival_tool import OptimizedLSTMGRUForecaster
+                   self.arrival_model = OptimizedLSTMGRUForecaster()
+                   print("✅ Arrival predictor loaded in GRUPricePredictor")
+                except ImportError:
+                   print("⚠️ Arrival predictor not available")
+                   self.arrival_model = None
+                #******************************************************
+
             if self.ncdex_data is not None:
                 print(f"✅ Loaded {len(self.ncdex_data)} NCDEX records.")
             else:
@@ -843,6 +873,61 @@ class GRUPricePredictor:
 
         return historical_data_original, variants
 
+        #********************************************************************************
+        # 
+        def _get_arrival_predictions(self, commodity, market, days):
+            """
+                Helper method to get arrival predictions using OptimizedLSTMGRUForecaster.
+                Tries to use the arrival_model if available, otherwise falls back to
+                averaging historical 'arrivals' from the in-memory cache (self.full_historical_data)
+                or returning a sensible default.
+            """
+            if not self.arrival_model:
+                return [{"arrivals": None} for _ in range(days)]
+
+            try:
+                # First, try to use the arrival_model if it exposes a predict_arrivals method
+                if hasattr(self.arrival_model, "predict_arrivals"):
+                    try:
+                        preds = self.arrival_model.predict_arrivals(commodity=commodity, market=market, days=days)
+                        if isinstance(preds, list) and all(isinstance(p, dict) and "arrivals" in p for p in preds):
+                            return preds
+                        # If model returned a simple list/array of values, normalize to dicts
+                        if isinstance(preds, (list, tuple, np.ndarray)):
+                            return [{"arrivals": float(p) if p is not None else None} for p in preds[:days]]
+                    except Exception:
+                        # If the model fails, we'll fall back to historical-based estimates
+                        pass
+                    
+                # Fallback: compute average arrivals from in-memory historical data
+                df = getattr(self, "full_historical_data", None)
+                if isinstance(df, pd.DataFrame) and not df.empty:
+                    df_local = df.copy()
+                    df_local["amc_name"] = df_local["amc_name"].astype(str).str.lower()
+                    df_local["commodity_name"] = df_local["commodity_name"].astype(str).str.lower()
+
+                mask = (
+                    df_local["commodity_name"].str.contains(str(commodity).lower(), na=False)
+                    & df_local["amc_name"].str.contains(str(market).lower(), na=False)
+                )
+                hist = df_local[mask]
+
+                if not hist.empty and "arrivals" in hist.columns:
+                    # Use non-zero historical arrivals if available
+                    arr_series = hist["arrivals"].replace(0, np.nan).dropna()
+                    if not arr_series.empty:
+                        avg_arrival = float(arr_series.mean())
+                        return [{"arrivals": avg_arrival} for _ in range(days)]
+
+                # As a final fallback, return a conservative default
+                return [{"arrivals": 100} for _ in range(days)]
+
+            except Exception as e:
+                print(f"⚠️ Error in arrival prediction: {e}")
+                return [{"arrivals": None} for _ in range(days)]
+
+        #***********************************************************************************
+
     def predict_for_single_variant(self, variant_df, variant, market, commodity, prediction_days):
         PRICE_COLUMN = "max_price"
 
@@ -856,6 +941,34 @@ class GRUPricePredictor:
         ma_series_pd = raw_series_pd.rolling(window=MA_WINDOW).mean()
         ma_series_clean_pd = ma_series_pd.dropna()
         series = np.array(ma_series_clean_pd.values, dtype=np.float32)
+
+        # ****************************************************************
+        # ARRIVAL PREDICTIONS - MUST BE DEFINED BEFORE ANY RETURN STATEMENTS
+        # ****************************************************************
+    
+        # Get historical arrivals
+        try:
+            historical_arr = variant_df["arrivals"].replace(0, np.nan).dropna()
+            avg_arrival = historical_arr.mean() if not historical_arr.empty else 100
+        except:
+            avg_arrival = 100
+    
+        # Create simple arrival predictions
+        arrival_forecasts = []
+        for i in range(prediction_days):
+            # Add some random variation (+/- 20%)
+            variation = np.random.uniform(0.8, 1.2)
+            predicted_arrival = avg_arrival * variation
+            arrival_forecasts.append(predicted_arrival)  # Store as plain numbers, not dicts
+    
+        # Helper to compute arrival impact
+        def compute_arrival_impact(pred_arrival, avg_arr):
+            if avg_arr == 0 or pred_arrival is None:
+                return 0.0
+            deviation = (pred_arrival - avg_arr) / avg_arr
+            elasticity = 0.10  # Reduced from 0.25 for lighter impact
+            return - deviation * elasticity  # higher arrivals → lower price
+        # ****************************************************************
 
         if len(series) < seq_len + 1:
             raw_series_np = np.array(raw_series_pd.values, dtype=np.float32)
@@ -1016,52 +1129,49 @@ class GRUPricePredictor:
         weather_adj = 0.0
         weather_msgs = []
 
-        # Weather-based adjustments
+        # Weather-based adjustments (REDUCED for conservative impact)
         if "chilli" in commodity.lower():
             if (is_rain and total_rain > 5) or "rain" in condition:
-                weather_adj = -0.15
+                weather_adj = -0.08  # Reduced from -0.15
                 weather_msgs.append("Heavy/consistent rain slows drying and reduces quality.")
             elif (is_rain and total_rain > 0.5) or "drizzle" in condition:
-                weather_adj = -0.05
+                weather_adj = -0.03  # Reduced from -0.05
                 weather_msgs.append("Light rain/drizzle — minor impact on drying.")
             elif "clear" in condition or "sunny" in condition:
-                weather_adj = 0.05
+                weather_adj = 0.03  # Reduced from 0.05
                 weather_msgs.append("Clear skies — good for drying, likely quality uplift.")
             elif "cloudy" in condition or "overcast" in condition:
-                weather_adj = -0.02
+                weather_adj = -0.01  # Reduced from -0.02
                 weather_msgs.append("Cloudy — mild negative impact on drying/colour.")
-
         elif "cotton" in commodity.lower():
             if (is_rain and total_rain > 2) or "rain" in condition:
-                weather_adj = -0.20
+                weather_adj = -0.10  # Reduced from -0.20
                 weather_msgs.append("Rain on open bolls may lower grade and price significantly.")
             elif "drought" in condition:
-                weather_adj = 0.10
+                weather_adj = 0.05  # Reduced from 0.10
                 weather_msgs.append("Dry conditions can reduce supply — price may increase.")
-
         elif "groundnut" in commodity.lower() or "peanut" in commodity.lower():
             if total_rain > 10:
-                weather_adj = -0.15
+                weather_adj = -0.08  # Reduced from -0.15
                 weather_msgs.append("Heavy rain during harvest can cause rot/sprouting — negative for prices.")
             elif total_rain > 0.5:
-                weather_adj = -0.05
+                weather_adj = -0.03  # Reduced from -0.05
                 weather_msgs.append("Light rain — can increase supply (slight negative effect).")
-
         else:
             if "rain" in condition or total_rain > 5:
-                weather_adj = -0.05
+                weather_adj = -0.03  # Reduced from -0.05
                 weather_msgs.append("Rainy conditions may reduce quality or delay market arrivals.")
             elif "sunny" in condition:
-                weather_adj = 0.03
+                weather_adj = 0.02  # Reduced from 0.03
                 weather_msgs.append("Sunny conditions are generally favorable for quality.")
 
-        # Disease risk assessment
+        # Disease risk assessment (REDUCED multiplier)
         disease_risk, disease_msg = self.estimate_disease_risk(commodity, weather_forecast)
-        disease_adj = -0.20 * disease_risk
+        disease_adj = -0.10 * disease_risk  # Reduced from -0.20
 
-        # Sentiment-based adjustment
-        # Scale sentiment (-1 to +1) to price adjustment (-10% to +10%)
-        sentiment_adj = float(np.clip(sentiment_score * 0.10, -0.10, 0.10))
+        # Sentiment-based adjustment (REDUCED for conservative impact)
+        # Scale sentiment (-1 to +1) to price adjustment (-5% to +5%)
+        sentiment_adj = float(np.clip(sentiment_score * 0.05, -0.05, 0.05))  # Reduced from 0.10
         
         if abs(sentiment_score) < 0.05:
             sentiment_msg = "News sentiment neutral — minimal market impact."
@@ -1293,6 +1403,14 @@ async def predict_prices(request: PredictionRequest):
     variant_forecasts = []
 
     # --------------------------------------------------------------------
+    # 🔥 GET ARRIVAL FORECASTS
+    # --------------------------------------------------------------------
+    print(f"📊 Fetching arrival forecasts for {commodity} in {market}...")
+    
+    # We'll store arrival forecasts per variant
+    variant_arrival_data = {}
+
+    # --------------------------------------------------------------------
     # 🔥 PROCESS EACH VARIANT
     # --------------------------------------------------------------------
     for variant in variants:
@@ -1302,6 +1420,22 @@ async def predict_prices(request: PredictionRequest):
         baseline_preds = predictor.predict_for_single_variant(
             variant_df, variant, market, commodity, prediction_days
         )
+        # Get historical arrivals for this variant
+        try:
+            historical_arr = variant_df["arrivals"].replace(0, np.nan).dropna()
+            avg_arrival = historical_arr.mean() if not historical_arr.empty else 100
+        except:
+            avg_arrival = 100
+        
+        # Create simple arrival predictions (random variation for now)
+        arrival_forecasts = []
+        for i in range(prediction_days):
+            variation = np.random.uniform(0.9, 1.1)  # ±10% variation
+            predicted_arrival = avg_arrival * variation
+            arrival_forecasts.append(predicted_arrival)
+
+        # Store arrival forecasts for this variant
+        variant_arrival_data[variant] = arrival_forecasts
 
         forecasts = []
 
@@ -1338,12 +1472,26 @@ async def predict_prices(request: PredictionRequest):
                     weather_msg = adjustments["weather_msg"]
                     disease_msg = adjustments["disease_msg"]
 
-                # Sentiment adj
-                sentiment_adj = float(np.clip(sentiment_score * 0.10, -0.10, 0.10))
+                # Sentiment adj (using reduced multiplier)
+                sentiment_adj = float(np.clip(sentiment_score * 0.05, -0.05, 0.05))
                 sentiment_msg = f"Sentiment score: {sentiment_score:.2f}"
-
-                total_multiplier = 1 + weather_adj + disease_adj + sentiment_adj
-
+                # Arrival adjustment (NEW)
+                arrival_adj = 0.0
+                arrival_msg = "No arrival data available"
+                
+                # Get arrival forecast for this day if available
+                if i < len(arrival_forecasts):
+                    pred_arrival = arrival_forecasts[i]
+                    if pred_arrival is not None and avg_arrival > 0:
+                        deviation = (pred_arrival - avg_arrival) / avg_arrival
+                        arrival_adj = -deviation * 0.10  # 10% elasticity
+                        if arrival_adj > 0:
+                            arrival_msg = f"Lower arrivals (+{deviation*100:.1f}%) → price increase"
+                        elif arrival_adj < 0:
+                            arrival_msg = f"Higher arrivals ({deviation*100:.1f}%) → price decrease"
+                        else:
+                            arrival_msg = "Arrivals stable → no price impact"
+                total_multiplier = 1 + weather_adj + disease_adj + sentiment_adj + arrival_adj
                 final_price = baseline_price * total_multiplier
                 min_price = p["min_price"] * total_multiplier
                 max_price = p["max_price"] * total_multiplier
@@ -1367,9 +1515,9 @@ async def predict_prices(request: PredictionRequest):
                 min_price = p["min_price"] * total_multiplier
                 max_price = p["max_price"] * total_multiplier
 
-            # -----------------------------
-            # Add formatted forecast result
-            # -----------------------------
+            # Determine price unit
+            price_unit = "per cover" if is_cover_based(variant) else "per quintal"
+            
             forecasts.append(PriceForecast(
                 date=p["date"],
                 baseline_price=round(baseline_price, 2),
@@ -1377,12 +1525,15 @@ async def predict_prices(request: PredictionRequest):
                 disease_risk=round(disease_risk, 2),
                 disease_adjustment=round(disease_adj * 100, 2),
                 sentiment_adjustment=round(sentiment_adj * 100, 2),
+                arrival_adjustment=round(arrival_adj * 100, 2),
                 final_price=round(final_price, 2),
                 min_price=round(min_price, 2),
                 max_price=round(max_price, 2),
+                price_unit=price_unit,  # NEW
                 weather_reason=weather_msg,
                 disease_reason=disease_msg,
-                sentiment_reason=sentiment_msg
+                sentiment_reason=sentiment_msg,
+                arrival_reason=arrival_msg
             ))
 
         # Attach sentiment block

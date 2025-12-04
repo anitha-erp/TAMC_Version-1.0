@@ -772,6 +772,23 @@ def quick_pattern_match(query: str) -> Optional[Dict]:
             "needs_clarification": False
         }
 
+
+    # Commodity listing patterns - Must have clear commodity listing intent
+    # Matches: "what commodities available", "commodities in Warangal", "list vegetables"
+    # Doesn't match: "tell me about vegetables" → AI handles
+    if re.search(r"\b(what|which|list|show|available)\b.*\b(commodit\w*|crop\w*|vegetable\w*|fruit\w*|grain\w*)", q) or \
+       re.search(r"\b(commodit\w*|crop\w*|vegetable\w*|fruit\w*|grain\w*)\b.*\b(available|traded|in|at)\b", q):
+        print("✅ PATTERN MATCH: Commodity listing query (instant, no AI cost)")
+        return {
+            "intent": "commodity_list",
+            "confidence": 0.95,
+            "extracted_params": {},
+            "tools_needed": ["commodity_list"],
+            "needs_clarification": False
+        }
+
+
+
     # No pattern matched → Use AI for intelligence
     print("🧠 NO PATTERN MATCH: Using AI for intelligent analysis (creative/complex query)")
     return None
@@ -935,7 +952,7 @@ async def execute_price_tool(params: Dict) -> Dict:
         if "metric" in params:
             print(f"⚠️ WARNING: 'metric' parameter found in price query - removing it (metrics only apply to arrivals)")
             params = {k: v for k, v in params.items() if k != "metric"}
-        
+
         commodity = params.get("commodity", "")
         location = params.get("district") or params.get("amc_name") or params.get("location")
         # If still None or "-", use last known location
@@ -945,13 +962,15 @@ async def execute_price_tool(params: Dict) -> Dict:
         days = params.get("days", 1)
         variant = params.get("variant")
 
+        # Basic validation
         if not commodity or not location:
             return {
                 "success": False,
                 "error": f"Missing {'commodity' if not commodity else 'location'}",
                 "tool": "price"
             }
-        
+
+        # Clean variant if needed
         if variant and commodity:
             commodity_lower = commodity.lower()
             variant_lower = variant.lower()
@@ -968,19 +987,21 @@ async def execute_price_tool(params: Dict) -> Dict:
                     variant = variant[len(prefix):].strip()
                     print(f"🔧 Cleaned variant: {variant}")
 
-        # Check varieties if no variant specified
+        # 🔥 AUTO-SELECT VARIANT WHEN ONLY ONE EXISTS
         if not variant:
             try:
+                # Query variant list from price API
                 response = requests.get(
                     PRICE_VARIANTS_URL,
                     params={"commodity": commodity, "market": location},
                     timeout=30
                 )
-                
+
                 if response.status_code == 200:
                     data = response.json()
                     variants = data.get("variants", [])
-                    
+
+                    # If multiple variants → return variant selection list
                     if len(variants) > 1:
                         return {
                             "success": True,
@@ -993,6 +1014,12 @@ async def execute_price_tool(params: Dict) -> Dict:
                             },
                             "tool": "price"
                         }
+
+                    # If exactly 1 variant → auto-select it (Potato case)
+                    if len(variants) == 1:
+                        variant = variants[0]
+                        print(f"🔧 Auto-selected variant: {variant}")
+
             except Exception as e:
                 print(f"⚠️ Variety check failed: {e}")
 
@@ -1006,10 +1033,10 @@ async def execute_price_tool(params: Dict) -> Dict:
             "prediction_days": days,
             "variant": variant
         }
-        
-        # Current code (lines 700-720 approx):
+
+        # Call price prediction API
         response = requests.post(PRICE_API_URL, json=payload, timeout=PRICE_TIMEOUT)
-        response.raise_for_status()  # This throws an exception for 4xx/5xx status codes
+        response.raise_for_status()  # Throw exception for 4xx/5xx
 
         return {
             "success": True,
@@ -1020,7 +1047,7 @@ async def execute_price_tool(params: Dict) -> Dict:
     except Exception as e:
         print(f"❌ Price Tool Error: {e}")
         return {
-            "success": False,  # ✅ This should be False for errors
+            "success": False,
             "error": str(e),
             "tool": "price"
         }
@@ -1092,6 +1119,114 @@ async def execute_weather_tool(params: Dict) -> Dict:
             "success": False,
             "error": str(e),
             "tool": "weather"
+        }
+
+
+async def execute_commodity_list_tool(params: Dict) -> Dict:
+    """Execute commodity listing for specific AMC"""
+    try:
+        import pandas as pd
+        
+        # Get AMC/location from params
+        amc_name = params.get("amc_name") or params.get("district") or params.get("location")
+        
+        if not amc_name:
+            return {
+                "success": False,
+                "error": "Please specify a market/AMC to see available commodities. Example: 'commodities in Warangal'",
+                "tool": "commodity_list"
+            }
+        
+        print(f"📋 Fetching commodities for {amc_name}...")
+        
+        # Read CSV and filter by AMC
+        csv_path = "merged_lots_data.csv"
+        df = pd.read_csv(csv_path)
+        
+        # Filter by AMC (case-insensitive)
+        amc_data = df[df['amc_name'].str.lower() == amc_name.lower()]
+        
+        if amc_data.empty:
+            return {
+                "success": False,
+                "error": f"No data found for market '{amc_name}'. Please check the market name.",
+                "tool": "commodity_list"
+            }
+        
+        # Get unique commodities, sorted
+        commodities = sorted(amc_data['commodity_name'].unique().tolist())
+        
+        print(f"   Found {len(commodities)} commodities in {amc_name}")
+        
+        return {
+            "success": True,
+            "data": {
+                "amc_name": amc_name,
+                "commodities": commodities,
+                "count": len(commodities)
+            },
+            "tool": "commodity_list"
+        }
+    except Exception as e:
+        print(f"❌ Commodity List Tool Error: {e}")
+        return {
+            "success": False,
+            "error": str(e),
+            "tool": "commodity_list"
+        }
+
+
+async def execute_commodity_list_tool(params: Dict) -> Dict:
+    """Execute commodity listing for specific AMC"""
+    try:
+        import pandas as pd
+        
+        # Get AMC/location from params
+        amc_name = params.get("amc_name") or params.get("district") or params.get("location")
+        
+        if not amc_name:
+            return {
+                "success": False,
+                "error": "Please specify a market/AMC to see available commodities. Example: 'commodities in Warangal'",
+                "tool": "commodity_list"
+            }
+        
+        print(f"📋 Fetching commodities for {amc_name}...")
+        
+        # Read CSV and filter by AMC
+        csv_path = "merged_lots_data.csv"
+        df = pd.read_csv(csv_path)
+        
+        # Filter by AMC (case-insensitive)
+        amc_data = df[df['amc_name'].str.lower() == amc_name.lower()]
+        
+        if amc_data.empty:
+            return {
+                "success": False,
+                "error": f"No data found for market '{amc_name}'. Please check the market name.",
+                "tool": "commodity_list"
+            }
+        
+        # Get unique commodities, sorted
+        commodities = sorted(amc_data['commodity_name'].unique().tolist())
+        
+        print(f"   Found {len(commodities)} commodities in {amc_name}")
+        
+        return {
+            "success": True,
+            "data": {
+                "amc_name": amc_name,
+                "commodities": commodities,
+                "count": len(commodities)
+            },
+            "tool": "commodity_list"
+        }
+    except Exception as e:
+        print(f"❌ Commodity List Tool Error: {e}")
+        return {
+            "success": False,
+            "error": str(e),
+            "tool": "commodity_list"
         }
 
 # ----------------------- Location Spelling Correction -----------------------
@@ -1544,6 +1679,9 @@ Keep responses brief (2-3 sentences)."""
         if "weather" in tools_needed:
             print(f"   🌤️ Weather Tool Params: {context.extracted_params}")
             tasks["weather"] = execute_weather_tool(context.extracted_params)
+        if "commodity_list" in tools_needed:
+            print(f"   📋 Commodity List Tool Params: {context.extracted_params}")
+            tasks["commodity_list"] = execute_commodity_list_tool(context.extracted_params)
 
         # Execute all tools in parallel
         if tasks:
@@ -1598,7 +1736,7 @@ Keep responses brief (2-3 sentences)."""
                 # Aggregate query (all commodities) with location - different error message
                 error_msg = f"Sorry, I couldn't retrieve aggregate market data for {location}. This could mean:\n• The server is experiencing high load (please try again)\n• There might be a temporary connection issue\n• {location} market data might be temporarily unavailable"
             elif commodity and location:
-                error_msg = f"Sorry, I couldn't find {commodity} data for {location}. This could mean:\n• {commodity} might not be traded in {location}\n• The commodity name might be spelled differently\n• Try checking available commodities: Chilli, Cotton, Groundnut, Paddy"
+                error_msg = f"Sorry, I couldn't find {commodity} data for {location}. This could mean:\n• {commodity} might not be traded in {location}\n• The commodity name might be spelled differently\n• Try asking: 'commodities in {location}' to see what's available"
             elif commodity:
                 error_msg = f"Sorry, I couldn't find {commodity} data. Please specify a location (e.g., Warangal, Khammam)."
             elif location:
@@ -1726,6 +1864,24 @@ Keep responses brief (2-3 sentences)."""
             else:
                 ai_response = f"⚠️ {weather_result.get('error', 'Unable to fetch weather data')}."
 
+        elif intent == "commodity_list" and "commodity_list" in tool_results:
+            # Commodity listing response
+            commodity_result = tool_results["commodity_list"]
+            if commodity_result.get("success"):
+                data = commodity_result.get("data", {})
+                amc_name = data.get("amc_name", "")
+                commodities = data.get("commodities", [])
+                count = data.get("count", 0)
+                
+                # Format commodity list as bulleted items for better readability
+                if count > 0:
+                    # Show all commodities (no limit)
+                    commodity_bullets = "\n".join([f"• {commodity}" for commodity in commodities])
+                    ai_response = f"📋 Commodities available in {amc_name} ({count} total):\n\n{commodity_bullets}\n\nTry asking: '{commodities[0]} price in {amc_name}'"
+                else:
+                    ai_response = f"No commodities found for {amc_name}."
+            else:
+                ai_response = commodity_result.get("error", "Unable to fetch commodity list.")
         elif intent in ["advisory_request", "multi_tool"] or "advisory" in tool_results:
             # For advisory queries, show full insights with recommendations
             if intelligence_result and intelligence_result.get("success"):

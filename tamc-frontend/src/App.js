@@ -316,7 +316,6 @@ const SentimentPanel = React.memo(function SentimentPanel({ sentimentData }) {
 /* ---------- SIMPLIFIED PRICE FORECAST ---------- */
 const EnhancedPriceForecast = React.memo(function EnhancedPriceForecast({ forecast }) {
   if (!forecast) return null;
-
   const {
     date,
     baseline_price,
@@ -326,10 +325,14 @@ const EnhancedPriceForecast = React.memo(function EnhancedPriceForecast({ foreca
     final_price,
     min_price,
     max_price,
+    price_unit,  // NEW: Extract price_unit
     weather_reason,
     disease_reason,
     sentiment_reason
   } = forecast;
+
+  // Format the unit display
+  const unitDisplay = price_unit === "per cover" ? "/cover" : "/Q";
 
 
   // Calculate total impact
@@ -381,15 +384,15 @@ const EnhancedPriceForecast = React.memo(function EnhancedPriceForecast({ foreca
             <span>₹{Math.round(min_price).toLocaleString()}</span>
             <span style={{ fontSize: "1.2rem", color: "#6b7280", fontWeight: "500" }}>-</span>
             <span>₹{Math.round(max_price).toLocaleString()}</span>
-            <span style={{ fontSize: "0.9rem", color: "#9ca3af" }}>/Q</span>
+            <span style={{ fontSize: "0.9rem", color: "#9ca3af" }}>{unitDisplay}</span>
           </div>
-          <div style={{ 
-            fontSize: "0.75rem", 
-            color: "#6b7280", 
+          <div style={{
+            fontSize: "0.75rem",
+            color: "#6b7280",
             marginTop: "0.25rem",
             fontWeight: "500"
           }}>
-            Mid-point: ₹{Math.round(final_price).toLocaleString()}/Q
+            Mid-point: ₹{Math.round(final_price).toLocaleString()}{unitDisplay}
           </div>
         </div>
 
@@ -662,7 +665,7 @@ const PredictionResult = React.memo(function PredictionResult({ response, isPric
   const [isExpanded, setIsExpanded] = useState(true); // Default expanded
   const totalData = response?.total_predicted || [];
   let commodityData = response?.commodity_daily || {};
-  
+
   // 🔥 Override commodityData when aggregate mode + breakdown exists
   if (response.mode === "aggregate" && response.commodity_breakdown) {
     commodityData = {};
@@ -761,10 +764,10 @@ const PredictionResult = React.memo(function PredictionResult({ response, isPric
                         {item.badge && (
                           <span
                             className={`text-xs font-semibold px-2 py-0.5 rounded-full ${item.badge.tone === "up"
-                                ? "bg-green-100 text-green-700"
-                                : item.badge.tone === "down"
-                                  ? "bg-red-100 text-red-700"
-                                  : "bg-yellow-100 text-yellow-700"
+                              ? "bg-green-100 text-green-700"
+                              : item.badge.tone === "down"
+                                ? "bg-red-100 text-red-700"
+                                : "bg-yellow-100 text-yellow-700"
                               }`}
                           >
                             {item.badge.label}
@@ -783,8 +786,8 @@ const PredictionResult = React.memo(function PredictionResult({ response, isPric
             <div className="flex gap-2 mt-3 mb-3">
               <button
                 className={`px-4 py-2 rounded-lg font-medium text-sm transition-all ${viewMode === "total"
-                    ? "bg-green-600 text-white shadow-md"
-                    : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                  ? "bg-green-600 text-white shadow-md"
+                  : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                   }`}
                 onClick={() => setViewMode("total")}
               >
@@ -792,8 +795,8 @@ const PredictionResult = React.memo(function PredictionResult({ response, isPric
               </button>
               <button
                 className={`px-4 py-2 rounded-lg font-medium text-sm transition-all ${viewMode === "commodity"
-                    ? "bg-green-600 text-white shadow-md"
-                    : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                  ? "bg-green-600 text-white shadow-md"
+                  : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                   }`}
                 onClick={() => setViewMode("commodity")}
               >
@@ -829,7 +832,9 @@ const PredictionResult = React.memo(function PredictionResult({ response, isPric
                                 const formattedRoundedValue =
                                   typeof roundedValue === "number" ? roundedValue.toLocaleString() : roundedValue;
 
-                                const unitSuffix = isPriceData ? "/Q" : getUnitSuffix(response.metric_name);
+                                const unitSuffix = isPriceData
+                                  ? (item.price_unit === "per cover" ? "/cover" : "/Q")
+                                  : getUnitSuffix(response.metric_name);
                                 const kgValue = isWeightMetricSelected
                                   ? convertQuintalsToKg(numericValue).toLocaleString()
                                   : null;
@@ -845,11 +850,10 @@ const PredictionResult = React.memo(function PredictionResult({ response, isPric
                                     {isPriceData ? (
                                       <>
                                         <span>
-                                          ₹{Math.round(minPrice).toLocaleString()} - ₹{Math.round(maxPrice).toLocaleString()} /Q
+                                          ₹{Math.round(minPrice).toLocaleString()} - ₹{Math.round(maxPrice).toLocaleString()} {unitSuffix}
                                         </span>
-
                                         <span className="text-xs text-gray-500 font-medium mt-0.5">
-                                          Mid: ₹{formattedRoundedValue} /Q
+                                          Mid: ₹{formattedRoundedValue} {unitSuffix}
                                         </span>
                                       </>
                                     ) : (
@@ -1931,8 +1935,8 @@ function App() {
                   <button
                     type="button"
                     className={`p-2 text-sm rounded-lg transition-all flex items-center gap-2 ${isListening
-                        ? 'bg-red-100 text-red-600 listening-pulse'
-                        : 'text-gray-600 hover:bg-gray-100'
+                      ? 'bg-red-100 text-red-600 listening-pulse'
+                      : 'text-gray-600 hover:bg-gray-100'
                       }`}
                     onClick={startVoiceInput}
                     title={isListening ? "Listening..." : "Click to speak"}
