@@ -196,5 +196,82 @@
       "sample_headlines": [],
       "articles": []
     }
+  },
+  "beetroot-beetroot": {
+    "timestamp": "2025-12-04T17:30:49.126902",
+    "data": {
+      "avg_sentiment": 0.0,
+      "sentiment_label": "Neutral",
+      "news_count": 0,
+      "top_keywords": [],
+      "sample_headlines": [],
+      "articles": []
+    }
+  },
+  "ber": {
+    "timestamp": "2025-12-04T17:31:59.552157",
+    "data": {
+      "avg_sentiment": 0.0,
+      "sentiment_label": "Neutral",
+      "news_count": 0,
+      "top_keywords": [],
+      "sample_headlines": [],
+      "articles": []
+    }
+  },
+  "mango": {
+    "timestamp": "2025-12-04T17:57:29.865643",
+    "data": {
+      "avg_sentiment": 0.0,
+      "sentiment_label": "Neutral",
+      "news_count": 0,
+      "top_keywords": [],
+      "sample_headlines": [],
+      "articles": []
+    }
+  },
+  "sweet  potato": {
+    "timestamp": "2025-12-04T18:10:47.167986",
+    "data": {
+      "avg_sentiment": 0.0,
+      "sentiment_label": "Neutral",
+      "news_count": 0,
+      "top_keywords": [],
+      "sample_headlines": [],
+      "articles": []
+    }
+  },
+  "donda": {
+    "timestamp": "2025-12-04T18:13:48.567977",
+    "data": {
+      "avg_sentiment": 0.0,
+      "sentiment_label": "Neutral",
+      "news_count": 0,
+      "top_keywords": [],
+      "sample_headlines": [],
+      "articles": []
+    }
+  },
+  "knool khol-knool khol": {
+    "timestamp": "2025-12-04T18:32:01.167685",
+    "data": {
+      "avg_sentiment": 0.0,
+      "sentiment_label": "Neutral",
+      "news_count": 0,
+      "top_keywords": [],
+      "sample_headlines": [],
+      "articles": []
+    }
+  },
+  "yam": {
+    "timestamp": "2025-12-04T18:32:54.291581",
+    "data": {
+      "avg_sentiment": 0.0,
+      "sentiment_label": "Neutral",
+      "news_count": 0,
+      "top_keywords": [],
+      "sample_headlines": [],
+      "articles": []
+    }
   }
 }

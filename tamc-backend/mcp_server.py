@@ -39,7 +39,7 @@ PRICE_VARIANTS_URL = "http://127.0.0.1:8002/api/variants"
 ADVISORY_API_URL = "http://127.0.0.1:8003/chat"
 
 PRICE_TIMEOUT = 30
-ARRIVAL_TIMEOUT = 120
+ARRIVAL_TIMEOUT = 150
 
 # ✅ DYNAMIC LOCATION LOADING
 def load_known_locations():
@@ -924,8 +924,7 @@ async def execute_arrival_tool(params: Dict) -> Dict:
             print(f"   📦 Variant: {variant}")
 
         # 🚀 Always use a larger timeout — arrival can take long for 40–80 commodities
-        timeout = 120
-
+        timeout = 150
         response = requests.post(ARRIVAL_API_URL, json=payload, timeout=timeout)
         response.raise_for_status()
 

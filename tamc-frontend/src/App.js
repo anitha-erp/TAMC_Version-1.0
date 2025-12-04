@@ -840,7 +840,7 @@ const PredictionResult = React.memo(function PredictionResult({ response, isPric
                                   : null;
 
                                 // 🔥 ADD PRICE RANGE (only for PRICE type)
-                                const PRICE_RANGE = 0.05; // ±5%
+                                const PRICE_RANGE = 0.12;   // ±12%
                                 const minPrice = numericValue * (1 - PRICE_RANGE);
                                 const maxPrice = numericValue * (1 + PRICE_RANGE);
 

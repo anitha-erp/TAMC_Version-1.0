@@ -979,15 +979,15 @@ class GRUPricePredictor:
                 pred_date = (datetime.now().date() + timedelta(days=i + 1)).strftime("%Y-%m-%d")
                 daily_price = last_price * (1 + np.random.uniform(-0.03, 0.03))
                 
-                # Calculate min/max range (+/- 5%)
-                min_pred = daily_price * 0.95
-                max_pred = daily_price * 1.05
+                # Calculate min/max range (+/- 12%)
+                min_price = daily_price * 0.88
+                max_price = daily_price * 1.12
                 
                 preds.append({
                     "date": pred_date, 
                     "predicted_value": round(max(daily_price, 0), 2),
-                    "min_price": round(max(min_pred, 0), 2),
-                    "max_price": round(max(max_pred, 0), 2)
+                    "min_price": round(max(min_price, 0), 2),
+                    "max_price": round(max(max_price, 0), 2)
                 })
             return preds
 
@@ -1009,15 +1009,15 @@ class GRUPricePredictor:
                     pred_date = (datetime.now().date() + timedelta(days=i + 1)).strftime("%Y-%m-%d")
                     daily_price = last_price * (1 + np.random.uniform(-0.03, 0.03))
                     
-                    # Calculate min/max range (+/- 5%)
-                    min_pred = daily_price * 0.95
-                    max_pred = daily_price * 1.05
+                    # Calculate min/max range (+/- 12%)
+                    min_price = daily_price * 0.88
+                    max_price = daily_price * 1.12
                     
                     preds.append({
                         "date": pred_date, 
                         "predicted_value": round(max(daily_price, 0), 2),
-                        "min_price": round(max(min_pred, 0), 2),
-                        "max_price": round(max(max_pred, 0), 2)
+                        "min_price": round(max(min_price, 0), 2),
+                        "max_price": round(max(max_price, 0), 2)
                     })
                 return preds
 
@@ -1049,15 +1049,16 @@ class GRUPricePredictor:
 
             pred_date = (datetime.now().date() + timedelta(days=day_i + 1)).strftime("%Y-%m-%d")
             
-            # Calculate min/max range (+/- 5%)
-            min_pred = pred * 0.95
-            max_pred = pred * 1.05
+            # Calculate min/max range (+/- 12%)
+            min_price = pred * 0.88
+            max_price = pred * 1.12
+
             
             preds.append({
                 "date": pred_date, 
                 "predicted_value": round(pred, 2),
-                "min_price": round(min_pred, 2),
-                "max_price": round(max_pred, 2)
+                "min_price": round(min_price, 2),
+                "max_price": round(max_price, 2)
             })
 
             new_point_scaled = (pred - mean_val) / std_val
