@@ -773,6 +773,22 @@ def quick_pattern_match(query: str) -> Optional[Dict]:
         }
 
 
+    # Historical data patterns - Must have clear past tense/temporal keywords
+    # Matches: "price yesterday", "what was the price", "arrivals last week", "3 days ago"
+    # Doesn't match: "what will be the price" → AI handles (future prediction)
+    if re.search(r"\b(yesterday|last\s+(week|month|monday|tuesday|wednesday|thursday|friday|saturday|sunday))\b", q) or \
+       re.search(r"\b\d+\s+days?\s+ago\b", q) or \
+       re.search(r"\b(was|were)\b.*\b(price|rate|cost|arrival|bag|lot)\b", q) or \
+       re.search(r"\b(price|rate|cost|arrival|bag|lot)\b.*\b(yesterday|last\s+week|ago|was|were)\b", q):
+        print("✅ PATTERN MATCH: Historical data query (instant, no AI cost)")
+        return {
+            "intent": "historical_query",
+            "confidence": 0.95,
+            "extracted_params": {},
+            "tools_needed": ["historical"],
+            "needs_clarification": False
+        }
+
     # Commodity listing patterns - Must have clear commodity listing intent
     # Matches: "what commodities available", "commodities in Warangal", "list vegetables"
     # Doesn't match: "tell me about vegetables" → AI handles
@@ -1175,57 +1191,70 @@ async def execute_commodity_list_tool(params: Dict) -> Dict:
         }
 
 
-async def execute_commodity_list_tool(params: Dict) -> Dict:
-    """Execute commodity listing for specific AMC"""
+async def execute_historical_tool(query: str, params: Dict) -> Dict:
+    """Execute historical data query - retrieves actual past data from CSV"""
     try:
-        import pandas as pd
+        import sys
+        import os
         
-        # Get AMC/location from params
-        amc_name = params.get("amc_name") or params.get("district") or params.get("location")
+        # Add mcp_tools to path if not already there
+        mcp_tools_path = os.path.join(os.path.dirname(__file__), 'mcp_tools')
+        if os.path.exists(mcp_tools_path) and mcp_tools_path not in sys.path:
+            sys.path.insert(0, mcp_tools_path)
         
-        if not amc_name:
-            return {
-                "success": False,
-                "error": "Please specify a market/AMC to see available commodities. Example: 'commodities in Warangal'",
-                "tool": "commodity_list"
-            }
+        # Import historical data tool
+        try:
+            from mcp_tools.historical_data_tool import query_historical_data
+        except ImportError:
+            from historical_data_tool import query_historical_data
         
-        print(f"📋 Fetching commodities for {amc_name}...")
+        print(f"📊 Calling Historical Data Tool...")
+        print(f"   Query: {query}")
+        print(f"   Params: {params}")
         
-        # Read CSV and filter by AMC
-        csv_path = "merged_lots_data.csv"
-        df = pd.read_csv(csv_path)
+        # Determine query type based on original intent or keywords
+        query_lower = query.lower()
+        if "arrival" in query_lower or "bag" in query_lower or "lot" in query_lower or "farmer" in query_lower:
+            query_type = "arrival"
+        else:
+            query_type = "price"  # Default to price
         
-        # Filter by AMC (case-insensitive)
-        amc_data = df[df['amc_name'].str.lower() == amc_name.lower()]
-        
-        if amc_data.empty:
-            return {
-                "success": False,
-                "error": f"No data found for market '{amc_name}'. Please check the market name.",
-                "tool": "commodity_list"
-            }
-        
-        # Get unique commodities, sorted
-        commodities = sorted(amc_data['commodity_name'].unique().tolist())
-        
-        print(f"   Found {len(commodities)} commodities in {amc_name}")
-        
-        return {
-            "success": True,
-            "data": {
-                "amc_name": amc_name,
-                "commodities": commodities,
-                "count": len(commodities)
-            },
-            "tool": "commodity_list"
+        # Build params for historical tool
+        historical_params = {
+            "query": query,
+            "commodity": params.get("commodity", ""),
+            "market": params.get("district") or params.get("amc_name", ""),
+            "variant": params.get("variant"),
+            "query_type": query_type,
+            "metric": params.get("metric", "arrivals") if query_type == "arrival" else None
         }
+        
+        # Call historical data tool
+        result = query_historical_data(historical_params)
+        
+        if result.get("success"):
+            print(f"   ✅ Historical data retrieved successfully")
+            return {
+                "success": True,
+                "data": result.get("data"),
+                "tool": "historical"
+            }
+        else:
+            print(f"   ❌ Historical data query failed: {result.get('error')}")
+            return {
+                "success": False,
+                "error": result.get("error", "Failed to retrieve historical data"),
+                "tool": "historical"
+            }
+    
     except Exception as e:
-        print(f"❌ Commodity List Tool Error: {e}")
+        print(f"❌ Historical Tool Error: {e}")
+        import traceback
+        traceback.print_exc()
         return {
             "success": False,
             "error": str(e),
-            "tool": "commodity_list"
+            "tool": "historical"
         }
 
 # ----------------------- Location Spelling Correction -----------------------
@@ -1681,6 +1710,9 @@ Keep responses brief (2-3 sentences)."""
         if "commodity_list" in tools_needed:
             print(f"   📋 Commodity List Tool Params: {context.extracted_params}")
             tasks["commodity_list"] = execute_commodity_list_tool(context.extracted_params)
+        if "historical" in tools_needed:
+            print(f"   📊 Historical Tool Params: {context.extracted_params}")
+            tasks["historical"] = execute_historical_tool(query, context.extracted_params)
 
         # Execute all tools in parallel
         if tasks:
@@ -1881,6 +1913,36 @@ Keep responses brief (2-3 sentences)."""
                     ai_response = f"No commodities found for {amc_name}."
             else:
                 ai_response = commodity_result.get("error", "Unable to fetch commodity list.")
+
+        elif intent == "historical_query" and "historical" in tool_results:
+            # Historical data response
+            hist_result = tool_results["historical"]
+            if hist_result.get("success"):
+                data = hist_result.get("data", {})
+                commodity = data.get("commodity", "").title()
+                market = data.get("market", "").title()
+                start_date = data.get("start_date")
+                end_date = data.get("end_date")
+                count = data.get("count", 0)
+                
+                if "historical_prices" in data:
+                    # Price history
+                    prices = data["historical_prices"]
+                    avg_price = sum(p["actual_price"] for p in prices) / len(prices) if prices else 0
+                    ai_response = f"📊 Historical prices for {commodity} in {market} ({start_date} to {end_date}):\n"
+                    ai_response += f"• Average Price: ₹{avg_price:.0f}\n"
+                    ai_response += f"• Records Found: {count}"
+                else:
+                    # Arrival history
+                    arrivals = data["historical_arrivals"]
+                    total_arrivals = sum(p["actual_arrivals"] for p in arrivals) if arrivals else 0
+                    metric = data.get("metric", "arrivals")
+                    ai_response = f"📊 Historical {metric} for {commodity} in {market} ({start_date} to {end_date}):\n"
+                    ai_response += f"• Total {metric.title()}: {total_arrivals:,.0f}\n"
+                    ai_response += f"• Records Found: {count}"
+            else:
+                ai_response = hist_result.get("error", "Unable to fetch historical data.")
+
         elif intent in ["advisory_request", "multi_tool"] or "advisory" in tool_results:
             # For advisory queries, show full insights with recommendations
             if intelligence_result and intelligence_result.get("success"):

@@ -659,6 +659,124 @@ const WeatherImpactDisplay = React.memo(({ weatherData }) => {
   );
 });
 
+/* ---------- Historical Result Component ---------- */
+const HistoricalResult = React.memo(function HistoricalResult({ response }) {
+  const [isExpanded, setIsExpanded] = useState(true);
+
+  // Parse data from response
+  const data = response.data || {};
+  const isPrice = !!data.historical_prices;
+  const historyData = isPrice ? data.historical_prices : data.historical_arrivals;
+
+  if (!historyData || historyData.length === 0) return null;
+
+  return (
+    <div className="mt-4 border border-blue-200 bg-white rounded-2xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md">
+      {/* Header */}
+      <div
+        className="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 flex items-center justify-between cursor-pointer border-b border-blue-100"
+        onClick={() => setIsExpanded(!isExpanded)}
+      >
+        <div className="flex items-center gap-3">
+          <span className="text-2xl">{isPrice ? "💰" : "🚚"}</span>
+          <div>
+            <h3 className="m-0 text-lg font-bold text-gray-900">
+              Historical {isPrice ? "Prices" : (data.metric || "Arrivals").replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase())}
+            </h3>
+            <p className="m-0 text-sm text-gray-600">
+              {data.commodity} in {data.market} • {formatDate(data.start_date)} to {formatDate(data.end_date)}
+            </p>
+          </div>
+        </div>
+        <div className={`w-8 h-8 flex items-center justify-center rounded-full bg-white text-sm font-semibold text-blue-600 shadow transition-transform ${isExpanded ? "rotate-180" : ""}`}>
+          ▼
+        </div>
+      </div>
+
+      {isExpanded && (
+        <div className="p-4 bg-white">
+          {/* Chart */}
+          <div className="mb-6 bg-white border border-gray-100 rounded-xl p-4 shadow-sm">
+            <h4 className="font-bold text-gray-800 mb-3 text-sm flex items-center gap-2">📈 Trend Chart</h4>
+            <ResponsiveContainer width="100%" height={250}>
+              <LineChart data={historyData}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                <XAxis dataKey="date" tickFormatter={(d) => d.slice(5)} />
+                <YAxis />
+                <Tooltip
+                  formatter={(value) => [
+                    isPrice ? `₹${value.toLocaleString()}` : value.toLocaleString(),
+                    isPrice ? "Price" : (data.metric || "Arrivals")
+                  ]}
+                  labelFormatter={(d) => formatDate(d)}
+                />
+                <Line
+                  dataKey={isPrice ? "actual_price" : "actual_arrivals"}
+                  name={isPrice ? "Price" : "Arrivals"}
+                  type="monotone"
+                  stroke={isPrice ? "#f59e0b" : "#3b82f6"}
+                  strokeWidth={2}
+                  dot={{ r: 4 }}
+                  activeDot={{ r: 6 }}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+
+          {/* Table */}
+          <div className="overflow-x-auto border border-gray-200 rounded-xl">
+            <table className="w-full border-collapse">
+              <thead>
+                <tr className="bg-gradient-to-r from-gray-50 to-gray-100">
+                  <th className="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider border-b border-gray-200">Date</th>
+                  <th className="px-4 py-3 text-right text-xs font-bold text-gray-700 uppercase tracking-wider border-b border-gray-200">
+                    {isPrice ? "Actual Price (₹)" : (data.metric || "Arrivals")}
+                  </th>
+                  {isPrice && (
+                    <>
+                      <th className="px-4 py-3 text-right text-xs font-bold text-gray-700 uppercase tracking-wider border-b border-gray-200">Min</th>
+                      <th className="px-4 py-3 text-right text-xs font-bold text-gray-700 uppercase tracking-wider border-b border-gray-200">Max</th>
+                    </>
+                  )}
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                {historyData.map((row, i) => (
+                  <tr key={i} className="hover:bg-blue-50 transition-colors">
+                    <td className="px-4 py-3 text-sm text-gray-900 font-medium whitespace-nowrap">
+                      {formatDate(row.date)}
+                    </td>
+                    <td className="px-4 py-3 text-sm text-gray-900 font-bold text-right whitespace-nowrap">
+                      {isPrice
+                        ? `₹${row.actual_price?.toLocaleString() || 0}`
+                        : (row.actual_arrivals?.toLocaleString() || 0)
+                      }
+                    </td>
+                    {isPrice && (
+                      <>
+                        <td className="px-4 py-3 text-sm text-gray-500 text-right whitespace-nowrap">
+                          ₹{row.min_price?.toLocaleString() || 0}
+                        </td>
+                        <td className="px-4 py-3 text-sm text-gray-500 text-right whitespace-nowrap">
+                          ₹{row.max_price?.toLocaleString() || 0}
+                        </td>
+                      </>
+                    )}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="mt-3 text-xs text-gray-500 text-center italic">
+            * Official market data from recorded transactions
+          </div>
+        </div>
+      )}
+    </div>
+  );
+});
+
 /* ---------- Prediction Result ---------- */
 const PredictionResult = React.memo(function PredictionResult({ response, isPriceData, isSingleDay, weatherData }) {
   const [viewMode, setViewMode] = useState("total");
@@ -833,7 +951,7 @@ const PredictionResult = React.memo(function PredictionResult({ response, isPric
                                   typeof roundedValue === "number" ? roundedValue.toLocaleString() : roundedValue;
 
                                 const unitSuffix = isPriceData
-                                  ? (item.price_unit === "per cover" ? "/cover" : "/Q")
+                                  ? (response.price_unit === "per cover" ? "/cover" : "/Q")
                                   : getUnitSuffix(response.metric_name);
                                 const kgValue = isWeightMetricSelected
                                   ? convertQuintalsToKg(numericValue).toLocaleString()
@@ -1018,7 +1136,8 @@ const ChatMessage = React.memo(({
   weatherData,
   userQuery,
   queryType,
-  sessionId
+  sessionId,
+  toolResults // Added toolResults prop
 }) => {
   const shouldHideText = isBot && (predictionData || (aiInsights && queryType === "advisory_only"));
   return (
@@ -1092,6 +1211,12 @@ const ChatMessage = React.memo(({
                   weatherData={weatherData}
                 />
               )}
+
+              {/* Display Historical Data */}
+              {queryType === "historical" && toolResults?.historical?.success && (
+                <HistoricalResult response={toolResults.historical} />
+              )}
+
 
               {isBot && aiInsights && (
                 <AIInsightsPanel insights={aiInsights} queryType={queryType} />
@@ -1447,11 +1572,15 @@ function App() {
         }
 
         if (aggregated.length > 0) {
+          // Extract price_unit from first forecast (all forecasts have the same unit)
+          const priceUnit = d.variants[0]?.forecasts[0]?.price_unit || "per quintal";
+
           predictionData = {
             metric_name: "Price (₹/Quintal)",
             total_predicted: aggregated,
             commodity: d.commodity,
-            district: d.market || d.district
+            district: d.market || d.district,
+            price_unit: priceUnit  // Add price_unit to response level
           };
         }
       }
@@ -1725,9 +1854,11 @@ function App() {
             sentimentInfo,
             detailedForecasts,
             weatherData,
+            interactiveOptions: null,
             isSingleDay: checkSingleDay,
-            originalQuery: pendingClarification?.originalQuery || messageText, // Store original query for today/tomorrow detection
-            queryType
+            originalQuery: userMessage,
+            queryType, // Pass queryType
+            toolResults // Pass toolResults for historical data
           }
         ];
       });
@@ -1905,6 +2036,7 @@ function App() {
                   isSingleDay={msg.isSingleDay || false}
                   userQuery={msg.originalQuery || ""}
                   queryType={msg.queryType || "prediction"}
+                  toolResults={msg.toolResults} // Pass toolResult to component
                   sessionId={sessionId}
                 />
               ))}

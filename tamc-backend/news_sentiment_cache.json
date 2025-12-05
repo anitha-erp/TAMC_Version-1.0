@@ -1,6 +1,6 @@
 {
   "chilli": {
-    "timestamp": "2025-12-04T17:19:45.564243",
+    "timestamp": "2025-12-05T15:58:00.869195",
     "data": {
       "avg_sentiment": 0.0,
       "sentiment_label": "Neutral",
@@ -88,7 +88,7 @@
     }
   },
   "bitter gourd": {
-    "timestamp": "2025-12-04T12:40:29.554663",
+    "timestamp": "2025-12-05T16:02:52.713673",
     "data": {
       "avg_sentiment": 0.0,
       "sentiment_label": "Neutral",
@@ -265,6 +265,17 @@
   },
   "yam": {
     "timestamp": "2025-12-04T18:32:54.291581",
+    "data": {
+      "avg_sentiment": 0.0,
+      "sentiment_label": "Neutral",
+      "news_count": 0,
+      "top_keywords": [],
+      "sample_headlines": [],
+      "articles": []
+    }
+  },
+  "capsicum": {
+    "timestamp": "2025-12-05T16:00:15.530389",
     "data": {
       "avg_sentiment": 0.0,
       "sentiment_label": "Neutral",
