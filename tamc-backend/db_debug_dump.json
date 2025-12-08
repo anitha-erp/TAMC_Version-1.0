@@ -3207,6 +3207,61 @@
             "amc_name": "Warangal",
             "district": "KHAMMAM",
             "mandal": "BONAKAL"
+        },
+        {
+            "amc_name": "Bowenpally",
+            "district": "ADILABAD",
+            "mandal": "YELLANDU"
+        },
+        {
+            "amc_name": "Bowenpally",
+            "district": "KHAMMAM",
+            "mandal": "KHAMMAM (RURAL)"
+        },
+        {
+            "amc_name": "Bowenpally",
+            "district": "KHAMMAM",
+            "mandal": "TIRUMALAYAPALEM"
+        },
+        {
+            "amc_name": "Bowenpally",
+            "district": "KHAMMAM",
+            "mandal": "TIRUMALGHERRY"
+        },
+        {
+            "amc_name": "Bowenpally",
+            "district": "MANCHERIAL",
+            "mandal": "MANCHERIAL"
+        },
+        {
+            "amc_name": "Bowenpally",
+            "district": "MAHABUBABAD",
+            "mandal": "GUDUR"
+        },
+        {
+            "amc_name": "Bowenpally",
+            "district": "MAHABUBNAGAR",
+            "mandal": "MOOSAPET"
+        },
+        {
+            "amc_name": "Bowenpally",
+            "district": "JANGAON",
+            "mandal": "MAVALA"
+        },
+        {
+            "amc_name": "Bowenpally",
+            "district": "BHADRADRI KOTHAGUDEM",
+            "mandal": "AMBERPET"
+        },
+        {
+            "amc_name": "Bowenpally",
+            "district": "KHAMMAM",
+            "mandal": "MANCHERIAL"
+        },
+        {
+            "amc_name": "Bowenpally",
+            "district": "HYDERABAD",
+            "mandal": "MANCHERIAL"
         }
     ]
 }

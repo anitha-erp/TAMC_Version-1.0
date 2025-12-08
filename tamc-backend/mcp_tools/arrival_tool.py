@@ -1765,7 +1765,14 @@ async def enhanced_prediction_with_telangana(params: PredictionRequest) -> Dict:
         
         # Prepare response variables
         total_daily = dict(date_totals)
-        commodity_daily = {k: dict(v) for k, v in commodity_totals.items()}
+        
+        # 🔧 FIX: Exclude "All Commodities" from commodity_daily breakdown
+        # It should only appear in the total, not as a separate commodity line
+        commodity_daily = {
+            k: dict(v) 
+            for k, v in commodity_totals.items() 
+            if k != "All Commodities"  # Filter out the aggregate
+        }
         metric_name = metric_display_map.get(metric, metric)
 
         # 🔧 Normalize commodity_daily for frontend (always array)

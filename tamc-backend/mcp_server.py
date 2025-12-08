@@ -743,6 +743,188 @@ def quick_pattern_match(query: str) -> Optional[Dict]:
             "needs_clarification": False
         }
 
+    # Historical data patterns - Must have clear past tense/temporal keywords OR specific dates
+    # Matches: "price yesterday", "what was the price", "arrivals last week", "3 days ago", "total bags yesterday"
+    # Also matches: "arrivals on 1st dec 2025", "bags on december 1", "price on 01/12/2025"
+    # Doesn't match: "what will be the price" → AI handles (future prediction)
+    
+    # Month names for specific date detection
+    month_pattern = r"(jan|january|feb|february|mar|march|apr|april|may|jun|june|jul|july|aug|august|sep|sept|september|oct|october|nov|november|dec|december)"
+    
+    # Check for specific date patterns
+    has_specific_date = (
+        re.search(r"\d{1,2}(?:st|nd|rd|th)\s+" + month_pattern, q) or  # "1st dec", "2nd january"
+        re.search(month_pattern + r"\s+\d{1,2}", q) or  # "december 1", "jan 15"
+        re.search(r"\d{1,2}\s+" + month_pattern, q) or  # "1 december", "15 jan"
+        re.search(r"\d{4}[/-]\d{1,2}[/-]\d{1,2}", q) or  # "2025-12-01", "2025/12/01"
+        re.search(r"\d{1,2}[/-]\d{1,2}[/-]\d{4}", q)  # "01/12/2025", "01-12-2025"
+    )
+    
+    # Check for relative date patterns
+    has_relative_date = (
+        re.search(r"(yesterday|last\s+(week|month|monday|tuesday|wednesday|thursday|friday|saturday|sunday))", q) or
+        re.search(r"\b\d+\s+days?\s+ago\b", q) or
+        re.search(r"\b(was|were)\b.*\b(price|rate|cost|arrival|bag|lot)\b", q) or
+        re.search(r"\b(price|rate|cost|arrival|bag|lot)\b.*(yesterday|last\s+week|ago|was|were)", q) or
+        re.search(r"(total|number\s+of)\s+(bags?|lots?|arrivals?|farmers?).*(yesterday|last\s+(week|month|day))", q)
+    )
+    
+    # Check for "on" keyword with date (e.g., "on 1st dec", "on december 1")
+    has_on_date = re.search(r"\bon\s+", q) and has_specific_date
+    
+    # 🔍 DEBUG: Log pattern matching results
+    print(f"🔍 DEBUG Pattern Match - Query: '{query}'")
+    print(f"   has_specific_date: {has_specific_date}")
+    print(f"   has_relative_date: {has_relative_date}")
+    print(f"   has_on_date: {has_on_date}")
+    
+    # 🔧 NEW: Check if specific date is in the past or future
+    if has_specific_date or has_on_date:
+        from datetime import datetime
+        
+        # Try to parse the date from the query
+        parsed_date = None
+        today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
+        
+        # Month names mapping
+        months = {
+            'jan': 1, 'january': 1, 'feb': 2, 'february': 2, 'mar': 3, 'march': 3,
+            'apr': 4, 'april': 4, 'may': 5, 'jun': 6, 'june': 6,
+            'jul': 7, 'july': 7, 'aug': 8, 'august': 8,
+            'sep': 9, 'sept': 9, 'september': 9, 'oct': 10, 'october': 10,
+            'nov': 11, 'november': 11, 'dec': 12, 'december': 12
+        }
+        
+        # Try different date patterns
+        # Pattern 1: "1st dec 2025", "2nd december 2024"
+        ordinal_match = re.search(r'(\d{1,2})(?:st|nd|rd|th)\s+(' + '|'.join(months.keys()) + r')(?:\s+(\d{4}))?', q)
+        if ordinal_match:
+            day = int(ordinal_match.group(1))
+            month_name = ordinal_match.group(2)
+            year = int(ordinal_match.group(3)) if ordinal_match.group(3) else today.year
+            month = months[month_name]
+            try:
+                parsed_date = datetime(year, month, day)
+            except ValueError:
+                pass
+        
+        # Pattern 2: "december 1", "dec 15 2025"
+        if not parsed_date:
+            month_day_match = re.search(r'(' + '|'.join(months.keys()) + r')\s+(\d{1,2})(?:\s+(\d{4}))?', q)
+            if month_day_match:
+                month_name = month_day_match.group(1)
+                day = int(month_day_match.group(2))
+                year = int(month_day_match.group(3)) if month_day_match.group(3) else today.year
+                month = months[month_name]
+                try:
+                    parsed_date = datetime(year, month, day)
+                except ValueError:
+                    pass
+        
+        # Pattern 3: "1 december", "15 dec 2025"
+        if not parsed_date:
+            day_month_match = re.search(r'(\d{1,2})\s+(' + '|'.join(months.keys()) + r')(?:\s+(\d{4}))?', q)
+            if day_month_match:
+                day = int(day_month_match.group(1))
+                month_name = day_month_match.group(2)
+                year = int(day_month_match.group(3)) if day_month_match.group(3) else today.year
+                month = months[month_name]
+                try:
+                    parsed_date = datetime(year, month, day)
+                except ValueError:
+                    pass
+        
+        # Pattern 4: Numeric dates "2025-12-01", "01/12/2025"
+        if not parsed_date:
+            iso_match = re.search(r'(\d{4})[/-](\d{1,2})[/-](\d{1,2})', q)
+            if iso_match:
+                year = int(iso_match.group(1))
+                month = int(iso_match.group(2))
+                day = int(iso_match.group(3))
+                try:
+                    parsed_date = datetime(year, month, day)
+                except ValueError:
+                    pass
+        
+        if not parsed_date:
+            numeric_match = re.search(r'(\d{1,2})[/-](\d{1,2})[/-](\d{4})', q)
+            if numeric_match:
+                day = int(numeric_match.group(1))
+                month = int(numeric_match.group(2))
+                year = int(numeric_match.group(3))
+                try:
+                    parsed_date = datetime(year, month, day)
+                except ValueError:
+                    # Try MM/DD/YYYY if DD/MM/YYYY fails
+                    try:
+                        month = int(numeric_match.group(1))
+                        day = int(numeric_match.group(2))
+                        parsed_date = datetime(year, month, day)
+                    except ValueError:
+                        pass
+        
+        # Check if parsed date is in the past or future
+        if parsed_date:
+            print(f"   📅 Parsed date: {parsed_date.strftime('%Y-%m-%d')}")
+            print(f"   📅 Today: {today.strftime('%Y-%m-%d')}")
+            
+            if parsed_date < today:
+                # Past date - historical query
+                print("   ✅ Past date detected - Historical query")
+                print("✅ PATTERN MATCH: Historical data query (instant, no AI cost)")
+                return {
+                    "intent": "historical_query",
+                    "confidence": 0.95,
+                    "extracted_params": {},
+                    "tools_needed": ["historical"],
+                    "needs_clarification": False
+                }
+            else:
+                # Future date or today - forecast query
+                print(f"   ✅ Future/Today date detected - Forecast query")
+                # Determine if it's arrival or price based on keywords
+                if re.search(r"\b(bag|lot|arrival|farmer|quintal|weight)\b", q):
+                    print("✅ PATTERN MATCH: Arrival forecast (future date)")
+                    return {
+                        "intent": "arrival_forecast",
+                        "confidence": 0.95,
+                        "extracted_params": {},
+                        "tools_needed": ["arrival"],
+                        "needs_clarification": False
+                    }
+                elif re.search(r"\b(price|rate|cost)\b", q):
+                    print("✅ PATTERN MATCH: Price forecast (future date)")
+                    return {
+                        "intent": "price_inquiry",
+                        "confidence": 0.95,
+                        "extracted_params": {},
+                        "tools_needed": ["price"],
+                        "needs_clarification": False
+                    }
+                else:
+                    # Default to arrival for future dates with no clear keyword
+                    print("✅ PATTERN MATCH: Arrival forecast (future date, default)")
+                    return {
+                        "intent": "arrival_forecast",
+                        "confidence": 0.85,
+                        "extracted_params": {},
+                        "tools_needed": ["arrival"],
+                        "needs_clarification": False
+                    }
+        else:
+            print("   ⚠️ Could not parse specific date - falling back to AI")
+    
+    # Relative dates (yesterday, last week, etc.) are always historical
+    if has_relative_date:
+        print("✅ PATTERN MATCH: Historical data query (instant, no AI cost)")
+        return {
+            "intent": "historical_query",
+            "confidence": 0.95,
+            "extracted_params": {},
+            "tools_needed": ["historical"],
+            "needs_clarification": False
+        }
+
     # Arrival patterns - Must have clear keywords
     # Matches: "expected arrivals", "forecast lots", "how many bags"
     # Doesn't match: "what's the supply situation" → AI handles
@@ -773,21 +955,7 @@ def quick_pattern_match(query: str) -> Optional[Dict]:
         }
 
 
-    # Historical data patterns - Must have clear past tense/temporal keywords
-    # Matches: "price yesterday", "what was the price", "arrivals last week", "3 days ago"
-    # Doesn't match: "what will be the price" → AI handles (future prediction)
-    if re.search(r"\b(yesterday|last\s+(week|month|monday|tuesday|wednesday|thursday|friday|saturday|sunday))\b", q) or \
-       re.search(r"\b\d+\s+days?\s+ago\b", q) or \
-       re.search(r"\b(was|were)\b.*\b(price|rate|cost|arrival|bag|lot)\b", q) or \
-       re.search(r"\b(price|rate|cost|arrival|bag|lot)\b.*\b(yesterday|last\s+week|ago|was|were)\b", q):
-        print("✅ PATTERN MATCH: Historical data query (instant, no AI cost)")
-        return {
-            "intent": "historical_query",
-            "confidence": 0.95,
-            "extracted_params": {},
-            "tools_needed": ["historical"],
-            "needs_clarification": False
-        }
+
 
     # Commodity listing patterns - Must have clear commodity listing intent
     # Matches: "what commodities available", "commodities in Warangal", "list vegetables"
@@ -888,13 +1056,15 @@ async def execute_arrival_tool(params: Dict) -> Dict:
         variant = params.get("variant")
         days = params.get("days", 7)
         aggregate_mode = params.get("aggregate_mode", False)
+        aggregate_location = params.get("aggregate_location", False)  # NEW: Check for aggregate location
 
         if amc_param and not district_param:
             district_param = amc_param
         if district_param and not amc_param:
             amc_param = district_param
 
-        if not location:
+        # 🔧 NEW: Allow aggregate location queries without specific location
+        if not location and not aggregate_location:
             return {
                 "success": False,
                 "error": "No location specified",
@@ -1214,10 +1384,27 @@ async def execute_historical_tool(query: str, params: Dict) -> Dict:
         
         # Determine query type based on original intent or keywords
         query_lower = query.lower()
-        if "arrival" in query_lower or "bag" in query_lower or "lot" in query_lower or "farmer" in query_lower:
+        # Check for arrival-specific keywords
+        arrival_keywords = ["arrival", "bag", "lot", "farmer", "supply", "quantity", "quintal", "weight"]
+        if any(keyword in query_lower for keyword in arrival_keywords):
             query_type = "arrival"
         else:
             query_type = "price"  # Default to price
+        
+        # Detect metric from query if it's an arrival query
+        metric = "arrivals"  # Default
+        if query_type == "arrival":
+            query_lower = query.lower()
+            if "bag" in query_lower:
+                metric = "bags"
+            elif "lot" in query_lower:
+                metric = "lots"
+            elif "farmer" in query_lower:
+                metric = "farmers"
+            elif "weight" in query_lower or "quintal" in query_lower:
+                metric = "weight"
+            # Use params metric if provided, otherwise use detected metric
+            metric = params.get("metric", metric)
         
         # Build params for historical tool
         historical_params = {
@@ -1226,7 +1413,7 @@ async def execute_historical_tool(query: str, params: Dict) -> Dict:
             "market": params.get("district") or params.get("amc_name", ""),
             "variant": params.get("variant"),
             "query_type": query_type,
-            "metric": params.get("metric", "arrivals") if query_type == "arrival" else None
+            "metric": metric if query_type == "arrival" else None
         }
         
         # Call historical data tool
@@ -1234,11 +1421,16 @@ async def execute_historical_tool(query: str, params: Dict) -> Dict:
         
         if result.get("success"):
             print(f"   ✅ Historical data retrieved successfully")
-            return {
+            # Pass through all fields from the historical tool result
+            return_data = {
                 "success": True,
-                "data": result.get("data"),
                 "tool": "historical"
             }
+            # Copy all fields from result except 'success' (already set)
+            for key, value in result.items():
+                if key != "success":
+                    return_data[key] = value
+            return return_data
         else:
             print(f"   ❌ Historical data query failed: {result.get('error')}")
             return {
@@ -1367,50 +1559,83 @@ async def ai_powered_chat(request: ChatRequest):
 
         query_lower = query.lower()
 
-        # 🔧 CRITICAL FIX: Detect location mentions anywhere in the query (not just "in Khammam")
-        detected_location = None
-        for loc_lower, loc_name in LOCATION_LOOKUP.items():
-            if re.search(rf"\b{re.escape(loc_lower)}\b", query_lower):
-                detected_location = loc_name
-                break
-
-        if detected_location and detected_location != "-":
-            # Always use new valid detected location first
-            context.last_location = detected_location.lower()
-
-            context.extracted_params["district"] = detected_location
-            context.extracted_params["amc_name"] = detected_location
-
-            new_params["district"] = detected_location
-            new_params["amc_name"] = detected_location
-
+        # 🔧 CRITICAL FIX: Detect aggregate location queries FIRST (before specific location detection)
+        # Keywords like "all amcs", "all markets", "overall markets", etc.
+        aggregate_location_keywords = [
+            "all amcs", "all amc", "all markets", "all market", 
+            "overall markets", "overall market", "entire market",
+            "every amc", "every market", "across all amcs", "across all markets"
+        ]
+        
+        is_aggregate_location = any(kw in query_lower for kw in aggregate_location_keywords)
+        
+        if is_aggregate_location:
+            # Clear previous location context for aggregate queries
+            context.extracted_params.pop("district", None)
+            context.extracted_params.pop("amc_name", None)
+            context.last_location = None
+            
+            new_params["district"] = None
+            new_params["amc_name"] = None
+            new_params["aggregate_location"] = True
+            
+            print(f"🔄 Aggregate location query detected - cleared previous location context")
         else:
-            # No new location → fallback to last known GOOD location
-            last = context.last_location
-
-            if last and last != "-":
-                context.extracted_params["district"] = last
-                context.extracted_params["amc_name"] = last
-
-                new_params["district"] = last
-                new_params["amc_name"] = last
-
-        # 🔧 CRITICAL FIX: Clear old location if query explicitly mentions a different new location via keywords
-        location_keywords = ["in", "at", "from", "market"]
-        for keyword in location_keywords:
-            pattern = rf"\b{keyword}\s+([a-zA-Z0-9\s-]+)"
-            match = re.search(pattern, query_lower)
-            if match:
-                potential_location = match.group(1)
-                lookup_key = potential_location.lower()
-                if lookup_key in LOCATION_LOOKUP:
-                    normalized = LOCATION_LOOKUP[lookup_key]
-                    context.extracted_params["district"] = normalized
-                    context.extracted_params["amc_name"] = normalized
-                    new_params.setdefault("district", normalized)
-                    new_params.setdefault("amc_name", normalized)
-                    print(f"🔄 Keyword-based location override detected: {normalized}")
+            # 🔧 CRITICAL FIX: Detect location mentions anywhere in the query (not just "in Khammam")
+            detected_location = None
+            for loc_lower, loc_name in LOCATION_LOOKUP.items():
+                if re.search(rf"\b{re.escape(loc_lower)}\b", query_lower):
+                    detected_location = loc_name
                     break
+
+            if detected_location and detected_location != "-":
+                # Always use new valid detected location first
+                context.last_location = detected_location.lower()
+
+                context.extracted_params["district"] = detected_location
+                context.extracted_params["amc_name"] = detected_location
+
+                new_params["district"] = detected_location
+                new_params["amc_name"] = detected_location
+
+            else:
+                # No new location → fallback to last known GOOD location
+                last = getattr(context, 'last_location', None)
+
+                if last and last != "-":
+                    context.extracted_params["district"] = last
+                    context.extracted_params["amc_name"] = last
+
+                    new_params["district"] = last
+                    new_params["amc_name"] = last
+
+            # 🔧 CRITICAL FIX: Clear old location if query explicitly mentions a different new location via keywords
+            location_keywords = ["in", "at", "from", "market"]
+            for keyword in location_keywords:
+                pattern = rf"\b{keyword}\s+([a-zA-Z0-9\s-]+)"
+                match = re.search(pattern, query_lower)
+                if match:
+                    potential_location = match.group(1)
+                    lookup_key = potential_location.lower().strip()
+                    
+                    # Check if it's an aggregate location keyword first
+                    if any(agg_kw in lookup_key for agg_kw in ["all amcs", "all amc", "all markets", "all market"]):
+                        context.extracted_params.pop("district", None)
+                        context.extracted_params.pop("amc_name", None)
+                        context.last_location = None
+                        new_params["district"] = None
+                        new_params["amc_name"] = None
+                        new_params["aggregate_location"] = True
+                        print(f"🔄 Aggregate location detected via keyword: {lookup_key}")
+                        break
+                    elif lookup_key in LOCATION_LOOKUP:
+                        normalized = LOCATION_LOOKUP[lookup_key]
+                        context.extracted_params["district"] = normalized
+                        context.extracted_params["amc_name"] = normalized
+                        new_params.setdefault("district", normalized)
+                        new_params.setdefault("amc_name", normalized)
+                        print(f"🔄 Keyword-based location override detected: {normalized}")
+                        break
 
         # 🔧 CRITICAL FIX: Detect "overall/all commodities" queries and clear commodity context
         # Detect aggregate keywords
@@ -1494,6 +1719,11 @@ async def ai_powered_chat(request: ChatRequest):
                     context.extracted_params["aggregate_mode"] = True
                 else:
                     context.extracted_params.pop("aggregate_mode", None)
+            # 🔧 NEW: Preserve days and target_date_offset across queries (e.g., variety selection)
+            elif key in ["days", "target_date_offset"]:
+                if value is not None and value != "":
+                    context.extracted_params[key] = value
+                # If not in new params, keep existing value (preserve for variety selection)
             # For other params, update if provided
             else:
                 if value is not None and value != "":
@@ -1506,6 +1736,173 @@ async def ai_powered_chat(request: ChatRequest):
             context.extracted_params["district"] = amc_value
         elif district_value and not amc_value:
             context.extracted_params["amc_name"] = district_value
+        
+        # 🔧 NEW: Detect date ranges FIRST (before single date detection)
+        # Patterns like "14th and 15th dec", "14-15 dec", "14th to 15th dec", "15-18 dec"
+        month_pattern = r"(jan|january|feb|february|mar|march|apr|april|may|jun|june|jul|july|aug|august|sep|sept|september|oct|october|nov|november|dec|december)"
+        
+        # Check for date range patterns - make spaces optional around separators
+        is_date_range = (
+            re.search(r"\d{1,2}(?:st|nd|rd|th)?\s*(?:and|to)\s*\d{1,2}(?:st|nd|rd|th)?\s+" + month_pattern, query_lower) or  # "14th and 15th dec", "14 to 15 dec"
+            re.search(r"\d{1,2}(?:st|nd|rd|th)?\s*-\s*\d{1,2}(?:st|nd|rd|th)?\s+" + month_pattern, query_lower)  # "14-15 dec", "15-18 dec"
+        )
+        
+        if is_date_range:
+            print(f"📅 Date range detected in query - will extract start and end dates")
+            from datetime import datetime
+            
+            today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
+            months = {
+                'jan': 1, 'january': 1, 'feb': 2, 'february': 2, 'mar': 3, 'march': 3,
+                'apr': 4, 'april': 4, 'may': 5, 'jun': 6, 'june': 6,
+                'jul': 7, 'july': 7, 'aug': 8, 'august': 8,
+                'sep': 9, 'sept': 9, 'september': 9, 'oct': 10, 'october': 10,
+                'nov': 11, 'november': 11, 'dec': 12, 'december': 12
+            }
+            
+            # Extract BOTH start and end dates from the range - make spaces optional
+            range_match = re.search(r'(\d{1,2})(?:st|nd|rd|th)?\s*(?:and|to|-)\s*(\d{1,2})(?:st|nd|rd|th)?\s+(' + '|'.join(months.keys()) + r')', query_lower)
+            if range_match:
+                start_day = int(range_match.group(1))
+                end_day = int(range_match.group(2))
+                month_name = range_match.group(3)
+                month = months[month_name]
+                year = today.year
+                
+                try:
+                    start_date = datetime(year, month, start_day)
+                    end_date = datetime(year, month, end_day)
+                    
+                    if start_date >= today and end_date >= today:
+                        # Calculate offsets from today (0-indexed: day 0 = today, day 1 = tomorrow)
+                        start_offset = (start_date - today).days
+                        end_offset = (end_date - today).days
+                        
+                        # Request enough days to cover the end date
+                        context.extracted_params["days"] = end_offset + 1  # +1 to include the end date
+                        new_params["days"] = end_offset + 1
+                        
+                        # Store the range offsets for filtering
+                        context.extracted_params["date_range_start_offset"] = start_offset
+                        context.extracted_params["date_range_end_offset"] = end_offset
+                        new_params["date_range_start_offset"] = start_offset
+                        new_params["date_range_end_offset"] = end_offset
+                        
+                        # 🔧 CRITICAL: Clear any single-date parameters from previous queries
+                        # Date range queries should NOT have single-date filtering
+                        context.extracted_params.pop("target_date_offset", None)
+                        new_params.pop("target_date_offset", None)
+                        
+                        print(f"📅 Date range: {start_date.strftime('%Y-%m-%d')} to {end_date.strftime('%Y-%m-%d')}")
+                        print(f"📅 Start offset: {start_offset}, End offset: {end_offset}")
+                        print(f"📅 Will request {end_offset + 1}-day forecast and filter to show days {start_offset}-{end_offset}")
+                except ValueError:
+                    pass
+        
+        # 🔧 NEW: Detect specific single dates and set days=1 for forecast queries
+        # This handles queries like "total bags on 9th dec 2025" → should return only 1 day
+        # ONLY process if NOT a date range
+        elif not is_date_range:
+            # Check for single date patterns
+            has_specific_single_date = (
+                re.search(r"\bon\s+\d{1,2}(?:st|nd|rd|th)\s+" + month_pattern, query_lower) or  # "on 1st dec"
+                re.search(r"\bon\s+" + month_pattern + r"\s+\d{1,2}", query_lower) or  # "on december 1"
+                re.search(r"\bon\s+\d{1,2}\s+" + month_pattern, query_lower) or  # "on 1 december"
+                re.search(r"\bon\s+\d{4}[/-]\d{1,2}[/-]\d{1,2}", query_lower) or  # "on 2025-12-01"
+                re.search(r"\bon\s+\d{1,2}[/-]\d{1,2}[/-]\d{4}", query_lower)  # "on 01/12/2025"
+            )
+            
+            # Also check for queries with specific dates without "on" keyword
+            # e.g., "total bags 9th dec 2025" (but not "last week" or "next 7 days")
+            has_date_without_range = (
+                (re.search(r"\d{1,2}(?:st|nd|rd|th)\s+" + month_pattern, query_lower) or
+                 re.search(month_pattern + r"\s+\d{1,2}", query_lower) or
+                 re.search(r"\d{1,2}\s+" + month_pattern, query_lower)) and
+                not re.search(r"\b(next|last|past|coming)\s+\d+\s+(day|week|month)", query_lower) and
+                not re.search(r"\d+\s+(day|week|month)", query_lower)
+            )
+            
+            if has_specific_single_date or has_date_without_range:
+                # Parse the specific date to calculate offset from today
+                from datetime import datetime
+                
+                parsed_date = None
+                today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
+                
+                # Month names mapping
+                months = {
+                    'jan': 1, 'january': 1, 'feb': 2, 'february': 2, 'mar': 3, 'march': 3,
+                    'apr': 4, 'april': 4, 'may': 5, 'jun': 6, 'june': 6,
+                    'jul': 7, 'july': 7, 'aug': 8, 'august': 8,
+                    'sep': 9, 'sept': 9, 'september': 9, 'oct': 10, 'october': 10,
+                    'nov': 11, 'november': 11, 'dec': 12, 'december': 12
+                }
+                
+                # Try different date patterns
+                # Pattern 1: "1st dec 2025", "2nd december 2024"
+                ordinal_match = re.search(r'(\d{1,2})(?:st|nd|rd|th)\s+(' + '|'.join(months.keys()) + r')(?:\s+(\d{4}))?', query_lower)
+                if ordinal_match:
+                    day = int(ordinal_match.group(1))
+                    month_name = ordinal_match.group(2)
+                    year = int(ordinal_match.group(3)) if ordinal_match.group(3) else today.year
+                    month = months[month_name]
+                    try:
+                        parsed_date = datetime(year, month, day)
+                    except ValueError:
+                        pass
+                
+                # Pattern 2: "december 1", "dec 15 2025"
+                if not parsed_date:
+                    month_day_match = re.search(r'(' + '|'.join(months.keys()) + r')\s+(\d{1,2})(?:\s+(\d{4}))?', query_lower)
+                    if month_day_match:
+                        month_name = month_day_match.group(1)
+                        day = int(month_day_match.group(2))
+                        year = int(month_day_match.group(3)) if month_day_match.group(3) else today.year
+                        month = months[month_name]
+                        try:
+                            parsed_date = datetime(year, month, day)
+                        except ValueError:
+                            pass
+                
+                # Pattern 3: "1 december", "15 dec 2025"
+                if not parsed_date:
+                    day_month_match = re.search(r'(\d{1,2})\s+(' + '|'.join(months.keys()) + r')(?:\s+(\d{4}))?', query_lower)
+                    if day_month_match:
+                        day = int(day_month_match.group(1))
+                        month_name = day_month_match.group(2)
+                        year = int(day_month_match.group(3)) if day_month_match.group(3) else today.year
+                        month = months[month_name]
+                        try:
+                            parsed_date = datetime(year, month, day)
+                        except ValueError:
+                            pass
+                
+                if parsed_date and parsed_date >= today:
+                    # Calculate offset from today
+                    offset_days = (parsed_date - today).days  # Removed +1 - the difference already gives correct offset
+                    
+                    # Set days to the offset so the API generates predictions up to that date
+                    context.extracted_params["days"] = offset_days
+                    context.extracted_params["target_date_offset"] = offset_days  # Mark which day we want
+                    new_params["days"] = offset_days
+                    new_params["target_date_offset"] = offset_days
+                    
+                    # 🔧 CRITICAL: Clear any date range parameters from previous queries
+                    # Single date queries should NOT have date range filtering
+                    context.extracted_params.pop("date_range_start_offset", None)
+                    context.extracted_params.pop("date_range_end_offset", None)
+                    new_params.pop("date_range_start_offset", None)
+                    new_params.pop("date_range_end_offset", None)
+                    
+                    print(f"📅 Specific date detected: {parsed_date.strftime('%Y-%m-%d')}")
+                    print(f"📅 Offset from today: {offset_days} days")
+                    print(f"📅 Will request {offset_days}-day forecast and extract day {offset_days}")
+                elif not parsed_date:
+                    # Couldn't parse date, default to days=1
+                    if "days" not in context.extracted_params or context.extracted_params.get("days", 7) == 7:
+                        context.extracted_params["days"] = 1
+                        new_params["days"] = 1
+                        print(f"📅 Specific single date pattern detected but couldn't parse - setting days=1")
 
         intent = analysis.get("intent", "")
         # 🔧 FIX: Normalize AI typos in intent
@@ -1542,6 +1939,7 @@ async def ai_powered_chat(request: ChatRequest):
 
         # 🔧 SMART: Detect arrival-specific metrics and SUGGEST arrival intent (not force)
         # Only override if AI completely misunderstood (e.g., general_question when metric mentioned)
+        # 🔧 FIX: NEVER override historical_query intent - it's already correctly identified
         query_lower = query.lower()
         arrival_metric_keywords = [
             "total_bags", "number_of_farmers", "number_of_lots", "number_of_arrivals", "total_weight",
@@ -1551,21 +1949,35 @@ async def ai_powered_chat(request: ChatRequest):
         # Only override if:
         # 1. Query mentions arrival metric keyword (exact match, not substring)
         # 2. AI detected general_question (wrong) or didn't detect any intent
+        # 3. NOT a historical query (preserve historical_query intent)
         has_arrival_metric = any(kw in query_lower for kw in arrival_metric_keywords)
 
-        if has_arrival_metric and intent in ["general_question", ""]:
+        # 🔧 CRITICAL FIX: Use if-elif to prevent override when historical_query is detected
+        if intent == "historical_query":
+            # Historical query detected - NEVER override, even if arrival keywords present
+            if has_arrival_metric:
+                print(f"✅ PRESERVED: Historical query intent maintained despite arrival keywords")
+            # Don't override historical queries - skip all other checks
+        elif has_arrival_metric and intent in ["general_question", ""]:
+            # Only override if AI completely missed the intent AND arrival keywords are present
             print(f"🔧 SMART OVERRIDE: Query mentions arrival metric but AI detected '{intent}', suggesting 'arrival_forecast'")
             intent = "arrival_forecast"
             tools_needed = ["arrival"]
 
-        if force_arrival:
+
+        # 🔧 FIX: Force flags should NOT override historical queries
+        # Historical queries are explicit requests for past data, not predictions
+        if force_arrival and intent != "historical_query":
             intent = "arrival_forecast"
             tools_needed = ["arrival"]
             print("🎯 Force-arrival flag detected from context. Overriding intent.")
-        elif force_price:
+        elif force_price and intent != "historical_query":
             intent = "price_inquiry"
             tools_needed = ["price"]
             print("🎯 Force-price flag detected from context. Overriding intent.")
+        elif (force_arrival or force_price) and intent == "historical_query":
+            print(f"✅ PRESERVED: Historical query intent NOT overridden by force flags")
+
 
         # 🔧 FIX: Clear tool-specific params when switching between query types
         # This prevents parameter contamination (e.g., variant from price queries interfering with arrival queries)
@@ -1696,23 +2108,30 @@ Keep responses brief (2-3 sentences)."""
 
         # Build parallel tasks
         tasks = {}
-        if "arrival" in tools_needed:
-            print(f"   🔍 Arrival Tool Params: {context.extracted_params}")
-            tasks["arrival"] = execute_arrival_tool(context.extracted_params)
-        if "price" in tools_needed:
-            print(f"   🔍 Price Tool Params: {context.extracted_params}")
-            tasks["price"] = execute_price_tool(context.extracted_params)
-        if "advisory" in tools_needed:
-            tasks["advisory"] = execute_advisory_tool(query, context.extracted_params, session_id)
-        if "weather" in tools_needed:
-            print(f"   🌤️ Weather Tool Params: {context.extracted_params}")
-            tasks["weather"] = execute_weather_tool(context.extracted_params)
-        if "commodity_list" in tools_needed:
-            print(f"   📋 Commodity List Tool Params: {context.extracted_params}")
-            tasks["commodity_list"] = execute_commodity_list_tool(context.extracted_params)
+        
+        # 🔧 SAFETY CHECK: Historical queries should ONLY call historical tool, never predictions
         if "historical" in tools_needed:
             print(f"   📊 Historical Tool Params: {context.extracted_params}")
             tasks["historical"] = execute_historical_tool(query, context.extracted_params)
+            # Clear other tools - historical queries should never call prediction tools
+            print(f"   🛡️ SAFETY: Historical query detected - skipping prediction tools")
+            tools_needed = ["historical"]
+        else:
+            # Normal prediction flow
+            if "arrival" in tools_needed:
+                print(f"   🔍 Arrival Tool Params: {context.extracted_params}")
+                tasks["arrival"] = execute_arrival_tool(context.extracted_params)
+            if "price" in tools_needed:
+                print(f"   🔍 Price Tool Params: {context.extracted_params}")
+                tasks["price"] = execute_price_tool(context.extracted_params)
+            if "advisory" in tools_needed:
+                tasks["advisory"] = execute_advisory_tool(query, context.extracted_params, session_id)
+            if "weather" in tools_needed:
+                print(f"   🌤️ Weather Tool Params: {context.extracted_params}")
+                tasks["weather"] = execute_weather_tool(context.extracted_params)
+            if "commodity_list" in tools_needed:
+                print(f"   📋 Commodity List Tool Params: {context.extracted_params}")
+                tasks["commodity_list"] = execute_commodity_list_tool(context.extracted_params)
 
         # Execute all tools in parallel
         if tasks:
@@ -1727,6 +2146,11 @@ Keep responses brief (2-3 sentences)."""
                 else:
                     print(f"   ✅ {tool_name} completed successfully")
                     tool_results[tool_name] = results[i]
+                    # Debug logging for historical tool
+                    if tool_name == "historical":
+                        print(f"   🔍 DEBUG: Historical result keys: {list(results[i].keys())}")
+                        print(f"   🔍 DEBUG: has_varieties = {results[i].get('has_varieties', 'NOT SET')}")
+                        print(f"   🔍 DEBUG: success = {results[i].get('success')}")
 
         # ✅ Status Update 3
         update_status(session_id, "Processing predictions...")
@@ -1822,6 +2246,78 @@ Keep responses brief (2-3 sentences)."""
                         "session_id": session_id
                     }
         
+        # Check if historical tool needs commodity selection (must return early)
+        if "historical" in tool_results:
+            hist_result = tool_results["historical"]
+            if hist_result.get("success") and hist_result.get("needs_commodity_selection"):
+                commodity_data = hist_result.get("data", {})
+                market = commodity_data.get("market", "")
+                commodities = commodity_data.get("commodities", [])
+                query_type = commodity_data.get("query_type", "price")
+                date_range = commodity_data.get("date_range", "")
+                
+                query_type_label = "price" if query_type == "price" else "arrival"
+                
+                # Format commodity list
+                commodity_list = "\n".join([f"• {c}" for c in commodities[:10]])  # Show first 10
+                if len(commodities) > 10:
+                    commodity_list += f"\n... and {len(commodities) - 10} more"
+                
+                response_msg = f"📊 Which commodity would you like to see historical {query_type_label} data for in {market.title()} ({date_range})?\n\n{commodity_list}\n\nPlease specify a commodity name."
+                
+                return {
+                    "response": response_msg,
+                    "needs_clarification": True,
+                    "needs_commodity_selection": True,
+                    "commodity_options": {
+                        "market": market,
+                        "commodities": commodities,
+                        "query_type": query_type,
+                        "date_range": date_range
+                    },
+                    "tool_results": tool_results,
+                    "query_type": "historical",
+                    "session_id": session_id
+                }
+            
+            # Check if historical tool needs variety selection
+            if hist_result.get("success") and hist_result.get("has_varieties"):
+                print(f"   🔍 DEBUG: Historical tool returned has_varieties=True")
+                variety_data = hist_result.get("data", {})
+                commodity = variety_data.get("commodity", "")
+                market = variety_data.get("market", "")
+                variants = variety_data.get("variants", [])
+                start_date = variety_data.get("start_date", "")
+                end_date = variety_data.get("end_date", "")
+                metric = variety_data.get("metric", "")
+                
+                # Determine if this is price or arrival query
+                if metric:
+                    # Arrival query
+                    metric_labels = {
+                        "total_bags": "bags",
+                        "number_of_arrivals": "arrivals",
+                        "number_of_lots": "lots",
+                        "total_weight": "quantity",
+                        "number_of_farmers": "farmers",
+                        "total_revenue": "revenue"
+                    }
+                    metric_name = metric_labels.get(metric, metric)
+                    response_msg = f"📊 Please select a variety to see the historical {metric_name} data for {commodity.title()} in {market.title()} ({start_date} to {end_date})."
+                else:
+                    # Price query
+                    response_msg = f"📊 Please select a variety to see the historical price data for {commodity.title()} in {market.title()} ({start_date} to {end_date})."
+                
+                return {
+                    "response": response_msg,
+                    "needs_clarification": False,
+                    "has_varieties": True,
+                    "varieties": variety_data,
+                    "tool_results": tool_results,
+                    "query_type": "historical",
+                    "session_id": session_id
+                }
+        
         # STEP 4: Generate appropriate response based on query type
         print(f"\n🧠 Generating response for intent: {intent}...")
 
@@ -1852,6 +2348,168 @@ Keep responses brief (2-3 sentences)."""
                     {"date": d, "total_predicted_value": v}
                     for d, v in sorted(arr["total_predicted"].items())
                 ]
+            
+            # 🔧 NEW: Filter to date range if date_range_start_offset and date_range_end_offset are set
+            date_range_start = context.extracted_params.get("date_range_start_offset")
+            date_range_end = context.extracted_params.get("date_range_end_offset")
+            
+            if date_range_start is not None and date_range_end is not None and isinstance(arr.get("total_predicted"), list):
+                # Filter to show only days in the range [start_offset, end_offset]
+                # Note: API returns forecasts starting from tomorrow (day 0 = tomorrow), so we don't need to adjust
+                total_predicted = arr["total_predicted"]
+                if len(total_predicted) > date_range_end:
+                    # Extract days from start_offset to end_offset (inclusive)
+                    # Adjust indices: API day 0 = tomorrow, so our offset 7 (Dec 15) = API index 6
+                    filter_start = max(0, date_range_start - 1)
+                    filter_end = date_range_end  # end is inclusive, so no +1 needed
+                    filtered_data = total_predicted[filter_start:filter_end]
+                    arr["total_predicted"] = filtered_data
+                    
+                    # Also filter commodity_daily if present
+                    if "commodity_daily" in arr and isinstance(arr["commodity_daily"], dict):
+                        filtered_commodity_daily = {}
+                        for commodity, daily_data in arr["commodity_daily"].items():
+                            if isinstance(daily_data, list) and len(daily_data) > date_range_end:
+                                filtered_commodity_daily[commodity] = daily_data[filter_start:filter_end]
+                        arr["commodity_daily"] = filtered_commodity_daily
+                    
+                    print(f"📅 Filtered forecast to date range: indices {filter_start}-{filter_end-1} ({len(filtered_data)} days)")
+            
+            # 🔧 Filter to single target date if target_date_offset is set (and no date range)
+            elif not (date_range_start is not None and date_range_end is not None):
+                target_offset = context.extracted_params.get("target_date_offset")
+                if target_offset and isinstance(arr.get("total_predicted"), list):
+                    # Extract only the data for the target date (offset-1 because list is 0-indexed)
+                    target_index = target_offset - 1
+                    if 0 <= target_index < len(arr["total_predicted"]):
+                        target_data = arr["total_predicted"][target_index]
+                        arr["total_predicted"] = [target_data]
+                        
+                        # Also filter commodity_daily if present
+                        if "commodity_daily" in arr and isinstance(arr["commodity_daily"], dict):
+                            filtered_commodity_daily = {}
+                            for commodity, daily_data in arr["commodity_daily"].items():
+                                if isinstance(daily_data, list) and 0 <= target_index < len(daily_data):
+                                    filtered_commodity_daily[commodity] = [daily_data[target_index]]
+                            arr["commodity_daily"] = filtered_commodity_daily
+                        
+                        print(f"📅 Filtered forecast to target date only: {target_data.get('date')}")
+        
+        # 🔧 NEW: Filter price forecasts to date range or target date
+        if "price" in tool_results and tool_results["price"].get("success"):
+            price_data = tool_results["price"]["data"]
+            
+            date_range_start = context.extracted_params.get("date_range_start_offset")
+            date_range_end = context.extracted_params.get("date_range_end_offset")
+            target_offset = context.extracted_params.get("target_date_offset")
+            
+            print(f"🔍 DEBUG: Checking price filtering - date_range_start={date_range_start}, date_range_end={date_range_end}, target_offset={target_offset}")
+            print(f"🔍 DEBUG: price_data keys: {list(price_data.keys())}")
+            
+            # 🔧 NEW: Filter to date range if both offsets are set
+            if date_range_start is not None and date_range_end is not None:
+                if "variants" in price_data and isinstance(price_data["variants"], list):
+                    print(f"🔍 DEBUG: Found 'variants' list in price_data with {len(price_data['variants'])} variant(s)")
+                    
+                    # Iterate through each variant and filter its forecasts to the date range
+                    for variant_item in price_data["variants"]:
+                        if isinstance(variant_item, dict):
+                            variant_name = variant_item.get("variant", "Unknown")
+                            
+                            # Check for 'forecasts' key
+                            if "forecasts" in variant_item:
+                                forecasts = variant_item["forecasts"]
+                                if isinstance(forecasts, list) and len(forecasts) > date_range_end:
+                                    # Adjust indices: API day 0 = tomorrow, so our offset 7 (Dec 15) = API index 6
+                                    filter_start = max(0, date_range_start - 1)
+                                    filter_end = date_range_end  # end is inclusive, so no +1 needed
+                                    filtered_forecasts = forecasts[filter_start:filter_end]
+                                    variant_item["forecasts"] = filtered_forecasts
+                                    print(f"📅 Filtered variant '{variant_name}' to date range: indices {filter_start}-{filter_end-1} ({len(filtered_forecasts)} days)")
+                            elif "predictions" in variant_item:
+                                # Fallback for 'predictions' key
+                                predictions = variant_item["predictions"]
+                                if isinstance(predictions, list) and len(predictions) > date_range_end:
+                                    filter_start = max(0, date_range_start - 1)
+                                    filter_end = date_range_end
+                                    filtered_predictions = predictions[filter_start:filter_end]
+                                    variant_item["predictions"] = filtered_predictions
+                                    print(f"📅 Filtered variant '{variant_name}' to date range: indices {filter_start}-{filter_end-1} ({len(filtered_predictions)} days)")
+                    
+                    # Update prediction_days to reflect the range size
+                    range_size = date_range_end - date_range_start + 1
+                    price_data["prediction_days"] = range_size
+                    print(f"✅ Updated prediction_days to {range_size}")
+            
+            # 🔧 Filter to single target date if target_offset is set (and no date range)
+            elif target_offset:
+                # Check if predictions are in variants structure (variants is a LIST)
+                if "variants" in price_data and isinstance(price_data["variants"], list):
+                    print(f"🔍 DEBUG: Found 'variants' list in price_data with {len(price_data['variants'])} variant(s)")
+                    
+                    # Iterate through each variant and filter its forecasts
+                    for variant_item in price_data["variants"]:
+                        if isinstance(variant_item, dict):
+                            variant_name = variant_item.get("variant", "Unknown")
+                            
+                            # Check for 'forecasts' key (not 'predictions')
+                            if "forecasts" in variant_item:
+                                forecasts = variant_item["forecasts"]
+                                if isinstance(forecasts, list) and len(forecasts) > 0:
+                                    print(f"🔍 DEBUG: Variant '{variant_name}' has {len(forecasts)} forecasts")
+                                    
+                                    target_index = target_offset - 1
+                                    if 0 <= target_index < len(forecasts):
+                                        target_forecast = forecasts[target_index]
+                                        variant_item["forecasts"] = [target_forecast]
+                                        print(f"📅 Filtered variant '{variant_name}' to target date: {target_forecast.get('date')}")
+                                    else:
+                                        print(f"⚠️ DEBUG: target_index {target_index} out of range for variant '{variant_name}' (has {len(forecasts)} forecasts)")
+                            elif "predictions" in variant_item:
+                                # Fallback for 'predictions' key
+                                predictions = variant_item["predictions"]
+                                if isinstance(predictions, list) and len(predictions) > 0:
+                                    print(f"🔍 DEBUG: Variant '{variant_name}' has {len(predictions)} predictions")
+                                    
+                                    target_index = target_offset - 1
+                                    if 0 <= target_index < len(predictions):
+                                        target_prediction = predictions[target_index]
+                                        variant_item["predictions"] = [target_prediction]
+                                        print(f"📅 Filtered variant '{variant_name}' to target date: {target_prediction.get('date')}")
+                    
+                    # Update prediction_days to reflect single day
+                    price_data["prediction_days"] = 1
+                    print(f"✅ Updated prediction_days to 1")
+                    
+                elif "variants" in price_data and isinstance(price_data["variants"], dict):
+                    # Handle dict structure (old code path)
+                    print(f"🔍 DEBUG: Found 'variants' dict in price_data")
+                    
+                    for variant_name, variant_data in price_data["variants"].items():
+                        if isinstance(variant_data, dict) and "predictions" in variant_data:
+                            predictions = variant_data["predictions"]
+                            if isinstance(predictions, list) and len(predictions) > 0:
+                                target_index = target_offset - 1
+                                if 0 <= target_index < len(predictions):
+                                    target_price_data = predictions[target_index]
+                                    variant_data["predictions"] = [target_price_data]
+                                    print(f"📅 Filtered variant '{variant_name}' to target date: {target_price_data.get('date')}")
+                    
+                    price_data["prediction_days"] = 1
+                    
+                elif "predictions" in price_data and isinstance(price_data["predictions"], list):
+                    # Direct predictions list (no variants)
+                    print(f"🔍 DEBUG: Price predictions before filtering: {len(price_data['predictions'])} days")
+                    
+                    target_index = target_offset - 1
+                    if 0 <= target_index < len(price_data["predictions"]):
+                        target_price_data = price_data["predictions"][target_index]
+                        price_data["predictions"] = [target_price_data]
+                        price_data["prediction_days"] = 1
+                        print(f"📅 Filtered price forecast to target date only: {target_price_data.get('date')}")
+                else:
+                    print(f"🔍 DEBUG: No compatible structure found for filtering")
+                    print(f"🔍 DEBUG: variants type: {type(price_data.get('variants'))}")
 
         if intent == "arrival_forecast" and intelligence_result and intelligence_result.get("success"):
             # Arrival forecast with intelligent summary
@@ -1928,18 +2586,58 @@ Keep responses brief (2-3 sentences)."""
                 if "historical_prices" in data:
                     # Price history
                     prices = data["historical_prices"]
-                    avg_price = sum(p["actual_price"] for p in prices) / len(prices) if prices else 0
-                    ai_response = f"📊 Historical prices for {commodity} in {market} ({start_date} to {end_date}):\n"
-                    ai_response += f"• Average Price: ₹{avg_price:.0f}\n"
-                    ai_response += f"• Records Found: {count}"
-                else:
+                    if prices:
+                        avg_price = sum(p["actual_price"] for p in prices) / len(prices)
+                        # Filter out zero values for min/max calculation
+                        valid_min_prices = [p["min_price"] for p in prices if p["min_price"] > 0]
+                        valid_max_prices = [p["max_price"] for p in prices if p["max_price"] > 0]
+                        
+                        if valid_min_prices and valid_max_prices and avg_price > 0:
+                            min_price = min(valid_min_prices)
+                            max_price = max(valid_max_prices)
+                            
+                            ai_response = f"📊 Historical prices for {commodity} in {market} ({start_date} to {end_date}):\n"
+                            ai_response += f"• Price Range: ₹{min_price:.0f} - ₹{max_price:.0f}\n"
+                            ai_response += f"• Average Price: ₹{avg_price:.0f}\n"
+                            ai_response += f"• Records Found: {count}"
+                        else:
+                            # No valid price data (all zeros or invalid)
+                            date_desc = "on that day" if start_date == end_date else "during that period"
+                            ai_response = f"❌ No valid price data found for {commodity} in {market} {date_desc} ({start_date} to {end_date}).\n\n"
+                            ai_response += f"💡 This could mean:\n"
+                            ai_response += f"• No trading occurred on that specific date\n"
+                            ai_response += f"• Market was closed\n"
+                            ai_response += f"• Data not yet available\n\n"
+                            ai_response += f"Try asking for a different date range (e.g., 'last week' or 'last month')."
+                    else:
+                        ai_response = f"❌ No price data found for {commodity} in {market} during this period ({start_date} to {end_date}).\n\n"
+                        ai_response += f"Try asking for a different date range or check if the commodity name is correct."
+                elif "historical_arrivals" in data:
                     # Arrival history
                     arrivals = data["historical_arrivals"]
-                    total_arrivals = sum(p["actual_arrivals"] for p in arrivals) if arrivals else 0
-                    metric = data.get("metric", "arrivals")
-                    ai_response = f"📊 Historical {metric} for {commodity} in {market} ({start_date} to {end_date}):\n"
-                    ai_response += f"• Total {metric.title()}: {total_arrivals:,.0f}\n"
-                    ai_response += f"• Records Found: {count}"
+                    if arrivals:
+                        total_arrivals = sum(p["actual_arrivals"] for p in arrivals)
+                        metric = data.get("metric", "arrivals")
+                        
+                        if total_arrivals > 0:
+                            ai_response = f"📊 Historical {metric} for {commodity} in {market} ({start_date} to {end_date}):\n"
+                            ai_response += f"• Total {metric.title()}: {total_arrivals:,.0f}\n"
+                            ai_response += f"• Records Found: {count}"
+                        else:
+                            # No arrivals (all zeros)
+                            date_desc = "on that day" if start_date == end_date else "during that period"
+                            ai_response = f"❌ No {metric} data found for {commodity} in {market} {date_desc} ({start_date} to {end_date}).\n\n"
+                            ai_response += f"💡 This could mean:\n"
+                            ai_response += f"• No trading occurred on that specific date\n"
+                            ai_response += f"• Market was closed\n"
+                            ai_response += f"• Data not yet available\n\n"
+                            ai_response += f"Try asking for a different date range (e.g., 'last week' or 'last month')."
+                    else:
+                        ai_response = f"❌ No {metric} data found for {commodity} in {market} during this period ({start_date} to {end_date}).\n\n"
+                        ai_response += f"Try asking for a different date range or check if the commodity name is correct."
+                else:
+                    ai_response = f"❌ No historical data found for {commodity} in {market} during this period ({start_date} to {end_date}).\n\n"
+                    ai_response += f"Try asking for a different date range or check if the commodity name is correct."
             else:
                 ai_response = hist_result.get("error", "Unable to fetch historical data.")
 
@@ -2006,7 +2704,7 @@ Keep responses brief (2-3 sentences)."""
             "tool_results": tool_results,
 
             # 🔧 FIX: Add query_type flag so frontend knows to skip detailed charts for advisory queries
-            "query_type": "advisory_only" if is_advisory_only else "prediction",
+            "query_type": "historical" if intent == "historical_query" else ("advisory_only" if is_advisory_only else "prediction"),
 
             # AI Intelligence (structured insights for UI) - only for advisory queries
             "ai_insights": intelligence_result.get("analysis") if (intelligence_result and intelligence_result.get("success")) else None,
@@ -2099,4 +2797,4 @@ if __name__ == "__main__":
     print("  Layer 4: Response Synthesis (AI)")
     print("="*70)
     print("✅ Repeat commodity query fix applied")
-    uvicorn.run("mcp_server:app", host="0.0.0.0", port=8005, reload=True)
+    uvicorn.run("mcp_server:app", host="0.0.0.0", port=8005, reload=True)   

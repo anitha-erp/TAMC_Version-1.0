@@ -1321,7 +1321,7 @@ function App() {
     }
   ]);
 
-  const messagesEndRef = useRef(null);
+  const latestMessageRef = useRef(null);
   const composerRef = useRef(null);
   const [sessionId] = useState(() => {
     // Always generate a fresh session on page load/refresh
@@ -1341,7 +1341,10 @@ function App() {
   };
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    // Scroll to the latest message (top of new result) instead of bottom
+    if (latestMessageRef.current) {
+      latestMessageRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   }, [messages]);
 
   const recognitionRef = useRef(null);
@@ -2019,28 +2022,31 @@ function App() {
           ) : (
             /* Chat Messages */
             <div className="max-w-3xl mx-auto px-4 py-6 space-y-0 w-full">
-              {messages.slice(1).map((msg, i) => (
-                <ChatMessage
-                  key={i}
-                  message={msg.content}
-                  isBot={msg.role === "assistant"}
-                  predictionData={msg.predictionData}
-                  isPriceData={msg.isPriceData}
-                  aiInsights={msg.aiInsights}
-                  sentimentInfo={msg.sentimentInfo}
-                  detailedForecasts={msg.detailedForecasts}
-                  weatherData={msg.weatherData}
-                  interactiveOptions={msg.interactiveOptions}
-                  isTyping={msg.isTyping}
-                  onOptionSelect={(value, type) => handleOptionSelect(value, type, { isSingleDay: msg.isSingleDay })}
-                  isSingleDay={msg.isSingleDay || false}
-                  userQuery={msg.originalQuery || ""}
-                  queryType={msg.queryType || "prediction"}
-                  toolResults={msg.toolResults} // Pass toolResult to component
-                  sessionId={sessionId}
-                />
-              ))}
-              <div ref={messagesEndRef} />
+              {messages.slice(1).map((msg, i) => {
+                const isLastMessage = i === messages.slice(1).length - 1;
+                return (
+                  <div key={i} ref={isLastMessage ? latestMessageRef : null}>
+                    <ChatMessage
+                      message={msg.content}
+                      isBot={msg.role === "assistant"}
+                      predictionData={msg.predictionData}
+                      isPriceData={msg.isPriceData}
+                      aiInsights={msg.aiInsights}
+                      sentimentInfo={msg.sentimentInfo}
+                      detailedForecasts={msg.detailedForecasts}
+                      weatherData={msg.weatherData}
+                      interactiveOptions={msg.interactiveOptions}
+                      isTyping={msg.isTyping}
+                      onOptionSelect={(value, type) => handleOptionSelect(value, type, { isSingleDay: msg.isSingleDay })}
+                      isSingleDay={msg.isSingleDay || false}
+                      userQuery={msg.originalQuery || ""}
+                      queryType={msg.queryType || "prediction"}
+                      toolResults={msg.toolResults} // Pass toolResult to component
+                      sessionId={sessionId}
+                    />
+                  </div>
+                );
+              })}
             </div>
           )}
         </div>
@@ -2107,7 +2113,7 @@ function App() {
       <div className="fixed bottom-0 left-0 w-full text-center py-3 text-gray-500 text-xs bg-white border-t shadow-sm">
         CropCast AI • Version 1.0
       </div>
-    </div>
+    </div >
   );
 }
 
