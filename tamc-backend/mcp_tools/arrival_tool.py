@@ -1723,14 +1723,23 @@ async def enhanced_prediction_with_telangana(params: PredictionRequest) -> Dict:
         
         for key, forecast_list in predictions.items():
             amc_name_val, commodity_val = key.split(" - ", 1) if " - " in key else ("Unknown", key)
+            
+            # 🔧 CRITICAL FIX: Skip "All Commodities" to prevent double-counting
+            # "All Commodities" is already the sum of all individual commodities
+            # Adding it to date_totals would double the total!
+            is_aggregate = commodity_val == "All Commodities"
+            
             for record in forecast_list:
                 date = record['date']
                 pred_val = record['predicted_value']
                 drop_pct = record.get('weather_drop_pct', 0)
                 intensity = record.get('weather_intensity', 'none')
                 
-                # Update totals
-                date_totals[date] += pred_val
+                # Update totals - SKIP aggregate to avoid double-counting
+                if not is_aggregate:
+                    date_totals[date] += pred_val
+                
+                # Always update commodity_totals (for breakdown display)
                 commodity_totals[commodity_val][date] += pred_val
                 
                 if intensity not in weather_factor_counts:
