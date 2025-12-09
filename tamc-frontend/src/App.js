@@ -5,6 +5,7 @@ import {
   LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer
 } from "recharts";
 import { v4 as uuidv4 } from "uuid";
+import { ValidationDisplay } from './ValidationDisplay';
 import "./App.css";
 
 /* ---------- Helpers ---------- */
@@ -1204,12 +1205,19 @@ const ChatMessage = React.memo(({
 
               {/* Keep existing prediction display */}
               {isBot && predictionData && (
-                <PredictionResult
-                  response={predictionData}
-                  isPriceData={isPriceData}
-                  isSingleDay={isSingleDay}
-                  weatherData={weatherData}
-                />
+                <>
+                  <PredictionResult
+                    response={predictionData}
+                    isPriceData={isPriceData}
+                    isSingleDay={isSingleDay}
+                    weatherData={weatherData}
+                  />
+
+                  {/* AI Validation Panel */}
+                  {message.aiValidation && (
+                    <ValidationDisplay validation={message.aiValidation} />
+                  )}
+                </>
               )}
 
               {/* Display Historical Data */}
@@ -1601,6 +1609,7 @@ function App() {
             sentimentInfo,
             detailedForecasts,
             weatherData,
+            aiValidation: res.data.ai_validation,   // <-- ADD HERE
             isSingleDay: context?.isSingleDay || false,
             queryType
           }

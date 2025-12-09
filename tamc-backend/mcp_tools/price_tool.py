@@ -33,6 +33,15 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from normalizer import clean_amc, clean_district, clean_commodity
 
+# Import AI validation module
+try:
+    from ai_validation import validate_forecast
+    AI_VALIDATION_ENABLED = True
+    print("✅ AI validation module loaded for price forecasts")
+except ImportError:
+    print("⚠️ AI validation module not found. Validation features will be disabled.")
+    AI_VALIDATION_ENABLED = False
+
 # Load environment variables
 load_dotenv()
 
@@ -161,6 +170,7 @@ class PredictionResponse(BaseModel):
     prediction_days: int
     variants: List[VariantForecast]
     message: str
+    ai_validation: Optional[Dict[str, Any]] = None  # ✅ NEW FIELD
 
 class NCDEXRequest(BaseModel):
     commodity: str = Field(..., description="NCDEX commodity name")
@@ -1551,6 +1561,61 @@ async def predict_prices(request: PredictionRequest):
             forecasts=forecasts,
             sentiment_info=sentiment_info
         ))
+    
+    # --------------------------------------------------------------------
+    # 🔍 AI VALIDATION (Confidence + Anomaly Detection)
+    # --------------------------------------------------------------------
+    validation_result = None
+    
+    if AI_VALIDATION_ENABLED:
+        try:
+            # Collect all historical avg price data
+            historical_prices = (
+                hist_data["avg_price"]
+                .replace(0, np.nan)
+                .dropna()
+                .astype(float)
+                .tolist()
+            )
+            
+            # Collect prediction values for ALL variants
+            prediction_values = []
+            for vf in variant_forecasts:
+                for fc in vf.forecasts:
+                    prediction_values.append({
+                        "date": fc.date,
+                        "predicted_value": fc.final_price
+                    })
+            
+            # Build weather summary (optional but useful)
+            weather_summary = None
+            if 'weather_forecast_list' in locals() and weather_forecast_list:
+                # Use first day's weather as representative sample
+                if len(weather_forecast_list) > 0:
+                    first_weather = weather_forecast_list[0]
+                    weather_summary = {
+                        "date": first_weather.get("date"),
+                        "rain_mm": first_weather.get("total_rain_mm", 0),
+                        "condition": first_weather.get("condition", ""),
+                        "temp_c": first_weather.get("temp_c", 0)
+                    }
+            
+            # Run synchronous validation
+            validation_result = validate_forecast(
+                predictions=prediction_values,
+                historical_data=historical_prices,
+                weather=weather_summary,
+                commodity=commodity,
+                forecast_type="price"
+            )
+            print(f"✅ Price AI Validation: {validation_result.get('validation_summary', 'Complete')}")
+
+        except Exception as e:
+            print(f"⚠️ AI validation error: {e}")
+            validation_result = {
+                "enabled": False,
+                "error": str(e)
+            }
 
     # --------------------------------------------------------------------
     # FINAL RESPONSE
@@ -1560,7 +1625,8 @@ async def predict_prices(request: PredictionRequest):
         market=market.title(),
         prediction_days=prediction_days,
         variants=variant_forecasts,
-        message=f"Successfully generated forecasts for {len(variants)} variant(s) with weather, disease & sentiment analysis."
+        message=f"Successfully generated forecasts for {len(variants)} variant(s) with weather, disease & sentiment analysis.",
+        ai_validation=validation_result  # ✅ NEW
     )
 
 

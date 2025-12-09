@@ -552,6 +552,7 @@ Always cite concrete numbers (trend %, specific dates, rainfall, top commodities
 # Initialize AI Intelligence Layer
 ai_intelligence = AIIntelligenceLayer()
 
+
 # ----------------------- Query Analysis Engine -----------------------
 class AIIntelligence:
     """Query understanding and response synthesis"""
@@ -2698,6 +2699,34 @@ Keep responses brief (2-3 sentences)."""
                 print(f"   ❌ Price Tool Error: {error_msg}")
         print(f"{'='*70}\n")
 
+        # --------------------------------------------------------------------
+        # 🔍 AI VALIDATION AGGREGATION
+        # Extract validation results from arrival and price tools
+        # --------------------------------------------------------------------
+        ai_validation_summary = None
+        
+        # Check arrival tool for validation
+        if "arrival" in tool_results and tool_results["arrival"].get("success"):
+            arrival_data = tool_results["arrival"].get("data", {})
+            if "ai_validation" in arrival_data and arrival_data["ai_validation"]:
+                ai_validation_summary = arrival_data["ai_validation"]
+                print(f"✅ Arrival AI Validation: {ai_validation_summary.get('validation_summary', 'N/A')}")
+        
+        # Check price tool for validation (overrides arrival if both exist)
+        if "price" in tool_results and tool_results["price"].get("success"):
+            price_data = tool_results["price"].get("data", {})
+            if "ai_validation" in price_data and price_data["ai_validation"]:
+                ai_validation_summary = price_data["ai_validation"]
+                print(f"✅ Price AI Validation: {ai_validation_summary.get('validation_summary', 'N/A')}")
+        
+        # Log validation status
+        if ai_validation_summary:
+            confidence = ai_validation_summary.get("confidence", {})
+            anomalies = ai_validation_summary.get("anomalies", {})
+            print(f"   📊 Confidence: {confidence.get('confidence_level', 'N/A')} ({confidence.get('confidence_score', 0)}%)")
+            if anomalies.get("has_anomaly"):
+                print(f"   ⚠️ Anomalies: {anomalies.get('summary', 'N/A')}")
+
         return {
             "response": ai_response,
             "needs_clarification": False,
@@ -2717,6 +2746,9 @@ Keep responses brief (2-3 sentences)."""
                 .get("data", {})
                 .get("total_predicted", [])
             ),
+            
+            # 🔍 NEW: AI Validation Results
+            "ai_validation": ai_validation_summary,
 
             "session_id": session_id
         }

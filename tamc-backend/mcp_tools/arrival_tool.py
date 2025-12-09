@@ -47,6 +47,14 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from normalizer import clean_amc, clean_district, clean_commodity, clean_mandal
 
+# Import AI validation module
+try:
+    from ai_validation import validate_forecast
+    AI_VALIDATION_ENABLED = True
+except ImportError:
+    logging.warning("AI validation module not found. Validation features will be disabled.")
+    AI_VALIDATION_ENABLED = False
+
 # Ensure project root (tamc-backend) is on sys.path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -931,11 +939,32 @@ class ParallelForecastEngine:
                 district
             )
             
+            # 🔧 NEW: AI Validation Layer
+            validation_result = None
+            if AI_VALIDATION_ENABLED:
+                try:
+                    # Extract historical values for comparison
+                    historical_values = df_train['y'].tolist() if not df_train.empty else None
+                    
+                    # Run synchronous validation
+                    validation_result = validate_forecast(
+                        predictions=adjusted,
+                        historical_data=historical_values,
+                        weather=weather_info,
+                        commodity=commodity,
+                        forecast_type="arrival"
+                    )
+                    logging.info(f"✅ AI Validation: {validation_result['validation_summary']}")
+                except Exception as e:
+                    logging.error(f"AI validation error: {e}")
+                    validation_result = None
+            
             return {
                 'key': f"{amc} - {commodity}",
                 'forecast': adjusted,
                 'reasoning': f"LSTM+GRU (cached)" if is_cached else "LSTM+GRU (trained)",
-                'is_cached': is_cached
+                'is_cached': is_cached,
+                'ai_validation': validation_result  # NEW: AI validation results
             }
             
         except Exception as e:
@@ -1803,6 +1832,17 @@ async def enhanced_prediction_with_telangana(params: PredictionRequest) -> Dict:
                     for rec in total_predicted
                 ]
 
+        # Extract AI validation from forecasts (use first available)
+        ai_validation_result = None
+        for forecast_list in predictions.values():
+            if forecast_list and isinstance(forecast_list, list):
+                for forecast_item in forecast_list:
+                    if isinstance(forecast_item, dict) and 'ai_validation' in forecast_item:
+                        ai_validation_result = forecast_item['ai_validation']
+                        break
+                if ai_validation_result:
+                    break
+        
         response = {
             "commodity_predictions": predictions,
             "prediction_keys": list(predictions.keys()),
@@ -1829,7 +1869,8 @@ async def enhanced_prediction_with_telangana(params: PredictionRequest) -> Dict:
             },
             "telangana_insight": telangana_insight,
             "weather_factor_summary": weather_factor_counts,
-            "weather_coverage_days": weather_info.get("num_days") if weather_info else 0
+            "weather_coverage_days": weather_info.get("num_days") if weather_info else 0,
+            "ai_validation": ai_validation_result  # ✅ NEW: AI validation results
         }
 
         # Cache the result
