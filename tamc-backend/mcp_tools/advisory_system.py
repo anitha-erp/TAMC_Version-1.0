@@ -295,7 +295,7 @@ Return ONLY a JSON object:
         return await classify_query_with_llm(query, context)  # will call heuristic branch when client is None
 
 
-async def generate_comprehensive_advisory(user_query: str, data: Dict[str, Any], context: ConversationContext) -> str:
+async def generate_comprehensive_advisory(user_query: str, data: Dict[str, Any], context: ConversationContext, language: str = "en") -> str:
     """Generate friendly advisory using LLM; fallback to basic templated advice."""
     if client is None:
         # Simple fallback advisory
@@ -346,7 +346,24 @@ async def generate_comprehensive_advisory(user_query: str, data: Dict[str, Any],
 
     context_str = "\n".join(context_parts)
 
+    # Language-specific instructions
+    language_instructions = {
+        "te": """
+CRITICAL: You MUST respond ENTIRELY in TELUGU (తెలుగు). ALL text must be in Telugu script.
+Do NOT mix English and Telugu. Write EVERYTHING in Telugu including all recommendations, risks, and opportunities.
+""",
+        "hi": """
+CRITICAL: You MUST respond ENTIRELY in HINDI (हिंदी). ALL text must be in Devanagari script.
+Do NOT mix English and Hindi. Write EVERYTHING in Hindi including all recommendations, risks, and opportunities.
+""",
+        "en": "LANGUAGE: Respond in ENGLISH only."
+    }
+    
+    lang_instruction = language_instructions.get(language, language_instructions["en"])
+
     prompt = f"""
+{lang_instruction}
+
 You are an expert agricultural advisor in India having a conversation with a farmer.
 
 Previous conversation (last 3):
@@ -594,7 +611,7 @@ async def call_price_predictor_async(district: Optional[str], amc_name: Optional
 
 
 # ==================== Main Processing Pipeline ====================
-async def process_query_async(query: str, context: ConversationContext) -> Dict[str, Any]:
+async def process_query_async(query: str, context: ConversationContext, language: str = "en") -> Dict[str, Any]:
     logger.info(f"Processing query: {query}")
     extracted = await extract_parameters_from_query(query, context)
     context.update_from_query(extracted)
@@ -684,7 +701,7 @@ async def process_query_async(query: str, context: ConversationContext) -> Dict[
         "arrivals": results["arrivals"]
     }
 
-    advice = await generate_comprehensive_advisory(query, summary, context)
+    advice = await generate_comprehensive_advisory(query, summary, context, language)
     context.add_to_history(query, advice)
 
     # Build price summary structure for response (best-effort)
@@ -719,6 +736,7 @@ class ChatRequest(BaseModel):
     district: Optional[str] = None
     amc_name: Optional[str] = None
     commodity: Optional[str] = None
+    language: Optional[str] = "en"  # Language code: en, te, hi
 
 
 @app.post("/chat")
@@ -737,7 +755,11 @@ async def chat_endpoint(req: ChatRequest):
         if req.commodity:
             context.commodity = req.commodity
 
-        result = await process_query_async(req.query, context)
+        # Extract language parameter
+        language = req.language or "en"
+        logger.info(f"Processing query with language: {language}")
+
+        result = await process_query_async(req.query, context, language)
         return {"success": True, "session_id": sid, **result}
     except Exception as e:
         logger.error(f"Chat endpoint error: {e}")

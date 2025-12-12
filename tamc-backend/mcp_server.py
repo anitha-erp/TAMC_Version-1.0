@@ -18,6 +18,10 @@ from openai import OpenAI
 from dotenv import load_dotenv
 from difflib import get_close_matches
 
+# Import translation service for multi-lingual support
+from translation_service import translate_ai_response, translate_query_to_english
+from commodity_location_mapping import translate_metric_name
+
 load_dotenv()
 
 # Setup logger
@@ -91,6 +95,35 @@ LOCATION_LOOKUP.update(LOCATION_ALIASES)
 
 print(f"📍 Location catalog ready: {len(LOCATION_LOOKUP)} entries")
 
+# ----------------------- Multilingual Prompts -----------------------
+def get_variety_prompt(language: str, context: str = "price") -> str:
+    """Generate variety selection prompt in the specified language"""
+    prompts = {
+        "en": {
+            "price": "Please select a variety to see the price forecast.",
+            "advisory": "Please select a variety to see the advisory.",
+            "metric": "Please select a variety to see the {} forecast.",
+            "historical_metric": "📊 Please select a variety to see the historical {} data for {} in {} ({} to {}).",
+            "historical_price": "📊 Please select a variety to see the historical price data for {} in {} ({} to {})."
+        },
+        "te": {
+            "price": "ధర అంచనా చూడటానికి దయచేసి ఒక రకాన్ని ఎంచుకోండి.",
+            "advisory": "సలహా చూడటానికి దయచేసి ఒక రకాన్ని ఎంచుకోండి.",
+            "metric": "{} అంచనా చూడటానికి దయచేసి ఒక రకాన్ని ఎంచుకోండి.",
+            "historical_metric": "📊 {} లో {} కోసం చారిత్రక {} డేటా చూడటానికి దయచేసి ఒక రకాన్ని ఎంచుకోండి ({} నుండి {}).",
+            "historical_price": "📊 {} లో {} కోసం చారిత్రక ధర డేటా చూడటానికి దయచేసి ఒక రకాన్ని ఎంచుకోండి ({} నుండి {})."
+        },
+        "hi": {
+            "price": "कीमत पूर्वानुमान देखने के लिए कृपया एक किस्म चुनें।",
+            "advisory": "सलाह देखने के लिए कृपया एक किस्म चुनें।",
+            "metric": "{} पूर्वानुमान देखने के लिए कृपया एक किस्म चुनें।",
+            "historical_metric": "📊 {} में {} के लिए ऐतिहासिक {} डेटा देखने के लिए कृपया एक किस्म चुनें ({} से {})।",
+            "historical_price": "📊 {} में {} के लिए ऐतिहासिक कीमत डेटा देखने के लिए कृपया एक किस्म चुनें ({} से {})।"
+        }
+    }
+    
+    return prompts.get(language, prompts["en"]).get(context, prompts[language]["price"])
+
 # ----------------------- FastAPI App -----------------------
 app = FastAPI(title="🧠 AI-Powered MCP Server", version="5.2")
 
@@ -140,6 +173,7 @@ class ChatRequest(BaseModel):
     query: str
     session_id: Optional[str] = "default"
     context: Optional[Dict] = None
+    language: Optional[str] = "en"  # Language code: en, te, hi
 
 # ----------------------- AI Intelligence Layer -----------------------
 class AIIntelligenceLayer:
@@ -155,7 +189,8 @@ class AIIntelligenceLayer:
         self, 
         query: str,
         tool_results: Dict,
-        context: Dict = None
+        context: Dict = None,
+        language: str = "en"  # Add language parameter
     ) -> Dict:
         """Main analysis function - interprets raw tool data"""
         if not self.client:
@@ -168,7 +203,7 @@ class AIIntelligenceLayer:
             response = self.client.chat.completions.create(
                 model=self.model,
                 messages=[
-                    {"role": "system", "content": self._get_system_prompt()},
+                    {"role": "system", "content": self._get_system_prompt(language)},
                     {"role": "user", "content": analysis_prompt}
                 ],
                 temperature=0.3,
@@ -390,9 +425,26 @@ class AIIntelligenceLayer:
         else:
             return "minimal"
     
-    def _get_system_prompt(self) -> str:
-        """System prompt for AI intelligence"""
-        return """You are an expert agricultural market analyst providing ACTIONABLE INTELLIGENCE.
+    def _get_system_prompt(self, language: str = "en") -> str:
+        """System prompt for AI intelligence with language support"""
+        # Language-specific instructions
+        language_instructions = {
+            "te": """
+CRITICAL: You MUST respond ENTIRELY in TELUGU (తెలుగు). ALL text must be in Telugu script.
+Do NOT mix English and Telugu. Write EVERYTHING in Telugu including all field values.
+""",
+            "hi": """
+CRITICAL: You MUST respond ENTIRELY in HINDI (हिंदी). ALL text must be in Devanagari script.
+Do NOT mix English and Hindi. Write EVERYTHING in Hindi including all field values.
+""",
+            "en": "LANGUAGE: Respond in ENGLISH only."
+        }
+        
+        lang_instruction = language_instructions.get(language, language_instructions["en"])
+        
+        return f"""{lang_instruction}
+
+You are an expert agricultural market analyst providing ACTIONABLE INTELLIGENCE.
 
 Analyze prediction data and provide:
 
@@ -403,54 +455,54 @@ Analyze prediction data and provide:
 5. **Opportunities**: Ways to maximize profit
 
 Return ONLY valid JSON:
-{
+{{
   "summary": "One-line key takeaway",
-  "interpretation": {
+  "interpretation": {{
     "market_condition": "oversupply|balanced|shortage",
     "price_outlook": "favorable|neutral|unfavorable",
     "confidence_level": "high|medium|low",
     "reasoning": "Why these conditions exist"
-  },
+  }},
   "key_insights": [
-    {
+    {{
       "insight": "Observation",
       "importance": "high|medium|low",
       "data_point": "Supporting data"
-    }
+    }}
   ],
   "recommendations": [
-    {
+    {{
       "action": "What to do",
       "timing": "When",
       "expected_outcome": "Result",
       "priority": "high|medium|low"
-    }
+    }}
   ],
-  "risk_assessment": {
+  "risk_assessment": {{
     "overall_risk": "high|medium|low",
     "specific_risks": [
-      {
+      {{
         "risk": "What could go wrong",
         "probability": "high|medium|low",
         "impact": "severe|moderate|mild",
         "mitigation": "How to handle"
-      }
+      }}
     ]
-  },
+  }},
   "opportunities": [
-    {
+    {{
       "opportunity": "Profit opportunity",
       "potential_gain": "Expected benefit",
       "action_required": "What to do",
       "time_sensitive": true/false
-    }
+    }}
   ],
-  "market_intelligence": {
+  "market_intelligence": {{
     "supply_demand_balance": "Description",
     "price_drivers": ["Factors"],
     "timing_strategy": "Best timing advice"
-  }
-}
+  }}
+}}
 
 Always cite concrete numbers (trend %, specific dates, rainfall, top commodities) in summary, insights, and recommendations. Do not add extra explanation outside JSON."""
     
@@ -1246,7 +1298,8 @@ async def execute_advisory_tool(query: str, params: Dict, session_id: str) -> Di
             "session_id": session_id,
             "district": params.get("district"),
             "amc_name": params.get("amc_name"),
-            "commodity": params.get("commodity")
+            "commodity": params.get("commodity"),
+            "language": params.get("language", "en")  # Pass language parameter
         }
         
         response = requests.post(ADVISORY_API_URL, json=payload, timeout=180)
@@ -1385,12 +1438,22 @@ async def execute_historical_tool(query: str, params: Dict) -> Dict:
         
         # Determine query type based on original intent or keywords
         query_lower = query.lower()
-        # Check for arrival-specific keywords
+        
+        # 🔧 FIX: Check if query is a variety selection (e.g., "cotton-bags", "Green Chilli-Hot")
+        # If it's a variety selection, don't detect arrival keywords from the variant name
+        is_variety_selection = bool(re.match(r'^[\w\s]+-[\w\s]+$', query.strip()))
+        
+        # Check for arrival-specific keywords (but skip if it's a variety selection)
         arrival_keywords = ["arrival", "bag", "lot", "farmer", "supply", "quantity", "quintal", "weight"]
-        if any(keyword in query_lower for keyword in arrival_keywords):
+        if not is_variety_selection and any(keyword in query_lower for keyword in arrival_keywords):
             query_type = "arrival"
         else:
             query_type = "price"  # Default to price
+        
+        # If variety selection, force query_type to price
+        if is_variety_selection:
+            query_type = "price"
+            print(f"🔧 Variety selection detected: {query.strip()} - forcing query_type to 'price'")
         
         # Detect metric from query if it's an arrival query
         metric = "arrivals"  # Default
@@ -1501,13 +1564,24 @@ async def ai_powered_chat(request: ChatRequest):
     """Main AI-powered endpoint with intelligence layer"""
     try:
         session_id = request.session_id or "default"
-        query = request.query.strip()
+        original_query = request.query.strip()  # Store original query
+        query = original_query
+        request_language = request.language or "en"  # Get language from request
         raw_context = request.context or {}
         external_context = dict(raw_context) if raw_context else {}
         force_arrival = bool(external_context.pop("force_arrival", False))
         force_price = bool(external_context.pop("force_price", False))
         clear_commodity_flag = bool(external_context.pop("clear_commodity", False))
 
+        # 🌍 TRANSLATE QUERY TO ENGLISH (if needed)
+        # Telugu/Hindi queries need to be translated so commodity/location names
+        # can be matched against the English database
+        if request_language in ["te", "hi"]:
+            print(f"\n🌍 Translating query from {request_language} to English...")
+            print(f"   Original query ({request_language}): {original_query}")
+            query = translate_query_to_english(original_query, request_language)
+            print(f"   Translated query (en): {query}")
+        
         if session_id not in conversation_sessions:
             conversation_sessions[session_id] = ConversationContext()
 
@@ -1557,6 +1631,9 @@ async def ai_powered_chat(request: ChatRequest):
         # Preserve: commodity, district (context continuity)
         # Clear if None: variant (should re-select for each query)
         new_params = analysis.get("extracted_params", {})
+        
+        # 🌍 Add language to extracted params so it's available to all tools
+        context.extracted_params["language"] = request_language
 
         query_lower = query.lower()
 
@@ -1998,22 +2075,30 @@ async def ai_powered_chat(request: ChatRequest):
 
         # 🔧 SMART: Only set metric if AI didn't already set it
         # ⚠️ CRITICAL: Only for ARRIVAL queries (not price queries!)
+        # 🔧 FIX: Don't detect metric keywords if query looks like a variety selection
         if intent == "arrival_forecast" and not context.extracted_params.get("metric"):
             query_lower = query.lower()
+            # Check if this looks like a variety selection (e.g., "COTTON-BAGS", "Green Chilli-Hot")
+            is_variety_selection = bool(re.match(r'^[\w\s]+-[\w\s]+$', query.strip()))
+            
             # Only set metric if query CLEARLY mentions it and AI missed it
-            if "quintal" in query_lower or "quantity" in query_lower or "weight" in query_lower:
-                context.extracted_params["metric"] = "total_weight"
-            elif "farmer" in query_lower:
-                context.extracted_params["metric"] = "number_of_farmers"
-            elif "bag" in query_lower:
-                context.extracted_params["metric"] = "total_bags"
-                print(f"🔧 AI missed metric, auto-set to 'total_bags'")
-            elif "lot" in query_lower:
-                context.extracted_params["metric"] = "number_of_lots"
-                print(f"🔧 AI missed metric, auto-set to 'number_of_lots'")
-            elif "revenue" in query_lower or "income" in query_lower:
-                context.extracted_params["metric"] = "total_revenue"
-                print(f"🔧 AI missed metric, auto-set to 'total_revenue'")
+            # AND it's NOT a variety selection
+            if not is_variety_selection:
+                if "quintal" in query_lower or "quantity" in query_lower or "weight" in query_lower:
+                    context.extracted_params["metric"] = "total_weight"
+                elif "farmer" in query_lower:
+                    context.extracted_params["metric"] = "number_of_farmers"
+                elif "bag" in query_lower:
+                    context.extracted_params["metric"] = "total_bags"
+                    print(f"🔧 AI missed metric, auto-set to 'total_bags'")
+                elif "lot" in query_lower:
+                    context.extracted_params["metric"] = "number_of_lots"
+                    print(f"🔧 AI missed metric, auto-set to 'number_of_lots'")
+                elif "revenue" in query_lower or "income" in query_lower:
+                    context.extracted_params["metric"] = "total_revenue"
+                    print(f"🔧 AI missed metric, auto-set to 'total_revenue'")
+            else:
+                print(f"🔧 Skipped metric detection - query looks like variety selection: {query.strip()}")
 
         # ✅ NEW: Clear metric for price queries (should NEVER have metric)
         if intent == "price_inquiry" and "metric" in context.extracted_params:
@@ -2226,7 +2311,7 @@ Keep responses brief (2-3 sentences)."""
                     }
                     metric_name = metric_labels.get(metric, metric)
                     return {
-                        "response": f"Please select a variety to see the {metric_name} forecast.",
+                        "response": get_variety_prompt(request.language if hasattr(request, 'language') else "en", "metric").format(metric_name),
                         "needs_clarification": False,
                         "has_varieties": True,
                         "varieties": variety_data,
@@ -2236,7 +2321,7 @@ Keep responses brief (2-3 sentences)."""
                     }
                 elif tool_name == "price":
                     variety_data = result.get("data", {})
-                    response_msg = "Please select a variety to see the advisory." if is_advisory_only else "Please select a variety to see the price forecast."
+                    response_msg = get_variety_prompt(request.language if hasattr(request, 'language') else "en", "advisory" if is_advisory_only else "price")
                     return {
                         "response": response_msg,
                         "needs_clarification": False,
@@ -2304,10 +2389,10 @@ Keep responses brief (2-3 sentences)."""
                         "total_revenue": "revenue"
                     }
                     metric_name = metric_labels.get(metric, metric)
-                    response_msg = f"📊 Please select a variety to see the historical {metric_name} data for {commodity.title()} in {market.title()} ({start_date} to {end_date})."
+                    response_msg = get_variety_prompt(request.language if hasattr(request, 'language') else "en", "historical_metric").format(metric_name, commodity.title(), market.title(), start_date, end_date)
                 else:
                     # Price query
-                    response_msg = f"📊 Please select a variety to see the historical price data for {commodity.title()} in {market.title()} ({start_date} to {end_date})."
+                    response_msg = get_variety_prompt(request.language if hasattr(request, 'language') else "en", "historical_price").format(commodity.title(), market.title(), start_date, end_date)
                 
                 return {
                     "response": response_msg,
@@ -2328,6 +2413,11 @@ Keep responses brief (2-3 sentences)."""
         update_status(session_id, "Preparing your forecast...")
         await asyncio.sleep(0.5)  # Small delay so frontend can see this status
 
+        # Get language from request (should be passed from frontend)
+        request_language = getattr(request, 'language', 'en')  # Default to English
+        
+        intelligence_result = None  # Initialize to avoid errors
+
         # For ALL queries (arrival, price, advisory), generate intelligent explanation
         if tool_results:
             print("\n🧠 Generating intelligent explanation...")
@@ -2337,7 +2427,8 @@ Keep responses brief (2-3 sentences)."""
                 context={
                     "commodity": context.extracted_params.get("commodity"),
                     "location": context.extracted_params.get("district") or context.extracted_params.get("amc_name")
-                }
+                },
+                language=request_language  # Pass language to AI
             )
 
         # Build response based on query type
@@ -2726,6 +2817,21 @@ Keep responses brief (2-3 sentences)."""
             print(f"   📊 Confidence: {confidence.get('confidence_level', 'N/A')} ({confidence.get('confidence_score', 0)}%)")
             if anomalies.get("has_anomaly"):
                 print(f"   ⚠️ Anomalies: {anomalies.get('summary', 'N/A')}")
+
+        # ===============================================================
+        # 🌍 MULTI-LINGUAL SUPPORT
+        # Translate metric names in tool_results to target language
+        # ===============================================================
+        if request_language in ["te", "hi"] and tool_results:
+            # Translate metric_name in arrival tool results
+            if "arrival" in tool_results and "data" in tool_results["arrival"]:
+                arrival_data = tool_results["arrival"]["data"]
+                if "metric_name" in arrival_data:
+                    original_metric = arrival_data["metric_name"]
+                    translated_metric = translate_metric_name(original_metric, request_language)
+                    arrival_data["metric_name"] = translated_metric
+                    print(f"🌍 Translated metric name: {original_metric} → {translated_metric}")
+
 
         return {
             "response": ai_response,

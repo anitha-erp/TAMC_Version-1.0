@@ -138,7 +138,11 @@ def clean_amc(raw):
 
     # fuzzy match against AMC names in DB
     best = _best_match(raw, RAW_AMCS)
-    return best.strip().title()
+    
+    # Check if best match is valid before calling string methods
+    if best and best.strip():
+        return best.strip().title()
+    return None
 
 
 def clean_district(raw):
@@ -146,7 +150,11 @@ def clean_district(raw):
         return None
 
     best = _best_match(raw, RAW_DISTRICTS)
-    return best.strip().title()
+    
+    # Check if best match is valid before calling string methods
+    if best and best.strip():
+        return best.strip().title()
+    return None
 
 
 def clean_mandal(raw):
@@ -154,7 +162,11 @@ def clean_mandal(raw):
         return None
 
     best = _best_match(raw, RAW_MANDALS)
-    return best.strip().title()
+    
+    # Check if best match is valid before calling string methods
+    if best and best.strip():
+        return best.strip().title()
+    return None
 
 
 # ----------------------------------------------------------

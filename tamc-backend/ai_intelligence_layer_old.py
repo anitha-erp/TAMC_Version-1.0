@@ -1,4 +1,4 @@
-# ai_intelligence_layer.py - MULTILINGUAL VERSION
+# ai_intelligence_layer.py
 # Discrete AI Layer Between Tools and User Response
 
 import json
@@ -25,7 +25,7 @@ class AIIntelligenceLayer:
         query: str,
         tool_results: Dict,
         context: Dict = None,
-        language: str = "en"  # Add language parameter
+        language: str = "en"  # Add language parameter with default
     ) -> Dict:
         """
         Main analysis function that interprets raw tool results
@@ -34,7 +34,6 @@ class AIIntelligenceLayer:
             query: Original user question
             tool_results: Raw outputs from arrival_tool, price_tool, advisory_tool
             context: Additional context (commodity, location, etc.)
-            language: Language code ('en', 'te', 'hi')
         
         Returns:
             Dict containing:
@@ -71,7 +70,7 @@ class AIIntelligenceLayer:
                     }
                 ],
                 temperature=0.3,
-                max_tokens=2000  # Increased for multilingual responses
+                max_tokens=1500
             )
             
             result = response.choices[0].message.content.strip()
@@ -93,107 +92,8 @@ class AIIntelligenceLayer:
             return {
                 "success": False,
                 "error": str(e),
-                "fallback": self._generate_fallback_analysis(structured_data, language)
+                "fallback": self._generate_fallback_analysis(structured_data)
             }
-    
-    def _get_system_prompt(self, language: str = "en") -> str:
-        """System prompt for AI analysis with language support"""
-        
-        # Language-specific instructions
-        language_instructions = {
-            "te": """
-CRITICAL LANGUAGE REQUIREMENT: You MUST respond ENTIRELY in TELUGU language (తెలుగు లిపి).
-- ALL text in your JSON response must be in Telugu script
-- Do NOT mix English and Telugu
-- Write EVERYTHING in Telugu: field values, descriptions, recommendations, insights
-- For technical terms, use Telugu words or Telugu transliteration
-- Numbers and prices can use digits (₹, 0-9)
-""",
-            "hi": """
-CRITICAL LANGUAGE REQUIREMENT: You MUST respond ENTIRELY in HINDI language (हिंदी देवनागरी).
-- ALL text in your JSON response must be in Devanagari script
-- Do NOT mix English and Hindi
-- Write EVERYTHING in Hindi: field values, descriptions, recommendations, insights
-- For technical terms, use Hindi words or Hindi transliteration
-- Numbers and prices can use digits (₹, 0-9)
-""",
-            "en": """
-LANGUAGE REQUIREMENT: Respond in ENGLISH only.
-"""
-        }
-        
-        lang_instruction = language_instructions.get(language, language_instructions["en"])
-        
-        return f"""{lang_instruction}
-
-You are CropCast AI, an expert agricultural market analyst with deep knowledge of:
-- Supply and demand dynamics
-- Price forecasting and market trends
-- Weather impact on agriculture
-- Risk management strategies
-- Business optimization
-
-Your role is to provide ACTIONABLE INTELLIGENCE by analyzing raw prediction data.
-
-Analyze the data and provide:
-
-1. **Interpretation**: Explain what the numbers mean in practical terms
-2. **Key Insights**: 3-5 critical observations about market conditions
-3. **Recommendations**: Specific actions the farmer should take
-4. **Risk Assessment**: Potential problems and how to mitigate them
-5. **Opportunities**: Ways to maximize profit
-6. **Market Intelligence**: Supply-demand dynamics and pricing trends
-
-Return ONLY valid JSON with this structure:
-{{
-  "summary": "One-line key takeaway in the specified language",
-  "interpretation": {{
-    "market_condition": "oversupply|balanced|shortage",
-    "price_outlook": "favorable|neutral|unfavorable",
-    "confidence_level": "high|medium|low",
-    "reasoning": "Why these conditions exist - in specified language"
-  }},
-  "key_insights": [
-    {{
-      "insight": "Specific observation - in specified language",
-      "importance": "high|medium|low",
-      "data_point": "Supporting data - in specified language"
-    }}
-  ],
-  "recommendations": [
-    {{
-      "action": "What to do - in specified language",
-      "timing": "When to do it - in specified language",
-      "expected_outcome": "Result - in specified language",
-      "priority": "high|medium|low"
-    }}
-  ],
-  "risk_assessment": {{
-    "overall_risk": "high|medium|low",
-    "specific_risks": [
-      {{
-        "risk": "What could go wrong - in specified language",
-        "probability": "high|medium|low",
-        "impact": "severe|moderate|mild",
-        "mitigation": "How to handle it - in specified language"
-      }}
-    ]
-  }},
-  "opportunities": [
-    {{
-      "opportunity": "Profit opportunity - in specified language",
-      "potential_gain": "Expected benefit - in specified language",
-      "action_required": "What to do - in specified language",
-      "time_sensitive": true/false
-    }}
-  ],
-  "market_intelligence": {{
-    "supply_demand_balance": "Description - in specified language",
-    "price_drivers": ["Key factors affecting price - in specified language"],
-    "competitive_position": "Farmer's position in market - in specified language",
-    "timing_strategy": "Best timing advice - in specified language"
-  }}
-}}"""
     
     def _structure_tool_data(self, tool_results: Dict) -> Dict:
         """
@@ -225,28 +125,18 @@ Return ONLY valid JSON with this structure:
         # Process price tool results
         if "price" in tool_results and tool_results["price"].get("success"):
             data = tool_results["price"].get("data", {})
-            # Handle both old and new price data structures
-            predictions = []
-            
-            # Check for variants structure (new format)
-            if "variants" in data and isinstance(data["variants"], list) and len(data["variants"]) > 0:
-                variant = data["variants"][0]
-                if "forecasts" in variant:
-                    predictions = variant["forecasts"]
-            # Check for direct predictions (old format)
-            elif "predictions" in data:
-                predictions = data["predictions"]
+            predictions = data.get("predictions", [])
             
             if predictions:
                 structured["price_data"] = {
                     "predictions": predictions[:7],
-                    "current_price": predictions[0].get("final_price") or predictions[0].get("predicted_price", 0) if predictions else 0,
-                    "week_end_price": predictions[-1].get("final_price") or predictions[-1].get("predicted_price", 0) if len(predictions) > 1 else 0,
-                    "average_price": sum(p.get("final_price") or p.get("predicted_price", 0) for p in predictions) / len(predictions),
-                    "price_trend": self._calculate_trend(predictions, "final_price") if "final_price" in predictions[0] else self._calculate_trend(predictions, "predicted_price"),
-                    "volatility": self._calculate_volatility(predictions, "final_price") if "final_price" in predictions[0] else self._calculate_volatility(predictions, "predicted_price"),
+                    "current_price": predictions[0].get("predicted_price", 0) if predictions else 0,
+                    "week_end_price": predictions[-1].get("predicted_price", 0) if len(predictions) > 1 else 0,
+                    "average_price": sum(p.get("predicted_price", 0) for p in predictions) / len(predictions),
+                    "price_trend": self._calculate_trend(predictions, "predicted_price"),
+                    "volatility": self._calculate_volatility(predictions, "predicted_price"),
                     "commodity": data.get("commodity"),
-                    "district": data.get("district") or data.get("market")
+                    "district": data.get("district")
                 }
         
         # Process advisory/weather data
@@ -328,12 +218,82 @@ Return ONLY valid JSON with this structure:
         else:
             return "minimal"
     
+    def _get_system_prompt(self) -> str:
+        """System prompt for AI analysis"""
+        return """You are CropCast AI, an expert agricultural market analyst with deep knowledge of:
+- Supply and demand dynamics
+- Price forecasting and market trends
+- Weather impact on agriculture
+- Risk management strategies
+- Business optimization
+
+Your role is to provide ACTIONABLE INTELLIGENCE by analyzing raw prediction data.
+
+Analyze the data and provide:
+
+1. **Interpretation**: Explain what the numbers mean in practical terms
+2. **Key Insights**: 3-5 critical observations about market conditions
+3. **Recommendations**: Specific actions the farmer should take
+4. **Risk Assessment**: Potential problems and how to mitigate them
+5. **Opportunities**: Ways to maximize profit
+6. **Market Intelligence**: Supply-demand dynamics and pricing trends
+
+Return ONLY valid JSON with this structure:
+{
+  "summary": "One-line key takeaway",
+  "interpretation": {
+    "market_condition": "oversupply|balanced|shortage",
+    "price_outlook": "favorable|neutral|unfavorable",
+    "confidence_level": "high|medium|low",
+    "reasoning": "Why these conditions exist"
+  },
+  "key_insights": [
+    {
+      "insight": "Specific observation",
+      "importance": "high|medium|low",
+      "data_point": "Supporting data"
+    }
+  ],
+  "recommendations": [
+    {
+      "action": "What to do",
+      "timing": "When to do it",
+      "expected_outcome": "Result",
+      "priority": "high|medium|low"
+    }
+  ],
+  "risk_assessment": {
+    "overall_risk": "high|medium|low",
+    "specific_risks": [
+      {
+        "risk": "What could go wrong",
+        "probability": "high|medium|low",
+        "impact": "severe|moderate|mild",
+        "mitigation": "How to handle it"
+      }
+    ]
+  },
+  "opportunities": [
+    {
+      "opportunity": "Profit opportunity",
+      "potential_gain": "Expected benefit",
+      "action_required": "What to do",
+      "time_sensitive": true/false
+    }
+  ],
+  "market_intelligence": {
+    "supply_demand_balance": "Description",
+    "price_drivers": ["Key factors affecting price"],
+    "competitive_position": "Farmer's position in market",
+    "timing_strategy": "Best timing advice"
+  }
+}"""
+    
     def _build_analysis_prompt(
         self, 
         query: str, 
         structured_data: Dict, 
-        context: Dict,
-        language: str = "en"
+        context: Dict
     ) -> str:
         """Build analysis prompt from structured data"""
         
@@ -399,57 +359,22 @@ Return ONLY valid JSON with this structure:
         
         return "\n".join(prompt_parts)
     
-    def _generate_fallback_analysis(self, structured_data: Dict, language: str = "en") -> Dict:
+    def _generate_fallback_analysis(self, structured_data: Dict) -> Dict:
         """Simple fallback when AI fails"""
-        fallback_messages = {
-            "en": {
-                "summary": "Data analysis available",
-                "action": "Review the prediction data carefully",
-                "timing": "Before making decisions",
-                "outcome": "Informed decision making",
-                "reasoning": "Unable to perform AI analysis",
-                "balance": "Data available in raw results",
-                "position": "Review predictions",
-                "strategy": "Monitor daily trends"
-            },
-            "te": {
-                "summary": "డేటా విశ్లేషణ అందుబాటులో ఉంది",
-                "action": "అంచనా డేటాను జాగ్రత్తగా సమీక్షించండి",
-                "timing": "నిర్ణయాలు తీసుకునే ముందు",
-                "outcome": "సమాచారంతో కూడిన నిర్ణయం తీసుకోవడం",
-                "reasoning": "AI విశ్లేషణ చేయడం సాధ్యం కాలేదు",
-                "balance": "ముడి ఫలితాలలో డేటా అందుబాటులో ఉంది",
-                "position": "అంచనాలను సమీక్షించండి",
-                "strategy": "రోజువారీ ట్రెండ్‌లను పర్యవేక్షించండి"
-            },
-            "hi": {
-                "summary": "डेटा विश्लेषण उपलब्ध है",
-                "action": "पूर्वानुमान डेटा की सावधानीपूर्वक समीक्षा करें",
-                "timing": "निर्णय लेने से पहले",
-                "outcome": "सूचित निर्णय लेना",
-                "reasoning": "AI विश्लेषण करने में असमर्थ",
-                "balance": "कच्चे परिणामों में डेटा उपलब्ध है",
-                "position": "पूर्वानुमानों की समीक्षा करें",
-                "strategy": "दैनिक रुझानों की निगरानी करें"
-            }
-        }
-        
-        msg = fallback_messages.get(language, fallback_messages["en"])
-        
         return {
-            "summary": msg["summary"],
+            "summary": "Data analysis available",
             "interpretation": {
                 "market_condition": "unknown",
                 "price_outlook": "neutral",
                 "confidence_level": "low",
-                "reasoning": msg["reasoning"]
+                "reasoning": "Unable to perform AI analysis"
             },
             "key_insights": [],
             "recommendations": [
                 {
-                    "action": msg["action"],
-                    "timing": msg["timing"],
-                    "expected_outcome": msg["outcome"],
+                    "action": "Review the prediction data carefully",
+                    "timing": "Before making decisions",
+                    "expected_outcome": "Informed decision making",
                     "priority": "high"
                 }
             ],
@@ -459,10 +384,10 @@ Return ONLY valid JSON with this structure:
             },
             "opportunities": [],
             "market_intelligence": {
-                "supply_demand_balance": msg["balance"],
+                "supply_demand_balance": "Data available in raw results",
                 "price_drivers": [],
-                "competitive_position": msg["position"],
-                "timing_strategy": msg["strategy"]
+                "competitive_position": "Review predictions",
+                "timing_strategy": "Monitor daily trends"
             }
         }
 
@@ -471,8 +396,7 @@ Return ONLY valid JSON with this structure:
 async def enhance_response_with_ai(
     query: str,
     tool_results: Dict,
-    context: Dict = None,
-    language: str = "en"  # Add language parameter
+    context: Dict = None
 ) -> Dict:
     """
     Main function to integrate AI intelligence into MCP server
@@ -483,8 +407,7 @@ async def enhance_response_with_ai(
     enhanced = await enhance_response_with_ai(
         query=user_query,
         tool_results=tool_results,
-        context={"commodity": "Chilli", "location": "Warangal"},
-        language=language  # Pass language from request
+        context={"commodity": "Chilli", "location": "Warangal"}
     )
     
     return {
@@ -494,4 +417,69 @@ async def enhance_response_with_ai(
     }
     """
     ai_layer = AIIntelligenceLayer()
-    return ai_layer.analyze_tool_results(query, tool_results, context, language)
+    return ai_layer.analyze_tool_results(query, tool_results, context)
+
+
+if __name__ == "__main__":
+    # Test example
+    import asyncio
+    
+    async def test():
+        # Simulate tool results
+        tool_results = {
+            "arrival": {
+                "success": True,
+                "data": {
+                    "total_predicted": [
+                        {"date": "2025-11-08", "total_predicted_value": 1872},
+                        {"date": "2025-11-09", "total_predicted_value": 1945},
+                        {"date": "2025-11-10", "total_predicted_value": 2012},
+                        {"date": "2025-11-11", "total_predicted_value": 2089},
+                        {"date": "2025-11-12", "total_predicted_value": 2134},
+                        {"date": "2025-11-13", "total_predicted_value": 2187},
+                        {"date": "2025-11-14", "total_predicted_value": 2241}
+                    ],
+                    "telangana_insight": "Increasing trend: +12% over 7 days"
+                }
+            },
+            "price": {
+                "success": True,
+                "data": {
+                    "predictions": [
+                        {"date": "2025-11-08", "predicted_price": 5200},
+                        {"date": "2025-11-09", "predicted_price": 5150},
+                        {"date": "2025-11-10", "predicted_price": 5100},
+                        {"date": "2025-11-11", "predicted_price": 5050},
+                        {"date": "2025-11-12", "predicted_price": 5000},
+                        {"date": "2025-11-13", "predicted_price": 4950},
+                        {"date": "2025-11-14", "predicted_price": 4900}
+                    ],
+                    "commodity": "Chilli",
+                    "district": "Warangal"
+                }
+            },
+            "advisory": {
+                "success": True,
+                "data": {
+                    "weather": {
+                        "condition": "Light Rain",
+                        "rain_mm": 15,
+                        "temp_c": 28
+                    },
+                    "advice": "Monitor market conditions"
+                }
+            }
+        }
+        
+        result = await enhance_response_with_ai(
+            query="What are the expected arrivals next week in Warangal?",
+            tool_results=tool_results,
+            context={"commodity": "Chilli", "location": "Warangal"}
+        )
+        
+        print("\n" + "="*70)
+        print("AI INTELLIGENCE ANALYSIS")
+        print("="*70)
+        print(json.dumps(result["analysis"], indent=2))
+    
+    asyncio.run(test())

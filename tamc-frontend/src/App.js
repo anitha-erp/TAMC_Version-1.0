@@ -6,6 +6,8 @@ import {
 } from "recharts";
 import { v4 as uuidv4 } from "uuid";
 import { ValidationDisplay } from './ValidationDisplay';
+import { translations, getTranslation } from './translations';
+import LanguageSelector from './components/LanguageSelector';
 import "./App.css";
 
 /* ---------- Helpers ---------- */
@@ -37,7 +39,7 @@ const mentionsCommodity = (text = "") => {
   return /\b(chilli|cotton|paddy|onion|groundnut|turmeric|maize|rice|wheat|soybean|sugarcane)\b/i.test(text);
 };
 
-const summarizeForecast = (response, weatherData, isPriceData) => {
+const summarizeForecast = (response, weatherData, isPriceData, language = 'en') => {
   if (!response || !Array.isArray(response.total_predicted) || response.total_predicted.length === 0) {
     return [];
   }
@@ -84,7 +86,7 @@ const summarizeForecast = (response, weatherData, isPriceData) => {
     if (top.length > 0) {
       summary.push({
         icon: "🌾",
-        title: "Top Commodities",
+        title: getTranslation(language, 'forecast.topCommodities'),
         detail: top.map((item) => `${item.commodity}: ${Math.round(item.total).toLocaleString()}`).join(" • "),
         badge: null
       });
@@ -97,12 +99,12 @@ const summarizeForecast = (response, weatherData, isPriceData) => {
     const heavy = factor.heavy || 0;
     const moderate = factor.moderate || 0;
     const badgeLabel = heavy > 0 ? `${heavy} heavy impact day${heavy > 1 ? "s" : ""}` :
-      moderate > 0 ? `${moderate} moderate impact day${moderate > 1 ? "s" : ""}` : "Stable weather";
+      moderate > 0 ? `${moderate} moderate impact day${moderate > 1 ? "s" : ""}` : getTranslation(language, 'weather.stableWeather');
 
     summary.push({
       icon: "🌤️",
       title: `${weatherSummary.condition} • ${weatherSummary.temp_c ?? "--"}°C`,
-      detail: `Rain ${weatherSummary.rain_mm ?? 0}mm`,
+      detail: `${getTranslation(language, 'weather.rain')} ${weatherSummary.rain_mm ?? 0}mm`,
       badge: {
         label: badgeLabel,
         tone: heavy > 0 ? "down" : moderate > 0 ? "flat" : "up"
@@ -137,12 +139,15 @@ const isSingleDayQuery = (query) => {
 };
 
 /* ---------- 📰 FARMER-FRIENDLY SENTIMENT PANEL ---------- */
-const SentimentPanel = React.memo(function SentimentPanel({ sentimentData }) {
+const SentimentPanel = React.memo(function SentimentPanel({ sentimentData, t }) {
   const [isExpanded, setIsExpanded] = useState(true); // Default expanded
 
   if (!sentimentData || sentimentData.news_count === 0) return null;
 
   const { avg_sentiment, sentiment_label, news_count, top_keywords, sample_headlines } = sentimentData;
+
+  // Fallback for translation function if not provided
+  const translate = t || ((key) => key.split('.').pop());
 
   // Simplified farmer-friendly messages
   const getFarmerMessage = () => {
@@ -303,9 +308,9 @@ const SentimentPanel = React.memo(function SentimentPanel({ sentimentData }) {
               color: "#9ca3af",
               fontWeight: "600"
             }}>
-              <span>Prices Down</span>
-              <span>Stable</span>
-              <span>Prices Up</span>
+              <span>{translate('sentiment.pricesDown')}</span>
+              <span>{translate('sentiment.stableLabel')}</span>
+              <span>{translate('sentiment.pricesUp')}</span>
             </div>
           </div>
         </div>
@@ -315,7 +320,7 @@ const SentimentPanel = React.memo(function SentimentPanel({ sentimentData }) {
 });
 
 /* ---------- SIMPLIFIED PRICE FORECAST ---------- */
-const EnhancedPriceForecast = React.memo(function EnhancedPriceForecast({ forecast }) {
+const EnhancedPriceForecast = React.memo(function EnhancedPriceForecast({ forecast, t }) {
   if (!forecast) return null;
   const {
     date,
@@ -331,6 +336,9 @@ const EnhancedPriceForecast = React.memo(function EnhancedPriceForecast({ foreca
     disease_reason,
     sentiment_reason
   } = forecast;
+
+  // Fallback for translation function if not provided
+  const translate = t || ((key) => key.split('.').pop());
 
   // Format the unit display
   const unitDisplay = price_unit === "per cover" ? "/cover" : "/Q";
@@ -372,7 +380,7 @@ const EnhancedPriceForecast = React.memo(function EnhancedPriceForecast({ foreca
       }}>
         <div>
           <div style={{ fontSize: "0.8rem", color: "#9ca3af", marginBottom: "0.25rem" }}>
-            Expected Price Range
+            {t('forecast.priceRange')}
           </div>
           <div style={{
             fontSize: "1.75rem",
@@ -426,7 +434,7 @@ const EnhancedPriceForecast = React.memo(function EnhancedPriceForecast({ foreca
           color: "#6b7280"
         }}>
           <div style={{ fontWeight: "600", color: "#374151", marginBottom: "0.5rem" }}>
-            What's affecting the price:
+            {t('priceDetails.affecting')}
           </div>
           {Math.abs(weather_adjustment) > 0.5 && (
             <div style={{ marginBottom: "0.25rem" }}>
@@ -461,7 +469,7 @@ const EnhancedPriceForecast = React.memo(function EnhancedPriceForecast({ foreca
             borderRadius: "6px",
             fontWeight: "500"
           }}>
-            📝 More Details
+            📝 {translate('forecast.moreDetails')}
           </summary>
           <div style={{
             marginTop: "0.5rem",
@@ -483,7 +491,7 @@ const EnhancedPriceForecast = React.memo(function EnhancedPriceForecast({ foreca
 });
 
 /* ---------- SIMPLIFIED AI INSIGHTS PANEL ---------- */
-const AIInsightsPanel = React.memo(function AIInsightsPanel({ insights, queryType }) {
+const AIInsightsPanel = React.memo(function AIInsightsPanel({ insights, queryType, t }) {
   const [isExpanded, setIsExpanded] = useState(false);
   if (!insights) return null;
 
@@ -499,6 +507,9 @@ const AIInsightsPanel = React.memo(function AIInsightsPanel({ insights, queryTyp
   };
   const tone = marketToneMap[interpretation.market_condition] || marketToneMap.balanced;
 
+  // Fallback for translation function if not provided
+  const translate = t || ((key) => key.split('.').pop());
+
   return (
     <div className="mt-6 border border-emerald-200 bg-emerald-50 rounded-2xl p-6 shadow-sm">
       <div
@@ -508,7 +519,7 @@ const AIInsightsPanel = React.memo(function AIInsightsPanel({ insights, queryTyp
         <div className="flex items-center gap-3">
           <span className="text-2xl">🧠</span>
           <div>
-            <h3 className="m-0 text-lg font-bold text-gray-900">Smart Market Advice</h3>
+            <h3 className="m-0 text-lg font-bold text-gray-900">{translate('forecast.smartAdvice')}</h3>
             {insights.summary && (
               <p className="m-0 text-sm text-gray-700">{insights.summary}</p>
             )}
@@ -605,51 +616,54 @@ const InteractiveOptions = React.memo(({ prompt, options, onSelect, disabled }) 
 });
 
 /* Weather Impact Display Component */
-const WeatherImpactDisplay = React.memo(({ weatherData }) => {
+const WeatherImpactDisplay = React.memo(({ weatherData, t }) => {
   if (!weatherData || !weatherData.weather_summary) return null;
 
   const { weather_summary, weather_factor_summary } = weatherData;
+
+  // Fallback for translation function if not provided
+  const translate = t || ((key) => key.split('.').pop());
 
   return (
     <div className="mt-3 bg-gradient-to-br from-sky-50 via-blue-50 to-cyan-50 border-2 border-sky-300 rounded-xl p-4 shadow-md">
       <h5 className="flex items-center gap-2 text-sky-700 font-bold text-base mb-3">
         <span className="text-2xl">🌤️</span>
-        Weather Impact Analysis
+        {translate('weather.impact')}
       </h5>
       <div className="space-y-2.5">
         <div className="flex justify-between items-center px-3 py-2 bg-white rounded-lg text-sm">
-          <strong className="text-sky-900">Condition:</strong>
+          <strong className="text-sky-900">{translate('weather.condition')}:</strong>
           <span className="text-gray-700 font-medium">{weather_summary.condition || 'Unknown'}</span>
         </div>
         {weather_summary.rain_mm !== undefined && (
           <div className="flex justify-between items-center px-3 py-2 bg-white rounded-lg text-sm">
-            <strong className="text-sky-900">Precipitation:</strong>
+            <strong className="text-sky-900">{translate('weather.precipitation')}:</strong>
             <span className="text-gray-700 font-medium">{weather_summary.rain_mm} mm</span>
           </div>
         )}
         {weather_summary.temp_c !== undefined && (
           <div className="flex justify-between items-center px-3 py-2 bg-white rounded-lg text-sm">
-            <strong className="text-sky-900">Temperature:</strong>
+            <strong className="text-sky-900">{translate('weather.temperature')}:</strong>
             <span className="text-gray-700 font-medium">{weather_summary.temp_c}°C</span>
           </div>
         )}
         {weather_factor_summary && (
           <div className="px-3 py-2 bg-white rounded-lg text-sm">
-            <strong className="text-sky-900 block mb-2">Impact Days:</strong>
+            <strong className="text-sky-900 block mb-2">{translate('weather.impactDays')}:</strong>
             <div className="flex flex-wrap gap-2">
               {weather_factor_summary.heavy > 0 && (
                 <span className="px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs font-semibold">
-                  Heavy: {weather_factor_summary.heavy} days
+                  {translate('weather.heavy')}: {weather_factor_summary.heavy} {translate('weather.days')}
                 </span>
               )}
               {weather_factor_summary.moderate > 0 && (
                 <span className="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs font-semibold">
-                  Moderate: {weather_factor_summary.moderate} days
+                  {translate('weather.moderate')}: {weather_factor_summary.moderate} {translate('weather.days')}
                 </span>
               )}
               {weather_factor_summary.none > 0 && (
                 <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-semibold">
-                  Normal: {weather_factor_summary.none} days
+                  {translate('weather.normal')}: {weather_factor_summary.none} {translate('weather.days')}
                 </span>
               )}
             </div>
@@ -661,13 +675,16 @@ const WeatherImpactDisplay = React.memo(({ weatherData }) => {
 });
 
 /* ---------- Historical Result Component ---------- */
-const HistoricalResult = React.memo(function HistoricalResult({ response }) {
+const HistoricalResult = React.memo(function HistoricalResult({ response, t }) {
   const [isExpanded, setIsExpanded] = useState(true);
 
   // Parse data from response
   const data = response.data || {};
   const isPrice = !!data.historical_prices;
   const historyData = isPrice ? data.historical_prices : data.historical_arrivals;
+
+  // Fallback for translation function if not provided
+  const translate = t || ((key) => key.split('.').pop());
 
   if (!historyData || historyData.length === 0) return null;
 
@@ -698,7 +715,7 @@ const HistoricalResult = React.memo(function HistoricalResult({ response }) {
         <div className="p-4 bg-white">
           {/* Chart */}
           <div className="mb-6 bg-white border border-gray-100 rounded-xl p-4 shadow-sm">
-            <h4 className="font-bold text-gray-800 mb-3 text-sm flex items-center gap-2">📈 Trend Chart</h4>
+            <h4 className="font-bold text-gray-800 mb-3 text-sm flex items-center gap-2">📈 {translate('chart.trendChart')}</h4>
             <ResponsiveContainer width="100%" height={250}>
               <LineChart data={historyData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
@@ -779,7 +796,7 @@ const HistoricalResult = React.memo(function HistoricalResult({ response }) {
 });
 
 /* ---------- Prediction Result ---------- */
-const PredictionResult = React.memo(function PredictionResult({ response, isPriceData, isSingleDay, weatherData }) {
+const PredictionResult = React.memo(function PredictionResult({ response, isPriceData, isSingleDay, weatherData, t }) {
   const [viewMode, setViewMode] = useState("total");
   const [isExpanded, setIsExpanded] = useState(true); // Default expanded
   const totalData = response?.total_predicted || [];
@@ -798,6 +815,9 @@ const PredictionResult = React.memo(function PredictionResult({ response, isPric
     });
   }
   const isWeightMetricSelected = !isPriceData && isWeightMetric(response?.metric_name);
+
+  // Fallback for translation function if not provided
+  const translate = t || ((key) => key.split('.').pop());
 
   // If single day query, show only first day
   const displayData = isSingleDay ? totalData.slice(0, 1) : totalData;
@@ -847,9 +867,9 @@ const PredictionResult = React.memo(function PredictionResult({ response, isPric
       >
         <div className="flex items-center gap-2 font-semibold text-gray-800 text-sm">
           <span className="text-xl">{isPriceData ? "💰" : "📊"}</span>
-          <span>{isPriceData ? "Price Forecast" : "Arrival Forecast"}</span>
+          <span>{isPriceData ? translate('forecast.priceForecast') : translate('forecast.arrivalForecast')}</span>
           <span className="text-xs text-gray-500 font-normal">
-            ({displayData.length} {displayData.length === 1 ? "day" : "days"})
+            ({displayData.length} {translate('common.days')})
           </span>
         </div>
         <div
@@ -868,7 +888,7 @@ const PredictionResult = React.memo(function PredictionResult({ response, isPric
             <div className="mt-3 bg-white border border-gray-200 rounded-2xl p-4 shadow-sm">
               <h4 className="font-bold text-gray-900 text-sm mb-3 flex items-center gap-2">
                 <span className="text-lg">💡</span>
-                <span>Forecast Highlights</span>
+                <span>{translate('forecast.highlights')}</span>
               </h4>
               <div className="grid gap-3 md:grid-cols-2">
                 {summaryItems.map((item, idx) => (
@@ -910,7 +930,7 @@ const PredictionResult = React.memo(function PredictionResult({ response, isPric
                   }`}
                 onClick={() => setViewMode("total")}
               >
-                📊 Total Overview
+                📊 {translate('forecast.summary')}
               </button>
               <button
                 className={`px-4 py-2 rounded-lg font-medium text-sm transition-all ${viewMode === "commodity"
@@ -919,7 +939,7 @@ const PredictionResult = React.memo(function PredictionResult({ response, isPric
                   }`}
                 onClick={() => setViewMode("commodity")}
               >
-                🌾 Commodity Details
+                🌾 {translate('forecast.commodityDetails')}
               </button>
             </div>
           )}
@@ -929,13 +949,12 @@ const PredictionResult = React.memo(function PredictionResult({ response, isPric
               {displayData.length > 0 && (
                 <div className="mt-3 bg-gradient-to-br from-gray-50 to-white border border-gray-200 rounded-xl p-4 shadow-sm">
                   <h4 className="font-bold text-gray-800 mb-3 text-sm flex items-center gap-2">
-                    📅 {isSingleDay ? (isPriceData ? "Tomorrow's Price" : `Tomorrow's ${response.metric_name}`) : "Forecast Summary"}
-                  </h4>
+                    📅 {isSingleDay ? (isPriceData ? t('forecastTable.tomorrowPrice') : t('forecastTable.tomorrowMetric', { metric: response.metric_name })) : t('forecastTable.summary')}                  </h4>
                   <div className="overflow-x-auto">
                     <table className="w-full border-collapse">
                       <thead>
                         <tr className="bg-gradient-to-r from-gray-100 to-gray-50">
-                          <th className="px-4 py-2.5 text-left text-xs font-bold text-gray-700 border-b-2 border-gray-300">Date</th>
+                          <th className="px-4 py-2.5 text-left text-xs font-bold text-gray-700 border-b-2 border-gray-300">{translate('chart.date')}</th>
                           <th className="px-4 py-2.5 text-left text-xs font-bold text-gray-700 border-b-2 border-gray-300">{response.metric_name}</th>
                         </tr>
                       </thead>
@@ -1004,7 +1023,7 @@ const PredictionResult = React.memo(function PredictionResult({ response, isPric
 
               {/* Display Weather Impact if available */}
               {weatherData && (
-                <WeatherImpactDisplay weatherData={weatherData} />
+                <WeatherImpactDisplay weatherData={weatherData} t={t} />
               )}
 
               {!isSingleDay && (
@@ -1138,7 +1157,8 @@ const ChatMessage = React.memo(({
   userQuery,
   queryType,
   sessionId,
-  toolResults // Added toolResults prop
+  toolResults, // Added toolResults prop
+  t // Added translation function prop
 }) => {
   const shouldHideText = isBot && (predictionData || (aiInsights && queryType === "advisory_only"));
   return (
@@ -1198,7 +1218,7 @@ const ChatMessage = React.memo(({
                     {isSingleDay ? `📊 ${/\btoday\b/i.test(userQuery || "") ? "Today's" : "Tomorrow's"} Price Details` : "📊 Detailed Price Breakdown"}
                   </h4>
                   {(isSingleDay ? detailedForecasts.slice(0, 1) : detailedForecasts).map((forecast, idx) => (
-                    <EnhancedPriceForecast key={idx} forecast={forecast} />
+                    <EnhancedPriceForecast key={idx} forecast={forecast} t={t} />
                   ))}
                 </div>
               )}
@@ -1211,6 +1231,7 @@ const ChatMessage = React.memo(({
                     isPriceData={isPriceData}
                     isSingleDay={isSingleDay}
                     weatherData={weatherData}
+                    t={t}
                   />
 
                   {/* AI Validation Panel */}
@@ -1222,12 +1243,12 @@ const ChatMessage = React.memo(({
 
               {/* Display Historical Data */}
               {queryType === "historical" && toolResults?.historical?.success && (
-                <HistoricalResult response={toolResults.historical} />
+                <HistoricalResult response={toolResults.historical} t={t} />
               )}
 
 
               {isBot && aiInsights && (
-                <AIInsightsPanel insights={aiInsights} queryType={queryType} />
+                <AIInsightsPanel insights={aiInsights} queryType={queryType} t={t} />
               )}
             </>
           )}
@@ -1320,12 +1341,14 @@ function App() {
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [language, setLanguage] = useState(() => {
-    return localStorage.getItem("selected_language") || "English";
+    return localStorage.getItem('cropcast_language') || 'en';
   });
+  // Translation helper
+  const t = (key) => getTranslation(language, key);
   const [messages, setMessages] = useState([
     {
       role: "assistant",
-      content: "👋 <strong>Welcome!</strong> I'm CropCast AI, your intelligent agricultural assistant.<br/><br/>Ask me about commodity prices, market forecasts, and agricultural insights."
+      content: `👋 <strong>${t('common.welcome') || 'Welcome'}!</strong> ${t('header.welcomeMessage') || "I'm CropCast AI, your intelligent agricultural assistant."}<br/><br/>${t('header.welcomePrompt') || 'Ask me about commodity prices, market forecasts, and agricultural insights.'}`
     }
   ]);
 
@@ -1343,10 +1366,19 @@ function App() {
   const [pendingClarification, setPendingClarification] = useState(null);
   const [isListening, setIsListening] = useState(false);
 
-  const handleLanguageChange = (lang) => {
-    setLanguage(lang);
-    localStorage.setItem("selected_language", lang);
+  const handleLanguageChange = (newLang) => {
+    setLanguage(newLang);
+    localStorage.setItem('cropcast_language', newLang);
   };
+
+  // After line 1370, add:
+  useEffect(() => {
+    // Update welcome message when language changes
+    setMessages([{
+      role: "assistant",
+      content: `👋 <strong>${t('common.welcome') || 'Welcome'}!</strong> ${t('header.welcomeMessage') || "I'm CropCast AI, your intelligent agricultural assistant."}<br/><br/>${t('header.welcomePrompt') || 'Ask me about commodity prices, market forecasts, and agricultural insights.'}`
+    }]);
+  }, [language]);  // Only depend on language, not t (t changes on every render)
 
   useEffect(() => {
     // Scroll to the latest message (top of new result) instead of bottom
@@ -1354,6 +1386,27 @@ function App() {
       latestMessageRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }, [messages]);
+
+  // Helper function to send suggestions with different display vs query text
+  const sendSuggestion = (displayText, queryText) => {
+    // Call sendMessage with the English query (for backend)
+    sendMessage(queryText);
+
+    // Replace the English query in chat with Telugu display text
+    setTimeout(() => {
+      setMessages(prev => {
+        const newMessages = [...prev];
+        // Find and replace the last user message (which has the English query)
+        for (let i = newMessages.length - 1; i >= 0; i--) {
+          if (newMessages[i].role === 'user' && newMessages[i].content === queryText) {
+            newMessages[i] = { ...newMessages[i], content: displayText };
+            break;
+          }
+        }
+        return newMessages;
+      });
+    }, 0);
+  };
 
   const recognitionRef = useRef(null);
   const startVoiceInput = () => {
@@ -1366,11 +1419,11 @@ function App() {
     if (!recognitionRef.current) {
       const recognition = new SpeechRecognition();
 
-      // Language mapping based on selected language
+      // Language mapping based on selected language code
       const langMap = {
-        "English": "en-IN",
-        "తెలుగు": "te-IN",
-        "हिंदी": "hi-IN"
+        "en": "en-IN",
+        "te": "te-IN",
+        "hi": "hi-IN"
       };
       recognition.lang = langMap[language] || "en-IN";
       recognition.continuous = false;
@@ -1431,14 +1484,14 @@ function App() {
     // Keep the interactive options visible AND clickable (don't remove or disable)
     // This allows users to change their selection by clicking another button
 
-    // Format the selected value for display
+    // Format the selected value for display using translations
     const metricLabels = {
-      total_bags: "📦 Total Bags",
-      number_of_arrivals: "🔢 Arrivals Count",
-      number_of_lots: "📊 Number of Lots",
-      total_weight: "⚖️ Quantity (Quintals)",
-      number_of_farmers: "👥 Number of Farmers",
-      total_revenue: "💰 Revenue"
+      total_bags: t('metrics.totalBags'),
+      number_of_arrivals: t('metrics.arrivals'),
+      number_of_lots: t('metrics.lots'),
+      total_weight: t('metrics.quantity'),
+      number_of_farmers: t('metrics.farmers'),
+      total_revenue: t('metrics.revenue')
     };
 
     const displayValue = metricLabels[selectedValue] || selectedValue;
@@ -1521,7 +1574,8 @@ function App() {
       console.log("📡 Sending to backend:", queryToSend);
       const requestBody = {
         query: queryToSend,
-        session_id: sessionId
+        session_id: sessionId,
+        language: language
       };
       if (Object.keys(requestContext).length > 0) {
         requestBody.context = requestContext;
@@ -1587,7 +1641,7 @@ function App() {
           const priceUnit = d.variants[0]?.forecasts[0]?.price_unit || "per quintal";
 
           predictionData = {
-            metric_name: "Price (₹/Quintal)",
+            metric_name: t('forecastTable.price'),
             total_predicted: aggregated,
             commodity: d.commodity,
             district: d.market || d.district,
@@ -1642,11 +1696,23 @@ function App() {
     setQuery("");
     setLoading(true);
 
+
     // ✅ FRONTEND DETECTION: Check if arrival query without explicit metric
-    const isPriceQuery = /\b(price|cost|rate|₹)\b/i.test(lower);
+    // Support Telugu, Hindi, and English keywords
+    const isPriceQuery = /\b(price|cost|rate|₹|ధర|ధరలు|कीमत|कीमतें)\b/i.test(lower) ||
+      /\b(ధర|ధరలు|कीमत|कीमतें)\b/i.test(userMessage); // Check original too
+
     const isCapabilityQuestion = /\b(can you|do you|are you able|is it possible|does this)\b/i.test(lower);
-    const isArrivalQuery = /arrivals?|forecast|expect/i.test(lower);  // Removed "predict" - let agent decide
-    const hasExplicitMetric = /\b(bags?|lots?|quintals?|quantity|weight|farmers?|revenue)\b/i.test(lower);
+
+    // Check for arrival keywords in English, Telugu, and Hindi
+    const isArrivalQuery = /arrivals?|forecast|expect/i.test(lower) ||
+      /\b(రాకలు|రాక|అంచనా|అంచనాలు)\b/i.test(userMessage) || // Telugu
+      /\b(आगमन|पूर्वानुमान)\b/i.test(userMessage); // Hindi
+
+    // Check for explicit metric keywords in English, Telugu, and Hindi
+    const hasExplicitMetric = /\b(bags?|lots?|quintals?|quantity|weight|farmers?|revenue)\b/i.test(lower) ||
+      /\b(సంచులు|సంచి|లాట్లు|లాట్|క్వింటాల్|పరిమాణం|రైతులు|రైతు|ఆదాయం)\b/i.test(userMessage) || // Telugu
+      /\b(बोरियां|बोरी|लॉट|क्विंटल|मात्रा|किसान|राजस्व)\b/i.test(userMessage); // Hindi
 
     // Only show metric selection for actual arrival requests (not price queries or capability questions)
     if (isArrivalQuery && !hasExplicitMetric && !isPriceQuery && !isCapabilityQuestion) {
@@ -1657,13 +1723,13 @@ function App() {
           role: "assistant",
           content: "📊 What would you like to forecast?",
           interactiveOptions: {
-            question: "Select the metric:",
+            question: t('metrics.selectMetric'),
             options: [
-              { label: "📦 Total Bags", value: "total_bags", type: "metric" },
-              { label: "🔢 Arrivals Count", value: "number_of_arrivals", type: "metric" },
-              { label: "📊 Number of Lots", value: "number_of_lots", type: "metric" },
-              { label: "⚖️ Quantity (Quintals)", value: "total_weight", type: "metric" },
-              { label: "👥 Number of Farmers", value: "number_of_farmers", type: "metric" }
+              { label: `📦 ${t('metrics.totalBags')}`, value: "total_bags", type: "metric" },
+              { label: `🔢 ${t('metrics.arrivals')}`, value: "number_of_arrivals", type: "metric" },
+              { label: `📊 ${t('metrics.lots')}`, value: "number_of_lots", type: "metric" },
+              { label: `⚖️ ${t('metrics.quantity')}`, value: "total_weight", type: "metric" },
+              { label: `👥 ${t('metrics.farmers')}`, value: "number_of_farmers", type: "metric" }
             ]
           }
         }
@@ -1680,7 +1746,8 @@ function App() {
       const isAdvisoryContext = pendingClarification?.isAdvisoryQuery || false;
       const requestBody = {
         query: userMessage,
-        session_id: sessionId
+        session_id: sessionId,
+        language: language  // Pass selected language to backend
       };
 
       // If this is a variety selection for an advisory query, pass the flag to backend
@@ -1914,44 +1981,16 @@ function App() {
           {/* Title */}
           <div className="flex items-center gap-3">
             <span className="text-2xl">🌾</span>
-            <h1 className="text-gray-900 font-semibold text-lg m-0">CropCast AI</h1>
+            <h1 className="text-gray-900 font-semibold text-lg m-0">{t('header.title')}</h1>
           </div>
 
           {/* Right side controls */}
           <div className="flex items-center gap-3">
             {/* Language Selector */}
-            <div className="relative group">
-              <button className="flex items-center gap-2 px-3 py-1.5 hover:bg-gray-100 rounded-md text-gray-700 text-sm font-medium transition-all">
-                <span>🌐</span>
-                <span>{language}</span>
-                <span className="text-xs">▼</span>
-              </button>
-
-              {/* Dropdown */}
-              <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
-                <button
-                  onClick={() => handleLanguageChange("English")}
-                  className={`w-full text-left px-4 py-2 hover:bg-gray-50 first:rounded-t-lg transition-all text-sm ${language === "English" ? "bg-gray-100 font-semibold" : ""
-                    }`}
-                >
-                  English
-                </button>
-                <button
-                  onClick={() => handleLanguageChange("తెలుగు")}
-                  className={`w-full text-left px-4 py-2 hover:bg-gray-50 transition-all text-sm ${language === "తెలుగు" ? "bg-gray-100 font-semibold" : ""
-                    }`}
-                >
-                  తెలుగు (Telugu)
-                </button>
-                <button
-                  onClick={() => handleLanguageChange("हिंदी")}
-                  className={`w-full text-left px-4 py-2 hover:bg-gray-50 last:rounded-b-lg transition-all text-sm ${language === "हिंदी" ? "bg-gray-100 font-semibold" : ""
-                    }`}
-                >
-                  हिंदी (Hindi)
-                </button>
-              </div>
-            </div>
+            <LanguageSelector
+              currentLanguage={language}
+              onLanguageChange={handleLanguageChange}
+            />
 
             {/* User Icon */}
             <button className="w-8 h-8 flex items-center justify-center hover:bg-gray-100 rounded-md transition-all">
@@ -1964,65 +2003,78 @@ function App() {
 
         {/* Messages */}
         <div className="flex-1 overflow-y-auto flex flex-col">
+
           {messages.length <= 1 ? (
             /* Welcome Screen - Show when no messages */
             <div className="flex-1 flex flex-col items-center justify-center px-4">
-              <h1 className="text-4xl font-semibold text-gray-800 mb-12">What can I help with?</h1>
+              <h1 className="text-4xl font-semibold text-gray-800 mb-12">{t('suggestions.helpPrompt')}</h1>
+
+              {/* Helper function to send suggestion with display text */}
+              {(() => {
+                const sendSuggestion = (displayText, queryText) => {
+                  // Add user message with display text
+                  setMessages(prev => [...prev, { role: 'user', content: displayText }]);
+                  // Send query text to backend
+                  sendMessage(queryText);
+                };
+
+                return null; // This is just to define the function
+              })()}
 
               {/* Suggestion Cards */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-w-3xl w-full">
                 <button
-                  onClick={() => sendMessage("What will be cotton price in Warangal tomorrow")}
+                  onClick={() => sendSuggestion(t('suggestions.priceExample1Display'), t('suggestions.priceExample1Query'))}
                   disabled={loading}
                   className="p-4 bg-white border border-gray-200 rounded-2xl hover:bg-gray-50 hover:border-gray-300 transition-all text-left group disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <div className="flex items-start gap-3">
                     <span className="text-2xl">💰</span>
                     <div>
-                      <div className="font-medium text-gray-800 mb-1">Price Forecast</div>
-                      <div className="text-sm text-gray-600">What will be cotton price in Warangal tomorrow</div>
+                      <div className="font-medium text-gray-800 mb-1">{t('suggestions.priceTitle')}</div>
+                      <div className="text-sm text-gray-600">{t('suggestions.priceExample1Display')}</div>
                     </div>
                   </div>
                 </button>
 
                 <button
-                  onClick={() => sendMessage("Expected arrivals in Khammam for next 7 days")}
+                  onClick={() => sendSuggestion(t('suggestions.arrivalExampleDisplay'), t('suggestions.arrivalExampleQuery'))}
                   disabled={loading}
                   className="p-4 bg-white border border-gray-200 rounded-2xl hover:bg-gray-50 hover:border-gray-300 transition-all text-left group disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <div className="flex items-start gap-3">
                     <span className="text-2xl">📊</span>
                     <div>
-                      <div className="font-medium text-gray-800 mb-1">Arrival Predictions</div>
-                      <div className="text-sm text-gray-600">Expected arrivals in Khammam for next 7 days</div>
+                      <div className="font-medium text-gray-800 mb-1">{t('suggestions.arrivalTitle')}</div>
+                      <div className="text-sm text-gray-600">{t('suggestions.arrivalExampleDisplay')}</div>
                     </div>
                   </div>
                 </button>
 
                 <button
-                  onClick={() => sendMessage("Should I bring cotton to market today in Warangal")}
+                  onClick={() => sendSuggestion(t('suggestions.advisoryExampleDisplay'), t('suggestions.advisoryExampleQuery'))}
                   disabled={loading}
                   className="p-4 bg-white border border-gray-200 rounded-2xl hover:bg-gray-50 hover:border-gray-300 transition-all text-left group disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <div className="flex items-start gap-3">
                     <span className="text-2xl">🌤️</span>
                     <div>
-                      <div className="font-medium text-gray-800 mb-1">Market Advisory</div>
-                      <div className="text-sm text-gray-600">Should I bring cotton to market today in Warangal</div>
+                      <div className="font-medium text-gray-800 mb-1">{t('suggestions.advisoryTitle')}</div>
+                      <div className="text-sm text-gray-600">{t('suggestions.advisoryExampleDisplay')}</div>
                     </div>
                   </div>
                 </button>
 
                 <button
-                  onClick={() => sendMessage("Chilli prices in Warangal tomorrow")}
+                  onClick={() => sendSuggestion(t('suggestions.priceExample2Display'), t('suggestions.priceExample2Query'))}
                   disabled={loading}
                   className="p-4 bg-white border border-gray-200 rounded-2xl hover:bg-gray-50 hover:border-gray-300 transition-all text-left group disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <div className="flex items-start gap-3">
                     <span className="text-2xl">💰</span>
                     <div>
-                      <div className="font-medium text-gray-800 mb-1">Price Forecast</div>
-                      <div className="text-sm text-gray-600">Chilli prices in Warangal next week</div>
+                      <div className="font-medium text-gray-800 mb-1">{t('suggestions.priceTitle')}</div>
+                      <div className="text-sm text-gray-600">{t('suggestions.priceExample2Display')}</div>
                     </div>
                   </div>
                 </button>
@@ -2052,6 +2104,7 @@ function App() {
                       queryType={msg.queryType || "prediction"}
                       toolResults={msg.toolResults} // Pass toolResult to component
                       sessionId={sessionId}
+                      t={t} // Pass translation function
                     />
                   </div>
                 );
@@ -2069,7 +2122,7 @@ function App() {
                   ref={composerRef}
                   rows={1}
                   className="w-full border-none resize-none text-base outline-none bg-transparent placeholder-gray-500 text-gray-900"
-                  placeholder="Ask anything"
+                  placeholder={t('suggestions.inputPlaceholder')}
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   onKeyDown={handleComposerKeyDown}
