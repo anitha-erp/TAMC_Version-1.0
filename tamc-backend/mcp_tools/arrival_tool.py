@@ -827,7 +827,7 @@ class OptimizedLSTMGRUForecaster:
             return False
     
     def predict_batch(self, df, target_col='y', periods=7):
-        """Batch prediction for multiple periods"""
+        """Batch prediction with drift prevention constraints"""
         if not self.is_trained:
             return []
         
@@ -838,6 +838,12 @@ class OptimizedLSTMGRUForecaster:
             padding = np.zeros((self.sequence_length - len(scaled_values), 1))
             scaled_values = np.vstack([padding, scaled_values])
         
+        # Calculate historical statistics for constraints
+        historical_mean = values.mean()
+        historical_std = values.std()
+        recent_mean = values[-30:].mean() if len(values) >= 30 else historical_mean
+        last_value = values[-1][0]
+        
         # Get last sequence
         last_sequence = scaled_values[-self.sequence_length:].reshape(
             1, self.sequence_length, self.n_features
@@ -846,19 +852,42 @@ class OptimizedLSTMGRUForecaster:
         predictions = []
         current_sequence = last_sequence.copy()
         
-        for _ in range(periods):
-            next_pred = self.model.predict(current_sequence, verbose=0)[0, 0]
+        for i in range(periods):
+            next_pred_scaled = self.model.predict(current_sequence, verbose=0)[0, 0]
+            
+            # Inverse transform to get actual value
+            next_pred = self.scaler.inverse_transform([[next_pred_scaled]])[0, 0]
+            
+            # CONSTRAINT 1: Limit daily change to ±15%
+            if predictions:
+                max_change = predictions[-1] * 0.15
+                next_pred = np.clip(next_pred, 
+                                  predictions[-1] - max_change,
+                                  predictions[-1] + max_change)
+            else:
+                # First prediction: limit change from last historical value
+                max_change = last_value * 0.15
+                next_pred = np.clip(next_pred,
+                                  last_value - max_change,
+                                  last_value + max_change)
+            
+            # CONSTRAINT 2: Keep within reasonable bounds (mean ± 2σ)
+            lower_bound = max(0, recent_mean - 2 * historical_std)
+            upper_bound = recent_mean + 2 * historical_std
+            next_pred = np.clip(next_pred, lower_bound, upper_bound)
+            
+            # CONSTRAINT 3: Apply mean reversion for longer horizons
+            decay_factor = 1.0 - (i * 0.015)  # 1.5% decay per day
+            next_pred = next_pred * decay_factor + recent_mean * (1 - decay_factor)
+            
             predictions.append(next_pred)
             
-            # Update sequence
+            # Update sequence with CONSTRAINED prediction
+            next_pred_scaled = self.scaler.transform([[next_pred]])[0, 0]
             current_sequence = np.roll(current_sequence, -1, axis=1)
-            current_sequence[0, -1, 0] = next_pred
+            current_sequence[0, -1, 0] = next_pred_scaled
         
-        # Batch inverse transform
-        predictions = np.array(predictions).reshape(-1, 1)
-        predictions = self.scaler.inverse_transform(predictions)
-        
-        return predictions.flatten()
+        return np.array(predictions)
 
 # ========== Parallel Processing Engine ==========
 class ParallelForecastEngine:

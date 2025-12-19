@@ -1,6 +1,6 @@
 {
   "chilli": {
-    "timestamp": "2025-12-11T16:46:51.028667",
+    "timestamp": "2025-12-19T12:39:13.912788",
     "data": {
       "avg_sentiment": 0.0,
       "sentiment_label": "Neutral",
@@ -276,6 +276,17 @@
   },
   "capsicum": {
     "timestamp": "2025-12-05T16:00:15.530389",
+    "data": {
+      "avg_sentiment": 0.0,
+      "sentiment_label": "Neutral",
+      "news_count": 0,
+      "top_keywords": [],
+      "sample_headlines": [],
+      "articles": []
+    }
+  },
+  "grapes-black": {
+    "timestamp": "2025-12-12T11:31:10.462163",
     "data": {
       "avg_sentiment": 0.0,
       "sentiment_label": "Neutral",

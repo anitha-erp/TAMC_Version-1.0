@@ -676,6 +676,8 @@ IMPORTANT - Be SMART about tool calls:
 3. **ONLY call tools when user wants PREDICTIONS/DATA**
 4. **Weather queries**: When user asks about weather, rain, temperature, climate → "weather_advice", ["weather"]
 5. **Context matters**: If user previously asked for price/arrivals and now selects a variety, that's a continuation.
+6. **"Overall" and "All" keywords**: When user says "all amcs", "all districts", "all markets", "overall amcs", or "overall districts", they want AGGREGATE data across all locations.
+   **IMPORTANT**: For these aggregate queries, set BOTH "district" and "amc_name" to null (do not specify a location). The backend will automatically aggregate.
 
 Metric keywords (only for arrival queries):
   * "bags" → metric: "total_bags"
