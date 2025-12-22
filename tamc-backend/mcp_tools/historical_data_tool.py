@@ -4,6 +4,7 @@
 import pandas as pd
 import re
 from datetime import datetime, timedelta
+import calendar
 from typing import Dict, Optional, Tuple, List
 import os
 import pymysql
@@ -63,6 +64,10 @@ class HistoricalDataTool:
         query_lower = query.lower()
         today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
         
+        # Today
+        if "today" in query_lower:
+            return (today, today)
+
         # Yesterday
         if "yesterday" in query_lower:
             yesterday = today - timedelta(days=1)
@@ -143,6 +148,22 @@ class HistoricalDataTool:
                 pass  # Invalid date, continue to next pattern
         
         # Pattern 2: "december 1", "dec 15 2025", "january 20"
+        # Pattern 2a: Month + Year (e.g., "oct 2024", "december 2023") -> entire month
+        month_year_pattern = r'(' + '|'.join(months.keys()) + r')\s+(\d{4})'
+        month_year_match = re.search(month_year_pattern, query_lower)
+        if month_year_match:
+            month_name = month_year_match.group(1)
+            year = int(month_year_match.group(2))
+            month = months[month_name]
+            try:
+                start_date = datetime(year, month, 1)
+                last_day = calendar.monthrange(year, month)[1]
+                end_date = datetime(year, month, last_day)
+                return (start_date, end_date)
+            except ValueError:
+                pass
+
+        # Pattern 2b: "december 1", "dec 15 2025", "january 20"
         month_day_pattern = r'(' + '|'.join(months.keys()) + r')\s+(\d{1,2})(?:\s+(\d{4}))?'
         month_day_match = re.search(month_day_pattern, query_lower)
         if month_day_match:

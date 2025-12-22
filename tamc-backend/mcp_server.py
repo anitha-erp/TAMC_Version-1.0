@@ -43,7 +43,7 @@ PRICE_VARIANTS_URL = "http://127.0.0.1:8002/api/variants"
 ADVISORY_API_URL = "http://127.0.0.1:8003/chat"
 
 PRICE_TIMEOUT = 30
-ARRIVAL_TIMEOUT = 150
+ARRIVAL_TIMEOUT = 400
 
 # ✅ DYNAMIC LOCATION LOADING
 def load_known_locations():
@@ -817,7 +817,7 @@ def quick_pattern_match(query: str) -> Optional[Dict]:
     
     # Check for relative date patterns
     has_relative_date = (
-        re.search(r"(yesterday|last\s+(week|month|monday|tuesday|wednesday|thursday|friday|saturday|sunday))", q) or
+        re.search(r"(today|yesterday|last\s+(week|month|monday|tuesday|wednesday|thursday|friday|saturday|sunday))", q) or
         re.search(r"\b\d+\s+days?\s+ago\b", q) or
         re.search(r"\b(was|were)\b.*\b(price|rate|cost|arrival|bag|lot)\b", q) or
         re.search(r"\b(price|rate|cost|arrival|bag|lot)\b.*(yesterday|last\s+week|ago|was|were)", q) or
@@ -1165,7 +1165,7 @@ async def execute_arrival_tool(params: Dict) -> Dict:
             print(f"   📦 Variant: {variant}")
 
         # 🚀 Always use a larger timeout — arrival can take long for 40–80 commodities
-        timeout = 150
+        timeout = 400
         response = requests.post(ARRIVAL_API_URL, json=payload, timeout=timeout)
         response.raise_for_status()
 
@@ -1195,9 +1195,9 @@ async def execute_price_tool(params: Dict) -> Dict:
 
         commodity = params.get("commodity", "")
         location = params.get("district") or params.get("amc_name") or params.get("location")
-        # If still None or "-", use last known location
-        if not location or location == "-":
-            location = context.last_location
+        # If still None or "-", use last known location passed in params (caller should inject)
+        if (not location or location == "-"):
+            location = params.get("last_location")
 
         days = params.get("days", 1)
         variant = params.get("variant")
@@ -1331,11 +1331,17 @@ async def execute_weather_tool(params: Dict) -> Dict:
         if os.path.exists(mcp_tools_path) and mcp_tools_path not in sys.path:
             sys.path.insert(0, mcp_tools_path)
         
-        # Try importing from mcp_tools first, fallback to direct import
+        # Dynamically import fetch_multi_day_weather from available module path
         try:
-            from mcp_tools.arrival_tool import fetch_multi_day_weather
-        except ImportError:
-            from arrival_tool import fetch_multi_day_weather
+            import importlib
+            try:
+                mod = importlib.import_module('mcp_tools.arrival_tool')
+            except ImportError:
+                mod = importlib.import_module('arrival_tool')
+            fetch_multi_day_weather = getattr(mod, 'fetch_multi_day_weather')
+        except Exception as e:
+            print(f"❌ Could not import arrival_tool.fetch_multi_day_weather: {e}")
+            return {"success": False, "error": "arrival tool import failed", "tool": "weather"}
 
         location = params.get("district") or params.get("amc_name") or params.get("location", "")
         days = params.get("days", 7)
@@ -1428,11 +1434,17 @@ async def execute_historical_tool(query: str, params: Dict) -> Dict:
         if os.path.exists(mcp_tools_path) and mcp_tools_path not in sys.path:
             sys.path.insert(0, mcp_tools_path)
         
-        # Import historical data tool
+        # Dynamically import query_historical_data from available module path
         try:
-            from mcp_tools.historical_data_tool import query_historical_data
-        except ImportError:
-            from historical_data_tool import query_historical_data
+            import importlib
+            try:
+                hmod = importlib.import_module('mcp_tools.historical_data_tool')
+            except ImportError:
+                hmod = importlib.import_module('historical_data_tool')
+            query_historical_data = getattr(hmod, 'query_historical_data')
+        except Exception as e:
+            print(f"❌ Could not import historical_data_tool.query_historical_data: {e}")
+            return {"success": False, "error": "historical tool import failed", "tool": "historical"}
         
         print(f"📊 Calling Historical Data Tool...")
         print(f"   Query: {query}")
@@ -2196,30 +2208,35 @@ Keep responses brief (2-3 sentences)."""
 
         # Build parallel tasks
         tasks = {}
+
+        # Prepare params for tools: copy extracted params and inject last known location + session
+        tool_params = dict(context.extracted_params or {})
+        tool_params["last_location"] = getattr(context, "last_location", None)
+        tool_params["session_id"] = session_id
         
         # 🔧 SAFETY CHECK: Historical queries should ONLY call historical tool, never predictions
         if "historical" in tools_needed:
-            print(f"   📊 Historical Tool Params: {context.extracted_params}")
-            tasks["historical"] = execute_historical_tool(query, context.extracted_params)
+            print(f"   📊 Historical Tool Params: {tool_params}")
+            tasks["historical"] = execute_historical_tool(query, tool_params)
             # Clear other tools - historical queries should never call prediction tools
             print(f"   🛡️ SAFETY: Historical query detected - skipping prediction tools")
             tools_needed = ["historical"]
         else:
             # Normal prediction flow
             if "arrival" in tools_needed:
-                print(f"   🔍 Arrival Tool Params: {context.extracted_params}")
-                tasks["arrival"] = execute_arrival_tool(context.extracted_params)
+                print(f"   🔍 Arrival Tool Params: {tool_params}")
+                tasks["arrival"] = execute_arrival_tool(tool_params)
             if "price" in tools_needed:
-                print(f"   🔍 Price Tool Params: {context.extracted_params}")
-                tasks["price"] = execute_price_tool(context.extracted_params)
+                print(f"   🔍 Price Tool Params: {tool_params}")
+                tasks["price"] = execute_price_tool(tool_params)
             if "advisory" in tools_needed:
-                tasks["advisory"] = execute_advisory_tool(query, context.extracted_params, session_id)
+                tasks["advisory"] = execute_advisory_tool(query, tool_params, session_id)
             if "weather" in tools_needed:
-                print(f"   🌤️ Weather Tool Params: {context.extracted_params}")
-                tasks["weather"] = execute_weather_tool(context.extracted_params)
+                print(f"   🌤️ Weather Tool Params: {tool_params}")
+                tasks["weather"] = execute_weather_tool(tool_params)
             if "commodity_list" in tools_needed:
-                print(f"   📋 Commodity List Tool Params: {context.extracted_params}")
-                tasks["commodity_list"] = execute_commodity_list_tool(context.extracted_params)
+                print(f"   📋 Commodity List Tool Params: {tool_params}")
+                tasks["commodity_list"] = execute_commodity_list_tool(tool_params)
 
         # Execute all tools in parallel
         if tasks:
