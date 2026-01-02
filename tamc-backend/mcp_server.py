@@ -968,6 +968,18 @@ def quick_pattern_match(query: str) -> Optional[Dict]:
                     }
         else:
             print("   ⚠️ Could not parse specific date - falling back to AI")
+
+    # Month-only queries (e.g., "dec", "december") combined with lots/bags
+    # Treat these as historical month queries so users can ask short forms like "lots in dec"
+    if re.search(r"\b(" + month_pattern + r")\b", q) and re.search(r"\b(lot|lots|bag|bags|arrival|arrivals|number of|no of|how many)\b", q):
+        print("✅ PATTERN MATCH: Historical data query (month specified, instant, no AI cost)")
+        return {
+            "intent": "historical_query",
+            "confidence": 0.90,
+            "extracted_params": {},
+            "tools_needed": ["historical"],
+            "needs_clarification": False
+        }
     
     # Relative dates (yesterday, last week, etc.) are always historical
     if has_relative_date:
@@ -997,9 +1009,11 @@ def quick_pattern_match(query: str) -> Optional[Dict]:
     # Advisory patterns - Must have advisory intent keywords
     # Matches: "should I bring", "give me advice", "market trends"
     # Doesn't match: "what's happening" → AI handles
-    if re.search(r"\b(should|shall|advice|advise|suggest|recommend)\b.*\b(bring|sell|wait|market)\b", q) or \
+    # Expand advisory triggers to include modal verbs (can/may/could) and "is it ok" phrasing
+    if re.search(r"\b(should|shall|advice|advise|suggest|recommend|can|may|could|permit|allowed)\b.*\b(bring|sell|wait|market)\b", q) or \
        re.search(r"\b(market|price)\b.*\b(trend|analysis|insight)\b", q) or \
-       re.search(r"\b(good|best|right)\b.*\b(time|day)\b.*\b(sell|bring)\b", q):
+       re.search(r"\b(good|best|right)\b.*\b(time|day)\b.*\b(sell|bring)\b", q) or \
+       re.search(r"\bis it (?:ok|okay|fine)\b.*\b(bring|sell)\b", q):
         print("✅ PATTERN MATCH: Advisory query (instant, no AI cost)")
         return {
             "intent": "advisory_request",

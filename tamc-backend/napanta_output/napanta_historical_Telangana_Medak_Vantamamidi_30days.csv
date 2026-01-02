@@ -1,8 +1,29 @@
 ﻿Commodity,Market,Variety,Max_Price,Avg_Price,Min_Price,Last_Updated,Trend,Extra,Fetch_Date
-Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-22
+Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-12-23
+Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-23
+Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-23
+Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-23
+Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-12-23
+Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-23
+Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-23
+Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-23
+Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-23
+Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-12-23
+Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-12-23
+Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-12-23
+French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-12-23
+Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-12-23
+Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-12-23
+Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-12-23
+Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-12-23
+Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-12-23
+Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-12-23
+Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-12-23
+Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-23
 Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-12-22
+Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-22
+Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-22
 Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-12-22
-Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-12-22
 Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-12-22
 Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-12-22
 Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-12-22
@@ -11,7 +32,7 @@ Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025
 French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-12-22
 Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-12-22
 Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-12-22
-Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-22
+Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-12-22
 Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-22
 Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-22
 Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-22
@@ -20,12 +41,12 @@ Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free P
 Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-22
 Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-22
 Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-12-22
-Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-21
+Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-21
 Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-12-21
 Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-21
-Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-21
+Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-21
+Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-12-21
 Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-21
-Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-21
 Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-12-21
 Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-21
 Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-21
@@ -35,7 +56,7 @@ Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-
 Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-12-21
 Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-12-21
 Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-12-21
-Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-12-21
+Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-21
 Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-12-21
 Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-12-21
 Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-12-21
@@ -47,8 +68,8 @@ Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025
 Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-12-20
 Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-12-20
 Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-20
+Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-20
 Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-12-20
-Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-12-20
 Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-12-20
 Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-12-20
 Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-12-20
@@ -58,19 +79,20 @@ Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Al
 Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-20
 Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-12-20
 Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-20
-Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-20
+Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-12-20
 Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-20
 Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-12-20
 Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-20
 Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-20
 Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-20
+Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-19
 Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-12-19
 Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-19
 Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-12-19
-Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-12-19
 Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-12-19
-Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-19
-Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-19
+Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-12-19
+Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-12-19
+Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-12-19
 Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-19
 Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-12-19
 Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-19
@@ -79,20 +101,21 @@ Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025
 Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-19
 Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-12-19
 Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-12-19
-Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-12-19
-Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-12-19
+Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-19
 Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-12-19
 Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-12-19
 Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-12-19
 Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-12-19
 French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-12-19
+Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-12-18
+Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-12-18
 Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-12-18
 French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-12-18
 Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-12-18
-Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-12-18
-Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-12-18
 Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-12-18
-Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-12-18
+Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-12-18
+Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-18
+Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-18
 Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-12-18
 Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-12-18
 Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-12-18
@@ -100,28 +123,24 @@ Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-
 Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-12-18
 Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-12-18
 Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-18
-Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-18
+Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-12-18
 Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-18
 Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-18
 Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-12-18
 Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-18
 Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-18
-Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-18
-Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-12-18
-Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-12-17
-Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-17
-Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-12-17
-Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-17
-Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-17
-Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-17
 Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-17
+Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-17
+Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-12-17
+Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-12-17
 Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-17
+Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-17
 Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-12-17
 Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-17
 Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-12-17
 Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-12-17
 Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-12-17
-Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-12-17
+Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-17
 Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-12-17
 Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-12-17
 Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-12-17
@@ -130,29 +149,31 @@ Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price
 Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-12-17
 French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-12-17
 Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-17
-Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-12-16
-Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-12-16
-French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-12-16
-Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-12-16
-Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-16
-Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-12-16
-Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-16
-Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-16
-Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-12-16
-Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-16
-Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-16
-Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-16
-Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-12-16
+Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-17
+Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-12-17
 Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-16
-Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-16
-Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-12-16
-Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-12-16
-Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-12-16
-Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-12-16
-Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-12-16
-Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-12-16
 Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-12-16
-Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-12-15
+Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-12-16
+Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-12-16
+Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-12-16
+Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-12-16
+Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-12-16
+Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-16
+Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-12-16
+Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-16
+Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-16
+Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-16
+Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-12-16
+Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-16
+Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-16
+Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-12-16
+Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-16
+Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-12-16
+Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-12-16
+Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-12-16
+Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-12-16
+French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-12-16
+Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-12-15
 Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-12-15
 Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-12-15
 Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-12-15
@@ -173,33 +194,34 @@ Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Al
 Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-15
 Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-15
 Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-12-15
-Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-12-15
-Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-14
-Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-14
-Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-14
-Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-12-14
-Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-12-14
-Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-14
-Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-14
-Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-14
-Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-12-14
-Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-12-14
-Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-14
-French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-12-14
-Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-12-14
-Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-12-14
-Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-12-14
-Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-12-14
-Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-12-14
-Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-12-14
-Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-12-14
-Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-12-14
-Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-12-14
-Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-12-14
+Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-12-15
 Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-14
-Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-12-13
+Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-12-14
+Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-12-14
+French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-12-14
+Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-12-14
+Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-12-14
+Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-12-14
+Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-12-14
+Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-12-14
+Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-12-14
+Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-12-14
+Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-12-14
+Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-14
+Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-12-14
+Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-12-14
+Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-14
+Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-14
+Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-14
+Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-12-14
+Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-14
+Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-14
+Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-14
+Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-12-14
 Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-12-13
-Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-12-13
+Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-12-13
+Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-13
+Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-12-13
 Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-13
 Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-12-13
 Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-13
@@ -208,8 +230,8 @@ Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025
 Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-12-13
 Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-12-13
 Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-12-13
-Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-12-13
 Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-12-13
+Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-13
 Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-13
 Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-12-13
 French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-12-13
@@ -218,10 +240,11 @@ Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025
 Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-12-13
 Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-12-13
 Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-13
-Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-13
-Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-13
-Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-12-12
+Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-12-13
 French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-12-12
+Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-12-12
+Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-12-12
+Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-12-12
 Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-12-12
 Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-12-12
 Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-12
@@ -230,8 +253,8 @@ Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,
 Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-12-12
 Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-12-12
 Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-12-12
-Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-12-12
 Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-12-12
+Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-12
 Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-12-12
 Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-12-12
 Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-12
@@ -240,32 +263,31 @@ Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free P
 Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-12
 Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-12
 Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-12
-Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-12
-Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-12-12
 Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-12
-Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-12-11
-Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-11
-Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-11
-Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-11
-Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-12-11
-Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-12-11
-Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-12-11
-Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-12-11
-Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-12-11
-Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-12-11
-Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-12-11
-Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-12-11
-Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-12-11
-Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-12-11
-Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-12-11
-Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-11
-French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-12-11
-Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-11
-Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-12-11
-Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-11
-Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-11
-Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-12-11
 Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-11
+Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-12-11
+Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-12-11
+Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-12-11
+Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-11
+French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-12-11
+Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-11
+Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-12-11
+Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-12-11
+Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-12-11
+Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-12-11
+Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-12-11
+Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-11
+Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-12-11
+Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-12-11
+Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-12-11
+Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-12-11
+Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-11
+Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-11
+Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-11
+Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-12-11
+Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-11
+Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-12-11
+French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-12-10
 Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-12-10
 Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-12-10
 Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-12-10
@@ -287,36 +309,36 @@ Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alert
 Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-12-10
 Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-12-10
 Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-12-10
-French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-12-10
 Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-10
-Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-09
-Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-09
-Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-12-09
-Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-12-09
-Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-12-09
-Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-09
-Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-12-09
-Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-12-09
+Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-12-09
+Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-12-09
 Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-09
 Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-12-09
-Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-12-09
-Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-12-09
-Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-09
-French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-12-09
-Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-09
-Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-12-09
-Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-12-09
-Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-12-09
-Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-09
 Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-09
+Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-09
+Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-12-09
+Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-12-09
+Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-09
+French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-12-09
+Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-09
+Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-12-09
+Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-12-09
 Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-12-09
+Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-12-09
+Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-12-09
+Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-09
+Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-12-09
+Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-12-09
+Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-12-09
 Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-12-09
-Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-12-09
-French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-12-08
+Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-09
+Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-09
 Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-08
-Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-08
-Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-12-08
+French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-12-08
 Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-12-08
+Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-08
+Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-08
+Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-12-08
 Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-12-08
 Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-12-08
 Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-12-08
@@ -324,8 +346,7 @@ Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price
 Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-12-08
 Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-12-08
 Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-12-08
-Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-08
-Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-08
+Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-08
 Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-08
 Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-08
 Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-08
@@ -338,8 +359,8 @@ Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price
 Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-12-07
 Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-07
 Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-07
-Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-07
-Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-12-07
+Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-12-07
+Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-12-07
 Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-12-07
 Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-07
 Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-12-07
@@ -348,7 +369,8 @@ Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Pri
 Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-12-07
 Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-07
 Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-12-07
-Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-12-07
+Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-12-07
+Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-07
 Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-12-07
 Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-07
 Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-12-07
@@ -357,10 +379,10 @@ Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price A
 Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-12-07
 Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-12-07
 French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-12-07
-Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-12-07
 Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-12-06
 Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-06
 Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-06
+Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-12-06
 Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-12-06
 Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-12-06
 Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-06
@@ -369,8 +391,8 @@ Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free P
 Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-12-06
 Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-12-06
 Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-12-06
-Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-12-06
 Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-12-06
+Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-06
 Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-06
 Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-12-06
 Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-06
@@ -379,32 +401,32 @@ Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Pri
 Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-06
 Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-12-06
 French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-12-06
-Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-06
 Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-12-06
-Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-12-05
-Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-12-05
-Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-12-05
-Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-05
-Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-12-05
-Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-12-05
-Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-05
-Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-05
-Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-05
-Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-12-05
-Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-05
-Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-12-05
-Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-05
-Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-12-05
-Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-12-05
-Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-12-05
-French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-12-05
-Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-12-05
-Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-12-05
-Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-05
-Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-12-05
-Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-12-05
 Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-05
+Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-12-05
+Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-12-05
+Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-12-05
+Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-12-05
+French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-12-05
+Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-12-05
+Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-12-05
+Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-12-05
+Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-05
+Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-05
+Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-05
+Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-12-05
+Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-05
+Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-05
+Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-12-05
+Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-12-05
+Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-05
+Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-12-05
+Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-12-05
+Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-12-05
+Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-05
+Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-12-05
 Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-12-04
+Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-12-04
 French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-12-04
 Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-12-04
 Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-12-04
@@ -414,8 +436,8 @@ Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price A
 Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-12-04
 Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-04
 Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-12-04
-Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-12-04
 Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-12-04
+Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-12-04
 Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-04
 Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-04
 Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-12-04
@@ -426,32 +448,33 @@ Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price A
 Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-04
 Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-12-04
 Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-04
-Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-12-04
-Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-12-03
-Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-12-03
-Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-12-03
-Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-03
-Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-03
-Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-03
-Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-12-03
-Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-12-03
-Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-03
-Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-03
-Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-03
-Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-12-03
-Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-12-03
-Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-12-03
-Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-12-03
-Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-12-03
-Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-03
-Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-12-03
-French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-12-03
-Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-03
-Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-12-03
-Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-12-03
 Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-12-03
+Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-12-03
+Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-12-03
+French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-12-03
+Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-12-03
+Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-03
+Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-12-03
+Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-12-03
+Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-12-03
+Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-12-03
+Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-12-03
+Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-03
+Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-03
+Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-03
+Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-12-03
+Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-12-03
+Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-03
+Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-03
+Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-03
+Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-12-03
+Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-12-03
+Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-12-03
+Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-03
 Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-12-02
-Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-12-02
+Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-12-02
+Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-12-02
+Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-02
 Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-12-02
 Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-12-02
 Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-12-02
@@ -461,8 +484,7 @@ Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Al
 Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-12-02
 Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-12-02
 Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-02
-Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-12-02
-Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-12-02
+Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-12-02
 Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-02
 Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-12-02
 Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-12-02
@@ -472,9 +494,10 @@ Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price A
 Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-02
 Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-02
 French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-12-02
-Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-02
 Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-12-01
-Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-01
+Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-12-01
+Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-12-01
+Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-12-01
 Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-12-01
 French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-12-01
 Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-01
@@ -483,8 +506,8 @@ Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alert
 Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-12-01
 Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-12-01
 Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-01
-Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-12-01
 Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-12-01
+Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-12-01
 Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-01
 Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-12-01
 Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-12-01
@@ -493,57 +516,57 @@ Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price A
 Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-12-01
 Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-12-01
 Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-12-01
-Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-12-01
-Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-12-01
-Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-12-01
-Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-30
-Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-30
-Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-30
-Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-30
-Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-30
-French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-30
-Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-30
-Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-30
-Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-30
-Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-30
-Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-30
-Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-11-30
-Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-30
-Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-30
-Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-30
-Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-11-30
-Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-30
-Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-30
-Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-30
-Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-30
-Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-30
-Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-30
+Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-12-01
 Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-30
+Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-30
+Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-30
+Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-30
+Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-30
+Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-30
+Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-11-30
+Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-30
+Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-30
+Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-30
+Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-11-30
+Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-30
+Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-30
+Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-30
+Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-30
+Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-30
+French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-30
+Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-30
+Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-30
+Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-30
+Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-30
+Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-30
+Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-30
 Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-29
-Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-11-29
-Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-29
-Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-29
-Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-29
-Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-29
-Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-29
-Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-29
-Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-29
-Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-29
-French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-29
 Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-29
-Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-29
-Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-29
-Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-29
-Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-29
-Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-29
-Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-29
-Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-29
-Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-29
-Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-11-29
+Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-29
 Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-29
+Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-29
+Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-29
+Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-29
+Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-29
+Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-29
+Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-29
+Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-29
+Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-29
+French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-29
+Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-11-29
 Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-29
+Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-29
+Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-29
+Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-29
+Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-29
+Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-29
+Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-29
+Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-29
+Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-11-29
 Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-28
+Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-28
 French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-28
+Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-28
 Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-28
 Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-28
 Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-28
@@ -552,7 +575,6 @@ Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025
 Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-28
 Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-11-28
 Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-28
-Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-28
 Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-28
 Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-28
 Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-28
@@ -563,34 +585,34 @@ Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,
 Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-28
 Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-28
 Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-28
-Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-28
-Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-28
-Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-27
-Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-27
-Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-27
-Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-11-27
-Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-27
-Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-27
-Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-27
-Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-27
-Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-27
-Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-11-27
-Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-27
-Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-27
-Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-27
-Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-27
-Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-27
-Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-27
-Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-27
-Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-27
-Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-27
-Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-27
-French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-27
-Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-27
+Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-28
 Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-27
-Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-26
+Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-27
+Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-11-27
+Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-27
+French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-27
+Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-27
+Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-27
+Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-27
+Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-27
+Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-27
+Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-27
+Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-27
+Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-27
+Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-11-27
+Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-27
+Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-27
+Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-27
+Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-27
+Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-27
+Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-27
+Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-27
+Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-27
+Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-27
 Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-26
-Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-26
+Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-26
+Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-26
+Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-26
 Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-26
 Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-26
 Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-26
@@ -600,7 +622,7 @@ Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alert
 Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-26
 Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-26
 Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-26
-Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-26
+Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-26
 Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-26
 Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-26
 Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-26
@@ -610,10 +632,10 @@ Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price
 French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-26
 Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-26
 Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-26
-Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-26
 Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-25
 French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-25
-Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-25
+Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-25
+Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-25
 Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-25
 Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-11-25
 Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-25
@@ -622,7 +644,7 @@ Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025
 Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-25
 Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-11-25
 Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-25
-Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-25
+Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-25
 Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-25
 Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-25
 Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-25
@@ -632,11 +654,11 @@ Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price
 Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-25
 Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-25
 Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-25
-Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-25
-Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-25
-Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-24
+Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-25
 Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-24
-Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-24
+Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-24
+Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-24
+Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-24
 Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-11-24
 Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-24
 Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-24
@@ -645,7 +667,7 @@ Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-
 Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-24
 Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-24
 Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-24
-Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-24
+Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-24
 Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-24
 Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-24
 Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-24
@@ -655,10 +677,11 @@ Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025
 Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-24
 Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-24
 Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-24
-Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-24
-Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-24
-Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-23
+Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-24
 French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-23
+Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-23
+Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-23
+Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-23
 Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-23
 Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-23
 Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-23
@@ -667,8 +690,8 @@ Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alert
 Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-23
 Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-23
 Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-23
-Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-23
 Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-23
+Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-23
 Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-23
 Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-23
 Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-11-23
@@ -677,33 +700,32 @@ Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025
 Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-23
 Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-23
 Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-11-23
-Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-23
-Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-23
 Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-23
-Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-22
-Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-22
-Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-22
-Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-22
-French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-22
-Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-11-22
-Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-22
-Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-22
-Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-22
-Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-22
-Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-22
-Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-22
-Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-22
-Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-22
-Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-22
-Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-22
-Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-22
-Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-22
-Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-11-22
-Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-22
-Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-22
-Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-22
 Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-22
+Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-22
+Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-22
+Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-11-22
+Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-22
+Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-22
+Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-22
+Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-22
+Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-22
+Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-22
+Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-22
+Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-22
+Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-22
+Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-22
+Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-22
+Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-11-22
+French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-22
+Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-22
+Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-22
+Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-22
+Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-22
+Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-22
+Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-22
 Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-21
+Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-21
 Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-21
 Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-21
 Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-21
@@ -713,8 +735,8 @@ Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price
 Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-21
 Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-21
 Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-21
-Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-21
 Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-21
+Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-21
 Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-21
 Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-21
 Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-21
@@ -725,33 +747,31 @@ Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Al
 Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-21
 Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-21
 Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-21
-Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-21
-Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-20
-Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-20
-Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-20
-Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-20
-Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-20
-Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-20
-French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-20
-Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-20
-Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-20
-Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-20
-Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-20
-Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-20
-Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-20
-Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-11-20
-Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-20
-Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-20
-Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-20
-Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-20
-Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-11-20
-Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-20
-Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-20
-Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-20
 Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-20
-Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-19
+Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-20
+Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-20
+Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-11-20
+Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-20
+Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-20
+Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-20
+Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-20
+Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-11-20
+Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-20
+Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-20
+Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-20
+Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-20
+Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-20
+French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-20
+Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-20
+Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-20
+Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-20
+Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-20
+Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-20
+Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-20
+Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-20
+Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-20
+Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-19
 French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-19
-Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-19
 Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-19
 Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-19
 Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-19
@@ -760,6 +780,7 @@ Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025
 Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-19
 Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-19
 Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-19
+Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-19
 Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-19
 Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-19
 Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-11-19
@@ -770,8 +791,10 @@ Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price 
 Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-19
 Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-19
 Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-19
-Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-19
+Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-19
 Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-19
+Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-18
+French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-18
 Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-18
 Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-18
 Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-18
@@ -782,7 +805,7 @@ Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,
 Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-18
 Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-18
 Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-18
-Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-18
+Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-18
 Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-11-18
 Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-18
 Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-18
@@ -793,33 +816,33 @@ Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alert
 Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-18
 Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-18
 Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-18
-Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-18
-French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-18
-Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-17
-Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-17
-Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-17
-Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-17
-Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-11-17
-Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-17
-Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-17
-Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-17
-Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-17
-Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-17
+Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-17
+French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-17
 Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-17
 Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-17
-Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-17
-Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-17
-Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-11-17
-Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-17
-Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-17
-Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-17
-Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-17
 Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-17
+Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-17
+Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-17
+Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-17
+Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-17
+Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-11-17
+Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-17
+Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-17
+Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-17
+Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-17
+Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-17
+Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-17
+Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-17
+Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-11-17
+Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-17
+Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-17
+Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-17
+Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-17
 Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-17
-French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-17
-Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-17
-Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-16
 Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-16
+Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-16
+Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-16
+Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-16
 Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-16
 Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-16
 Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-16
@@ -828,8 +851,8 @@ Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025
 Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-16
 Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-16
 Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-11-16
-Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-16
 Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-16
+Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-16
 French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-16
 Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-16
 Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-16
@@ -838,35 +861,34 @@ Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price
 Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-16
 Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-16
 Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-16
-Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-16
-Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-16
 Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-16
-Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-15
-Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-15
-Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-11-15
-Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-15
-Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-15
-Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-15
-Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-15
-Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-15
-Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-15
-Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-15
-Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-15
-Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-15
-Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-15
-Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-15
-Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-15
-French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-15
-Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-15
-Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-15
-Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-15
-Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-15
-Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-15
-Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-15
 Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-11-15
+Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-15
+Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-15
+Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-15
+Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-15
+Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-15
+French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-15
+Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-15
+Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-15
+Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-15
+Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-15
+Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-15
+Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-15
+Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-15
+Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-15
+Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-15
+Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-15
+Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-15
+Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-15
+Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-11-15
+Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-15
+Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-15
+Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-15
 Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-14
+Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-14
+Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-14
 Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-14
-Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-14
 Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-14
 French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-14
 Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-14
@@ -874,7 +896,6 @@ Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price
 Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-14
 Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-11-14
 Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-14
-Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-14
 Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-14
 Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-14
 Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-14
@@ -886,10 +907,11 @@ Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-
 Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-14
 Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-14
 Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-14
-Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-14
-Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-13
+Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-14
 Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-13
-Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-13
+Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-13
+Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-13
+Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-13
 Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-13
 French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-13
 Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-13
@@ -898,7 +920,6 @@ Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price A
 Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-13
 Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-13
 Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-13
-Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-13
 Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-13
 Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-13
 Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-11-13
@@ -909,9 +930,11 @@ Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Pr
 Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-13
 Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-13
 Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-13
-Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-13
-Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-12
+Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-13
 Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-11-12
+Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-12
+Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-12
+Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-12
 French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-12
 Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-12
 Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-12
@@ -920,8 +943,8 @@ Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025
 Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-12
 Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-12
 Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-12
-Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-12
 Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-12
+Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-12
 Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-12
 Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-12
 Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-11-12
@@ -930,32 +953,31 @@ Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Pri
 Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-12
 Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-12
 Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-12
-Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-12
-Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-12
 Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-12
-Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-11
-Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-11
-Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-11
-Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-11
-Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-11
-Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-11
-Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-11
-Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-11
-Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-11
-Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-11
-Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-11
-Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-11
-Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-11
-Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-11
-Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-11
-Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-11
-Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-11
-Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-11
-Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-11-11
-Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-11
-Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-11
-Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-11-11
 French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-11
+Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-11-11
+Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-11
+Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-11-11
+Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-11
+Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-11
+Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-11
+Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-11
+Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-11
+Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-11
+Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-11
+Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-11
+Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-11
+Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-11
+Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-11
+Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-11
+Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-11
+Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-11
+Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-11
+Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-11
+Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-11
+Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-11
+Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-11
+Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-10
 Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-10
 French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-10
 Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-10
@@ -977,46 +999,45 @@ Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price 
 Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-11-10
 Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-10
 Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-10
-Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-10
 Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-10
-Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-09
-Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-09
-Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-11-09
-Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-09
-Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-09
-French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-09
-Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-09
-Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-09
+Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-09
+Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-09
 Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-09
 Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-09
-Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-09
-Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-09
-Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-09
-Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-09
-Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-09
-Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-09
-Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-09
-Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-09
 Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-09
+Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-09
+Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-09
+Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-09
+Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-09
+Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-09
+Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-09
+Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-09
+Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-09
 Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-09
 Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-11-09
-Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-09
-Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-09
-Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-08
+Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-09
+Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-09
+French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-09
+Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-09
+Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-09
+Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-11-09
+Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-09
+Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-09
 Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-08
-Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-08
-Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-08
+Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-08
+Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-08
+Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-08
+Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-11-08
 Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-08
 French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-08
 Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-11-08
 Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-08
 Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-08
 Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-08
-Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-08
 Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-08
 Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-08
-Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-11-08
-Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-08
+Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-08
+Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-08
 Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-08
 Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-08
 Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-08
@@ -1025,9 +1046,10 @@ Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price A
 Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-08
 Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-08
 Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-08
-Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-07
 Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-07
-Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-07
+Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-07
+Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-07
+Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-07
 Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-07
 Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-07
 Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-07
@@ -1036,8 +1058,8 @@ Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Al
 Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-11-07
 French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-07
 Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-07
-Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-07
 Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-07
+Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-07
 Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-07
 Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-07
 Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-07
@@ -1046,56 +1068,57 @@ Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price A
 Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-07
 Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-11-07
 Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-07
-Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-07
-Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-07
-Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-06
-Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-06
-Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-06
-Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-06
-Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-11-06
-Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-06
-Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-06
-Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-06
-Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-06
-Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-06
-Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-06
-Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-06
-Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-06
-Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-06
-Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-06
-Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-11-06
-Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-06
-Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-06
-French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-06
-Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-06
-Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-06
-Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-06
+Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-07
 Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-06
+Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-06
+Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-06
+French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-06
+Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-06
+Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-06
+Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-11-06
+Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-06
+Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-06
+Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-06
+Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-06
+Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-06
+Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-06
+Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-06
+Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-06
+Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-06
+Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-06
+Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-11-06
+Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-06
+Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-06
+Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-06
+Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-06
+Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-06
 Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-05
-Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-05
-Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-11-05
-Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-05
-Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-05
-Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-05
-Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-05
-Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-05
-French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-05
-Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-05
-Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-05
 Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-05
-Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-05
-Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-05
-Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-05
-Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-05
-Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-11-05
-Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-05
-Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-05
-Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-05
-Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-05
+Brinjal,Vantamamidi,Arkasheela Mattigulla,2500,2000,1500,05 Nov 2025,,For Free Price Alerts,2025-11-05
 Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-05
+Bhindi(Ladies Finger),Vantamamidi,Bhindi,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-05
+Potato,Vantamamidi,Local,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-05
+Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2600,2000,05 Nov 2025,,For Free Price Alerts,2025-11-05
+Tomato,Vantamamidi,Local,1800,1400,1000,05 Nov 2025,,For Free Price Alerts,2025-11-05
+Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-05
+Ridgeguard(Tori),Vantamamidi,Other,3000,2500,2000,05 Nov 2025,,For Free Price Alerts,2025-11-05
+Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-05
+Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-05
+Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price Alerts,2025-11-05
+Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,05 Nov 2025,,For Free Price Alerts,2025-11-05
 Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-05
+French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-05
+Carrot,Vantamamidi,Carrot,1000,1000,1000,05 Nov 2025,,For Free Price Alerts,2025-11-05
+Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-05
+Cabbage,Vantamamidi,Cabbage,1000,750,500,05 Nov 2025,,For Free Price Alerts,2025-11-05
+Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-05
+Cucumbar(Kheera),Vantamamidi,Cucumbar,700,550,400,05 Nov 2025,,For Free Price Alerts,2025-11-05
+Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-11-05
+Field Pea,Vantamamidi,Field Pea,3500,3000,2500,05 Nov 2025,,For Free Price Alerts,2025-11-05
 Cluster beans,Vantamamidi,Cluster Beans,2500,2500,2500,10 Oct 2025,,For Free Price Alerts,2025-11-04
+Potato,Vantamamidi,Local,1000,1000,1000,03 Oct 2025,,For Free Price Alerts,2025-11-04
 Cucumbar(Kheera),Vantamamidi,Cucumbar,800,650,500,03 Nov 2025,,For Free Price Alerts,2025-11-04
+Carrot,Vantamamidi,Carrot,1000,1000,1000,10 Apr 2025,,For Free Price Alerts,2025-11-04
 Pumpkin,Vantamamidi,Other,1000,1000,1000,03 Nov 2025,,For Free Price Alerts,2025-11-04
 Drumstick,Vantamamidi,Drumstick,1500,1500,1500,11 Jun 2025,,For Free Price Alerts,2025-11-04
 Snakeguard,Vantamamidi,Other,600,600,600,01 Nov 2025,,For Free Price Alerts,2025-11-04
@@ -1104,9 +1127,8 @@ Onion Green,Vantamamidi,Onion Green,2000,2000,2000,14 Oct 2025,,For Free Price A
 Groundnut pods (raw),Vantamamidi,Groundnut pods (raw),3200,2850,2500,03 Nov 2025,,For Free Price Alerts,2025-11-04
 Bitter gourd,Vantamamidi,Bitter Gourd,3500,2750,2000,03 Nov 2025,,For Free Price Alerts,2025-11-04
 Capsicum,Vantamamidi,Capsicum,2000,2000,2000,25 Oct 2025,,For Free Price Alerts,2025-11-04
-Ridgeguard(Tori),Vantamamidi,Other,4000,3000,2000,03 Nov 2025,,For Free Price Alerts,2025-11-04
-Carrot,Vantamamidi,Carrot,1000,1000,1000,10 Apr 2025,,For Free Price Alerts,2025-11-04
 Bhindi(Ladies Finger),Vantamamidi,Bhindi,3000,2500,2000,03 Nov 2025,,For Free Price Alerts,2025-11-04
+Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-04
 French Beans (Frasbean),Vantamamidi,French Beans (Frasbean),3000,3000,3000,03 Nov 2025,,For Free Price Alerts,2025-11-04
 Beetroot,Vantamamidi,Beetroot,2000,2000,2000,17 Feb 2025,,For Free Price Alerts,2025-11-04
 Bottle gourd,Vantamamidi,Bottle Gourd,1000,750,500,03 Nov 2025,,For Free Price Alerts,2025-11-04
@@ -1115,5 +1137,4 @@ Field Pea,Vantamamidi,Field Pea,3000,2500,2000,03 Nov 2025,,For Free Price Alert
 Green Chilli,Vantamamidi,Green Chilly,2000,2000,2000,01 Nov 2025,,For Free Price Alerts,2025-11-04
 Tomato,Vantamamidi,Local,1500,1250,1000,03 Nov 2025,,For Free Price Alerts,2025-11-04
 Sweet Potato,Vantamamidi,Hosur Green,1000,1000,1000,24 Feb 2025,,For Free Price Alerts,2025-11-04
-Cauliflower,Vantamamidi,Cauliflower,1000,1000,1000,19 Oct 2025,,For Free Price Alerts,2025-11-04
-Potato,Vantamamidi,Local,1000,1000,1000,03 Oct 2025,,For Free Price Alerts,2025-11-04
+Ridgeguard(Tori),Vantamamidi,Other,4000,3000,2000,03 Nov 2025,,For Free Price Alerts,2025-11-04
